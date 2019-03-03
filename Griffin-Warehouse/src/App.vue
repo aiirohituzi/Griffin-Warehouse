@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <ul id="navigation">
-      <li></li>
+      <router-link tag="li" to="/damageCalc">damageCalc</router-link>
       <li></li>
       <li></li>
     </ul>
@@ -44,9 +44,14 @@ ul#navigation {
 	user-select: none;
 }
 ul#navigation li {
+  box-sizing: border-box;
   float: left;
   width: calc(100% / 3);
   height: 100%;
 	cursor: pointer;
+  /* border: 1px solid #000; */
+}
+ul#navigation li:hover {
+    background-color:#9c9175;
 }
 </style>
