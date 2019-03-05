@@ -1,12 +1,10 @@
 <template>
-<div>
-    <!-- -------------------버퍼 선택----------------------- -->
-    <table>
-        <tr>
-            <td>인형 화력 스탯</td>
-            <td><input type="text" v-model="tdollAtk"></td>
-            <td>{{ tdollAtk }}</td>
-        </tr>
+<div class="container-damageCalc">
+    <div id="div-damage">
+        인형 화력 스탯 입력<input type="text" v-model="tdollAtk" size="3"><br>
+        인형 순수 화력 : {{ tdollAtk }}
+    </div>
+    <table id="table-damage">
         <tr>
             <th>버프 인형 선택</th>
             <th>진형 버프</th>
@@ -70,9 +68,12 @@
             </td>
         </tr>
         
-        <tr>
-            <td>빈칸</td>
+        <tr class="empty-line">
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
+
         <tr>
             <th>요정 진형버프</th>
             <th>요정 스킬배율</th>
@@ -102,41 +103,29 @@
             <td id="sumSkill">0%</td>
         </tr>
         
-        <tr>
-            <td>빈칸</td>
+        <tr class="empty-line">
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
         
         
         <tr>
             <td></td>
-            <td>1링크</td>
-            <td>5링크</td>
+            <th>1링크</th>
+            <th>5링크</th>
         </tr>
         <tr>
-            <td>최소데미지</td>
+            <th>최소데미지</th>
             <td id="damageMin1"></td>
             <td id="damageMin5"></td>
         </tr>
         <tr>
-            <td>최대데미지</td>
+            <th>최대데미지</th>
             <td id="damageMax1"></td>
             <td id="damageMax5"></td>
         </tr>
     </table>
-    <!-- --------------------------------------------------- -->
-
-    <!-- 요정 특성 선택 -->
-    <!-- <select class="" v-model="">
-        <option value="" v-for="">{{ temp }}</option>
-    </select> -->
-
-
-    <!-- 최소데미지 1링크, 5링크 표시 -->
-    <div></div>
-    <div></div>
-    <!-- 최대데미지 1링크, 5링크 표시 -->
-    <div></div>
-    <div></div>
 </div>
 </template>
 
@@ -179,6 +168,7 @@ export default {
         sumTdoll: function () {
             var sum_buff = 0
             var sum_skill = 0
+            var finalStat = 0
             if(this.tdoll_selected.first > 0){
                 sum_buff += this.tdoll[this.tdoll_selected.first].buff
                 sum_skill += this.tdoll[this.tdoll_selected.first].skill
@@ -212,7 +202,12 @@ export default {
             $('#sumBuff').text(sum_buff + '%')
             $('#sumSkill').text(sum_skill + '%')
 
-            console.log(this.tdollAtk * (1 + sum_buff / 100) * (1 + sum_skill / 100))
+            finalStat = this.tdollAtk * (1 + sum_buff / 100) * (1 + sum_skill / 100)
+
+            $('#damageMin1').text(finalStat * 0.85)
+            $('#damageMin5').text(finalStat * 0.85 * 5)
+            $('#damageMax1').text(finalStat * 1.15)
+            $('#damageMax5').text(finalStat * 1.15 * 5)
         }
     },
     updated: function () {
@@ -222,4 +217,46 @@ export default {
 </script>
 
 <style>
+.container-damageCalc {
+    margin-top: calc(5vh + 30px);
+}
+div#div-damage {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70vw;
+    margin-bottom: 3vh;
+}
+div#div-damage input {
+    margin-left: 1vw;
+    text-align: right;
+}
+table#table-damage {
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70vw;
+
+    -moz-transition: all .5s ease-in-out;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+table#table-damage tr{
+    border-top: 2px solid #ccc;
+    background: linear-gradient(to right, #fff, #ddd, #fff);
+}
+table#table-damage .empty-line {
+    /* border-top: unset; */
+    background: unset;
+    height: 5vh;
+}
+table#table-damage th, td{
+    padding: 10px;
+    width: calc(70vw / 3);
+}
+table#table-damage td{
+    text-align: right;
+}
+table#table-damage input, select{
+    width: 100%;
+}
 </style>
