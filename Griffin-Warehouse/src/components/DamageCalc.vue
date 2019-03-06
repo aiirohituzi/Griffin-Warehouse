@@ -1,14 +1,22 @@
 <template>
 <div class="container-damageCalc">
-    <div id="div-damage">
-        인형 화력 스탯 입력<input type="text" v-model="tdollAtk" size="3"><br>
-        인형 순수 화력 : {{ tdollAtk }}
-    </div>
     <table id="table-damage">
+        <tr>
+            <th>인형 화력 스탯 입력</th>
+            <td><input type="text" v-model="tdollAtk"></td>
+            <td>화력 : {{ tdollAtk }}</td>
+        </tr>
+
+        <tr class="empty-line">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
         <tr>
             <th>버프 인형 선택</th>
             <th>진형 버프</th>
-            <th>스킬 배율</th>
+            <th>버프 스킬 배율</th>
         </tr>
         <tr>
             <td>
@@ -67,12 +75,6 @@
                 <div v-if="tdoll_selected.fourth > 0">{{ tdoll[tdoll_selected.fourth].skill }}%</div>
             </td>
         </tr>
-        
-        <tr class="empty-line">
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
 
         <tr>
             <th>요정 진형버프</th>
@@ -98,7 +100,7 @@
         </tr>
 
         <tr>
-            <td>합계</td>
+            <td>버프 합계</td>
             <td id="sumBuff">0%</td>
             <td id="sumSkill">0%</td>
         </tr>
@@ -108,7 +110,18 @@
             <td></td>
             <td></td>
         </tr>
+
+        <tr>
+            <th>인형 스킬 배율 입력</th>
+            <td><input type="text" v-model="tdollSkill"></td>
+            <td>스킬 배율 : {{ tdollSkill }}%</td>
+        </tr>
         
+        <tr class="empty-line">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>        
         
         <tr>
             <td></td>
@@ -152,6 +165,7 @@ export default {
                 third: 0,
                 fourth: 0,
             },
+            tdollSkill: 0,
             fairyBuff: 0,
             fairySkill: 0,
             fairyPassive: [
@@ -202,7 +216,7 @@ export default {
             $('#sumBuff').text(sum_buff + '%')
             $('#sumSkill').text(sum_skill + '%')
 
-            finalStat = this.tdollAtk * (1 + sum_buff / 100) * (1 + sum_skill / 100)
+            finalStat = this.tdollAtk * (1 + sum_buff / 100) * (1 + sum_skill / 100) * (this.tdollSkill / 100)
 
             $('#damageMin1').text(finalStat * 0.85)
             $('#damageMin5').text(finalStat * 0.85 * 5)
@@ -220,43 +234,33 @@ export default {
 .container-damageCalc {
     margin-top: calc(5vh + 30px);
 }
-div#div-damage {
-    margin-left: auto;
-    margin-right: auto;
-    width: 70vw;
-    margin-bottom: 3vh;
-}
-div#div-damage input {
-    margin-left: 1vw;
-    text-align: right;
-}
 table#table-damage {
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
-    width: 70vw;
+    width: 50vw;
+    /* font-size: 9pt; */
 
     -moz-transition: all .5s ease-in-out;
     -webkit-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
 }
 table#table-damage tr{
-    border-top: 2px solid #ccc;
-    background: linear-gradient(to right, #fff, #ddd, #fff);
+    border-top: 1px solid #ddd;
+    background: linear-gradient(to right, #fff, #eee, #fff);
 }
 table#table-damage .empty-line {
     /* border-top: unset; */
     background: unset;
-    height: 5vh;
+    height: 4vh;
 }
 table#table-damage th, td{
-    padding: 10px;
-    width: calc(70vw / 3);
+    padding: 2px;
 }
 table#table-damage td{
     text-align: right;
 }
 table#table-damage input, select{
-    width: 100%;
+    width: 80%;
 }
 </style>
