@@ -100,7 +100,7 @@
         </tr>
 
         <tr>
-            <td>버프 합계</td>
+            <th>버프 합계</th>
             <td id="sumBuff">0%</td>
             <td id="sumSkill">0%</td>
         </tr>
@@ -262,5 +262,6 @@ table#table-damage td{
 }
 table#table-damage input, select{
     width: 80%;
+    text-align: right;
 }
 </style>
