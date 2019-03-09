@@ -149,6 +149,7 @@ table#table-gems th, td{
 }
 table#table-gems td{
     text-align: right;
+    width: calc(40vw / 2);
 }
 table#table-gems input{
     width: 80%;
