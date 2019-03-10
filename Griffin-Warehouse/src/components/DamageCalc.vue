@@ -116,6 +116,11 @@
             <td><input type="text" v-model="tdollSkill"></td>
             <td>스킬 배율 : {{ tdollSkill }}%</td>
         </tr>
+        <tr>
+            <th>공격 시간 입력</th>
+            <td><input type="text" v-model="attackSecond"></td>
+            <td>공격 시간 : {{ attackSecond }}초</td>
+        </tr>
         
         <tr class="empty-line">
             <td></td>
@@ -177,6 +182,7 @@ export default {
                 fourth: 0,
             },
             tdollSkill: 0,
+            attackSecond: 0,
             selectContender: false,
             fairyBuff: 0,
             fairySkill: 0,
@@ -245,7 +251,11 @@ export default {
             $('#sumBuff').text(sum_buff + '%')
             $('#sumSkill').text(sum_skill + '%')
 
-            finalStat = this.tdollAtk * (1 + sum_buff / 100) * (1 + sum_skill / 100) * (1 + this.tdollSkill / 100)
+            if(this.attackSecond < 6) {
+                finalStat = this.tdollAtk * (1 + sum_buff / 100) * (1 + this.tdollSkill / 100)
+            } else {
+                finalStat = this.tdollAtk * (1 + sum_buff / 100) * (1 + sum_skill / 100) * (1 + this.tdollSkill / 100)
+            }
 
             this.finalStat = Math.floor(finalStat)
             
