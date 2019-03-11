@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import DamageCalc from '@/components/DamageCalc'
 import GemsCalc from '@/components/GemsCalc'
+import MockCalc from '@/components/MockCalc'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/gemsCalc',
       name: 'GemsCalc',
       component: GemsCalc
+    },
+    {
+      path: '/mockCalc',
+      name: 'MockCalc',
+      component: MockCalc
     },
   ]
 })
