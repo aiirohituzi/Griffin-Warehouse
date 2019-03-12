@@ -3,7 +3,7 @@
     <ul id="navigation">
       <router-link tag="li" to="/damageCalc">damageCalc</router-link>
       <router-link tag="li" to="/gemsCalc">gemsCalc</router-link>
-      <li></li>
+      <router-link tag="li" to="/simCalc">simCalc</router-link>
     </ul>
     <div class="container-router-view">
       <router-view/>
