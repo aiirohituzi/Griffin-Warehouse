@@ -70,6 +70,13 @@
             <td>{{ needSimPurchase }}</td>
         </tr>
     </table>
+
+    <div id="div-getData">
+        <div>모의작전 1회당<br>스킬칩 수급량</div>
+        <div>초급 <input type="text" maxlength="3" size="1" v-model="getBasicData"></div>
+        <div>중급 <input type="text" maxlength="3" size="1" v-model="getIntermediateData"></div>
+        <div>고급 <input type="text" maxlength="3" size="1" v-model="getAdvancedData"></div>
+    </div>
 </div>
 </template>
 
@@ -92,6 +99,10 @@ export default {
             needSimEnergy_advanced: 0,
             needSimEnergy_sum: 0,
             needSimPurchase: 0,
+
+            getBasicData: 218,
+            getIntermediateData: 98,
+            getAdvancedData: 53,
         }
     },
     methods: {
@@ -135,6 +146,21 @@ table#table-sim td{
 }
 table#table-sim input, select{
     width: 80%;
+    text-align: right;
+}
+
+div#div-getData {
+    position: fixed;
+    left: -140px;
+    top: 40vh;
+    padding: 10px;
+    width: 120px;
+    border-radius: 5px;
+    background: #ddd;
+
+    text-align: center;
+}
+div#div-getData input {
     text-align: right;
 }
 </style>
