@@ -71,11 +71,14 @@
         </tr>
     </table>
 
-    <div id="div-getData">
-        <div>모의작전 1회당<br>스킬칩 수급량</div>
-        <div>초급 <input type="text" maxlength="3" size="1" v-model="getBasicData"></div>
-        <div>중급 <input type="text" maxlength="3" size="1" v-model="getIntermediateData"></div>
-        <div>고급 <input type="text" maxlength="3" size="1" v-model="getAdvancedData"></div>
+    <div id="div-getData" class="side-left">
+        <div class="inputGroup-getData">
+            <div>모의작전 1회당<br>스킬칩 수급량</div>
+            <div>초급 <input type="text" maxlength="3" size="1" v-model="getBasicData"></div>
+            <div>중급 <input type="text" maxlength="3" size="1" v-model="getIntermediateData"></div>
+            <div>고급 <input type="text" maxlength="3" size="1" v-model="getAdvancedData"></div>
+        </div>
+        <div class="btn-getData" @click="openGetData()"></div>
     </div>
 </div>
 </template>
@@ -106,8 +109,15 @@ export default {
         }
     },
     methods: {
+        simCalc: function () {
+
+        },
+        openGetData: function () {
+            $('.side-left').toggleClass('move')
+        }
     },
     updated: function () {
+        this.simCalc()
     }
 }
 </script>
@@ -149,18 +159,52 @@ table#table-sim input, select{
     text-align: right;
 }
 
+.side-left {
+    -webkit-transform: translate(0, 0);
+    -webkit-transition: -webkit-transform 500ms;
+
+    transform: translate(0, 0);
+    transition: transform 500ms;
+
+    will-change: transform;
+}
+.side-left.move {
+    -webkit-transform: translate(135px, 0px);
+    transform: translate(135px, 0px);
+}
 div#div-getData {
     position: fixed;
-    left: -140px;
+    left: -135px;
     top: 40vh;
-    padding: 10px;
-    width: 120px;
-    border-radius: 5px;
+    width: 150px;
+    height: 130px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
     background: #ddd;
+    -moz-box-shadow: 1px 3px 6px #999;
+    -webkit-box-shadow: 0px 3px 6px #999;
+    box-shadow: 1px 3px 6px #999;
 
     text-align: center;
 }
 div#div-getData input {
     text-align: right;
+}
+div#div-getData .inputGroup-getData {
+    margin: 10px;
+    float: left;
+}
+div#div-getData .btn-getData {
+    width: 15px;
+    height: 130px;
+    line-height: 130px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    float: right;
+    background: #d3d3d3;
+}
+div#div-getData .btn-getData:hover {
+    background: #c5c5c5;
+    cursor: pointer;
 }
 </style>
