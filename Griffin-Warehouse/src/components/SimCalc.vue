@@ -110,7 +110,29 @@ export default {
     },
     methods: {
         simCalc: function () {
+            if((this.needBasicData - this.basicData) / this.getBasicData < 0){
+                this.needSimEnergy_basic = 0
+            } else {
+                this.needSimEnergy_basic = Math.ceil((this.needBasicData - this.basicData) / this.getBasicData)
+            }
+            if((this.needIntermediateData - this.intermediateData) / this.getIntermediateData < 0){
+                this.needSimEnergy_intermediate = 0
+            } else {
+                this.needSimEnergy_intermediate = Math.ceil((this.needIntermediateData - this.intermediateData) / this.getIntermediateData) * 2
+            }
+            if((this.needAdvancedData - this.advancedData) / this.getAdvancedData < 0){
+                this.needSimEnergy_advanced = 0
+            } else {
+                this.needSimEnergy_advanced = Math.ceil((this.needAdvancedData - this.advancedData) / this.getAdvancedData) * 3
+            }
 
+            if(this.needSimEnergy_basic + this.needSimEnergy_intermediate + this.needSimEnergy_advanced - this.currentSimEnergy < 0){
+                this.needSimEnergy_sum = 0
+            } else {
+                this.needSimEnergy_sum = this.needSimEnergy_basic + this.needSimEnergy_intermediate + this.needSimEnergy_advanced - this.currentSimEnergy
+            }
+
+            this.needSimPurchase = this.needSimEnergy_sum / 3
         },
         openGetData: function () {
             $('.side-left').toggleClass('move')
