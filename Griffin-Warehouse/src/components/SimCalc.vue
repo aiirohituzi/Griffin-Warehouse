@@ -73,16 +73,16 @@
 
     <div id="div-getData" class="side-left">
         <div class="inputGroup-getData">
-            <div>모의작전 1회당<br>스킬칩 수급량</div>
+            <div>모의작전 1회당</div>
             <div>초급 <input type="text" maxlength="3" size="1" v-model="getBasicData"></div>
             <div>중급 <input type="text" maxlength="3" size="1" v-model="getIntermediateData"></div>
             <div>고급 <input type="text" maxlength="3" size="1" v-model="getAdvancedData"></div>
         </div>
-        <div class="btn-getData" @click="openGetData()"></div>
+        <div class="btn-getData" @click="openGetData()">스킬칩 수급량 입력</div>
     </div>
 
     <div id="div-needData" class="side-right">
-        <div class="btn-needData" @click="openNeedData()"></div>
+        <div class="btn-needData" @click="openNeedData()">각 레벨별 스킬칩 요구량</div>
         <table id="table-needData">
             <tr>
                 <th>연구 레벨</th>
@@ -260,15 +260,16 @@ table#table-sim input, select{
     will-change: transform;
 }
 .side-left.move {
-    -webkit-transform: translate(135px, 0px);
-    transform: translate(135px, 0px);
+    -webkit-transform: translate(95px, 0px);
+    transform: translate(95px, 0px);
 }
 div#div-getData {
     position: fixed;
-    left: -135px;
+    left: -95px;
     top: 40vh;
-    width: 150px;
+    width: 110px;
     height: 130px;
+
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     background: #ddd;
@@ -284,20 +285,26 @@ div#div-getData input {
 div#div-getData .inputGroup-getData {
     margin: 10px;
     float: left;
+    font-size: 8pt;
+    line-height: 27px;
 }
 div#div-getData .btn-getData {
     width: 15px;
     height: 130px;
-    line-height: 130px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     float: right;
     background: #d3d3d3;
+    font-size: 8pt;
+    writing-mode: vertical-lr;
 }
 div#div-getData .btn-getData:hover {
     background: #c5c5c5;
     cursor: pointer;
 }
+
+
+
 
 .side-right {
     -webkit-transform: translate(0, 0);
@@ -327,7 +334,6 @@ div#div-needData {
 
     text-align: center;
 }
-
 table#table-needData{
     float: right;
     font-size: 9pt;
@@ -348,6 +354,8 @@ div#div-needData .btn-needData {
     border-bottom-left-radius: 5px;
     float: left;
     background: #d3d3d3;
+    font-size: 8pt;
+    writing-mode: vertical-lr;
 }
 div#div-needData .btn-needData:hover {
     background: #c5c5c5;
