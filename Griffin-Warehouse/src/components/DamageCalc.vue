@@ -16,7 +16,7 @@
         <tr>
             <th>버프 인형 선택</th>
             <th>진형 버프</th>
-            <th>버프 스킬 배율</th>
+            <th>버프 스킬 배율 <input type="checkbox" style="width:unset;" v-model="buffSkillOn"></th>
         </tr>
         <tr>
             <td>
@@ -75,36 +75,41 @@
                 <div v-if="tdoll_selected.fourth > 0">{{ tdoll[tdoll_selected.fourth].skill }}%</div>
             </td>
         </tr>
+        <tr>
+            <th>버프 합계</th>
+            <td>{{ sumBuff }}%</td>
+            <td>{{ sumSkill }}%</td>
+        </tr>
+
+        <tr class="empty-line">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
 
         <tr>
-            <th>요정 진형버프</th>
-            <th>요정 스킬배율</th>
-            <th>요정 특성선택</th>
+            <th>요정 진형 버프</th>
+            <th>요정 특성 선택 <input type="checkbox" style="width:unset;" v-model="fairyPassiveOn"></th>
+            <th>요정 스킬 배율 <input type="checkbox" style="width:unset;" v-model="fairySkillOn"></th>
         </tr>
         <tr>
             <!-- 요정 진벞 입력 -->
             <td><input type="text" v-model="fairyBuff"></td>
-            <!-- 요정 스킬 입력 -->
-            <td><input type="text" v-model="fairySkill"></td>
             <!-- 요정 특성 선택 -->
             <td>
                 <select v-model="fairy_selected">
                     <option v-for="item in fairyPassive" :value="item.id">{{ item.name }}</option>
                 </select>
             </td>
+            <!-- 요정 스킬 입력 -->
+            <td><input type="text" v-model="fairySkill"></td>
         </tr>
         <tr>
             <td>{{ fairyBuff }}%</td>
-            <td>{{ fairySkill }}%</td>
             <td>{{ fairyPassive[fairy_selected].buff }}%</td>
+            <td>{{ fairySkill }}%</td>
         </tr>
 
-        <tr>
-            <th>버프 합계</th>
-            <td id="sumBuff">0%</td>
-            <td id="sumSkill">0%</td>
-        </tr>
-        
         <tr class="empty-line">
             <td></td>
             <td></td>
@@ -115,11 +120,6 @@
             <th>인형 스킬 배율 입력</th>
             <td><input type="text" v-model="tdollSkill"></td>
             <td>스킬 배율 : {{ tdollSkill }}%</td>
-        </tr>
-        <tr>
-            <th>공격 시간 입력</th>
-            <td><input type="text" v-model="attackSecond"></td>
-            <td>공격 시간 : {{ attackSecond }}초</td>
         </tr>
         
         <tr class="empty-line">
@@ -182,10 +182,9 @@ export default {
                 fourth: 0,
             },
             tdollSkill: 0,
-            attackSecond: 0,
             selectContender: false,
+
             fairyBuff: 0,
-            fairySkill: 0,
             fairyPassive: [
                 {id:0, name: '', buff:0},
                 {id:1, name: '살상계1', buff:12},
@@ -193,15 +192,30 @@ export default {
                 {id:3, name: '격양계', buff:10},
                 {id:4, name: '돌격계', buff:0},
             ],
+            fairySkill: 0,
             fairy_selected: 0,
+
+            sumBuff: 0,
+            sumSkill: 0,
             finalStat: 0,
+            
+            buffSkillOn: true,
+            fairyPassiveOn: true,
+            fairySkillOn: true,
         }
     },
     methods: {
         sumTdoll: function () {
             var sum_buff = 0
             var sum_skill = 0
+
+            var calc_buff = 0
+            var calc_skill = 0
+            var calc_fairyPassive = 0
+            var calc_fairySkill = 0
+
             var finalStat = 0
+
             if(this.tdoll_selected.first > 0){
                 if(this.tdoll[this.tdoll_selected.first].id != 4){
                     sum_buff += this.tdoll[this.tdoll_selected.first].buff
@@ -217,7 +231,7 @@ export default {
             if(this.tdoll_selected.second > 0){
                 if(this.tdoll[this.tdoll_selected.second].id != 4){
                     sum_buff += this.tdoll[this.tdoll_selected.second].buff
-                    sum_skill = ((1+sum_skill/100) * (1+this.tdoll[this.tdoll_selected.second].skill/100) - 1) * 100
+                    sum_skill = ((1 + (sum_skill / 100)) * (1 + (this.tdoll[this.tdoll_selected.second].skill / 100)) - 1) * 100
                 } else {
                     sum_buff += this.tdoll[this.tdoll_selected.second].buff
                 }
@@ -228,7 +242,7 @@ export default {
             if(this.tdoll_selected.third > 0){
                 if(this.tdoll[this.tdoll_selected.third].id != 4){
                     sum_buff += this.tdoll[this.tdoll_selected.third].buff
-                    sum_skill = ((1+sum_skill/100) * (1+this.tdoll[this.tdoll_selected.third].skill/100) - 1) * 100
+                    sum_skill = ((1 + (sum_skill / 100)) * (1 + (this.tdoll[this.tdoll_selected.third].skill / 100)) - 1) * 100
                 } else {
                     sum_buff += this.tdoll[this.tdoll_selected.third].buff
                 }
@@ -238,24 +252,29 @@ export default {
             if(this.tdoll_selected.fourth > 0){
                 if(this.tdoll[this.tdoll_selected.fourth].id != 4){
                     sum_buff += this.tdoll[this.tdoll_selected.fourth].buff
-                    sum_skill = ((1+sum_skill/100) * (1+this.tdoll[this.tdoll_selected.fourth].skill/100) - 1) * 100
+                    sum_skill = ((1 + (sum_skill / 100)) * (1 + (this.tdoll[this.tdoll_selected.fourth].skill / 100)) - 1) * 100
                 } else {
                     sum_buff += this.tdoll[this.tdoll_selected.fourth].buff
                 }
             }
 
-            sum_buff += this.fairyBuff*1
-            sum_skill = ((1+sum_skill/100) * (1+this.fairySkill/100) - 1) * 100
-            sum_skill = ((1+sum_skill/100) * (1+this.fairyPassive[this.fairy_selected].buff/100) - 1) * 100
+            calc_buff = sum_buff + parseInt(this.fairyBuff)
 
-            $('#sumBuff').text(sum_buff + '%')
-            $('#sumSkill').text(sum_skill + '%')
-
-            if(this.attackSecond < 6) {
-                finalStat = this.tdollAtk * (1 + sum_buff / 100) * (1 + this.tdollSkill / 100)
-            } else {
-                finalStat = this.tdollAtk * (1 + sum_buff / 100) * (1 + sum_skill / 100) * (1 + this.tdollSkill / 100)
+            if(this.buffSkillOn){
+                calc_skill = sum_skill
             }
+            if(this.fairyPassiveOn){
+                calc_fairyPassive = this.fairyPassive[this.fairy_selected].buff
+            }
+            if(this.fairySkillOn){
+                calc_fairySkill = this.fairySkill
+            }
+
+            this.sumBuff = sum_buff
+            this.sumSkill = sum_skill.toFixed(4)
+
+
+            finalStat = this.tdollAtk * (1 + (calc_buff / 100)) * (1 + (calc_skill / 100)) * (1 + (this.tdollSkill / 100)) * (1 + (calc_fairyPassive / 100)) * (1 + (calc_fairySkill / 100))
 
             this.finalStat = Math.floor(finalStat)
             
