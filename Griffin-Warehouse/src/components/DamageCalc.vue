@@ -135,24 +135,24 @@
         </tr>
         <tr>
             <th>최소데미지</th>
-            <td>{{ (finalStat * 0.85).toFixed(2) }}</td>
-            <td>{{ (finalStat * 0.85 * 5).toFixed(2) }}</td>
+            <td>{{ Math.ceil(finalStat * 0.85) }}</td>
+            <td>{{ Math.ceil(finalStat * 0.85 * 5) }}</td>
         </tr>
         <tr>
             <th>최대데미지</th>
-            <td>{{ (finalStat * 1.15).toFixed(2) }}</td>
-            <td>{{ (finalStat * 1.15 * 5).toFixed(2) }}</td>
+            <td>{{ Math.ceil(finalStat * 1.15) }}</td>
+            <td>{{ Math.ceil(finalStat * 1.15 * 5) }}</td>
         </tr>
         
         <tr v-if="selectContender">
             <th>최소데미지(컨텐더)</th>
-            <td>{{ (finalStat * 0.85 * 1.4).toFixed(2) }}</td>
-            <td>{{ (finalStat * 0.85 * 1.4 * 5).toFixed(2) }}</td>
+            <td>{{ Math.ceil(finalStat * 0.85 * 1.4) }}</td>
+            <td>{{ Math.ceil(finalStat * 0.85 * 1.4 * 5) }}</td>
         </tr>
         <tr v-if="selectContender">
             <th>최대데미지(컨텐더)</th>
-            <td>{{ (finalStat * 1.15 * 1.4).toFixed(2) }}</td>
-            <td>{{ (finalStat * 1.15 * 1.4 * 5).toFixed(2) }}</td>
+            <td>{{ Math.ceil(finalStat * 1.15 * 1.4) }}</td>
+            <td>{{ Math.ceil(finalStat * 1.15 * 1.4 * 5) }}</td>
         </tr>
     </table>
 </div>
