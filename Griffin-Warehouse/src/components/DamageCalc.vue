@@ -130,8 +130,13 @@
         
         <tr>
             <td></td>
-            <th>과관통 적용 <input type="checkbox" style="width:unset;" v-model="pierceOn"></th>
-            <th>치명타 적용 <input type="checkbox" style="width:unset;" v-model="criticalOn"></th>
+            <td>장갑 적용(0입력 시 과관통 자동 적용) <input type="checkbox" style="width:unset;" v-model="armorOn"></td>
+            <td><input type="text" v-model="armor"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>치명타 적용 <input type="checkbox" style="width:unset;" v-model="criticalOn"></td>
+            <td><input type="text"></td>
         </tr>
         <tr>
             <td></td>
@@ -140,24 +145,24 @@
         </tr>
         <tr>
             <th>최소데미지</th>
-            <td>{{ Math.ceil(finalStat * 0.85) + pierce }}</td>
-            <td>{{ (Math.ceil(finalStat * 0.85) + pierce) * 5 }}</td>
+            <td>{{ Math.ceil(finalStatMin) }}</td>
+            <td>{{ Math.ceil(finalStatMin) * 5 }}</td>
         </tr>
         <tr>
             <th>최대데미지</th>
-            <td>{{ Math.ceil(finalStat * 1.15) + pierce }}</td>
-            <td>{{ (Math.ceil(finalStat * 1.15) + pierce) * 5 }}</td>
+            <td>{{ Math.ceil(finalStatMax) }}</td>
+            <td>{{ Math.ceil(finalStatMax) * 5 }}</td>
         </tr>
         
         <tr v-if="selectContender">
             <th>최소데미지(컨텐더)</th>
-            <td>{{ (Math.ceil(finalStat * 0.85) + pierce * 1.4) }}</td>
-            <td>{{ (Math.ceil(finalStat * 0.85) + pierce * 1.4 * 5) }}</td>
+            <td>{{ Math.ceil(finalStatMin) * 1.4 }}</td>
+            <td>{{ Math.ceil(finalStatMin) * 1.4 * 5 }}</td>
         </tr>
         <tr v-if="selectContender">
             <th>최대데미지(컨텐더)</th>
-            <td>{{ (Math.ceil(finalStat * 1.15) + pierce * 1.4) }}</td>
-            <td>{{ (Math.ceil(finalStat * 1.15) + pierce * 1.4 * 5) }}</td>
+            <td>{{ Math.ceil(finalStatMax) * 1.4 }}</td>
+            <td>{{ Math.ceil(finalStatMax) * 1.4 * 5 }}</td>
         </tr>
     </table>
 </div>
@@ -202,13 +207,14 @@ export default {
 
             sumBuff: 0,
             sumSkill: 0,
-            finalStat: 0,
+            finalStatMin: 0,
+            finalStatMax: 0,
             
             buffSkillOn: true,
             fairyPassiveOn: true,
             fairySkillOn: true,
-            pierceOn: true,
-            pierce: 2,
+            armorOn: false,
+            armor: 0,
             criticalOn: false,
         }
     },
@@ -223,6 +229,8 @@ export default {
             var calc_fairySkill = 0
 
             var finalStat = 0
+            var finalStatMin = 0
+            var finalStatMax = 0
 
             if(this.tdoll_selected.first > 0){
                 if(this.tdoll[this.tdoll_selected.first].id != 4){
@@ -277,10 +285,10 @@ export default {
             if(this.fairySkillOn){
                 calc_fairySkill = this.fairySkill
             }
-            if(this.pierceOn){
-                this.pierce = 2
-            } else {
-                this.pierce = 0
+            if(!this.armorOn){
+                this.armor = 0
+            } else if(this.armor == 0) {
+                this.armor = -2
             }
 
             this.sumBuff = sum_buff
@@ -289,7 +297,19 @@ export default {
 
             finalStat = this.tdollAtk * (1 + (calc_buff / 100)) * (1 + (calc_skill / 100)) * (1 + (this.tdollSkill / 100)) * (1 + (calc_fairyPassive / 100)) * (1 + (calc_fairySkill / 100))
 
-            this.finalStat = Math.floor(finalStat)
+            finalStatMin = (finalStat * 0.85) - this.armor
+            finalStatMax = (finalStat * 1.15) - this.armor
+
+            if(finalStatMin > 0) {
+                this.finalStatMin = finalStatMin
+            } else {
+                this.finalStatMin = 1
+            }
+            if(finalStatMax > 0) {
+                this.finalStatMax = finalStatMax
+            } else {
+                this.finalStatMax = 1
+            }
             
             if(this.tdoll_selected.first == 4 || this.tdoll_selected.second == 4 || this.tdoll_selected.third == 4 || this.tdoll_selected.fourth == 4){
                 this.selectContender = true
