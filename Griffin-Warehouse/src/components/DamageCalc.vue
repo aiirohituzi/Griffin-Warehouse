@@ -130,29 +130,34 @@
         
         <tr>
             <td></td>
+            <th>과관통 적용 <input type="checkbox" style="width:unset;" v-model="pierceOn"></th>
+            <th>치명타 적용 <input type="checkbox" style="width:unset;" v-model="criticalOn"></th>
+        </tr>
+        <tr>
+            <td></td>
             <th>1링크</th>
             <th>5링크</th>
         </tr>
         <tr>
             <th>최소데미지</th>
-            <td>{{ Math.ceil(finalStat * 0.85) }}</td>
-            <td>{{ Math.ceil(finalStat * 0.85 * 5) }}</td>
+            <td>{{ Math.ceil(finalStat * 0.85) + pierce }}</td>
+            <td>{{ (Math.ceil(finalStat * 0.85) + pierce) * 5 }}</td>
         </tr>
         <tr>
             <th>최대데미지</th>
-            <td>{{ Math.ceil(finalStat * 1.15) }}</td>
-            <td>{{ Math.ceil(finalStat * 1.15 * 5) }}</td>
+            <td>{{ Math.ceil(finalStat * 1.15) + pierce }}</td>
+            <td>{{ (Math.ceil(finalStat * 1.15) + pierce) * 5 }}</td>
         </tr>
         
         <tr v-if="selectContender">
             <th>최소데미지(컨텐더)</th>
-            <td>{{ Math.ceil(finalStat * 0.85 * 1.4) }}</td>
-            <td>{{ Math.ceil(finalStat * 0.85 * 1.4 * 5) }}</td>
+            <td>{{ (Math.ceil(finalStat * 0.85) + pierce * 1.4) }}</td>
+            <td>{{ (Math.ceil(finalStat * 0.85) + pierce * 1.4 * 5) }}</td>
         </tr>
         <tr v-if="selectContender">
             <th>최대데미지(컨텐더)</th>
-            <td>{{ Math.ceil(finalStat * 1.15 * 1.4) }}</td>
-            <td>{{ Math.ceil(finalStat * 1.15 * 1.4 * 5) }}</td>
+            <td>{{ (Math.ceil(finalStat * 1.15) + pierce * 1.4) }}</td>
+            <td>{{ (Math.ceil(finalStat * 1.15) + pierce * 1.4 * 5) }}</td>
         </tr>
     </table>
 </div>
@@ -202,6 +207,9 @@ export default {
             buffSkillOn: true,
             fairyPassiveOn: true,
             fairySkillOn: true,
+            pierceOn: true,
+            pierce: 2,
+            criticalOn: false,
         }
     },
     methods: {
@@ -268,6 +276,11 @@ export default {
             }
             if(this.fairySkillOn){
                 calc_fairySkill = this.fairySkill
+            }
+            if(this.pierceOn){
+                this.pierce = 2
+            } else {
+                this.pierce = 0
             }
 
             this.sumBuff = sum_buff
