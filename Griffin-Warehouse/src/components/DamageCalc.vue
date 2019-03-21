@@ -130,13 +130,13 @@
         
         <tr>
             <td></td>
-            <td>장갑 적용(0입력 시 과관통 자동 적용) <input type="checkbox" style="width:unset;" v-model="armorOn"></td>
+            <td>장갑 적용 (0입력 시 과관통 자동 적용) <input type="checkbox" style="width:unset;" v-model="armorOn"></td>
             <td><input type="text" v-model="armor"></td>
         </tr>
         <tr>
             <td></td>
-            <td>치명타 적용 <input type="checkbox" style="width:unset;" v-model="criticalOn"></td>
-            <td><input type="text"></td>
+            <td>치명타 적용 (치명타 배율 입력) <input type="checkbox" style="width:unset;" v-model="criticalOn"></td>
+            <td><input type="text" v-model="critical"></td>
         </tr>
         <tr>
             <td></td>
@@ -216,6 +216,7 @@ export default {
             armorOn: false,
             armor: 0,
             criticalOn: false,
+            critical: 150,
         }
     },
     methods: {
@@ -227,6 +228,7 @@ export default {
             var calc_skill = 0
             var calc_fairyPassive = 0
             var calc_fairySkill = 0
+            var calc_critical = 0
 
             var finalStat = 0
             var finalStatMin = 0
@@ -290,6 +292,12 @@ export default {
             } else if(this.armor == 0) {
                 this.armor = -2
             }
+            if(this.criticalOn){
+                calc_critical = this.critical / 100
+                console.log(calc_critical)
+            } else {
+                calc_critical = 1
+            }
 
             this.sumBuff = sum_buff
             this.sumSkill = sum_skill.toFixed(4)
@@ -297,8 +305,8 @@ export default {
 
             finalStat = this.tdollAtk * (1 + (calc_buff / 100)) * (1 + (calc_skill / 100)) * (1 + (this.tdollSkill / 100)) * (1 + (calc_fairyPassive / 100)) * (1 + (calc_fairySkill / 100))
 
-            finalStatMin = (finalStat * 0.85) - this.armor
-            finalStatMax = (finalStat * 1.15) - this.armor
+            finalStatMin = ((finalStat * 0.85) - this.armor) * calc_critical
+            finalStatMax = ((finalStat * 1.15) - this.armor) * calc_critical
 
             if(finalStatMin > 0) {
                 this.finalStatMin = finalStatMin
