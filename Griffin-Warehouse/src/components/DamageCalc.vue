@@ -129,13 +129,11 @@
         </tr>        
         
         <tr>
-            <td></td>
-            <td>장갑 적용 (0입력 시 과관통 자동 적용) <input type="checkbox" style="width:unset;" v-model="armorOn"></td>
+            <td colspan="2">장갑 적용 (0입력 시 과관통 자동 적용) <input type="checkbox" style="width:unset;" v-model="armorOn"></td>
             <td><input type="text" v-model="armor"></td>
         </tr>
         <tr>
-            <td></td>
-            <td>치명타 적용 (치명타 배율 입력) <input type="checkbox" style="width:unset;" v-model="criticalOn"></td>
+            <td colspan="2">치명타 적용 (치명타 배율 입력) <input type="checkbox" style="width:unset;" v-model="criticalOn"></td>
             <td><input type="text" v-model="critical"></td>
         </tr>
         <tr>
@@ -366,5 +364,16 @@ table#table-damage td{
 table#table-damage input, select{
     width: 80%;
     text-align: right;
+}
+
+
+@media only screen and (max-width: 767px) {
+    table#table-damage {
+        width: 80vw;
+        font-size: 9pt;
+    }
+    table#table-damage th, td{
+        width: calc(80vw / 3);
+    }
 }
 </style>

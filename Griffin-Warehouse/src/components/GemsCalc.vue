@@ -125,6 +125,10 @@ div#radioGroup {
     margin-right: auto;
     margin-bottom: 1vh;
     width: 40vw;
+    
+    -moz-transition: all .5s ease-in-out;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
 }
 table#table-gems {
     border-collapse: collapse;
@@ -157,5 +161,20 @@ table#table-gems input{
 }
 table#table-gems .radio {
     width: 10%;
+}
+
+
+@media only screen and (max-width: 767px) {
+    div#radioGroup {
+        width: 60vw;
+        font-size: 9pt;
+    }
+    table#table-gems {
+        width: 60vw;
+        font-size: 9pt;
+    }
+    table#table-gems td{
+        width: calc(60vw / 2);
+    }
 }
 </style>

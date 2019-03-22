@@ -371,4 +371,15 @@ div#div-needData .btn-needData:hover {
 .bgcolor-advanced {
     background-color: #C8DA4B;
 }
+
+
+@media only screen and (max-width: 767px) {
+    table#table-sim {
+        width: 80vw;
+        font-size: 9pt;
+    }
+    table#table-sim th, td{
+        width: calc(80vw / 3);
+    }
+}
 </style>
