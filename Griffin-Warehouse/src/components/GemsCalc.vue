@@ -4,6 +4,51 @@
         <input type="radio" class="radio" value="0" v-model="calcMode">매일 패키지 계산<br>
         <input type="radio" class="radio" value="1" v-model="calcMode">목표 보석량으로 계산<br>
     </div>
+
+
+    <div class="inputGroup">    
+        <div class="input-addon-left">가격 / 수량 입력</div>
+        <input class="input-gems-allAddon" type="text" v-model="inputGems">
+        <div v-if="calcMode == 0" class="input-addon-right">{{ inputGems }}개 * {{ remainingDays }}일 = {{ inputGems * remainingDays }}개</div>
+        <div v-if="calcMode == 1" class="input-addon-right">{{ inputGems }}개</div>
+    </div>
+
+    <div class="inputGroup">    
+        <div class="input-addon-left">남은 일수 입력</div>
+        <input class="input-gems" type="text" v-model="remainingDays">
+    </div>
+
+    <div class="inputGroup">    
+        <div class="input-addon-left">현재 보석 보유량 입력</div>
+        <input class="input-gems" type="text" v-model="currentGems">
+    </div>
+
+    <div class="inputGroup">    
+        <div class="input-addon-left">월정액 충전량</div>
+        <div class="input-label">{{ monthly }}개</div>
+    </div>
+
+    <div class="inputGroup">    
+        <div class="input-addon-left">모의점수 하루 구매횟수 입력</div>
+        <input class="input-gems-allAddon" type="text" v-model="mockPurchaseCount">
+        <div class="input-addon-right">총 {{ mockGems }}개</div>
+    </div>
+
+    <div class="inputGroup">    
+        <div class="input-addon-left">공유 보석 충전량</div>
+        <div class="input-label">{{ shareGems }}개</div>
+    </div>
+
+    <div class="inputGroup" v-if="needGems < 0">
+        <div class="input-addon-left">최소 필요량</div>
+        <div class="input-label">{{ needGems * -1 }}개 남음</div>
+    </div>
+    <div class="inputGroup" v-if="needGems >= 0">
+        <div class="input-addon-left">최소 필요량</div>
+        <div class="input-label">{{ needGems }}개 필요</div>
+    </div>
+
+
     <table id="table-gems">
         <tr>
             <th>가격 / 수량 입력</th>
@@ -118,17 +163,74 @@ export default {
 
 <style>
 .container-gemsCalc {
-    margin-top: calc(5vh + 30px);
-}
-div#radioGroup {
+    margin-top: calc(40px + 1vh);
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 1vh;
     width: 40vw;
     
     -moz-transition: all .5s ease-in-out;
     -webkit-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
+}
+div#radioGroup {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+.inputGroup {
+    white-space: nowrap;
+    height: 30px;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+.input-addon-left {
+    float: left;
+    width: fit-content;
+    border: 2px solid #c3b9a2;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-right: unset;
+    background-color: #c3b9a2b6;
+    padding: 3px;
+    font-size: 10pt;
+}
+.input-addon-right {
+    float: left;
+    width: fit-content;
+    border: 2px solid #c3b9a2;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left: unset;
+    background-color: #c3b9a249;
+    padding: 3px;
+    font-size: 10pt;
+}
+.input-gems {
+    float: left;
+    border: 2px solid #c3b9a2;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 4.5px;
+    font-size: 10pt;
+    width: 50px;
+    text-align: right;
+}
+.input-gems-allAddon {
+    float: left;
+    border: 2px solid #c3b9a2;
+    padding: 4.5px;
+    font-size: 10pt;
+    width: 50px;
+    text-align: right;
+}
+.input-label {
+    float: left;
+    width: fit-content;
+    border: 2px solid #c3b9a2;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #c3b9a249;
+    padding: 3px;
+    font-size: 10pt;
 }
 table#table-gems {
     border-collapse: collapse;
@@ -165,8 +267,10 @@ table#table-gems .radio {
 
 
 @media only screen and (max-width: 767px) {
-    div#radioGroup {
+    .container-gemsCalc {
         width: 60vw;
+    }
+    div#radioGroup {
         font-size: 9pt;
     }
     table#table-gems {

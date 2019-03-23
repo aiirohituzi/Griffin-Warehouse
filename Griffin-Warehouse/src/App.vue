@@ -19,7 +19,7 @@ export default {
 
 <style>
 .container-router-view {
-  margin-top: 5vh;
+  margin-top: 40px;
 }
 ul#navigation {
     position: fixed;
@@ -33,9 +33,9 @@ ul#navigation {
     z-index:5;
     
     background-color:#c3b9a2;
-    -moz-box-shadow: -5px 2px 8px #555;
-    -webkit-box-shadow: -5px 2px 8px #555;
-    box-shadow: -5px 2px 8px #555;
+    -moz-box-shadow: 0px 2px 5px #555;
+    -webkit-box-shadow: 0px 2px 5px #555;
+    box-shadow: 0px 2px 5px #555;
     
 	-ms-user-select: none;
 	-moz-user-select: -moz-none;
