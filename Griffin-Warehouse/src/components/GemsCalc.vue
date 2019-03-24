@@ -5,22 +5,21 @@
         <input type="radio" class="radio" value="1" v-model="calcMode">목표 보석량으로 계산<br>
     </div>
 
-
     <div class="inputGroup">    
         <div class="input-addon-left">가격 / 수량 입력</div>
-        <input class="input-gems-allAddon" type="text" v-model="inputGems">
+        <input class="input-gems-allAddon" type="text" maxlength="6" v-model="inputGems">
         <div v-if="calcMode == 0" class="input-addon-right">{{ inputGems }}개 * {{ remainingDays }}일 = {{ inputGems * remainingDays }}개</div>
         <div v-if="calcMode == 1" class="input-addon-right">{{ inputGems }}개</div>
     </div>
 
     <div class="inputGroup">    
         <div class="input-addon-left">남은 일수 입력</div>
-        <input class="input-gems" type="text" v-model="remainingDays">
+        <input class="input-gems" type="text" maxlength="6" v-model="remainingDays">
     </div>
 
     <div class="inputGroup">    
         <div class="input-addon-left">현재 보석 보유량 입력</div>
-        <input class="input-gems" type="text" v-model="currentGems">
+        <input class="input-gems" type="text" maxlength="6" v-model="currentGems">
     </div>
 
     <div class="inputGroup">    
@@ -30,7 +29,7 @@
 
     <div class="inputGroup">    
         <div class="input-addon-left">모의점수 하루 구매횟수 입력</div>
-        <input class="input-gems-allAddon" type="text" v-model="mockPurchaseCount">
+        <input class="input-gems-allAddon" type="text" maxlength="2" v-model="mockPurchaseCount">
         <div class="input-addon-right">총 {{ mockGems }}개</div>
     </div>
 
@@ -41,7 +40,7 @@
 
     <div class="inputGroup" v-if="needGems < 0">
         <div class="input-addon-left">최소 필요량</div>
-        <div class="input-label">{{ needGems * -1 }}개 남음</div>
+        <div class="input-label">충분, {{ needGems * -1 }}개 남음</div>
     </div>
     <div class="inputGroup" v-if="needGems >= 0">
         <div class="input-addon-left">최소 필요량</div>
@@ -49,7 +48,7 @@
     </div>
 
 
-    <table id="table-gems">
+    <!-- <table id="table-gems">
         <tr>
             <th>가격 / 수량 입력</th>
             <td><input type="text" v-model="inputGems"></td>
@@ -104,7 +103,7 @@
             <td v-if="needGems < 0">{{ needGems * -1 }}개 남음</td>
             <td v-if="needGems >= 0">{{ needGems }}개 필요</td>
         </tr>
-    </table>
+    </table> -->
 </div>
 </template>
 
@@ -128,9 +127,9 @@ export default {
         gemsCalc: function () {
             var targetGems = 0
             var mockSum = 0
-            var todayLabel = new Date().getDay();
-            var monthlyCount = Math.floor((todayLabel + parseInt(this.remainingDays)) / 7)
-            var afterDayLabel = (todayLabel + parseInt(this.remainingDays)) % 7
+            var todayLabel = new Date().getDay();   // 오늘의 요일 반환
+            var weeklyCount = Math.floor((todayLabel + parseInt(this.remainingDays)) / 7)   // 일요일 기준으로 몇주 경과했는지 계산
+            var afterDayLabel = (todayLabel + parseInt(this.remainingDays)) % 7     // D-day의 요일을 계산
 
             if(this.calcMode == 0){
                 targetGems = this.inputGems * this.remainingDays
@@ -145,14 +144,25 @@ export default {
             }
             this.mockGems = mockSum * this.remainingDays
 
-            if(afterDayLabel > 0) {
-                this.shareGems = monthlyCount * 30
-            } else {
-                this.shareGems = (monthlyCount - 1) * 30
+            // console.log(todayLabel)
+            // console.log(weeklyCount)
+            // console.log(afterDayLabel)
+            // 일~토: 0~6
+            if(weeklyCount > 0) {           // (일요일 기준)1주 이상 경과했을 경우
+                if(afterDayLabel > 0) {     // D-Day가 그 주의 월요일을 지난 경우
+                    this.shareGems = (weeklyCount + 1) * 30
+                } else {                    // D-Day가 그 주의 월요일을 지나지 않은 경우
+                    this.shareGems = weeklyCount * 30
+                }
+            } else {                        // 입력 날짜가 1주일 미만인 경우
+                if(afterDayLabel > 0) {     // D-Day가 그 주의 월요일을 지난 경우
+                    this.shareGems = 30
+                } else {                    // D-Day가 그 주의 월요일을 지나지 않은 경우
+                    this.shareGems = 0
+                }
             }
 
             this.needGems = targetGems - this.currentGems - this.monthly - this.mockGems - this.shareGems
-            // if(this.needGems < 0) {this.needGems = 0}
         }
     },
     updated: function () {
@@ -163,21 +173,21 @@ export default {
 
 <style>
 .container-gemsCalc {
-    margin-top: calc(40px + 1vh);
+    margin-top: calc(40px + 10vh);
     margin-left: auto;
     margin-right: auto;
-    width: 40vw;
+    width: 60vw;
     
-    -moz-transition: all .5s ease-in-out;
-    -webkit-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
 }
 div#radioGroup {
     margin-top: 1vh;
     margin-bottom: 1vh;
+    text-align: right;
 }
 .inputGroup {
-    white-space: nowrap;
     height: 30px;
     margin-top: 1vh;
     margin-bottom: 1vh;
@@ -232,7 +242,7 @@ div#radioGroup {
     padding: 3px;
     font-size: 10pt;
 }
-table#table-gems {
+/* table#table-gems {
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
@@ -263,22 +273,39 @@ table#table-gems input{
 }
 table#table-gems .radio {
     width: 10%;
-}
+} */
 
 
 @media only screen and (max-width: 767px) {
     .container-gemsCalc {
-        width: 60vw;
+        width: 80vw;
     }
     div#radioGroup {
         font-size: 9pt;
     }
-    table#table-gems {
+    .input-addon-left {
+        font-size: 8pt;
+    }
+    .input-addon-right {
+        font-size: 8pt;
+    }
+    .input-gems {
+        font-size: 8pt;
+        width: 50px;
+    }
+    .input-gems-allAddon {
+        font-size: 8pt;
+        width: 50px;
+    }
+    .input-label {
+        font-size: 8pt;
+    }
+    /* table#table-gems {
         width: 60vw;
         font-size: 9pt;
     }
     table#table-gems td{
         width: calc(60vw / 2);
-    }
+    } */
 }
 </style>
