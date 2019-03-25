@@ -176,7 +176,7 @@ export default {
     margin-top: calc(40px + 10vh);
     margin-left: auto;
     margin-right: auto;
-    width: 60vw;
+    width: fit-content;
     
     -moz-transition: all .2s ease-in-out;
     -webkit-transition: all .2s ease-in-out;
@@ -277,9 +277,6 @@ table#table-gems .radio {
 
 
 @media only screen and (max-width: 767px) {
-    .container-gemsCalc {
-        width: 80vw;
-    }
     div#radioGroup {
         font-size: 9pt;
     }

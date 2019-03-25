@@ -1,75 +1,70 @@
 <template>
 <div class="container-simCalc">
-    <table id="table-sim">
-        <tr>
-            <th colspan="3">스킬칩 및 모의점수 보유량 입력</th>
-        </tr>
-        <tr>
-            <th>초급</th>
-            <th>중급</th>
-            <th>고급</th>
-        </tr>
-        <tr>
-            <td><input type="text" v-model="basicData"></td>
-            <td><input type="text" v-model="intermediateData"></td>
-            <td><input type="text" v-model="advancedData"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <th>모의점수</th>
-            <td><input type="text" v-model="currentSimEnergy"></td>
-        </tr>
-        
-        <tr class="empty-line">
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-
-        <tr>
-            <th colspan="3">필요 사용량 입력</th>
-        </tr>
-        <tr>
-            <th>초급</th>
-            <th>중급</th>
-            <th>고급</th>
-        </tr>
-        <tr>
-            <td><input type="text" v-model="needBasicData"></td>
-            <td><input type="text" v-model="needIntermediateData"></td>
-            <td><input type="text" v-model="needAdvancedData"></td>
-        </tr>
-
-        <tr class="empty-line">
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-
-        <tr>
-            <th colspan="3">필요 모의점수</th>
-        </tr>
-        <tr>
-            <th>초급</th>
-            <th>중급</th>
-            <th>고급</th>
-        </tr>
-        <tr>
-            <td>{{ needSimEnergy_basic }}</td>
-            <td>{{ needSimEnergy_intermediate }}</td>
-            <td>{{ needSimEnergy_advanced }}</td>
-        </tr>
-        <tr>
-            <td></td>
-            <th>합계</th>
-            <th>필요구매횟수</th>
-        </tr>
-        <tr>
-            <td></td>
-            <td>{{ needSimEnergy_sum }}</td>
-            <td>{{ needSimPurchase }}</td>
-        </tr>
-    </table>
+    <div class="container-content">
+        <table class="table-sim table-sim-col-4">
+            <tr>
+                <th colspan="4">스킬칩 및 모의점수 보유량 입력</th>
+            </tr>
+            <tr>
+                <th>초급</th>
+                <th>중급</th>
+                <th>고급</th>
+                <th>모의점수</th>
+            </tr>
+            <tr>
+                <td><input type="text" v-model="basicData"></td>
+                <td><input type="text" v-model="intermediateData"></td>
+                <td><input type="text" v-model="advancedData"></td>
+                <td><input type="text" v-model="currentSimEnergy"></td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="container-content">
+        <table class="table-sim table-sim-col-3">
+            <tr>
+                <th colspan="3">필요 사용량 입력</th>
+            </tr>
+            <tr>
+                <th>초급</th>
+                <th>중급</th>
+                <th>고급</th>
+            </tr>
+            <tr>
+                <td><input type="text" v-model="needBasicData"></td>
+                <td><input type="text" v-model="needIntermediateData"></td>
+                <td><input type="text" v-model="needAdvancedData"></td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="container-content">
+        <table class="table-sim table-sim-col-3">
+            <tr>
+                <th colspan="3">필요 모의점수</th>
+            </tr>
+            <tr>
+                <th>초급</th>
+                <th>중급</th>
+                <th>고급</th>
+            </tr>
+            <tr>
+                <td><div class="label">{{ needSimEnergy_basic }}</div></td>
+                <td><div class="label">{{ needSimEnergy_intermediate }}</div></td>
+                <td><div class="label">{{ needSimEnergy_advanced }}</div></td>
+            </tr>
+            <tr>
+                <td></td>
+                <th>합계</th>
+                <th>필요구매횟수</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td><div class="label">{{ needSimEnergy_sum }}</div></td>
+                <td><div class="label">{{ needSimPurchase }}</div></td>
+            </tr>
+        </table>
+    </div>
 
     <div id="div-getData" class="side-left">
         <div class="inputGroup-getData">
@@ -218,36 +213,56 @@ export default {
     margin-top: calc(5vh + 30px);
 }
 
-table#table-sim {
-    border-collapse: collapse;
+.container-content {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
     margin-left: auto;
     margin-right: auto;
     width: 60vw;
-    /* font-size: 9pt; */
+    
+    border: 2px solid #c3b9a2;
+    border-radius: 5px;
+    background-color: #c3b9a2b6;
+}
+.table-sim {
+    border-collapse: collapse;
+    margin: 10px;
+    text-align: center;
+    font-size: 10pt;
 
     -moz-transition: all .5s ease-in-out;
     -webkit-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
 }
-table#table-sim tr{
-    border-top: 1px solid #ddd;
-    background: linear-gradient(to right, #fff, #eee, #fff);
+.table-sim tr{
+    border-top: 2px solid #c3b9a2;
 }
-table#table-sim .empty-line {
-    /* border-top: unset; */
-    background: unset;
-    height: 4vh;
-}
-table#table-sim th, td{
+.table-sim th, td{
     padding: 2px;
+}
+.table-sim-col-3 th, td{
     width: calc(60vw / 3);
 }
-table#table-sim td{
-    text-align: right;
+.table-sim-col-4 th, td{
+    width: calc(60vw / 4);
 }
-table#table-sim input, select{
+.table-sim input{
     width: 80%;
     text-align: right;
+    border: 2px solid #c3b9a2;
+    border-radius: 5px;
+    padding: 4.5px;
+    font-size: 10pt;
+}
+.table-sim .label{
+    width: 80%;
+    text-align: right;
+    margin: auto;
+    border: 2px solid #c3b9a2;
+    border-radius: 5px;
+    background-color: #EEEBE4;
+    padding: 3px;
+    font-size: 10pt;
 }
 
 .side-left {
@@ -374,12 +389,23 @@ div#div-needData .btn-needData:hover {
 
 
 @media only screen and (max-width: 767px) {
-    table#table-sim {
+    .container-content {
         width: 80vw;
-        font-size: 9pt;
     }
-    table#table-sim th, td{
+    .table-sim {
+        font-size: 8pt;
+    }
+    .table-sim-col-3 th, td {
         width: calc(80vw / 3);
+    }
+    .table-sim-col-4 th, td {
+        width: calc(80vw / 4);
+    }
+    .table-sim input {
+        font-size: 8pt;
+    }
+    .table-sim .label{
+        font-size: 8pt;
     }
 }
 </style>
