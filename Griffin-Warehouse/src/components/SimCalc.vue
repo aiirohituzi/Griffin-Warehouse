@@ -218,7 +218,7 @@ export default {
     margin-bottom: 3vh;
     margin-left: auto;
     margin-right: auto;
-    width: 60vw;
+    width: 50vw;
     
     border: 2px solid #c3b9a2;
     border-radius: 5px;
@@ -241,10 +241,10 @@ export default {
     padding: 2px;
 }
 .table-sim-col-3 th, td{
-    width: calc(60vw / 3);
+    width: calc(50vw / 3);
 }
 .table-sim-col-4 th, td{
-    width: calc(60vw / 4);
+    width: calc(50vw / 4);
 }
 .table-sim input{
     width: 80%;
@@ -264,6 +264,7 @@ export default {
     padding: 3px;
     font-size: 10pt;
 }
+
 
 .side-left {
     -webkit-transform: translate(0, 0);
@@ -287,7 +288,7 @@ div#div-getData {
 
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    background: #ddd;
+    background-color: #c3b9a2b6;
     -moz-box-shadow: 1px 3px 6px #999;
     -webkit-box-shadow: 0px 3px 6px #999;
     box-shadow: 1px 3px 6px #999;
@@ -296,6 +297,10 @@ div#div-getData {
 }
 div#div-getData input {
     text-align: right;
+    border: 2px solid #c3b9a2;
+    border-radius: 5px;
+    padding: 4.5px;
+    font-size: 8pt;
 }
 div#div-getData .inputGroup-getData {
     margin: 10px;
@@ -309,12 +314,12 @@ div#div-getData .btn-getData {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     float: right;
-    background: #d3d3d3;
+    background-color: #c3b9a2;
     font-size: 8pt;
     writing-mode: vertical-lr;
 }
 div#div-getData .btn-getData:hover {
-    background: #c5c5c5;
+    background: #9c9175;
     cursor: pointer;
 }
 
@@ -342,7 +347,7 @@ div#div-needData {
     height: 220px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    background: #ddd;
+    background-color: #c3b9a2b6;
     -moz-box-shadow: 1px 3px 6px #999;
     -webkit-box-shadow: 0px 3px 6px #999;
     box-shadow: 1px 3px 6px #999;
@@ -368,23 +373,23 @@ div#div-needData .btn-needData {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     float: left;
-    background: #d3d3d3;
+    background-color: #c3b9a2;
     font-size: 8pt;
     writing-mode: vertical-lr;
 }
 div#div-needData .btn-needData:hover {
-    background: #c5c5c5;
+    background: #9c9175;
     cursor: pointer;
 }
 
 .bgcolor-basic {
-    background-color: #449977;
+    background-color: #449977b2;
 }
 .bgcolor-intermediate {
-    background-color: #5E8107;
+    background-color: #5E8107b2;
 }
 .bgcolor-advanced {
-    background-color: #C8DA4B;
+    background-color: #C8DA4Bb2;
 }
 
 
