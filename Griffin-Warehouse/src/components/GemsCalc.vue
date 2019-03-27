@@ -144,22 +144,29 @@ export default {
             }
             this.mockGems = mockSum * this.remainingDays
 
-            // console.log(todayLabel)
-            // console.log(weeklyCount)
-            // console.log(afterDayLabel)
+            console.log("todayLabel : " + todayLabel)
+            console.log("weeklyCount : " + weeklyCount)
+            console.log("afterDayLabel : " + afterDayLabel)
+            console.log("t+r : " + (parseInt(todayLabel) + parseInt(this.remainingDays)))
             // 일~토: 0~6
-            if(weeklyCount > 0) {           // (일요일 기준)1주 이상 경과했을 경우
-                if(afterDayLabel > 0) {     // D-Day가 그 주의 월요일을 지난 경우
-                    this.shareGems = (weeklyCount + 1) * 30
-                } else {                    // D-Day가 그 주의 월요일을 지나지 않은 경우
-                    this.shareGems = weeklyCount * 30
+            if(this.remainingDays != 0) {
+                if(weeklyCount > 0) {           // (일요일 기준)1주 이상 경과했을 경우
+                    if(afterDayLabel > 0) {     // D-Day가 그 주의 월요일을 지난 경우
+                        this.shareGems = weeklyCount * 30
+                    } else {                    // D-Day가 그 주의 월요일을 지나지 않은 경우
+                        this.shareGems = (weeklyCount - 1) * 30
+                    }
+                } else {                        // 입력 날짜가 1주일 미만인 경우
+                    if((todayLabel == 0) && (afterDayLabel > 0)) {     // 오늘이 일요일 인경우, D-Day가 그 주의 월요일을 지난 경우
+                        this.shareGems = 30
+                    // } else if((todayLabel > 1) && (parseInt(todayLabel) + parseInt(this.remainingDays) >= 8)) {   // 오늘이 화~토요일이고 D-Day가 그 주의 월요일을 지난 경우
+                    //     this.shareGems = 30
+                    } else {                    // D-Day가 그 주의 월요일을 지나지 않은 경우
+                        this.shareGems = 0
+                    }
                 }
-            } else {                        // 입력 날짜가 1주일 미만인 경우
-                if(afterDayLabel > 0) {     // D-Day가 그 주의 월요일을 지난 경우
-                    this.shareGems = 30
-                } else {                    // D-Day가 그 주의 월요일을 지나지 않은 경우
-                    this.shareGems = 0
-                }
+            } else {
+                this.shareGems = 0
             }
 
             this.needGems = targetGems - this.currentGems - this.monthly - this.mockGems - this.shareGems
