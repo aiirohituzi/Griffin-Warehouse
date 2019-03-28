@@ -5,44 +5,44 @@
         <input type="radio" class="radio" value="1" v-model="calcMode">목표 보석량으로 계산<br>
     </div>
 
-    <div class="inputGroup">    
+    <div class="inputGroup-gems">    
         <div class="input-addon-left">가격 / 수량 입력</div>
         <input class="input-gems-allAddon" type="text" maxlength="6" v-model="inputGems">
         <div v-if="calcMode == 0" class="input-addon-right">{{ inputGems }}개 * {{ remainingDays }}일 = {{ inputGems * remainingDays }}개</div>
         <div v-if="calcMode == 1" class="input-addon-right">{{ inputGems }}개</div>
     </div>
 
-    <div class="inputGroup">    
+    <div class="inputGroup-gems">    
         <div class="input-addon-left">남은 일수 입력</div>
         <input class="input-gems" type="text" maxlength="6" v-model="remainingDays">
     </div>
 
-    <div class="inputGroup">    
+    <div class="inputGroup-gems">    
         <div class="input-addon-left">현재 보석 보유량 입력</div>
         <input class="input-gems" type="text" maxlength="6" v-model="currentGems">
     </div>
 
-    <div class="inputGroup">    
+    <div class="inputGroup-gems">    
         <div class="input-addon-left">월정액 충전량</div>
         <div class="input-label">{{ monthly }}개</div>
     </div>
 
-    <div class="inputGroup">    
+    <div class="inputGroup-gems">    
         <div class="input-addon-left">모의점수 하루 구매횟수 입력</div>
         <input class="input-gems-allAddon" type="text" maxlength="2" v-model="mockPurchaseCount">
         <div class="input-addon-right">총 {{ mockGems }}개</div>
     </div>
 
-    <div class="inputGroup">    
+    <div class="inputGroup-gems">    
         <div class="input-addon-left">공유 보석 충전량</div>
         <div class="input-label">{{ shareGems }}개</div>
     </div>
 
-    <div class="inputGroup" v-if="needGems < 0">
+    <div class="inputGroup-gems" v-if="needGems < 0">
         <div class="input-addon-left">최소 필요량</div>
         <div class="input-label">충분, {{ needGems * -1 }}개 남음</div>
     </div>
-    <div class="inputGroup" v-if="needGems >= 0">
+    <div class="inputGroup-gems" v-if="needGems >= 0">
         <div class="input-addon-left">최소 필요량</div>
         <div class="input-label">{{ needGems }}개 필요</div>
     </div>
@@ -194,12 +194,12 @@ div#radioGroup {
     margin-bottom: 1vh;
     text-align: right;
 }
-.inputGroup {
+.inputGroup-gems {
     height: 30px;
     margin-top: 1vh;
     margin-bottom: 1vh;
 }
-.input-addon-left {
+.inputGroup-gems .input-addon-left {
     float: left;
     width: fit-content;
     border: 2px solid #c3b9a2;
@@ -210,7 +210,7 @@ div#radioGroup {
     padding: 3px;
     font-size: 10pt;
 }
-.input-addon-right {
+.inputGroup-gems .input-addon-right {
     float: left;
     width: fit-content;
     border: 2px solid #c3b9a2;
@@ -221,7 +221,7 @@ div#radioGroup {
     padding: 3px;
     font-size: 10pt;
 }
-.input-gems {
+.inputGroup-gems .input-gems {
     float: left;
     border: 2px solid #c3b9a2;
     border-top-right-radius: 5px;
@@ -231,7 +231,7 @@ div#radioGroup {
     width: 50px;
     text-align: right;
 }
-.input-gems-allAddon {
+.inputGroup-gems .input-gems-allAddon {
     float: left;
     border: 2px solid #c3b9a2;
     padding: 4.5px;
@@ -239,7 +239,7 @@ div#radioGroup {
     width: 50px;
     text-align: right;
 }
-.input-label {
+.inputGroup-gems .input-label {
     float: left;
     width: fit-content;
     border: 2px solid #c3b9a2;
@@ -287,21 +287,21 @@ table#table-gems .radio {
     div#radioGroup {
         font-size: 9pt;
     }
-    .input-addon-left {
+    .inputGroup-gems .input-addon-left {
         font-size: 8pt;
     }
-    .input-addon-right {
+    .inputGroup-gems .input-addon-right {
         font-size: 8pt;
     }
-    .input-gems {
-        font-size: 8pt;
-        width: 50px;
-    }
-    .input-gems-allAddon {
+    .inputGroup-gems .input-gems {
         font-size: 8pt;
         width: 50px;
     }
-    .input-label {
+    .inputGroup-gems .input-gems-allAddon {
+        font-size: 8pt;
+        width: 50px;
+    }
+    .inputGroup-gems .input-label {
         font-size: 8pt;
     }
     /* table#table-gems {

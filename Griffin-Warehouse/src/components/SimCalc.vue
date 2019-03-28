@@ -227,6 +227,8 @@ export default {
 .table-sim {
     border-collapse: collapse;
     margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
     font-size: 10pt;
 
@@ -241,10 +243,10 @@ export default {
     padding: 2px;
 }
 .table-sim-col-3 th, td{
-    width: calc(50vw / 3);
+    width: calc((50vw - 40px) / 3);
 }
 .table-sim-col-4 th, td{
-    width: calc(50vw / 4);
+    width: calc((50vw - 40px) / 4);
 }
 .table-sim input{
     width: 80%;
@@ -401,10 +403,10 @@ div#div-needData .btn-needData:hover {
         font-size: 8pt;
     }
     .table-sim-col-3 th, td {
-        width: calc(80vw / 3);
+        width: calc((80vw - 40px) / 3);
     }
     .table-sim-col-4 th, td {
-        width: calc(80vw / 4);
+        width: calc((80vw - 40px) / 4);
     }
     .table-sim input {
         font-size: 8pt;

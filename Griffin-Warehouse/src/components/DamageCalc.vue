@@ -1,168 +1,152 @@
 <template>
 <div class="container-damageCalc">
-    <table id="table-damage">
-        <tr>
-            <th>인형 화력 스탯 입력</th>
-            <td><input type="text" v-model="tdollAtk"></td>
-            <td>화력 : {{ tdollAtk }}</td>
-        </tr>
+    <div class="inputGroup-damage">
+        <input class="input-damage" type="text" maxlength="3" v-model="tdollAtk">
+        <div class="input-addon-left">인형 화력 스탯 입력</div>
+    </div>
+    <div class="inputGroup-damage">
+        <input class="input-damage" type="text" maxlength="4" v-model="tdollSkill">
+        <div class="input-addon-left">인형 스킬 배율(%) 입력</div>
+    </div>
 
-        <tr class="empty-line">
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+    <div class="container-content">
+        <table class="table-damage">
+            <tr>
+                <th>버프 인형 선택</th>
+                <th>진형 버프</th>
+                <th>버프 스킬 배율 <input type="checkbox" style="width:unset;" v-model="buffSkillOn"></th>
+            </tr>
+            <tr>
+                <td>
+                    <select class="" v-model="tdoll_selected.first">
+                        <option v-for="item in tdoll" :value="item.id">{{ item.name }}</option>
+                    </select>
+                </td>
+            <!-- 선택한 버퍼의 버프스킬 배율 표시 -->
+                <td>
+                    <div class="label" v-if="tdoll_selected.first > 0">{{ tdoll[tdoll_selected.first].buff }}%</div>
+                </td>
+                <td>
+                    <div class="label" v-if="tdoll_selected.first > 0">{{ tdoll[tdoll_selected.first].skill }}%</div>
+                </td>
+            </tr>
 
-        <tr>
-            <th>버프 인형 선택</th>
-            <th>진형 버프</th>
-            <th>버프 스킬 배율 <input type="checkbox" style="width:unset;" v-model="buffSkillOn"></th>
-        </tr>
-        <tr>
-            <td>
-                <select class="" v-model="tdoll_selected.first">
-                    <option v-for="item in tdoll" :value="item.id">{{ item.name }}</option>
-                </select>
-            </td>
-        <!-- 선택한 버퍼의 버프스킬 배율 표시 -->
-            <td>
-                <div v-if="tdoll_selected.first > 0">{{ tdoll[tdoll_selected.first].buff }}%</div>
-            </td>
-            <td>
-                <div v-if="tdoll_selected.first > 0">{{ tdoll[tdoll_selected.first].skill }}%</div>
-            </td>
-        </tr>
+            <!-- 하나 선택할때마다 다음 입력창이 추가되는 방식으로 -->
+            <tr v-if="tdoll_selected.first > 0">
+                <td>
+                    <select class="" v-model="tdoll_selected.second">
+                        <option v-for="item in tdoll" :value="item.id">{{ item.name }}</option>
+                    </select>
+                </td>
+                <td>
+                    <div class="label" v-if="tdoll_selected.second > 0">{{ tdoll[tdoll_selected.second].buff }}%</div>
+                </td>
+                <td>
+                    <div class="label" v-if="tdoll_selected.second > 0">{{ tdoll[tdoll_selected.second].skill }}%</div>
+                </td>
+            </tr>
 
-        <!-- 하나 선택할때마다 다음 입력창이 추가되는 방식으로 -->
-        <tr v-if="tdoll_selected.first > 0">
-            <td>
-                <select class="" v-model="tdoll_selected.second">
-                    <option v-for="item in tdoll" :value="item.id">{{ item.name }}</option>
-                </select>
-            </td>
-            <td>
-                <div v-if="tdoll_selected.second > 0">{{ tdoll[tdoll_selected.second].buff }}%</div>
-            </td>
-            <td>
-                <div v-if="tdoll_selected.second > 0">{{ tdoll[tdoll_selected.second].skill }}%</div>
-            </td>
-        </tr>
+            <tr v-if="tdoll_selected.second > 0">
+                <td>
+                    <select class="" v-model="tdoll_selected.third">
+                        <option v-for="item in tdoll" :value="item.id">{{ item.name }}</option>
+                    </select>
+                </td>
+                <td>
+                    <div class="label" v-if="tdoll_selected.third > 0">{{ tdoll[tdoll_selected.third].buff }}%</div>
+                </td>
+                <td>
+                    <div class="label" v-if="tdoll_selected.third > 0">{{ tdoll[tdoll_selected.third].skill }}%</div>
+                </td>
+            </tr>
 
-        <tr v-if="tdoll_selected.second > 0">
-            <td>
-                <select class="" v-model="tdoll_selected.third">
-                    <option v-for="item in tdoll" :value="item.id">{{ item.name }}</option>
-                </select>
-            </td>
-            <td>
-                <div v-if="tdoll_selected.third > 0">{{ tdoll[tdoll_selected.third].buff }}%</div>
-            </td>
-            <td>
-                <div v-if="tdoll_selected.third > 0">{{ tdoll[tdoll_selected.third].skill }}%</div>
-            </td>
-        </tr>
+            <tr v-if="tdoll_selected.third > 0">
+                <td>
+                    <select class="" v-model="tdoll_selected.fourth">
+                        <option v-for="item in tdoll" :value="item.id">{{ item.name }}</option>
+                    </select>
+                </td>
+                <td>
+                    <div class="label" v-if="tdoll_selected.fourth > 0">{{ tdoll[tdoll_selected.fourth].buff }}%</div>
+                </td>
+                <td>
+                    <div class="label" v-if="tdoll_selected.fourth > 0">{{ tdoll[tdoll_selected.fourth].skill }}%</div>
+                </td>
+            </tr>
+            <tr>
+                <th>버프 합계</th>
+                <td><div class="label">{{ sumBuff }}%</div></td>
+                <td><div class="label">{{ sumSkill }}%</div></td>
+            </tr>
+        </table>
+    </div>
 
-        <tr v-if="tdoll_selected.third > 0">
-            <td>
-                <select class="" v-model="tdoll_selected.fourth">
-                    <option v-for="item in tdoll" :value="item.id">{{ item.name }}</option>
-                </select>
-            </td>
-            <td>
-                <div v-if="tdoll_selected.fourth > 0">{{ tdoll[tdoll_selected.fourth].buff }}%</div>
-            </td>
-            <td>
-                <div v-if="tdoll_selected.fourth > 0">{{ tdoll[tdoll_selected.fourth].skill }}%</div>
-            </td>
-        </tr>
-        <tr>
-            <th>버프 합계</th>
-            <td>{{ sumBuff }}%</td>
-            <td>{{ sumSkill }}%</td>
-        </tr>
+    <div class="container-content">
+        <table class="table-damage">
+            <tr>
+                <th>요정 진형 버프</th>
+                <th>요정 특성 선택 <input type="checkbox" style="width:unset;" v-model="fairyPassiveOn"></th>
+                <th>요정 스킬 배율 <input type="checkbox" style="width:unset;" v-model="fairySkillOn"></th>
+            </tr>
+            <tr>
+                <!-- 요정 진벞 입력 -->
+                <td><input type="text" v-model="fairyBuff"></td>
+                <!-- 요정 특성 선택 -->
+                <td>
+                    <select v-model="fairy_selected">
+                        <option v-for="item in fairyPassive" :value="item.id">{{ item.name }}</option>
+                    </select>
+                </td>
+                <!-- 요정 스킬 입력 -->
+                <td><input type="text" v-model="fairySkill"></td>
+            </tr>
+            <tr>
+                <td><div class="label">{{ fairyBuff }}%</div></td>
+                <td><div class="label">{{ fairyPassive[fairy_selected].buff }}%</div></td>
+                <td><div class="label">{{ fairySkill }}%</div></td>
+            </tr>
+        </table>
+    </div>
 
-        <tr class="empty-line">
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-
-        <tr>
-            <th>요정 진형 버프</th>
-            <th>요정 특성 선택 <input type="checkbox" style="width:unset;" v-model="fairyPassiveOn"></th>
-            <th>요정 스킬 배율 <input type="checkbox" style="width:unset;" v-model="fairySkillOn"></th>
-        </tr>
-        <tr>
-            <!-- 요정 진벞 입력 -->
-            <td><input type="text" v-model="fairyBuff"></td>
-            <!-- 요정 특성 선택 -->
-            <td>
-                <select v-model="fairy_selected">
-                    <option v-for="item in fairyPassive" :value="item.id">{{ item.name }}</option>
-                </select>
-            </td>
-            <!-- 요정 스킬 입력 -->
-            <td><input type="text" v-model="fairySkill"></td>
-        </tr>
-        <tr>
-            <td>{{ fairyBuff }}%</td>
-            <td>{{ fairyPassive[fairy_selected].buff }}%</td>
-            <td>{{ fairySkill }}%</td>
-        </tr>
-
-        <tr class="empty-line">
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-
-        <tr>
-            <th>인형 스킬 배율 입력</th>
-            <td><input type="text" v-model="tdollSkill"></td>
-            <td>스킬 배율 : {{ tdollSkill }}%</td>
-        </tr>
-        
-        <tr class="empty-line">
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>        
-        
-        <tr>
-            <td colspan="2">장갑 적용 (0입력 시 과관통 자동 적용) <input type="checkbox" style="width:unset;" v-model="armorOn"></td>
-            <td><input type="text" v-model="armor"></td>
-        </tr>
-        <tr>
-            <td colspan="2">치명타 적용 (치명타 배율 입력) <input type="checkbox" style="width:unset;" v-model="criticalOn"></td>
-            <td><input type="text" v-model="critical"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <th>1링크</th>
-            <th>5링크</th>
-        </tr>
-        <tr>
-            <th>최소데미지</th>
-            <td>{{ Math.ceil(finalStatMin) }}</td>
-            <td>{{ Math.ceil(finalStatMin) * 5 }}</td>
-        </tr>
-        <tr>
-            <th>최대데미지</th>
-            <td>{{ Math.ceil(finalStatMax) }}</td>
-            <td>{{ Math.ceil(finalStatMax) * 5 }}</td>
-        </tr>
-        
-        <tr v-if="selectContender">
-            <th>최소데미지(컨텐더)</th>
-            <td>{{ Math.ceil(finalStatMin) * 1.4 }}</td>
-            <td>{{ Math.ceil(finalStatMin) * 1.4 * 5 }}</td>
-        </tr>
-        <tr v-if="selectContender">
-            <th>최대데미지(컨텐더)</th>
-            <td>{{ Math.ceil(finalStatMax) * 1.4 }}</td>
-            <td>{{ Math.ceil(finalStatMax) * 1.4 * 5 }}</td>
-        </tr>
-    </table>
+    <div class="inputGroup-damage">
+        <input class="input-damage" type="text" maxlength="3" v-model="armor">
+        <div class="input-addon-left">장갑 적용 (0입력 시 과관통 자동 적용) <input class="check-damage" type="checkbox" style="width:unset;" v-model="armorOn"></div>
+    </div>
+    <div class="inputGroup-damage">
+        <input class="input-damage" type="text" maxlength="3" v-model="critical">
+        <div class="input-addon-left">치명타 적용 (치명타 배율(%) 입력) <input class="check-damage" type="checkbox" style="width:unset;" v-model="criticalOn"></div>
+    </div>
+    
+    <div class="container-content">
+        <table class="table-damage">
+            <tr>
+                <td></td>
+                <th>1링크</th>
+                <th>5링크</th>
+            </tr>
+            <tr>
+                <th>최소데미지</th>
+                <td><div class="label">{{ Math.ceil(finalStatMin) }}</div></td>
+                <td><div class="label">{{ Math.ceil(finalStatMin) * 5 }}</div></td>
+            </tr>
+            <tr>
+                <th>최대데미지</th>
+                <td><div class="label">{{ Math.ceil(finalStatMax) }}</div></td>
+                <td><div class="label">{{ Math.ceil(finalStatMax) * 5 }}</div></td>
+            </tr>
+            
+            <tr v-if="selectContender">
+                <th>최소데미지(컨텐더)</th>
+                <td><div class="label">{{ Math.ceil(finalStatMin * 1.4) }}</div></td>
+                <td><div class="label">{{ Math.ceil(finalStatMin * 1.4) * 5 }}</div></td>
+            </tr>
+            <tr v-if="selectContender">
+                <th>최대데미지(컨텐더)</th>
+                <td><div class="label">{{ Math.ceil(finalStatMax * 1.4) }}</div></td>
+                <td><div class="label">{{ Math.ceil(finalStatMax * 1.4) * 5 }}</div></td>
+            </tr>
+        </table>
+    </div>
 </div>
 </template>
 
@@ -334,46 +318,142 @@ export default {
 .container-damageCalc {
     margin-top: calc(5vh + 30px);
 }
-table#table-damage {
-    border-collapse: collapse;
+
+.inputGroup-damage {
+    height: 30px;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
     margin-left: auto;
     margin-right: auto;
-    width: 60vw;
-    /* font-size: 9pt; */
+    width: 50vw;
+}
+.inputGroup-damage .input-addon-left {
+    float: right;
+    width: fit-content;
+    border: 2px solid #c3b9a2;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-right: unset;
+    background-color: #c3b9a2b6;
+    padding: 3px;
+    font-size: 10pt;
+}
+.inputGroup-damage .input-damage {
+    float: right;
+    border: 2px solid #c3b9a2;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 4.5px;
+    font-size: 10pt;
+    width: 50px;
+    text-align: right;
+}
+.inputGroup-damage .input-addon-left .check-damage {
+    height: 12px;
+}
+
+.container-content {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50vw;
+    
+    border: 2px solid #c3b9a2;
+    border-radius: 5px;
+    background-color: #c3b9a2b6;
+}
+.table-damage {
+    border-collapse: collapse;
+    margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 10pt;
 
     -moz-transition: all .5s ease-in-out;
     -webkit-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
 }
-table#table-damage tr{
-    border-top: 1px solid #ddd;
-    background: linear-gradient(to right, #fff, #eee, #fff);
+.table-damage tr{
+    border-top: 2px solid #c3b9a2;
 }
-table#table-damage .empty-line {
-    /* border-top: unset; */
-    background: unset;
-    height: 4vh;
-}
-table#table-damage th, td{
+.table-damage th, td{
     padding: 2px;
-    width: calc(60vw / 3);
+    width: calc((50vw - 40px) / 3);
 }
-table#table-damage td{
-    text-align: right;
+.table-damage td{
+    /* text-align: right; */
 }
-table#table-damage input, select{
+.table-damage input{
     width: 80%;
     text-align: right;
+    border: 2px solid #c3b9a2;
+    border-radius: 5px;
+    padding: 4.5px;
+    font-size: 10pt;
+}
+.table-damage select{
+    width: 80%;
+    text-align: right;
+    border: 2px solid #c3b9a2;
+    border-radius: 5px;
+    padding-top: 2px;
+    padding-bottom: 5px;
+    font-size: 10pt;
+}
+.table-damage .label{
+    width: 80%;
+    text-align: right;
+    margin: auto;
+    border: 2px solid #c3b9a2;
+    border-radius: 5px;
+    background-color: #EEEBE4;
+    padding: 3px;
+    font-size: 10pt;
 }
 
 
 @media only screen and (max-width: 767px) {
-    table#table-damage {
+    .inputGroup-damage {
+        height: 30px;
         width: 80vw;
-        font-size: 9pt;
     }
-    table#table-damage th, td{
-        width: calc(80vw / 3);
+    .inputGroup-damage .input-addon-left {
+        font-size: 8pt;
+    }
+    .inputGroup-damage .input-addon-right {
+        font-size: 8pt;
+    }
+    .inputGroup-damage .input-damage {
+        font-size: 8pt;
+        width: 50px;
+    }
+    .inputGroup-damage .input-label {
+        font-size: 8pt;
+    }
+    .inputGroup-damage .input-addon-left .check-damage {
+        height: 10px;
+        margin: auto;
+    }
+
+    .container-content {
+        width: 80vw;
+    }
+    .table-damage {
+        font-size: 8pt;
+    }
+    .table-damage th, td{
+        width: calc((80vw - 40px) / 3);
+    }
+    .table-damage input {
+        font-size: 8pt;
+    }
+    .table-damage select{
+        font-size: 8pt;
+    }
+    .table-damage .label{
+        font-size: 8pt;
     }
 }
 </style>
