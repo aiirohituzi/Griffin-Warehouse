@@ -102,7 +102,8 @@
             </tr>
             <tr>
                 <td><div class="label">{{ fairyBuff }}%</div></td>
-                <td><div class="label">{{ fairyPassive[fairy_selected].buff }}%</div></td>
+                <td v-if="fairy_selected == 3"><input type="range" class="slider-damage" min="1" max="3" v-model="gyeokyangStack"><span class="slider-value">{{ gyeokyangStack }}스택</span></td>
+                <td v-else><div class="label">{{ fairyPassive[fairy_selected].buff }}%</div></td>
                 <td><div class="label">{{ fairySkill }}%</div></td>
             </tr>
         </table>
@@ -184,6 +185,7 @@ export default {
                 {id:3, name: '격양계', buff:10},
                 {id:4, name: '돌격계', buff:0},
             ],
+            gyeokyangStack: 1,
             fairySkill: 0,
             fairy_selected: 0,
 
@@ -264,7 +266,15 @@ export default {
                 calc_skill = sum_skill
             }
             if(this.fairyPassiveOn){
-                calc_fairyPassive = this.fairyPassive[this.fairy_selected].buff
+                if(this.fairyPassive[this.fairy_selected].id == 3){         // 격양계 특성일 때
+                    calc_fairyPassive = this.fairyPassive[this.fairy_selected].buff
+                    for(var i=0; i<this.gyeokyangStack-1; i++) {
+                        calc_fairyPassive = (((1 + (calc_fairyPassive / 100)) * (1 + (this.fairyPassive[this.fairy_selected].buff / 100)) - 1) * 100).toFixed(1)
+                    }
+                    // console.log(calc_fairyPassive)
+                } else {
+                    calc_fairyPassive = this.fairyPassive[this.fairy_selected].buff
+                }
             }
             if(this.fairySkillOn){
                 calc_fairySkill = this.fairySkill
@@ -353,8 +363,8 @@ export default {
 }
 
 .container-content {
-    margin-top: 3vh;
-    margin-bottom: 3vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
     margin-left: auto;
     margin-right: auto;
     width: 50vw;
@@ -382,9 +392,6 @@ export default {
     padding: 2px;
     width: calc((50vw - 40px) / 3);
 }
-.table-damage td{
-    /* text-align: right; */
-}
 .table-damage input{
     width: 80%;
     text-align: right;
@@ -392,6 +399,12 @@ export default {
     border-radius: 5px;
     padding: 4.5px;
     font-size: 10pt;
+}
+.table-damage .slider-damage {
+    width: 50%;
+}
+.table-damage .slider-value {
+    font-size: 5pt;
 }
 .table-damage select{
     width: 80%;

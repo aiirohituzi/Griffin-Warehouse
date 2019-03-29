@@ -61,7 +61,7 @@
             <tr>
                 <td></td>
                 <td><div class="label">{{ needSimEnergy_sum }}</div></td>
-                <td><div class="label">{{ needSimPurchase }}</div></td>
+                <td><div class="label">{{ Math.ceil(needSimPurchase) }}</div></td>
             </tr>
         </table>
     </div>
