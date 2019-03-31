@@ -169,7 +169,7 @@ export default {
                 this.shareGems = 0
             }
 
-            this.needGems = targetGems - this.currentGems - this.monthly - this.mockGems - this.shareGems
+            this.needGems = targetGems - this.currentGems - this.monthly + this.mockGems - this.shareGems
         }
     },
     updated: function () {
