@@ -14,7 +14,7 @@
             <tr>
                 <th>버프 인형 선택</th>
                 <th>진형 버프</th>
-                <th>버프 스킬 배율 <input type="checkbox" style="width:unset;" v-model="buffSkillOn"></th>
+                <th>버프 스킬 배율 <input type="checkbox" class="input-check" v-model="buffSkillOn"></th>
             </tr>
             <tr>
                 <td>
@@ -85,12 +85,12 @@
         <table class="table-damage">
             <tr>
                 <th>요정 진형 버프</th>
-                <th>요정 특성 선택 <input type="checkbox" style="width:unset;" v-model="fairyPassiveOn"></th>
-                <th>요정 스킬 배율 <input type="checkbox" style="width:unset;" v-model="fairySkillOn"></th>
+                <th>요정 특성 선택 <input type="checkbox" class="input-check" v-model="fairyPassiveOn"></th>
+                <th>요정 스킬 배율 <input type="checkbox" class="input-check" v-model="fairySkillOn"></th>
             </tr>
             <tr>
                 <!-- 요정 진벞 입력 -->
-                <td><input type="text" v-model="fairyBuff"></td>
+                <td><input type="text" class="input-text" v-model="fairyBuff"></td>
                 <!-- 요정 특성 선택 -->
                 <td>
                     <select v-model="fairy_selected">
@@ -98,7 +98,7 @@
                     </select>
                 </td>
                 <!-- 요정 스킬 입력 -->
-                <td><input type="text" v-model="fairySkill"></td>
+                <td><input type="text" class="input-text" v-model="fairySkill"></td>
             </tr>
             <tr>
                 <td><div class="label">{{ fairyBuff }}%</div></td>
@@ -351,8 +351,18 @@ export default {
 .inputGroup-damage .input-damage {
     float: right;
     border: 2px solid #c3b9a2;
+    -webkit-appearance: none;
+
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    
+    -webkit-border-top-left-radius: 0;
+    -webkit-border-bottom-left-radius: 0;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+
     padding: 4.5px;
     font-size: 10pt;
     width: 50px;
@@ -385,20 +395,25 @@ export default {
     -webkit-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
 }
-.table-damage tr{
+.table-damage tr {
     border-top: 2px solid #c3b9a2;
 }
-.table-damage th, td{
+.table-damage th, td {
     padding: 2px;
     width: calc((50vw - 40px) / 3);
 }
-.table-damage input{
+.table-damage .input-text {
     width: 80%;
     text-align: right;
     border: 2px solid #c3b9a2;
+    -webkit-appearance: none;
     border-radius: 5px;
+    -webkit-border-radius: 5px;
     padding: 4.5px;
     font-size: 10pt;
+}
+.table-damage .input-check {
+    height: 12px;
 }
 .table-damage .slider-damage {
     width: 50%;
@@ -459,8 +474,12 @@ export default {
     .table-damage th, td{
         width: calc((80vw - 40px) / 3);
     }
-    .table-damage input {
+    .table-damage .input-text {
         font-size: 8pt;
+    }
+    .table-damage .input-check {
+        height: 10px;
+        margin: auto;
     }
     .table-damage select{
         font-size: 8pt;

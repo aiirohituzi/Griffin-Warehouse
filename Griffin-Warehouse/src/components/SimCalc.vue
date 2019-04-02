@@ -69,9 +69,9 @@
     <div id="div-getData" class="side-left">
         <div class="inputGroup-getData">
             <div>모의작전 1회당</div>
-            <div>초급 <input type="text" maxlength="3" size="1" v-model="getBasicData"></div>
-            <div>중급 <input type="text" maxlength="3" size="1" v-model="getIntermediateData"></div>
-            <div>고급 <input type="text" maxlength="3" size="1" v-model="getAdvancedData"></div>
+            <div>초급 <input type="text" maxlength="3" v-model="getBasicData"></div>
+            <div>중급 <input type="text" maxlength="3" v-model="getIntermediateData"></div>
+            <div>고급 <input type="text" maxlength="3" v-model="getAdvancedData"></div>
         </div>
         <div class="btn-getData" @click="openGetData()">스킬칩 수급량 입력</div>
     </div>
@@ -251,8 +251,10 @@ export default {
 .table-sim input{
     width: 80%;
     text-align: right;
+    -webkit-appearance: none;
     border: 2px solid #c3b9a2;
     border-radius: 5px;
+    -webkit-border-radius: 5px;
     padding: 4.5px;
     font-size: 10pt;
 }
@@ -291,6 +293,7 @@ div#div-getData {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     background-color: #c3b9a2b6;
+
     -moz-box-shadow: 1px 3px 6px #999;
     -webkit-box-shadow: 0px 3px 6px #999;
     box-shadow: 1px 3px 6px #999;
@@ -299,8 +302,11 @@ div#div-getData {
 }
 div#div-getData input {
     text-align: right;
+    width: 30px;
     border: 2px solid #c3b9a2;
+    -webkit-appearance: none;
     border-radius: 5px;
+    -webkit-border-radius: 5px;
     padding: 4.5px;
     font-size: 8pt;
 }

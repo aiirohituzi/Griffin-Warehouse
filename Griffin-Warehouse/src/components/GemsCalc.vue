@@ -7,19 +7,25 @@
 
     <div class="inputGroup-gems">    
         <div class="input-addon-left">가격 / 수량 입력</div>
-        <input class="input-gems-allAddon" type="text" maxlength="6" v-model="inputGems">
+        <div class="input-gems-allAddon">
+            <input type="text" maxlength="6" v-model="inputGems">
+        </div>
         <div v-if="calcMode == 0" class="input-addon-right">{{ inputGems }}개 * {{ remainingDays }}일 = {{ inputGems * remainingDays }}개</div>
         <div v-if="calcMode == 1" class="input-addon-right">{{ inputGems }}개</div>
     </div>
 
     <div class="inputGroup-gems">    
         <div class="input-addon-left">남은 일수 입력</div>
-        <input class="input-gems" type="text" maxlength="6" v-model="remainingDays">
+        <div class="input-gems">
+            <input type="text" maxlength="6" v-model="remainingDays">
+        </div>
     </div>
 
     <div class="inputGroup-gems">    
         <div class="input-addon-left">현재 보석 보유량 입력</div>
-        <input class="input-gems" type="text" maxlength="6" v-model="currentGems">
+        <div class="input-gems">
+            <input type="text" maxlength="6" v-model="currentGems">
+        </div>
     </div>
 
     <div class="inputGroup-gems">    
@@ -29,7 +35,9 @@
 
     <div class="inputGroup-gems">    
         <div class="input-addon-left">모의점수 하루 구매횟수 입력</div>
-        <input class="input-gems-allAddon" type="text" maxlength="2" v-model="mockPurchaseCount">
+        <div class="input-gems-allAddon">
+            <input type="text" maxlength="2" v-model="mockPurchaseCount">
+        </div>
         <div class="input-addon-right">총 {{ mockGems }}개</div>
     </div>
 
@@ -224,9 +232,35 @@ div#radioGroup {
 .inputGroup-gems .input-gems {
     float: left;
     border: 2px solid #c3b9a2;
+    /* -webkit-appearance: none; */
+
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    padding: 4.5px;
+    
+    -webkit-border-top-left-radius: 0;
+    -webkit-border-bottom-left-radius: 0;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    
+    padding: 3px;
+
+    font-size: 10pt;
+    width: 50px;
+}
+.inputGroup-gems .input-gems input{
+    -webkit-appearance: none;
+
+    border: unset;
+    -webkit-border: unset;
+    
+    margin: 0;
+    -webkit-margin: 0;
+
+    padding: 0;
+    -webkit-padding: 0;
+
     font-size: 10pt;
     width: 50px;
     text-align: right;
@@ -234,7 +268,28 @@ div#radioGroup {
 .inputGroup-gems .input-gems-allAddon {
     float: left;
     border: 2px solid #c3b9a2;
-    padding: 4.5px;
+    -webkit-appearance: none;
+
+    border-radius: 0;
+    -webkit-border-radius: 0;
+
+    padding: 3px;
+
+    font-size: 10pt;
+    width: 50px;
+}
+.inputGroup-gems .input-gems-allAddon input{
+    -webkit-appearance: none;
+
+    border: unset;
+    -webkit-border: unset;
+    
+    margin: 0;
+    -webkit-margin: 0;
+
+    padding: 0;
+    -webkit-padding: 0;
+
     font-size: 10pt;
     width: 50px;
     text-align: right;
@@ -295,11 +350,15 @@ table#table-gems .radio {
     }
     .inputGroup-gems .input-gems {
         font-size: 8pt;
-        width: 50px;
+    }
+    .inputGroup-gems .input-gems input {
+        font-size: 8pt;
     }
     .inputGroup-gems .input-gems-allAddon {
         font-size: 8pt;
-        width: 50px;
+    }
+    .inputGroup-gems .input-gems-allAddon input {
+        font-size: 8pt;
     }
     .inputGroup-gems .input-label {
         font-size: 8pt;
