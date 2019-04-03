@@ -1,11 +1,15 @@
 <template>
 <div class="container-damageCalc">
     <div class="inputGroup-damage">
-        <input class="input-damage" type="text" maxlength="3" v-model="tdollAtk">
+        <div class="input-damage">
+            <input type="text" maxlength="3" v-model="tdollAtk">
+        </div>
         <div class="input-addon-left">인형 화력 스탯 입력</div>
     </div>
     <div class="inputGroup-damage">
-        <input class="input-damage" type="text" maxlength="4" v-model="tdollSkill">
+        <div class="input-damage">
+            <input type="text" maxlength="4" v-model="tdollSkill">
+        </div>
         <div class="input-addon-left">인형 스킬 배율(%) 입력</div>
     </div>
 
@@ -102,7 +106,7 @@
             </tr>
             <tr>
                 <td><div class="label">{{ fairyBuff }}%</div></td>
-                <td v-if="fairy_selected == 3"><input type="range" class="slider-damage" min="1" max="3" v-model="gyeokyangStack"><span class="slider-value">{{ gyeokyangStack }}스택</span></td>
+                <td v-if="fairy_selected == 3"><input type="range" class="slider-damage" min="1" max="3" v-model="gyeokyangStack"> <span class="slider-value">{{ gyeokyangStack }}스택</span></td>
                 <td v-else><div class="label">{{ fairyPassive[fairy_selected].buff }}%</div></td>
                 <td><div class="label">{{ fairySkill }}%</div></td>
             </tr>
@@ -110,11 +114,15 @@
     </div>
 
     <div class="inputGroup-damage">
-        <input class="input-damage" type="text" maxlength="3" v-model="armor">
+        <div class="input-damage">
+            <input type="text" maxlength="3" v-model="armor">
+        </div>
         <div class="input-addon-left">장갑 적용 (0입력 시 과관통 자동 적용) <input class="check-damage" type="checkbox" style="width:unset;" v-model="armorOn"></div>
     </div>
     <div class="inputGroup-damage">
-        <input class="input-damage" type="text" maxlength="3" v-model="critical">
+        <div class="input-damage">
+            <input type="text" maxlength="3" v-model="critical">
+        </div>
         <div class="input-addon-left">치명타 적용 (치명타 배율(%) 입력) <input class="check-damage" type="checkbox" style="width:unset;" v-model="criticalOn"></div>
     </div>
     
@@ -351,7 +359,7 @@ export default {
 .inputGroup-damage .input-damage {
     float: right;
     border: 2px solid #c3b9a2;
-    -webkit-appearance: none;
+    /* -webkit-appearance: none; */
 
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
@@ -362,8 +370,24 @@ export default {
     -webkit-border-bottom-left-radius: 0;
     -webkit-border-top-right-radius: 5px;
     -webkit-border-bottom-right-radius: 5px;
+    
+    padding: 3px;
 
-    padding: 4.5px;
+    font-size: 10pt;
+    width: 50px;
+}
+.inputGroup-damage .input-damage input{
+    -webkit-appearance: none;
+
+    border: unset;
+    -webkit-border: unset;
+    
+    margin: 0;
+    -webkit-margin: 0;
+
+    padding: 0;
+    -webkit-padding: 0;
+
     font-size: 10pt;
     width: 50px;
     text-align: right;
@@ -416,10 +440,14 @@ export default {
     height: 12px;
 }
 .table-damage .slider-damage {
-    width: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    width: 60%;
 }
 .table-damage .slider-value {
-    font-size: 5pt;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 10pt;    
 }
 .table-damage select{
     width: 80%;
@@ -480,6 +508,9 @@ export default {
     .table-damage .input-check {
         height: 10px;
         margin: auto;
+    }
+    .table-damage .slider-value {
+        font-size: 8pt;
     }
     .table-damage select{
         font-size: 8pt;

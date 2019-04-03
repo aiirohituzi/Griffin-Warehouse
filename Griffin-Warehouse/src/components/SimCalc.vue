@@ -68,10 +68,10 @@
 
     <div id="div-getData" class="side-left">
         <div class="inputGroup-getData">
-            <div>모의작전 1회당</div>
-            <div>초급 <input type="text" maxlength="3" v-model="getBasicData"></div>
-            <div>중급 <input type="text" maxlength="3" v-model="getIntermediateData"></div>
-            <div>고급 <input type="text" maxlength="3" v-model="getAdvancedData"></div>
+            <div class="row-getData">모의작전 1회당</div>
+            <div class="row-getData">초급 <input type="text" maxlength="3" v-model="getBasicData"></div>
+            <div class="row-getData">중급 <input type="text" maxlength="3" v-model="getIntermediateData"></div>
+            <div class="row-getData">고급 <input type="text" maxlength="3" v-model="getAdvancedData"></div>
         </div>
         <div class="btn-getData" @click="openGetData()">스킬칩 수급량 입력</div>
     </div>
@@ -288,7 +288,7 @@ div#div-getData {
     left: -95px;
     top: 40vh;
     width: 110px;
-    height: 130px;
+    height: 150px;
 
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -300,7 +300,17 @@ div#div-getData {
 
     text-align: center;
 }
-div#div-getData input {
+div#div-getData .inputGroup-getData {
+    float: left;
+    font-size: 8pt;
+    line-height: 30px;
+    width: 95px;
+    margin-top: 15px;
+}
+div#div-getData .inputGroup-getData .row-getData {
+    height: 30px;
+}
+div#div-getData .inputGroup-getData .row-getData input {
     text-align: right;
     width: 30px;
     border: 2px solid #c3b9a2;
@@ -310,15 +320,9 @@ div#div-getData input {
     padding: 4.5px;
     font-size: 8pt;
 }
-div#div-getData .inputGroup-getData {
-    margin: 10px;
-    float: left;
-    font-size: 8pt;
-    line-height: 27px;
-}
 div#div-getData .btn-getData {
     width: 15px;
-    height: 130px;
+    height: 150px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     float: right;
