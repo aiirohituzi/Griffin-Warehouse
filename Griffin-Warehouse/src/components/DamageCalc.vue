@@ -175,6 +175,12 @@ export default {
                 {id:6, name: 'Mk23', buff: 36, skill: 20, skillN: 35},
                 {id:7, name: 'K5', buff: 30, skill: 22},
                 {id:8, name: 'HK45', buff: 32, skill: 15},
+                {id:9, name: '콜트 리볼버', buff: 24, skill: 22},
+                {id:10, name: 'PPK', buff: 0, skill: 10},
+                {id:11, name: '세르듀코프', buff: 24, skill: 20},
+                {id:12, name: 'Bren Ten', buff: 16, skill: 18},
+                {id:13, name: 'CZ52', buff: 20, skill: 20},
+                {id:14, name: '제리코', buff: 24, skill: 15},
             ],
             tdoll_selected: {
                 first: 0,
@@ -481,16 +487,18 @@ export default {
     .inputGroup-damage .input-addon-right {
         font-size: 8pt;
     }
-    .inputGroup-damage .input-damage {
-        font-size: 8pt;
-        width: 50px;
-    }
     .inputGroup-damage .input-label {
         font-size: 8pt;
     }
     .inputGroup-damage .input-addon-left .check-damage {
         height: 10px;
         margin: auto;
+    }
+    .inputGroup-damage .input-damage {
+        font-size: 8pt;
+    }
+    .inputGroup-damage .input-damage input{
+        font-size: 8pt;
     }
 
     .container-content {
