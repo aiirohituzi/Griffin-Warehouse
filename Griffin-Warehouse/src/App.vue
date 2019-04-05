@@ -4,11 +4,13 @@
             <router-link tag="li" to="/damageCalc">데미지 계산기</router-link>
             <router-link tag="li" to="/gemsCalc">필요 보석량 계산기</router-link>
             <router-link tag="li" to="/simCalc">필요 모의작전점수 계산기</router-link>
+            <router-link tag="li" to="/expCalc">경험치 계산기</router-link>
         </ul>
         <div class="nav-tab">
             <span id="DamageCalc"></span>
             <span id="GemsCalc"></span>
             <span id="SimCalc"></span>
+            <span id="ExpCalc"></span>
         </div>
         <div class="container-router-view">
             <router-view/>
@@ -63,7 +65,7 @@ ul#navigation {
 ul#navigation li {
     box-sizing: border-box;
     float: left;
-    width: calc(100% / 3);
+    width: calc(100% / 4);
     line-height: 40px;
     height: 100%;
     cursor: pointer;
@@ -102,7 +104,7 @@ ul#navigation li:hover {
 .nav-tab span{
     box-sizing: border-box;
     float: left;
-    width: calc(100% / 3);
+    width: calc(100% / 4);
     height: 100%;
 }
 .nav-tab .current{
