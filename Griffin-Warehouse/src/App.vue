@@ -71,7 +71,7 @@ ul#navigation li {
     cursor: pointer;
     
     text-align: center;
-    font-size: 3vmin;
+    font-size: 2.5vmin;
     font-family: 'Do Hyeon', sans-serif;
 }
 ul#navigation li:hover {
