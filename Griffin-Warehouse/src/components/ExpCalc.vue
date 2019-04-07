@@ -3,7 +3,9 @@
     <div>현재 레벨 <input type="text" v-model="currentLv"></div>
     <div>현재 경험치 <input type="text" v-model="currentExp"></div>
     <div>목표 레벨 <input type="text" v-model="targetLv"></div>
-    <div>레벨링 지역(입수경험치)
+    <div>최대 링크수 제한 <input type="range" min="1" max="5" v-model="dummy"> {{ dummy }}링크 </div>
+    <div>
+        레벨링 지역(입수경험치)
         <select v-model="area_selected">
             <option v-for="item in area" :value="item.id">{{ item.name }}</option>
         </select>
@@ -37,19 +39,68 @@ export default {
             area_selected: 0,
             getExp: 370*4,
 
+            dummy: 5,
+
             needExp: 0,
             needCount: 0,
         }
     },
     methods: {
         expCalc: function () {
-            console.log(this.exp[this.targetLv-1] - (this.exp[this.currentLv-1] + parseInt(this.currentExp)))
-
             var needExp = this.exp[this.targetLv-1] - (this.exp[this.currentLv-1] + parseInt(this.currentExp))
-            this.getExp = this.area[this.area_selected].exp
-
             this.needExp = needExp
-            this.needCount = Math.ceil(needExp / this.getExp)
+
+            this.getExp = this.area[this.area_selected].exp
+            
+
+
+            // 1~9, 10~29, 30~69, 70~89, 90~120 구간별로 편제별 경험치 차별적용
+            var cumulativeExp = this.exp[this.currentLv-1] + parseInt(this.currentExp)
+            var targetExp = this.exp[this.targetLv-1]
+            var getExp = this.getExp
+            var needCount = 0
+            var dummy_coefficient = 0
+
+            for(needCount = 0; cumulativeExp < targetExp; needCount++){
+
+                if(cumulativeExp >= this.exp[89]){
+                    if(this.dummy < 5){
+                        dummy_coefficient = 0.5 + (0.5 * this.dummy)
+                    } else {
+                        dummy_coefficient = 3
+                    }
+
+                    getExp = this.getExp * dummy_coefficient
+                } else if(cumulativeExp >= this.exp[69]){
+                    if(this.dummy < 4){
+                        dummy_coefficient = 0.5 + (0.5 * this.dummy)
+                    } else {
+                        dummy_coefficient = 2.5
+                    }
+
+                    getExp = this.getExp * dummy_coefficient
+                } else if(cumulativeExp >= this.exp[29]){
+                    if(this.dummy < 3){
+                        dummy_coefficient = 0.5 + (0.5 * this.dummy)
+                    } else {
+                        dummy_coefficient = 2
+                    }
+
+                    getExp = this.getExp * dummy_coefficient
+                } else if(cumulativeExp >= this.exp[9]){
+                    if(this.dummy < 2){
+                        dummy_coefficient = 0.5 + (0.5 * this.dummy)
+                    } else {
+                        dummy_coefficient = 1.5
+                    }
+
+                    getExp = this.getExp * dummy_coefficient
+                }
+                cumulativeExp += getExp
+            }
+
+            // this.needCount = Math.ceil( needExp / (this.getExp * (0.5 + 0.5 * this.dummy)) )
+            this.needCount = needCount
         }
     },
     updated: function () {
