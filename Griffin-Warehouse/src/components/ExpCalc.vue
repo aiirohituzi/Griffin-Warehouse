@@ -52,55 +52,75 @@ export default {
 
             this.getExp = this.area[this.area_selected].exp
             
-
-
             // 1~9, 10~29, 30~69, 70~89, 90~120 구간별로 편제별 경험치 차별적용
             var cumulativeExp = this.exp[this.currentLv-1] + parseInt(this.currentExp)
             var targetExp = this.exp[this.targetLv-1]
-            var getExp = this.getExp
             var needCount = 0
-            var dummy_coefficient = 0
+            var penaltyLv = this.area[this.area_selected].penalty
 
             for(needCount = 0; cumulativeExp < targetExp; needCount++){
-
-                if(cumulativeExp >= this.exp[89]){
-                    if(this.dummy < 5){
-                        dummy_coefficient = 0.5 + (0.5 * this.dummy)
-                    } else {
-                        dummy_coefficient = 3
-                    }
-
-                    getExp = this.getExp * dummy_coefficient
-                } else if(cumulativeExp >= this.exp[69]){
-                    if(this.dummy < 4){
-                        dummy_coefficient = 0.5 + (0.5 * this.dummy)
-                    } else {
-                        dummy_coefficient = 2.5
-                    }
-
-                    getExp = this.getExp * dummy_coefficient
-                } else if(cumulativeExp >= this.exp[29]){
-                    if(this.dummy < 3){
-                        dummy_coefficient = 0.5 + (0.5 * this.dummy)
-                    } else {
-                        dummy_coefficient = 2
-                    }
-
-                    getExp = this.getExp * dummy_coefficient
-                } else if(cumulativeExp >= this.exp[9]){
-                    if(this.dummy < 2){
-                        dummy_coefficient = 0.5 + (0.5 * this.dummy)
-                    } else {
-                        dummy_coefficient = 1.5
-                    }
-
-                    getExp = this.getExp * dummy_coefficient
+                if(this.getExpFinal(cumulativeExp, penaltyLv) == 10){
+                    break
                 }
-                cumulativeExp += getExp
+                cumulativeExp += this.getExpFinal(cumulativeExp, penaltyLv)
             }
 
-            // this.needCount = Math.ceil( needExp / (this.getExp * (0.5 + 0.5 * this.dummy)) )
-            this.needCount = needCount
+            if(this.getExpFinal(cumulativeExp, penaltyLv) == 10){
+                this.needCount = needCount + "회 + α (이후 경험치는 10으로 고정)"
+            } else {
+                this.needCount = needCount
+            }
+        },
+        getExpFinal: function (cumulativeExp, penaltyLv) {
+            if(this.getPenalty(cumulativeExp, penaltyLv) == 0){
+                return 10
+            } else {
+                return this.getExp * this.getPenalty(cumulativeExp, penaltyLv) * this.getDummy(cumulativeExp)
+            }
+        },
+        getPenalty: function (cumulativeExp, penaltyLv) {
+            if(cumulativeExp > this.exp[(penaltyLv + 50) - 1]){
+                return 0
+            } else if(cumulativeExp > this.exp[(penaltyLv + 40) - 1]){
+                return 0.2
+            } else if(cumulativeExp > this.exp[(penaltyLv + 30) - 1]){
+                return 0.4
+            } else if(cumulativeExp > this.exp[(penaltyLv + 20) - 1]){
+                return 0.6
+            } else if(cumulativeExp > this.exp[(penaltyLv + 10) - 1]){
+                return 0.8
+            } else {
+                return 1
+            }
+        },
+        getDummy: function (cumulativeExp) {
+            if(cumulativeExp >= this.exp[89]){
+                if(this.dummy < 5){
+                    return 0.5 + (0.5 * this.dummy)
+                } else {
+                    return 3
+                }
+            } else if(cumulativeExp >= this.exp[69]){
+                if(this.dummy < 4){
+                    return 0.5 + (0.5 * this.dummy)
+                } else {
+                    return 2.5
+                }
+            } else if(cumulativeExp >= this.exp[29]){
+                if(this.dummy < 3){
+                    return 0.5 + (0.5 * this.dummy)
+                } else {
+                    return 2
+                }
+            } else if(cumulativeExp >= this.exp[9]){
+                if(this.dummy < 2){
+                    return 0.5 + (0.5 * this.dummy)
+                } else {
+                    return 1.5
+                }
+            } else {
+                return 1
+            }
         }
     },
     updated: function () {
