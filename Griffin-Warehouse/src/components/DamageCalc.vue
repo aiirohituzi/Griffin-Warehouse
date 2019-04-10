@@ -181,6 +181,7 @@ export default {
                 {id:12, name: 'Bren Ten', buff: 16, skill: 18},
                 {id:13, name: 'CZ52', buff: 20, skill: 20},
                 {id:14, name: '제리코', buff: 24, skill: 15},
+                {id:15, name: '스테츠킨', buff: 12, skill: 0},
             ],
             tdoll_selected: {
                 first: 0,

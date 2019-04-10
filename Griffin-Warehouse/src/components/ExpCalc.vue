@@ -3,6 +3,7 @@
     <div>현재 레벨 <input type="text" v-model="currentLv"></div>
     <div>현재 경험치 <input type="text" v-model="currentExp"></div>
     <div>목표 레벨 <input type="text" v-model="targetLv"></div>
+    <div>서약 여부<input type="checkbox" v-model="pledge"></div>
     <div>최대 링크수 제한 <input type="range" min="1" max="5" v-model="dummy"> {{ dummy }}링크 </div>
     <div>
         레벨링 지역(입수경험치)
@@ -40,6 +41,8 @@ export default {
             getExp: 370*4,
 
             dummy: 5,
+            pledge: false,
+            pledgeCoefficient: 1,
 
             needExp: 0,
             needCount: 0,
@@ -58,62 +61,69 @@ export default {
             var needCount = 0
             var penaltyLv = this.area[this.area_selected].penalty
 
-            for(needCount = 0; cumulativeExp < targetExp; needCount++){
-                if(this.getExpFinal(cumulativeExp, penaltyLv) == 10){
+            for(needCount = 0; cumulativeExp < targetExp; needCount++) {
+                if(this.getExpFinal(cumulativeExp, penaltyLv) == 10) {
                     break
                 }
-                cumulativeExp += this.getExpFinal(cumulativeExp, penaltyLv)
+                if(this.pledge) {
+                    if(cumulativeExp >= this.exp[99]) {
+                        this.pledgeCoefficient = 2
+                    }
+                } else {
+                    this.pledgeCoefficient = 1
+                }
+                cumulativeExp += this.getExpFinal(cumulativeExp, penaltyLv) * this.pledgeCoefficient
             }
 
-            if(this.getExpFinal(cumulativeExp, penaltyLv) == 10){
+            if(this.getExpFinal(cumulativeExp, penaltyLv) == 10) {
                 this.needCount = needCount + "회 + α (이후 경험치는 10으로 고정)"
             } else {
                 this.needCount = needCount
             }
         },
         getExpFinal: function (cumulativeExp, penaltyLv) {
-            if(this.getPenalty(cumulativeExp, penaltyLv) == 0){
+            if(this.getPenalty(cumulativeExp, penaltyLv) == 0) {
                 return 10
             } else {
                 return this.getExp * this.getPenalty(cumulativeExp, penaltyLv) * this.getDummy(cumulativeExp)
             }
         },
         getPenalty: function (cumulativeExp, penaltyLv) {
-            if(cumulativeExp > this.exp[(penaltyLv + 50) - 1]){
+            if(cumulativeExp >= this.exp[(penaltyLv + 50) - 1]) {
                 return 0
-            } else if(cumulativeExp > this.exp[(penaltyLv + 40) - 1]){
+            } else if(cumulativeExp > this.exp[(penaltyLv + 40) - 1]) {
                 return 0.2
-            } else if(cumulativeExp > this.exp[(penaltyLv + 30) - 1]){
+            } else if(cumulativeExp > this.exp[(penaltyLv + 30) - 1]) {
                 return 0.4
-            } else if(cumulativeExp > this.exp[(penaltyLv + 20) - 1]){
+            } else if(cumulativeExp > this.exp[(penaltyLv + 20) - 1]) {
                 return 0.6
-            } else if(cumulativeExp > this.exp[(penaltyLv + 10) - 1]){
+            } else if(cumulativeExp > this.exp[(penaltyLv + 10) - 1]) {
                 return 0.8
             } else {
                 return 1
             }
         },
         getDummy: function (cumulativeExp) {
-            if(cumulativeExp >= this.exp[89]){
-                if(this.dummy < 5){
+            if(cumulativeExp >= this.exp[89]) {
+                if(this.dummy < 5) {
                     return 0.5 + (0.5 * this.dummy)
                 } else {
                     return 3
                 }
-            } else if(cumulativeExp >= this.exp[69]){
-                if(this.dummy < 4){
+            } else if(cumulativeExp >= this.exp[69]) {
+                if(this.dummy < 4) {
                     return 0.5 + (0.5 * this.dummy)
                 } else {
                     return 2.5
                 }
-            } else if(cumulativeExp >= this.exp[29]){
-                if(this.dummy < 3){
+            } else if(cumulativeExp >= this.exp[29]) {
+                if(this.dummy < 3) {
                     return 0.5 + (0.5 * this.dummy)
                 } else {
                     return 2
                 }
-            } else if(cumulativeExp >= this.exp[9]){
-                if(this.dummy < 2){
+            } else if(cumulativeExp >= this.exp[9]) {
+                if(this.dummy < 2) {
                     return 0.5 + (0.5 * this.dummy)
                 } else {
                     return 1.5
