@@ -3,7 +3,11 @@
     <div>현재 레벨 <input type="text" v-model="currentLv"></div>
     <div>현재 경험치 <input type="text" v-model="currentExp"></div>
     <div>목표 레벨 <input type="text" v-model="targetLv"></div>
-    <div>서약 여부<input type="checkbox" v-model="pledge"></div>
+    <div>
+        리더<input type="checkbox" v-model="leader">
+        MVP<input type="checkbox" v-model="mvp">
+        서약 여부<input type="checkbox" v-model="pledge">
+    </div>
     <div>최대 링크수 제한 <input type="range" min="1" max="5" v-model="dummy"> {{ dummy }}링크 </div>
     <div>
         레벨링 지역(입수경험치)
@@ -43,6 +47,10 @@ export default {
             dummy: 5,
             pledge: false,
             pledgeCoefficient: 1,
+            mvp: false,
+            mvpCoefficient: 1,
+            leader: false,
+            leaderCoefficient: 1,
 
             needExp: 0,
             needCount: 0,
@@ -65,6 +73,7 @@ export default {
                 if(this.getExpFinal(cumulativeExp, penaltyLv) == 10) {
                     break
                 }
+
                 if(this.pledge) {
                     if(cumulativeExp >= this.exp[99]) {
                         this.pledgeCoefficient = 2
@@ -72,7 +81,20 @@ export default {
                 } else {
                     this.pledgeCoefficient = 1
                 }
-                cumulativeExp += this.getExpFinal(cumulativeExp, penaltyLv) * this.pledgeCoefficient
+
+                if(this.mvp) {
+                    this.mvpCoefficient = 1.3
+                } else {
+                    this.mvpCoefficient = 1
+                }
+                
+                if(this.leader) {
+                    this.leaderCoefficient = 1.2
+                } else {
+                    this.leaderCoefficient = 1
+                }
+
+                cumulativeExp += this.getExpFinal(cumulativeExp, penaltyLv) * this.pledgeCoefficient * this.mvpCoefficient * this.leaderCoefficient
             }
 
             if(this.getExpFinal(cumulativeExp, penaltyLv) == 10) {
