@@ -1,27 +1,65 @@
 <template>
-<div>
-    <div>현재 레벨 <input type="text" v-model="currentLv"></div>
-    <div>현재 경험치 <input type="text" v-model="currentExp"></div>
-    <div>
-        목표 레벨<input type="radio" v-model="calcMode" value="level">
-        목표 경험치<input type="radio" v-model="calcMode" value="exp">
+<div class="container-expCalc">
+    <div class="inputGroup-exp">    
+        <div class="input-addon-left">현재 레벨</div>
+        <div class="input-exp">
+            <input type="text" v-model="currentLv">
+        </div>
     </div>
-    <div><input type="text" v-model="target"></div>
-    <div>
-        리더<input type="checkbox" v-model="leader">
-        MVP<input type="checkbox" v-model="mvp">
-        서약 여부<input type="checkbox" v-model="pledge">
+
+    <div class="inputGroup-exp">    
+        <div class="input-addon-left">현재 경험치 </div>
+        <div class="input-exp">
+            <input type="text" v-model="currentExp">
+        </div>
     </div>
-    <div>최대 링크수 제한 <input type="range" min="1" max="5" v-model="dummy"> {{ dummy }}링크 </div>
-    <div>
-        레벨링 지역(입수경험치)
-        <select v-model="area_selected">
-            <option v-for="item in area" :value="item.id">{{ item.name }}</option>
-        </select>
-        {{ this.getExp }}
+
+    <div class="radioCheckGroup">
+        <span>목표 레벨</span><input type="radio" class="radio" v-model="calcMode" value="level">
+        <span>목표 경험치</span><input type="radio" class="radio" v-model="calcMode" value="exp">
     </div>
-    <div>남은 경험치 <span>{{ needExp }}</span></div>
-    <div>남은 횟수 <span>{{ needCount }}</span> </div>
+
+    <div class="inputGroup-exp">
+        <div v-if="calcMode == 'level'" class="input-addon-left">목표 레벨</div>
+        <div v-if="calcMode == 'exp'" class="input-addon-left">목표 경험치</div>
+        <div class="input-exp">
+            <input type="text" v-model="target">
+        </div>
+    </div>
+
+    <div class="radioCheckGroup">
+        <span>리더</span><input type="checkbox" v-model="leader">
+        <span>MVP</span><input type="checkbox" v-model="mvp">
+        <span>서약 여부</span><input type="checkbox" v-model="pledge">
+    </div>
+
+    <div class="inputGroup-exp">    
+        <div class="input-addon-left">최대 링크수 제한</div>
+        <div class="input-exp-allAddon">
+            <input type="range" class="slider-exp" min="1" max="5" v-model="dummy">
+        </div>
+        <div class="input-addon-right">{{ dummy }}링크</div>
+    </div>
+
+    <div class="inputGroup-exp">    
+        <div class="input-addon-left">레벨링 지역</div>
+        <div class="input-exp-allAddon">
+            <select v-model="area_selected">
+                <option v-for="item in area" :value="item.id">{{ item.name }}</option>
+            </select>
+        </div>
+        <div class="input-addon-right">1회당 입수 경험치 {{ getExp }}</div>
+    </div>
+
+    <div class="inputGroup-exp">    
+        <div class="input-addon-left">남은 경험치</div>
+        <div class="input-label">{{ needExp }}</div>
+    </div>
+    
+    <div class="inputGroup-exp">    
+        <div class="input-addon-left">남은 횟수</div>
+        <div class="input-label">{{ needCount }}</div>
+    </div>
 </div>
 </template>
 
@@ -174,4 +212,165 @@ export default {
 </script>
 
 <style>
+.container-expCalc {
+    margin-top: calc(40px + 10vh);
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+.radioCheckGroup {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    font-size: 10pt;
+    vertical-align: middle;
+}
+.radioCheckGroup span, input[type=radio], input[type=checkbox] {
+    vertical-align: middle;
+}
+.inputGroup-exp {
+    height: 30px;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+.inputGroup-exp .input-addon-left {
+    float: left;
+    width: fit-content;
+    border: 2px solid #c3b9a2;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-right: unset;
+    background-color: #c3b9a2b6;
+    padding: 3px;
+    font-size: 10pt;
+}
+.inputGroup-exp .input-addon-right {
+    float: left;
+    width: fit-content;
+    border: 2px solid #c3b9a2;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left: unset;
+    background-color: #c3b9a249;
+    padding: 3px;
+    font-size: 10pt;
+}
+.inputGroup-exp .input-exp {
+    float: left;
+    border: 2px solid #c3b9a2;
+
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    
+    -webkit-border-top-left-radius: 0;
+    -webkit-border-bottom-left-radius: 0;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    
+    padding: 3px;
+
+    font-size: 10pt;
+    width: 50px;
+}
+.inputGroup-exp .input-exp input{
+    -webkit-appearance: none;
+
+    border: unset;
+    -webkit-border: unset;
+    
+    margin: 0;
+    -webkit-margin: 0;
+
+    padding: 0;
+    -webkit-padding: 0;
+
+    font-size: 10pt;
+    width: 50px;
+    text-align: right;
+}
+.inputGroup-exp .input-exp-allAddon {
+    float: left;
+    border: 2px solid #c3b9a2;
+    -webkit-appearance: none;
+
+    border-radius: 0;
+    -webkit-border-radius: 0;
+
+    padding: 3px;
+
+    font-size: 10pt;
+    width: 90px;
+}
+.inputGroup-exp .input-exp-allAddon .slider-exp {
+    vertical-align: middle;
+    width: 90%;
+    
+    margin: 0;
+    -webkit-margin: 0;
+    padding: 0;
+    -webkit-padding: 0;
+
+
+}
+.inputGroup-exp .input-exp-allAddon select {
+    -webkit-appearance: none;
+
+    border: unset;
+    -webkit-border: unset;
+    
+    margin: 0;
+    -webkit-margin: 0;
+
+    padding: 0;
+    -webkit-padding: 0;
+    
+    background: url('../assets/select.png') no-repeat center right;
+    background-size: 17px 20px;
+    
+    font-size: 10pt;
+    width: 90px;
+    text-align: right;
+}
+.inputGroup-exp .input-label {
+    float: left;
+    width: fit-content;
+    border: 2px solid #c3b9a2;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #c3b9a249;
+    padding: 3px;
+    font-size: 10pt;
+}
+
+@media only screen and (max-width: 767px) {
+    .radioCheckGroup {
+        font-size: 9pt;
+    }
+    .inputGroup-exp .input-addon-left {
+        font-size: 8pt;
+    }
+    .inputGroup-exp .input-addon-right {
+        font-size: 8pt;
+    }
+    .inputGroup-exp .input-exp {
+        font-size: 8pt;
+    }
+    .inputGroup-exp .input-exp input {
+        font-size: 8pt;
+    }
+    .inputGroup-exp .input-exp-allAddon {
+        font-size: 8pt;
+    }
+    .inputGroup-exp .input-exp-allAddon input {
+        font-size: 8pt;
+    }
+    .inputGroup-exp .input-label {
+        font-size: 8pt;
+    }
+}
 </style>
