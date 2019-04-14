@@ -401,6 +401,7 @@ export default {
 }
 .inputGroup-damage .input-addon-left .check-damage {
     height: 12px;
+    margin: auto;
 }
 
 .container-content {

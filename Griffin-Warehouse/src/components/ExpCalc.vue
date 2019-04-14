@@ -308,14 +308,18 @@ export default {
 }
 .inputGroup-exp .input-exp-allAddon .slider-exp {
     vertical-align: middle;
-    width: 90%;
+    width: 100%;
     
-    margin: 0;
-    -webkit-margin: 0;
+    margin-top: -10px;
+    -webkit-margin-top: -10px;
+    margin-left: auto;
+    -webkit-margin-left: auto;
+    margin-right: auto;
+    -webkit-margin-right: auto;
+    margin-bottom: -5px;
+    -webkit-margin-bottom: -5px;
     padding: 0;
     -webkit-padding: 0;
-
-
 }
 .inputGroup-exp .input-exp-allAddon select {
     -webkit-appearance: none;
@@ -333,7 +337,7 @@ export default {
     background-size: 17px 20px;
     
     font-size: 10pt;
-    width: 90px;
+    width: 100%;
     text-align: right;
 }
 .inputGroup-exp .input-label {
@@ -366,7 +370,19 @@ export default {
     .inputGroup-exp .input-exp-allAddon {
         font-size: 8pt;
     }
-    .inputGroup-exp .input-exp-allAddon input {
+    .inputGroup-exp .input-exp-allAddon .slider-exp {
+        font-size: 8pt;
+
+        margin-top: -7px;
+        -webkit-margin-top: -7px;
+        margin-left: auto;
+        -webkit-margin-left: auto;
+        margin-right: auto;
+        -webkit-margin-right: auto;
+        margin-bottom: -5px;
+        -webkit-margin-bottom: -5px;
+    }
+    .inputGroup-exp .input-exp-allAddon select {
         font-size: 8pt;
     }
     .inputGroup-exp .input-label {
