@@ -28,6 +28,9 @@ export default {
             $('#'+this.$route.name).addClass('current')
         }
     },
+    mounted: function () {
+        this.tabMove()
+    },
     updated: function () {
         this.tabMove()
     }

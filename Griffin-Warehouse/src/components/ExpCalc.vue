@@ -1,64 +1,78 @@
 <template>
 <div class="container-expCalc">
-    <div class="inputGroup-exp">    
-        <div class="input-addon-left">현재 레벨</div>
-        <div class="input-exp">
-            <input type="text" v-model="currentLv">
+    <div class="tabnav-exp">
+        <div class="tabBtn-exp">인형</div>
+        <div class="tabBtn-exp">요정</div>
+        <div class="tabBtn-exp">화력지원소대</div>
+    </div>
+    <div id="tdoll" class="tab-exp">
+        <div class="inputGroup-exp">    
+            <div class="input-addon-left">현재 레벨</div>
+            <div class="input-exp">
+                <input type="text" maxlength="3" v-model="currentLv">
+            </div>
+        </div>
+
+        <div class="inputGroup-exp">    
+            <div class="input-addon-left">현재 경험치 </div>
+            <div class="input-exp">
+                <input type="text" v-model="currentExp">
+            </div>
+        </div>
+
+        <div class="radioCheckGroup">
+            <span>목표 레벨</span><input type="radio" class="radio" v-model="calcMode" value="level">
+            <span>목표 경험치</span><input type="radio" class="radio" v-model="calcMode" value="exp">
+        </div>
+
+        <div class="inputGroup-exp">
+            <div v-if="calcMode == 'level'" class="input-addon-left">목표 레벨</div>
+            <div v-if="calcMode == 'exp'" class="input-addon-left">목표 경험치</div>
+            <div class="input-exp">
+                <input v-if="calcMode == 'level'" type="text" maxlength="3" v-model="target">
+                <input v-if="calcMode == 'exp'" type="text" v-model="target">
+            </div>
+        </div>
+
+        <div class="radioCheckGroup">
+            <span>리더</span><input type="checkbox" v-model="leader">
+            <span>MVP</span><input type="checkbox" v-model="mvp">
+            <span>서약 여부</span><input type="checkbox" v-model="pledge">
+        </div>
+
+        <div class="inputGroup-exp">    
+            <div class="input-addon-left">최대 링크수 제한</div>
+            <div class="input-exp-allAddon">
+                <input type="range" class="slider-exp" min="1" max="5" v-model="dummy">
+            </div>
+            <div class="input-addon-right">{{ dummy }}링크</div>
+        </div>
+
+        <div class="inputGroup-exp">    
+            <div class="input-addon-left">레벨링 지역</div>
+            <div class="input-exp-allAddon">
+                <select v-model="area_selected">
+                    <option v-for="item in area" :value="item.id">{{ item.name }}</option>
+                </select>
+            </div>
+            <div class="input-addon-right">1회당 입수 경험치 {{ getExp }}</div>
+        </div>
+
+        <div class="inputGroup-exp">    
+            <div class="input-addon-left">남은 경험치</div>
+            <div class="input-label">{{ needExp }}</div>
+        </div>
+        
+        <div class="inputGroup-exp">    
+            <div class="input-addon-left">남은 횟수</div>
+            <div class="input-label">{{ needCount }}</div>
         </div>
     </div>
-
-    <div class="inputGroup-exp">    
-        <div class="input-addon-left">현재 경험치 </div>
-        <div class="input-exp">
-            <input type="text" v-model="currentExp">
-        </div>
+    <div id="fairy" style="display:none">
+        요정
     </div>
-
-    <div class="radioCheckGroup">
-        <span>목표 레벨</span><input type="radio" class="radio" v-model="calcMode" value="level">
-        <span>목표 경험치</span><input type="radio" class="radio" v-model="calcMode" value="exp">
-    </div>
-
-    <div class="inputGroup-exp">
-        <div v-if="calcMode == 'level'" class="input-addon-left">목표 레벨</div>
-        <div v-if="calcMode == 'exp'" class="input-addon-left">목표 경험치</div>
-        <div class="input-exp">
-            <input type="text" v-model="target">
-        </div>
-    </div>
-
-    <div class="radioCheckGroup">
-        <span>리더</span><input type="checkbox" v-model="leader">
-        <span>MVP</span><input type="checkbox" v-model="mvp">
-        <span>서약 여부</span><input type="checkbox" v-model="pledge">
-    </div>
-
-    <div class="inputGroup-exp">    
-        <div class="input-addon-left">최대 링크수 제한</div>
-        <div class="input-exp-allAddon">
-            <input type="range" class="slider-exp" min="1" max="5" v-model="dummy">
-        </div>
-        <div class="input-addon-right">{{ dummy }}링크</div>
-    </div>
-
-    <div class="inputGroup-exp">    
-        <div class="input-addon-left">레벨링 지역</div>
-        <div class="input-exp-allAddon">
-            <select v-model="area_selected">
-                <option v-for="item in area" :value="item.id">{{ item.name }}</option>
-            </select>
-        </div>
-        <div class="input-addon-right">1회당 입수 경험치 {{ getExp }}</div>
-    </div>
-
-    <div class="inputGroup-exp">    
-        <div class="input-addon-left">남은 경험치</div>
-        <div class="input-label">{{ needExp }}</div>
-    </div>
-    
-    <div class="inputGroup-exp">    
-        <div class="input-addon-left">남은 횟수</div>
-        <div class="input-label">{{ needCount }}</div>
+    <div id="fireSupportUnit" style="display:none">
+        화력지원소대
     </div>
 </div>
 </template>
@@ -222,6 +236,28 @@ export default {
     -webkit-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
 }
+
+.tabnav-exp {
+    width: 100%;
+    height: 30px;
+    list-style: none;
+}
+.tabBtn-exp {
+    width: calc(100% / 3);
+    height: 100%;
+    line-height: 30px;
+    box-sizing: border-box;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.tab-exp {
+    border: 1px solid black;
+    padding: 5px;
+}
+
 .radioCheckGroup {
     margin-top: 1vh;
     margin-bottom: 1vh;
