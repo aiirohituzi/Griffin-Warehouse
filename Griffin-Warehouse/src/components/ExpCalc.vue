@@ -1,9 +1,9 @@
 <template>
 <div class="container-expCalc">
     <div class="tabnav-exp">
-        <div class="tabBtn-exp">인형</div>
-        <div class="tabBtn-exp">요정</div>
-        <div class="tabBtn-exp">화력지원소대</div>
+        <div id="tabBtn-tdoll" class="tabBtn-exp current" @click="selectTab('tdoll')">인형</div>
+        <div id="tabBtn-fairy" class="tabBtn-exp" @click="selectTab('fairy')">요정</div>
+        <div id="tabBtn-fireSupportUnit" class="tabBtn-exp" @click="selectTab('fireSupportUnit')">화력지원소대</div>
     </div>
     <div id="tdoll" class="tab-exp">
         <div class="inputGroup-exp">    
@@ -68,10 +68,10 @@
             <div class="input-label">{{ needCount }}</div>
         </div>
     </div>
-    <div id="fairy" style="display:none">
+    <div id="fairy" class="tab-exp nonSelect">
         요정
     </div>
-    <div id="fireSupportUnit" style="display:none">
+    <div id="fireSupportUnit" class="tab-exp nonSelect">
         화력지원소대
     </div>
 </div>
@@ -132,7 +132,6 @@ export default {
                 this.needExp = targetExp - (this.exp[this.currentLv-1] + parseInt(this.currentExp))
             }
 
-            console.log(targetExp)
             for(needCount = 0; cumulativeExp < targetExp; needCount++) {
                 if(this.getExpFinal(cumulativeExp, penaltyLv) == 10) {
                     break
@@ -217,6 +216,17 @@ export default {
             } else {
                 return 1
             }
+        },
+
+        selectTab: function (divId) {
+            $('#tdoll').addClass('nonSelect')
+            $('#fairy').addClass('nonSelect')
+            $('#fireSupportUnit').addClass('nonSelect')
+            
+            $('.tabnav-exp').children().removeClass('current')
+
+            $('#' + divId).removeClass('nonSelect')
+            $('#tabBtn-' + divId).addClass('current')
         }
     },
     updated: function () {
@@ -250,12 +260,28 @@ export default {
     float: left;
     text-align: center;
     cursor: pointer;
-    border: 1px solid black;
+    font-size: 10pt;
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 2px solid #c3b9a2;
+    background-color:#c3b9a2b6;
+}
+.tabnav-exp .current {
+    background-color:#c3b9a2;
 }
 
 .tab-exp {
-    border: 1px solid black;
-    padding: 5px;
+    border: 2px solid #c3b9a2;
+    border-top: unset;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    padding: 10px;
+}
+
+.nonSelect {
+    display: none;
 }
 
 .radioCheckGroup {
@@ -388,6 +414,9 @@ export default {
 }
 
 @media only screen and (max-width: 767px) {
+    .tabBtn-exp {
+        font-size: 8pt;
+    }
     .radioCheckGroup {
         font-size: 9pt;
     }
