@@ -9,14 +9,14 @@
         <div class="inputGroup-exp">    
             <div class="input-addon-left">현재 레벨</div>
             <div class="input-exp">
-                <input type="text" maxlength="3" v-model="currentLv">
+                <input type="text" maxlength="3" v-model="tdollCurrentLv">
             </div>
         </div>
 
         <div class="inputGroup-exp">    
-            <div class="input-addon-left">현재 경험치 </div>
+            <div class="input-addon-left">현재 경험치</div>
             <div class="input-exp">
-                <input type="text" v-model="currentExp">
+                <input type="text" v-model="tdollCurrentExp">
             </div>
         </div>
 
@@ -29,8 +29,8 @@
             <div v-if="calcMode == 'level'" class="input-addon-left">목표 레벨</div>
             <div v-if="calcMode == 'exp'" class="input-addon-left">목표 경험치</div>
             <div class="input-exp">
-                <input v-if="calcMode == 'level'" type="text" maxlength="3" v-model="target">
-                <input v-if="calcMode == 'exp'" type="text" v-model="target">
+                <input v-if="calcMode == 'level'" type="text" maxlength="3" v-model="tdollTarget">
+                <input v-if="calcMode == 'exp'" type="text" v-model="tdollTarget">
             </div>
         </div>
 
@@ -70,7 +70,7 @@
         
         <div class="inputGroup-exp">    
             <div class="input-addon-left">필요 작전보고서</div>
-            <div class="input-label">{{ needReport }}개</div>
+            <div class="input-label">{{ tdollNeedReport }}개</div>
         </div>
     </div>
 
@@ -79,6 +79,32 @@
     <div id="fairy" class="tab-exp nonSelect">
         <!-- 입력받을 값: 현재레벨 현재경험치 목표레벨
         거지런계산은 힘듦 작보계산기만 일단 추가할것 -->
+
+        <div class="inputGroup-exp">    
+            <div class="input-addon-left">현재 레벨</div>
+            <div class="input-exp">
+                <input type="text" maxlength="3" v-model="fairyCurrentLv">
+            </div>
+        </div>
+
+        <div class="inputGroup-exp">    
+            <div class="input-addon-left">현재 경험치</div>
+            <div class="input-exp">
+                <input type="text" v-model="fairyCurrentExp">
+            </div>
+        </div>
+
+        <div class="inputGroup-exp">    
+            <div class="input-addon-left">목표 레벨</div>
+            <div class="input-exp">
+                <input type="text" v-model="fairyTarget">
+            </div>
+        </div>
+
+        <div class="inputGroup-exp">    
+            <div class="input-addon-left">필요 작전보고서</div>
+            <div class="input-label">{{ fairyNeedReport }}개</div>
+        </div>
     </div>
 
 
@@ -102,9 +128,13 @@ export default {
 
             calcMode: 'level',
 
-            currentLv: 1,
-            currentExp: 0,
-            target: 100,
+            tdollCurrentLv: 1,
+            tdollCurrentExp: 0,
+            tdollTarget: 100,
+
+            fairyCurrentLv: 1,
+            fairyCurrentExp: 0,
+            fairyTarget: 100,
 
             area: [
                 {id:0, name: '4-3e', exp: 370*4, penalty: 65},
@@ -127,7 +157,8 @@ export default {
 
             needExp: 0,
             needCount: 0,
-            needReport: 0,
+            tdollNeedReport: 0,
+            fairyNeedReport: 0,
         }
     },
     methods: {
@@ -135,26 +166,30 @@ export default {
             this.getExp = this.area[this.area_selected].exp
             
             // 1~9, 10~29, 30~69, 70~89, 90~120 구간별로 편제별 경험치 차별적용
-            var cumulativeExp = this.exp[this.currentLv-1] + parseInt(this.currentExp)
-            var targetExp
+            var cumulativeExp = this.exp[this.tdollCurrentLv-1] + parseInt(this.tdollCurrentExp)
+            var tdollTargetExp
             var needCount = 0
             var penaltyLv = this.area[this.area_selected].penalty
 
             if(this.calcMode == 'level') {
-                targetExp = this.exp[this.target-1]
-                this.needExp = this.exp[this.target-1] - (this.exp[this.currentLv-1] + parseInt(this.currentExp))
+                tdollTargetExp = this.exp[this.tdollTarget-1]
+                this.needExp = this.exp[this.tdollTarget-1] - (this.exp[this.tdollCurrentLv-1] + parseInt(this.tdollCurrentExp))
             } else if(this.calcMode == 'exp') {
-                targetExp = parseInt(this.target)
-                this.needExp = targetExp - (this.exp[this.currentLv-1] + parseInt(this.currentExp))
+                tdollTargetExp = parseInt(this.tdollTarget)
+                this.needExp = tdollTargetExp - (this.exp[this.tdollCurrentLv-1] + parseInt(this.tdollCurrentExp))
             }
+
+            var fairyNeedExp = this.exp_fairy[this.fairyTarget-1] - (this.exp_fairy[this.fairyCurrentLv-1] + parseInt(this.fairyCurrentExp))
+            this.fairyNeedReport = Math.ceil(fairyNeedExp / 3000)
+
 
             if(!this.pledge){
-                this.needReport = Math.ceil(this.needExp / 3000)
+                this.tdollNeedReport = Math.ceil(this.needExp / 3000)
             } else {
-                this.needReport = Math.ceil((this.exp_pledge[this.target-1] - (this.exp_pledge[this.currentLv-1] + parseInt(this.currentExp))) / 3000)
+                this.tdollNeedReport = Math.ceil((this.exp_pledge[this.tdollTarget-1] - (this.exp_pledge[this.tdollCurrentLv-1] + parseInt(this.tdollCurrentExp))) / 3000)
             }
 
-            for(needCount = 0; cumulativeExp < targetExp; needCount++) {
+            for(needCount = 0; cumulativeExp < tdollTargetExp; needCount++) {
                 if(this.getExpFinal(cumulativeExp, penaltyLv) == 10) {
                     break
                 }
@@ -263,6 +298,7 @@ export default {
     margin-left: auto;
     margin-right: auto;
     width: fit-content;
+    min-width: 300px;
     
     -moz-transition: all .2s ease-in-out;
     -webkit-transition: all .2s ease-in-out;
