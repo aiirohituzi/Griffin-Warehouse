@@ -97,7 +97,7 @@
         <div class="inputGroup-exp">    
             <div class="input-addon-left">목표 레벨</div>
             <div class="input-exp">
-                <input type="text" v-model="fairyTarget">
+                <input type="text" maxlength="3" v-model="fairyTarget">
             </div>
         </div>
 
@@ -111,7 +111,46 @@
 
 
     <div id="fireSupportUnit" class="tab-exp nonSelect">
-        화력지원소대
+        <div class="inputGroup-exp">    
+            <div class="input-addon-left">현재 레벨</div>
+            <div class="input-exp">
+                <input type="text" maxlength="3" v-model="FSTCurrentLv">
+            </div>
+        </div>
+
+        <div class="inputGroup-exp">    
+            <div class="input-addon-left">현재 경험치</div>
+            <div class="input-exp">
+                <input type="text" v-model="FSTCurrentExp">
+            </div>
+        </div>
+
+        <div class="inputGroup-exp">    
+            <div class="input-addon-left">목표 레벨</div>
+            <div class="input-exp">
+                <input type="text" maxlength="3" v-model="FSTTarget">
+            </div>
+        </div>
+
+        <div class="inputGroup-exp">
+            <div class="input-addon-left">필요 특수작전보고서</div>
+            <div class="input-label">{{ FSTNeedReport }}개</div>
+        </div>
+
+        <div class="inputGroup-exp">
+            <div class="input-addon-left">소요 시간</div>
+            <div class="input-label">{{ FSTTime }}</div>
+        </div>
+
+        <div class="inputGroup-exp">
+            <div class="input-addon-left">소모 전지</div>
+            <div class="input-label">{{ FSTTime * 5 }}</div>
+        </div>
+        
+        <div class="inputGroup-exp">
+            <div class="input-addon-left">특작보 제작에 필요한 전지</div>
+            <div class="input-label">{{ FSTNeedReport * 3 }}</div>
+        </div>
     </div>
 </div>
 </template>
@@ -126,15 +165,21 @@ export default {
 
             exp_fairy: [0, 300, 900, 1800, 3000, 4500, 6300, 8400, 10800, 13500, 16500, 19800, 23400, 27300, 31500, 36000, 40800, 45900, 51400, 57400, 63900, 71000, 79000, 88000, 98000, 109000, 121200, 134600, 149300, 165300, 182800, 201700, 222200, 244400, 268300, 294000, 321600, 351100, 382700, 416400, 452300, 490500, 531000, 574000, 619500, 667700, 718600, 772300, 828900, 888500, 951200, 1017100, 1086300, 1158900, 1234900, 1314500, 1397800, 1484800, 1575700, 1670600, 1769600, 1872700, 1980100, 2091900, 2208200, 2329100, 2454700, 2585100, 2720400, 2860800, 3006300, 3157100, 3313200, 3474800, 3642000, 3814900, 3993600, 4178300, 4369000, 4565900, 4769100, 4978700, 5194800, 5417600, 5647200, 5883700, 6127200, 6377800, 6635700, 6901000, 7173800, 7454200, 7742400, 8038500, 8342600, 8654900, 8975500, 9304500, 9642000, 9999000],
 
+            exp_FST: [0,500,1400,2700,4500,6700,9400,12600,16200,20200,24700,29700,35100,40900,47200,54000,61200,68800,77100,86100,95900,106500,118500,132000,147000,163500,181800,201900,223900,247900,274200,302500,333300,366600,402400,441000,482400,526600,574000,624600,678400,735700,796500,861000,929200,1001500,1077900,1158400,1243300,1332700,1426800,1525600,1629400,1738300,1852300,1971800,2096700,2227200,2363500,2505900,2654400,2809000,2970100,3137800,3312300,3493800,3682300,3877800,4080800,4291400,4509600,4735800,4970000,5212500,5463300,5722800,5990800,6267800,6553800,6849300,7154000,7468500,7792500,8127000,8471000,8826000,9191000,9567000,9954000,1035200,10761000,11182000,11614000,1205800,12514000,12983000,13464000,13957000,14463000,15000000],
+
             calcMode: 'level',
 
             tdollCurrentLv: 1,
             tdollCurrentExp: 0,
-            tdollTarget: 100,
+            tdollTarget: '',
 
             fairyCurrentLv: 1,
             fairyCurrentExp: 0,
-            fairyTarget: 100,
+            fairyTarget: '',
+
+            FSTCurrentLv: 1,
+            FSTCurrentExp: 0,
+            FSTTarget: '',
 
             area: [
                 {id:0, name: '4-3e', exp: 370*4, penalty: 65},
@@ -159,6 +204,9 @@ export default {
             needCount: 0,
             tdollNeedReport: 0,
             fairyNeedReport: 0,
+            FSTNeedReport: 0,
+
+            FSTTime: 0,
         }
     },
     methods: {
@@ -179,8 +227,14 @@ export default {
                 this.needExp = tdollTargetExp - (this.exp[this.tdollCurrentLv-1] + parseInt(this.tdollCurrentExp))
             }
 
+
             var fairyNeedExp = this.exp_fairy[this.fairyTarget-1] - (this.exp_fairy[this.fairyCurrentLv-1] + parseInt(this.fairyCurrentExp))
             this.fairyNeedReport = Math.ceil(fairyNeedExp / 3000)
+            
+
+            var FSTNeedExp = this.exp_FST[this.FSTTarget-1] - (this.exp_FST[this.FSTCurrentLv-1] + parseInt(this.FSTCurrentExp))
+            this.FSTNeedReport = Math.ceil(FSTNeedExp / 3000)
+            this.FSTTime = Math.ceil(this.FSTNeedReport / 15)
 
 
             if(!this.pledge){
