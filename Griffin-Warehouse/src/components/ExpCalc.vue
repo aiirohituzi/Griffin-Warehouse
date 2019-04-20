@@ -72,6 +72,11 @@
             <div class="input-addon-left">필요 작전보고서</div>
             <div class="input-label">{{ tdollNeedReport }}개</div>
         </div>
+        
+        <div class="inputGroup-exp">
+            <div class="input-addon-left">작보 제작에 필요한 전지</div>
+            <div class="input-label">{{ tdollNeedReport * 3 }}</div>
+        </div>
     </div>
 
 
@@ -105,12 +110,19 @@
             <div class="input-addon-left">필요 작전보고서</div>
             <div class="input-label">{{ fairyNeedReport }}개</div>
         </div>
+        
+        <div class="inputGroup-exp">
+            <div class="input-addon-left">작보 제작에 필요한 전지</div>
+            <div class="input-label">{{ fairyNeedReport * 3 }}</div>
+        </div>
     </div>
 
 
 
 
     <div id="fireSupportUnit" class="tab-exp nonSelect">
+        <span>10Lv 훈련장 기준</span>
+
         <div class="inputGroup-exp">    
             <div class="input-addon-left">현재 레벨</div>
             <div class="input-exp">
@@ -390,6 +402,7 @@ export default {
     border-bottom-right-radius: 5px;
 
     padding: 10px;
+    font-size: 10pt;
 }
 
 .nonSelect {
@@ -564,6 +577,10 @@ export default {
     }
     .inputGroup-exp .input-label {
         font-size: 8pt;
+    }
+
+    .tab-exp {
+        font-size: 8pt
     }
 }
 </style>
