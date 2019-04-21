@@ -9,7 +9,7 @@
         <div class="inputGroup-exp">    
             <div class="input-addon-left">현재 레벨</div>
             <div class="input-exp">
-                <input type="text" maxlength="3" v-model="tdollCurrentLv">
+                <input type="text" maxlength="3" v-model="tdollCurrentLv" v-on:keyup="checkInput">
             </div>
         </div>
 
@@ -29,7 +29,7 @@
             <div v-if="calcMode == 'level'" class="input-addon-left">목표 레벨</div>
             <div v-if="calcMode == 'exp'" class="input-addon-left">목표 경험치</div>
             <div class="input-exp">
-                <input v-if="calcMode == 'level'" type="text" maxlength="3" v-model="tdollTarget">
+                <input v-if="calcMode == 'level'" type="text" maxlength="3" v-model="tdollTarget" v-on:keyup="checkInput">
                 <input v-if="calcMode == 'exp'" type="text" v-model="tdollTarget">
             </div>
         </div>
@@ -88,7 +88,7 @@
         <div class="inputGroup-exp">    
             <div class="input-addon-left">현재 레벨</div>
             <div class="input-exp">
-                <input type="text" maxlength="3" v-model="fairyCurrentLv">
+                <input type="text" maxlength="3" v-model="fairyCurrentLv" v-on:keyup="checkInput">
             </div>
         </div>
 
@@ -102,7 +102,7 @@
         <div class="inputGroup-exp">    
             <div class="input-addon-left">목표 레벨</div>
             <div class="input-exp">
-                <input type="text" maxlength="3" v-model="fairyTarget">
+                <input type="text" maxlength="3" v-model="fairyTarget" v-on:keyup="checkInput">
             </div>
         </div>
 
@@ -126,7 +126,7 @@
         <div class="inputGroup-exp">    
             <div class="input-addon-left">현재 레벨</div>
             <div class="input-exp">
-                <input type="text" maxlength="3" v-model="FSTCurrentLv">
+                <input type="text" maxlength="3" v-model="FSTCurrentLv" v-on:keyup="checkInput">
             </div>
         </div>
 
@@ -140,7 +140,7 @@
         <div class="inputGroup-exp">    
             <div class="input-addon-left">목표 레벨</div>
             <div class="input-exp">
-                <input type="text" maxlength="3" v-model="FSTTarget">
+                <input type="text" id="test" maxlength="3" v-model="FSTTarget" v-on:keyup="checkInput">
             </div>
         </div>
 
@@ -350,6 +350,30 @@ export default {
 
             $('#' + divId).removeClass('nonSelect')
             $('#tabBtn-' + divId).addClass('current')
+        },
+
+        checkInput: function () {
+            var reg = /^([1-9]|[1-9][0-9]|100)$/
+            var reg2 = /^([1-9]|[1-9][0-9]|1[0-1][0-9]|120)$/
+            
+            if(!reg2.test(this.tdollCurrentLv)){
+                this.tdollCurrentLv = this.tdollCurrentLv.slice(0, -1)
+            }
+            if(!reg2.test(this.tdollTarget)){
+                this.tdollTarget = this.tdollTarget.slice(0, -1)
+            }
+            if(!reg.test(this.fairyCurrentLv)){
+                this.fairyCurrentLv = this.fairyCurrentLv.slice(0, -1)
+            }
+            if(!reg.test(this.fairyTarget)){
+                this.fairyTarget = this.fairyTarget.slice(0, -1)
+            }
+            if(!reg.test(this.FSTCurrentLv)){
+                this.FSTCurrentLv = this.FSTCurrentLv.slice(0, -1)
+            }
+            if(!reg.test(this.FSTTarget)){
+                this.FSTTarget = this.FSTTarget.slice(0, -1)
+            }
         }
     },
     updated: function () {
