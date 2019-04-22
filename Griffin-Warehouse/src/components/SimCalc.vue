@@ -12,10 +12,10 @@
                 <th>모의점수</th>
             </tr>
             <tr>
-                <td><input type="text" v-model="basicData"></td>
-                <td><input type="text" v-model="intermediateData"></td>
-                <td><input type="text" v-model="advancedData"></td>
-                <td><input type="text" v-model="currentSimEnergy"></td>
+                <td><input type="text" maxlength="5" v-model="basicData" v-on:keyup="checkInputData"></td>
+                <td><input type="text" maxlength="5" v-model="intermediateData" v-on:keyup="checkInputData"></td>
+                <td><input type="text" maxlength="5" v-model="advancedData" v-on:keyup="checkInputData"></td>
+                <td><input type="text" maxlength="5" v-model="currentSimEnergy" v-on:keyup="checkInputData"></td>
             </tr>
         </table>
     </div>
@@ -69,9 +69,9 @@
     <div id="div-getData" class="side-left">
         <div class="inputGroup-getData">
             <div class="row-getData">모의작전 1회당</div>
-            <div class="row-getData">초급 <input type="text" maxlength="3" v-model="getBasicData"></div>
-            <div class="row-getData">중급 <input type="text" maxlength="3" v-model="getIntermediateData"></div>
-            <div class="row-getData">고급 <input type="text" maxlength="3" v-model="getAdvancedData"></div>
+            <div class="row-getData">초급 <input type="text" maxlength="3" v-model="getBasicData" v-on:keyup="checkInputData"></div>
+            <div class="row-getData">중급 <input type="text" maxlength="3" v-model="getIntermediateData" v-on:keyup="checkInputData"></div>
+            <div class="row-getData">고급 <input type="text" maxlength="3" v-model="getAdvancedData" v-on:keyup="checkInputData"></div>
         </div>
         <div class="btn-getData" @click="openGetData()">스킬칩 수급량 입력</div>
     </div>
@@ -201,6 +201,31 @@ export default {
         openNeedData: function () {
             $('.side-right').toggleClass('move')
         },
+        checkInputData: function () {
+            var reg = /\D+/
+
+            if(reg.test(this.basicData)){
+                this.basicData = this.basicData.toString().replace(/\D+/, '')
+            }
+            if(reg.test(this.intermediateData)){
+                this.intermediateData = this.intermediateData.replace(/\D+/, '')
+            }
+            if(reg.test(this.advancedData)){
+                this.advancedData = this.advancedData.replace(/\D+/, '')
+            }
+            if(reg.test(this.currentSimEnergy)){
+                this.currentSimEnergy = this.currentSimEnergy.replace(/\D+/, '')
+            }
+            if(reg.test(this.getBasicData)){
+                this.getBasicData = this.getBasicData.replace(/\D+/, '')
+            }
+            if(reg.test(this.getIntermediateData)){
+                this.getIntermediateData = this.getIntermediateData.replace(/\D+/, '')
+            }
+            if(reg.test(this.getAdvancedData)){
+                this.getAdvancedData = this.getAdvancedData.replace(/\D+/, '')
+            }
+        }
     },
     updated: function () {
         this.simCalc()

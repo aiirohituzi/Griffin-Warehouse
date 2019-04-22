@@ -9,7 +9,7 @@
         <div class="inputGroup-exp">    
             <div class="input-addon-left">현재 레벨</div>
             <div class="input-exp">
-                <input type="text" maxlength="3" v-model="tdollCurrentLv" v-on:keyup="checkInput">
+                <input type="text" maxlength="3" v-model="tdollCurrentLv" v-on:keyup="checkInputLv">
             </div>
         </div>
 
@@ -29,7 +29,7 @@
             <div v-if="calcMode == 'level'" class="input-addon-left">목표 레벨</div>
             <div v-if="calcMode == 'exp'" class="input-addon-left">목표 경험치</div>
             <div class="input-exp">
-                <input v-if="calcMode == 'level'" type="text" maxlength="3" v-model="tdollTarget" v-on:keyup="checkInput">
+                <input v-if="calcMode == 'level'" type="text" maxlength="3" v-model="tdollTarget" v-on:keyup="checkInputLv">
                 <input v-if="calcMode == 'exp'" type="text" v-model="tdollTarget">
             </div>
         </div>
@@ -88,7 +88,7 @@
         <div class="inputGroup-exp">    
             <div class="input-addon-left">현재 레벨</div>
             <div class="input-exp">
-                <input type="text" maxlength="3" v-model="fairyCurrentLv" v-on:keyup="checkInput">
+                <input type="text" maxlength="3" v-model="fairyCurrentLv" v-on:keyup="checkInputLv">
             </div>
         </div>
 
@@ -102,7 +102,7 @@
         <div class="inputGroup-exp">    
             <div class="input-addon-left">목표 레벨</div>
             <div class="input-exp">
-                <input type="text" maxlength="3" v-model="fairyTarget" v-on:keyup="checkInput">
+                <input type="text" maxlength="3" v-model="fairyTarget" v-on:keyup="checkInputLv">
             </div>
         </div>
 
@@ -126,7 +126,7 @@
         <div class="inputGroup-exp">    
             <div class="input-addon-left">현재 레벨</div>
             <div class="input-exp">
-                <input type="text" maxlength="3" v-model="FSTCurrentLv" v-on:keyup="checkInput">
+                <input type="text" maxlength="3" v-model="FSTCurrentLv" v-on:keyup="checkInputLv">
             </div>
         </div>
 
@@ -140,7 +140,7 @@
         <div class="inputGroup-exp">    
             <div class="input-addon-left">목표 레벨</div>
             <div class="input-exp">
-                <input type="text" id="test" maxlength="3" v-model="FSTTarget" v-on:keyup="checkInput">
+                <input type="text" maxlength="3" v-model="FSTTarget" v-on:keyup="checkInputLv">
             </div>
         </div>
 
@@ -352,27 +352,52 @@ export default {
             $('#tabBtn-' + divId).addClass('current')
         },
 
-        checkInput: function () {
+        checkInputLv: function (event) {
             var reg = /^([1-9]|[1-9][0-9]|100)$/
             var reg2 = /^([1-9]|[1-9][0-9]|1[0-1][0-9]|120)$/
-            
+            var regdig = /\d+/
+
             if(!reg2.test(this.tdollCurrentLv)){
-                this.tdollCurrentLv = this.tdollCurrentLv.slice(0, -1)
+                if(regdig.test(event.key)){
+                    this.tdollCurrentLv = this.tdollCurrentLv.replace(event.key, '')
+                } else {
+                    this.tdollCurrentLv = this.tdollCurrentLv.replace(/\D+/, '')
+                }
             }
             if(!reg2.test(this.tdollTarget)){
-                this.tdollTarget = this.tdollTarget.slice(0, -1)
+                if(regdig.test(event.key)){
+                    this.tdollTarget = this.tdollTarget.replace(event.key, '')
+                } else {
+                    this.tdollTarget = this.tdollTarget.replace(/\D+/, '')
+                }
             }
             if(!reg.test(this.fairyCurrentLv)){
-                this.fairyCurrentLv = this.fairyCurrentLv.slice(0, -1)
+                if(regdig.test(event.key)){
+                    this.fairyCurrentLv = this.fairyCurrentLv.replace(event.key, '')
+                } else {
+                    this.fairyCurrentLv = this.fairyCurrentLv.replace(/\D+/, '')
+                }
             }
             if(!reg.test(this.fairyTarget)){
-                this.fairyTarget = this.fairyTarget.slice(0, -1)
+                if(regdig.test(event.key)){
+                    this.fairyTarget = this.fairyTarget.replace(event.key, '')
+                } else {
+                    this.fairyTarget = this.fairyTarget.replace(/\D+/, '')
+                }
             }
             if(!reg.test(this.FSTCurrentLv)){
-                this.FSTCurrentLv = this.FSTCurrentLv.slice(0, -1)
+                if(regdig.test(event.key)){
+                    this.FSTCurrentLv = this.FSTCurrentLv.replace(event.key, '')
+                } else {
+                    this.FSTCurrentLv = this.FSTCurrentLv.replace(/\D+/, '')
+                }
             }
             if(!reg.test(this.FSTTarget)){
-                this.FSTTarget = this.FSTTarget.slice(0, -1)
+                if(regdig.test(event.key)){
+                    this.FSTTarget = this.FSTTarget.replace(event.key, '')
+                } else {
+                    this.FSTTarget = this.FSTTarget.replace(/\D+/, '')
+                }
             }
         }
     },
