@@ -8,7 +8,7 @@
     <div class="inputGroup-gems">    
         <div class="input-addon-left">가격 / 수량 입력</div>
         <div class="input-gems-allAddon">
-            <input type="text" maxlength="6" v-model="inputGems">
+            <input type="text" maxlength="6" v-model="inputGems" v-on:keyup="checkInputGems">
         </div>
         <div v-if="calcMode == 0" class="input-addon-right">{{ inputGems }}개 * {{ remainingDays }}일 = {{ inputGems * remainingDays }}개</div>
         <div v-if="calcMode == 1" class="input-addon-right">{{ inputGems }}개</div>
@@ -17,14 +17,14 @@
     <div class="inputGroup-gems">    
         <div class="input-addon-left">남은 일수 입력</div>
         <div class="input-gems">
-            <input type="text" maxlength="6" v-model="remainingDays">
+            <input type="text" maxlength="6" v-model="remainingDays" v-on:keyup="checkInputGems">
         </div>
     </div>
 
     <div class="inputGroup-gems">    
         <div class="input-addon-left">현재 보석 보유량 입력</div>
         <div class="input-gems">
-            <input type="text" maxlength="6" v-model="currentGems">
+            <input type="text" maxlength="6" v-model="currentGems" v-on:keyup="checkInputGems">
         </div>
     </div>
 
@@ -36,7 +36,7 @@
     <div class="inputGroup-gems">    
         <div class="input-addon-left">모의점수 하루 구매횟수 입력</div>
         <div class="input-gems-allAddon">
-            <input type="text" maxlength="2" v-model="mockPurchaseCount">
+            <input type="text" maxlength="2" v-model="mockPurchaseCount" v-on:keyup="checkInputGems">
         </div>
         <div class="input-addon-right">총 {{ mockGems }}개</div>
     </div>
@@ -152,10 +152,10 @@ export default {
             }
             this.mockGems = mockSum * this.remainingDays
 
-            console.log("todayLabel : " + todayLabel)
-            console.log("weeklyCount : " + weeklyCount)
-            console.log("afterDayLabel : " + afterDayLabel)
-            console.log("t+r : " + (parseInt(todayLabel) + parseInt(this.remainingDays)))
+            // console.log("todayLabel : " + todayLabel)
+            // console.log("weeklyCount : " + weeklyCount)
+            // console.log("afterDayLabel : " + afterDayLabel)
+            // console.log("t+r : " + (parseInt(todayLabel) + parseInt(this.remainingDays)))
             // 일~토: 0~6
             if(this.remainingDays != 0) {
                 if(weeklyCount > 0) {           // (일요일 기준)1주 이상 경과했을 경우
@@ -178,6 +178,28 @@ export default {
             }
 
             this.needGems = targetGems - this.currentGems - this.monthly + this.mockGems - this.shareGems
+        },
+        checkInputGems: function () {
+            var reg = /\D+/
+            var reg2 = /^([0-9]|10)$/
+            var regdig = /\d+/
+
+            if(reg.test(this.inputGems)){
+                this.inputGems = this.inputGems.replace(/\D+/, '')
+            }
+            if(reg.test(this.remainingDays)){
+                this.remainingDays = this.remainingDays.replace(/\D+/, '')
+            }
+            if(reg.test(this.currentGems)){
+                this.currentGems = this.currentGems.replace(/\D+/, '')
+            }
+            if(!reg2.test(this.mockPurchaseCount)){
+                if(regdig.test(event.key)){
+                    this.mockPurchaseCount = this.mockPurchaseCount.toString().replace(event.key, '')
+                } else {
+                    this.mockPurchaseCount = this.mockPurchaseCount.toString().replace(/\D+/, '')
+                }
+            }
         }
     },
     updated: function () {
