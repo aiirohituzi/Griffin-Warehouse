@@ -2,13 +2,13 @@
 <div class="container-damageCalc">
     <div class="inputGroup-damage">
         <div class="input-damage">
-            <input type="text" maxlength="3" v-model="tdollAtk">
+            <input type="text" maxlength="3" v-model="tdollAtk" v-on:keyup="checkInputDamage">
         </div>
         <div class="input-addon-left">인형 화력 스탯 입력</div>
     </div>
     <div class="inputGroup-damage">
         <div class="input-damage">
-            <input type="text" maxlength="4" v-model="tdollSkill">
+            <input type="text" maxlength="4" v-model="tdollSkill" v-on:keyup="checkInputDamage">
         </div>
         <div class="input-addon-left">인형 스킬 배율(%) 입력</div>
     </div>
@@ -94,7 +94,7 @@
             </tr>
             <tr>
                 <!-- 요정 진벞 입력 -->
-                <td><input type="text" class="input-text" v-model="fairyBuff"></td>
+                <td><input type="text" class="input-text" v-model="fairyBuff" v-on:keyup="checkInputDamage"></td>
                 <!-- 요정 특성 선택 -->
                 <td>
                     <select v-model="fairy_selected">
@@ -102,7 +102,7 @@
                     </select>
                 </td>
                 <!-- 요정 스킬 입력 -->
-                <td><input type="text" class="input-text" v-model="fairySkill"></td>
+                <td><input type="text" class="input-text" v-model="fairySkill" v-on:keyup="checkInputDamage"></td>
             </tr>
             <tr>
                 <td><div class="label">{{ fairyBuff }}%</div></td>
@@ -115,13 +115,13 @@
 
     <div class="inputGroup-damage">
         <div class="input-damage">
-            <input type="text" maxlength="3" v-model="armor">
+            <input type="text" maxlength="3" v-model="armor" v-on:keyup="checkInputDamage">
         </div>
         <div class="input-addon-left">장갑 적용 (0입력 시 과관통 자동 적용) <input class="check-damage" type="checkbox" style="width:unset;" v-model="armorOn"></div>
     </div>
     <div class="inputGroup-damage">
         <div class="input-damage">
-            <input type="text" maxlength="3" v-model="critical">
+            <input type="text" maxlength="3" v-model="critical" v-on:keyup="checkInputDamage">
         </div>
         <div class="input-addon-left">치명타 적용 (치명타 배율(%) 입력) <input class="check-damage" type="checkbox" style="width:unset;" v-model="criticalOn"></div>
     </div>
@@ -332,6 +332,30 @@ export default {
                 this.selectContender = false
             }
         },
+        checkInputDamage: function () {
+            var reg = /\D+/
+            var reg2 = /^([0-9]|10)$/
+            var regdig = /\d+/
+
+            if(reg.test(this.tdollAtk)){
+                this.tdollAtk = this.tdollAtk.replace(/\D+/, '')
+            }
+            if(reg.test(this.tdollSkill)){
+                this.tdollSkill = this.tdollSkill.replace(/\D+/, '')
+            }
+            if(reg.test(this.fairyBuff)){
+                this.fairyBuff = this.fairyBuff.replace(/\D+/, '')
+            }
+            if(reg.test(this.fairySkill)){
+                this.fairySkill = this.fairySkill.replace(/\D+/, '')
+            }
+            if(reg.test(this.armor)){
+                this.armor = this.armor.replace(/\D+/, '')
+            }
+            if(reg.test(this.critical)){
+                this.critical = this.critical.replace(/\D+/, '')
+            }
+        }
     },
     updated: function () {
         this.sumTdoll()
