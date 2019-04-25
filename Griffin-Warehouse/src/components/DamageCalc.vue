@@ -4,21 +4,21 @@
         <div class="input-damage">
             <input type="text" maxlength="3" v-model="tdollAtk" v-on:keyup="checkInputDamage">
         </div>
-        <div class="input-addon-left">인형 화력 스탯 입력</div>
+        <div class="input-addon-left">인형 순수 화력 스탯 입력</div>
     </div>
     <div class="inputGroup-damage">
         <div class="input-damage">
             <input type="text" maxlength="4" v-model="tdollSkill" v-on:keyup="checkInputDamage">
         </div>
-        <div class="input-addon-left">인형 스킬 배율(%) 입력</div>
+        <div class="input-addon-left">인형 스킬 화력 배율(%) 입력</div>
     </div>
 
     <div class="container-content">
         <table class="table-damage">
             <tr>
                 <th>버프 인형 선택</th>
-                <th>진형 버프</th>
-                <th>버프 스킬 배율 <input type="checkbox" class="input-check" v-model="buffSkillOn"></th>
+                <th>화력 진형 버프</th>
+                <th>버프 스킬 화력 배율 <input type="checkbox" class="input-check" v-model="buffSkillOn"></th>
             </tr>
             <tr>
                 <td>
@@ -88,9 +88,9 @@
     <div class="container-content">
         <table class="table-damage">
             <tr>
-                <th>요정 진형 버프</th>
+                <th>요정 화력 진형 버프</th>
                 <th>요정 특성 선택 <input type="checkbox" class="input-check" v-model="fairyPassiveOn"></th>
-                <th>요정 스킬 배율 <input type="checkbox" class="input-check" v-model="fairySkillOn"></th>
+                <th>요정 스킬 화력 배율 <input type="checkbox" class="input-check" v-model="fairySkillOn"></th>
             </tr>
             <tr>
                 <!-- 요정 진벞 입력 -->
