@@ -167,21 +167,38 @@ export default {
             tdollAtk: 0,
             tdoll: [
                 {id:0, name: '', buff: 0, skill: 0},
-                {id:1, name: '나강 리볼버 MOD3', buff: 36, skill: 10},
-                {id:2, name: '콜트 리볼버 MOD3', buff: 24, skill: 25},
+                {id:1, name: 'Mk23', buff: 36, skill: 20, skillN: 35},
+                {id:2, name: 'P22', buff: 30, skill: 25},
                 {id:3, name: '그리즐리', buff: 30, skill: 25},
-                {id:4, name: '컨텐더', buff: 30, skill: '마탄 40'},
-                {id:5, name: 'P22', buff: 30, skill: 25},
-                {id:6, name: 'Mk23', buff: 36, skill: 20, skillN: 35},
-                {id:7, name: 'K5', buff: 30, skill: 22},
-                {id:8, name: 'HK45', buff: 32, skill: 15},
-                {id:9, name: '콜트 리볼버', buff: 24, skill: 22},
+                {id:4, name: 'K5', buff: 30, skill: 22},
+                {id:5, name: '컨텐더', buff: 30, skill: '마탄 40'},
+                {id:6, name: '나강 리볼버 MOD3', buff: 36, skill: 10},
+                {id:7, name: '콜트 리볼버 MOD3', buff: 24, skill: 25},
+                {id:8, name: '콜트 리볼버', buff: 24, skill: 22},
+                {id:9, name: 'HK45', buff: 32, skill: 15},
                 {id:10, name: 'PPK', buff: 0, skill: 10},
                 {id:11, name: '세르듀코프', buff: 24, skill: 20},
                 {id:12, name: 'Bren Ten', buff: 16, skill: 18},
                 {id:13, name: 'CZ52', buff: 20, skill: 20},
                 {id:14, name: '제리코', buff: 24, skill: 15},
                 {id:15, name: '스테츠킨', buff: 12, skill: 0},
+                {id:16, name: 'M9', buff: 20, skill: 0},
+                {id:17, name: '마카로프', buff: 20, skill: 0},
+                {id:18, name: '92식', buff: 0, skill: 10},
+                {id:19, name: 'MP-446 MOD3(바이킹)', buff: 36, skill: 0},
+                {id:20, name: 'MP-446(바이킹)', buff: 28, skill: 0},
+                {id:21, name: 'SPP-1', buff: 12, skill: 0},
+                {id:22, name: '웰로드', buff: 20, skill: 0},
+                {id:23, name: 'NZ75', buff: 20, skill: 0},
+                {id:24, name: '59식', buff: 20, skill: 0},
+                {id:25, name: 'CZ75', buff: 16, skill: 0},
+                {id:26, name: 'Spitfire', buff: 30, skill: 0},
+                {id:27, name: 'P226', buff: 20, skill: 0},
+                {id:28, name: '썬더', buff: 36, skill: 0},
+                {id:29, name: 'MP-443(그라치)', buff: 20, skill: 0},
+                {id:30, name: 'Gsh-18', buff: 24, skill: 0},
+                {id:31, name: 'MP-448(스키프)', buff: 12, skill: 0},
+                {id:32, name: 'Px4 스톰', buff: 24, skill: '치명타 50'},
             ],
             tdoll_selected: {
                 first: 0,
@@ -234,11 +251,14 @@ export default {
             var finalStatMax = 0
 
             if(this.tdoll_selected.first > 0){
-                if(this.tdoll[this.tdoll_selected.first].id != 4){
+                if(this.tdoll[this.tdoll_selected.first].name == "컨텐더"){
                     sum_buff += this.tdoll[this.tdoll_selected.first].buff
-                    sum_skill += this.tdoll[this.tdoll_selected.first].skill
+                } else if(this.tdoll[this.tdoll_selected.first].name == "Px4 스톰"){
+                    sum_buff += this.tdoll[this.tdoll_selected.first].buff
                 } else {
                     sum_buff += this.tdoll[this.tdoll_selected.first].buff
+                    sum_skill += this.tdoll[this.tdoll_selected.first].skill
+                    console.log(sum_skill)
                 }
             } else {
                 this.tdoll_selected.second = 0
@@ -246,32 +266,41 @@ export default {
                 this.tdoll_selected.fourth = 0
             }
             if(this.tdoll_selected.second > 0){
-                if(this.tdoll[this.tdoll_selected.second].id != 4){
+                if(this.tdoll[this.tdoll_selected.second].name == "컨텐더"){
                     sum_buff += this.tdoll[this.tdoll_selected.second].buff
-                    sum_skill = ((1 + (sum_skill / 100)) * (1 + (this.tdoll[this.tdoll_selected.second].skill / 100)) - 1) * 100
+                } else if(this.tdoll[this.tdoll_selected.second].name == "Px4 스톰"){
+                    sum_buff += this.tdoll[this.tdoll_selected.second].buff
                 } else {
                     sum_buff += this.tdoll[this.tdoll_selected.second].buff
+                    sum_skill = ((1 + (sum_skill / 100)) * (1 + (this.tdoll[this.tdoll_selected.second].skill / 100)) - 1) * 100
+                    console.log(sum_skill)
                 }
             } else {
                 this.tdoll_selected.third = 0
                 this.tdoll_selected.fourth = 0
             }
             if(this.tdoll_selected.third > 0){
-                if(this.tdoll[this.tdoll_selected.third].id != 4){
+                if(this.tdoll[this.tdoll_selected.third].name == "컨텐더"){
                     sum_buff += this.tdoll[this.tdoll_selected.third].buff
-                    sum_skill = ((1 + (sum_skill / 100)) * (1 + (this.tdoll[this.tdoll_selected.third].skill / 100)) - 1) * 100
+                } else if(this.tdoll[this.tdoll_selected.third].name == "Px4 스톰"){
+                    sum_buff += this.tdoll[this.tdoll_selected.third].buff
                 } else {
                     sum_buff += this.tdoll[this.tdoll_selected.third].buff
+                    sum_skill = ((1 + (sum_skill / 100)) * (1 + (this.tdoll[this.tdoll_selected.third].skill / 100)) - 1) * 100
+                    console.log(sum_skill)
                 }
             } else {
                 this.tdoll_selected.fourth = 0
             }
             if(this.tdoll_selected.fourth > 0){
-                if(this.tdoll[this.tdoll_selected.fourth].id != 4){
+                if(this.tdoll[this.tdoll_selected.fourth].name == "컨텐더"){
                     sum_buff += this.tdoll[this.tdoll_selected.fourth].buff
-                    sum_skill = ((1 + (sum_skill / 100)) * (1 + (this.tdoll[this.tdoll_selected.fourth].skill / 100)) - 1) * 100
+                } else if(this.tdoll[this.tdoll_selected.fourth].name == "Px4 스톰"){
+                    sum_buff += this.tdoll[this.tdoll_selected.fourth].buff
                 } else {
                     sum_buff += this.tdoll[this.tdoll_selected.fourth].buff
+                    sum_skill = ((1 + (sum_skill / 100)) * (1 + (this.tdoll[this.tdoll_selected.fourth].skill / 100)) - 1) * 100
+                    console.log(sum_skill)
                 }
             }
 
@@ -326,7 +355,7 @@ export default {
                 this.finalStatMax = 1
             }
             
-            if(this.tdoll_selected.first == 4 || this.tdoll_selected.second == 4 || this.tdoll_selected.third == 4 || this.tdoll_selected.fourth == 4){
+            if(this.tdoll[this.tdoll_selected.first].name == "컨텐더" || this.tdoll[this.tdoll_selected.second].name == "컨텐더" || this.tdoll[this.tdoll_selected.third].name == "컨텐더" || this.tdoll[this.tdoll_selected.fourth].name == "컨텐더"){
                 this.selectContender = true
             } else {
                 this.selectContender = false
