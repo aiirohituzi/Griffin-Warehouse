@@ -208,6 +208,7 @@ export default {
             },
             tdollSkill: 0,
             selectContender: false,
+            selectPx4: false,
 
             fairyBuff: 0,
             fairyPassive: [
@@ -245,10 +246,27 @@ export default {
             var calc_fairyPassive = 0
             var calc_fairySkill = 0
             var calc_critical = 0
+            var calc_Px4 = 1
 
             var finalStat = 0
             var finalStatMin = 0
             var finalStatMax = 0
+
+
+            
+            if(this.tdoll[this.tdoll_selected.first].name == "컨텐더" || this.tdoll[this.tdoll_selected.second].name == "컨텐더" || this.tdoll[this.tdoll_selected.third].name == "컨텐더" || this.tdoll[this.tdoll_selected.fourth].name == "컨텐더"){
+                this.selectContender = true
+            } else {
+                this.selectContender = false
+            }
+            
+            if(this.tdoll[this.tdoll_selected.first].name == "Px4 스톰" || this.tdoll[this.tdoll_selected.second].name == "Px4 스톰" || this.tdoll[this.tdoll_selected.third].name == "Px4 스톰" || this.tdoll[this.tdoll_selected.fourth].name == "Px4 스톰"){
+                this.selectPx4 = true
+            } else {
+                this.selectPx4 = false
+            }
+
+
 
             if(this.tdoll_selected.first > 0){
                 if(this.tdoll[this.tdoll_selected.first].name == "컨텐더"){
@@ -258,7 +276,7 @@ export default {
                 } else {
                     sum_buff += this.tdoll[this.tdoll_selected.first].buff
                     sum_skill += this.tdoll[this.tdoll_selected.first].skill
-                    console.log(sum_skill)
+                    // console.log(sum_skill)
                 }
             } else {
                 this.tdoll_selected.second = 0
@@ -273,7 +291,7 @@ export default {
                 } else {
                     sum_buff += this.tdoll[this.tdoll_selected.second].buff
                     sum_skill = ((1 + (sum_skill / 100)) * (1 + (this.tdoll[this.tdoll_selected.second].skill / 100)) - 1) * 100
-                    console.log(sum_skill)
+                    // console.log(sum_skill)
                 }
             } else {
                 this.tdoll_selected.third = 0
@@ -287,7 +305,7 @@ export default {
                 } else {
                     sum_buff += this.tdoll[this.tdoll_selected.third].buff
                     sum_skill = ((1 + (sum_skill / 100)) * (1 + (this.tdoll[this.tdoll_selected.third].skill / 100)) - 1) * 100
-                    console.log(sum_skill)
+                    // console.log(sum_skill)
                 }
             } else {
                 this.tdoll_selected.fourth = 0
@@ -300,7 +318,7 @@ export default {
                 } else {
                     sum_buff += this.tdoll[this.tdoll_selected.fourth].buff
                     sum_skill = ((1 + (sum_skill / 100)) * (1 + (this.tdoll[this.tdoll_selected.fourth].skill / 100)) - 1) * 100
-                    console.log(sum_skill)
+                    // console.log(sum_skill)
                 }
             }
 
@@ -329,8 +347,11 @@ export default {
                 this.armor = -2
             }
             if(this.criticalOn){
-                calc_critical = this.critical / 100
-                console.log(calc_critical)
+                if(this.buffSkillOn && this.selectPx4){
+                    calc_Px4 = 1.5
+                }
+                calc_critical = this.critical / 100 * calc_Px4
+                // console.log(calc_critical)
             } else {
                 calc_critical = 1
             }
@@ -353,12 +374,6 @@ export default {
                 this.finalStatMax = finalStatMax
             } else {
                 this.finalStatMax = 1
-            }
-            
-            if(this.tdoll[this.tdoll_selected.first].name == "컨텐더" || this.tdoll[this.tdoll_selected.second].name == "컨텐더" || this.tdoll[this.tdoll_selected.third].name == "컨텐더" || this.tdoll[this.tdoll_selected.fourth].name == "컨텐더"){
-                this.selectContender = true
-            } else {
-                this.selectContender = false
             }
         },
         checkInputDamage: function () {
