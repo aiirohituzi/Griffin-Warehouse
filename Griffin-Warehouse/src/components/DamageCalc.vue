@@ -14,11 +14,11 @@
     </div>
 
     <div class="container-content">
-        <table class="table-damage">
+        <table class="table-damage table-damage-col-3">
             <tr>
                 <th>버프 인형 선택</th>
-                <th>화력 진형 버프</th>
-                <th>버프 스킬 화력 배율 <input type="checkbox" class="input-check" v-model="buffSkillOn"></th>
+                <th>화력 진형버프</th>
+                <th>버프 스킬 화력 배율<input type="checkbox" class="input-check" v-model="buffSkillOn"></th>
             </tr>
             <tr>
                 <td>
@@ -86,15 +86,18 @@
     </div>
 
     <div class="container-content">
-        <table class="table-damage">
+        <div id="fairy"><b>요정 정보 입력</b></div>
+        <table class="table-damage table-damage-col-4">
             <tr>
-                <th>요정 화력 진형 버프</th>
-                <th>요정 특성 선택 <input type="checkbox" class="input-check" v-model="fairyPassiveOn"></th>
-                <th>요정 스킬 화력 배율 <input type="checkbox" class="input-check" v-model="fairySkillOn"></th>
+                <th>화력 진형버프</th>
+                <th>치명상 진형버프</th>
+                <th>특성 선택 <input type="checkbox" class="input-check" v-model="fairyPassiveOn"></th>
+                <th>스킬 화력 배율 <input type="checkbox" class="input-check" v-model="fairySkillOn"></th>
             </tr>
             <tr>
                 <!-- 요정 진벞 입력 -->
-                <td><input type="text" class="input-text" v-model="fairyBuff" v-on:keyup="checkInputDamage"></td>
+                <td><input type="text" class="input-text" v-model="fairyStrBuff" v-on:keyup="checkInputDamage"></td>
+                <td><input type="text" class="input-text" v-model="fairyCriticalBuff" v-on:keyup="checkInputDamage"></td>
                 <!-- 요정 특성 선택 -->
                 <td>
                     <select v-model="fairy_selected">
@@ -105,7 +108,7 @@
                 <td><input type="text" class="input-text" v-model="fairySkill" v-on:keyup="checkInputDamage"></td>
             </tr>
             <tr>
-                <td><div class="label">{{ fairyBuff }}%</div></td>
+                <td><div class="label">{{ fairyStrBuff }}%</div></td>
                 <td v-if="fairy_selected == 3"><input type="range" class="slider-damage" min="1" max="3" v-model="gyeokyangStack"> <span class="slider-value">{{ gyeokyangStack }}스택</span></td>
                 <td v-else><div class="label">{{ fairyPassive[fairy_selected].buff }}%</div></td>
                 <td><div class="label">{{ fairySkill }}%</div></td>
@@ -127,7 +130,7 @@
     </div>
     
     <div class="container-content">
-        <table class="table-damage">
+        <table class="table-damage table-damage-col-3">
             <tr>
                 <td></td>
                 <th>1링크</th>
@@ -210,7 +213,8 @@ export default {
             selectContender: false,
             selectPx4: false,
 
-            fairyBuff: 0,
+            fairyStrBuff: 0,
+            fairyCriticalBuff: 0,
             fairyPassive: [
                 {id:0, name: '', buff:0},
                 {id:1, name: '살상계1', buff:12},
@@ -267,7 +271,7 @@ export default {
             }
 
 
-
+            // ---------------- 선택한 버프 인형 데이터 연산 --------------------
             if(this.tdoll_selected.first > 0){
                 if(this.tdoll[this.tdoll_selected.first].name == "컨텐더"){
                     sum_buff += this.tdoll[this.tdoll_selected.first].buff
@@ -322,8 +326,11 @@ export default {
                 }
             }
 
-            calc_buff = sum_buff + parseInt(this.fairyBuff)
+            calc_buff = sum_buff + parseInt(this.fairyStrBuff)
 
+
+
+            // --------------- 각종 체크박스와 관련된 기능 ---------------
             if(this.buffSkillOn){
                 calc_skill = sum_skill
             }
@@ -350,7 +357,7 @@ export default {
                 if(this.buffSkillOn && this.selectPx4){
                     calc_Px4 = 1.5
                 }
-                calc_critical = this.critical / 100 * calc_Px4
+                calc_critical = (1 + (this.critical / 100)) * (1 + (this.fairyCriticalBuff / 100)) * calc_Px4
                 // console.log(calc_critical)
             } else {
                 calc_critical = 1
@@ -387,8 +394,11 @@ export default {
             if(reg.test(this.tdollSkill)){
                 this.tdollSkill = this.tdollSkill.replace(/\D+/, '')
             }
-            if(reg.test(this.fairyBuff)){
-                this.fairyBuff = this.fairyBuff.replace(/\D+/, '')
+            if(reg.test(this.fairyStrBuff)){
+                this.fairyStrBuff = this.fairyStrBuff.replace(/\D+/, '')
+            }
+            if(reg.test(this.fairyCriticalBuff)){
+                this.fairyCriticalBuff = this.fairyCriticalBuff.replace(/\D+/, '')
             }
             if(reg.test(this.fairySkill)){
                 this.fairySkill = this.fairySkill.replace(/\D+/, '')
@@ -483,6 +493,11 @@ export default {
     border-radius: 5px;
     background-color: #c3b9a2b6;
 }
+.container-content #fairy {
+    margin: 10px;
+    margin-left: 15px;
+    font-size: 10pt;
+}
 .table-damage {
     border-collapse: collapse;
     margin: 10px;
@@ -490,17 +505,18 @@ export default {
     margin-right: auto;
     text-align: center;
     font-size: 10pt;
-
-    -moz-transition: all .5s ease-in-out;
-    -webkit-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
 }
 .table-damage tr {
     border-top: 2px solid #c3b9a2;
 }
 .table-damage th, td {
     padding: 2px;
+}
+.table-damage-col-3 th, td{
     width: calc((50vw - 40px) / 3);
+}
+.table-damage-col-4 th, td{
+    width: calc((50vw - 40px) / 4);
 }
 .table-damage .input-text {
     width: 80%;
@@ -574,11 +590,17 @@ export default {
     .container-content {
         width: 80vw;
     }
+    .container-content #fairy {
+        font-size: 8pt;
+    }
     .table-damage {
         font-size: 8pt;
     }
-    .table-damage th, td{
+    .table-damage-col-3 th, td {
         width: calc((80vw - 40px) / 3);
+    }
+    .table-damage-col-4 th, td {
+        width: calc((80vw - 40px) / 4);
     }
     .table-damage .input-text {
         font-size: 8pt;
