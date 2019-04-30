@@ -12,6 +12,12 @@
         </div>
         <div class="input-addon-left">인형 스킬 화력 배율(%) 입력</div>
     </div>
+    <div class="inputGroup-damage">
+        <div class="input-damage">
+            <input type="text" maxlength="3" v-model="equipCritical" v-on:keyup="checkInputDamage">
+        </div>
+        <div class="input-addon-left">장비 치명상 입력</div>
+    </div>
 
     <div class="container-content">
         <table class="table-damage table-damage-col-3">
@@ -109,6 +115,7 @@
             </tr>
             <tr>
                 <td><div class="label">{{ fairyStrBuff }}%</div></td>
+                <td><div class="label">{{ fairyCriticalBuff }}%</div></td>
                 <td v-if="fairy_selected == 3"><input type="range" class="slider-damage" min="1" max="3" v-model="gyeokyangStack"> <span class="slider-value">{{ gyeokyangStack }}스택</span></td>
                 <td v-else><div class="label">{{ fairyPassive[fairy_selected].buff }}%</div></td>
                 <td><div class="label">{{ fairySkill }}%</div></td>
@@ -210,6 +217,7 @@ export default {
                 fourth: 0,
             },
             tdollSkill: 0,
+            equipCritical: 0,
             selectContender: false,
             selectPx4: false,
 
@@ -357,7 +365,7 @@ export default {
                 if(this.buffSkillOn && this.selectPx4){
                     calc_Px4 = 1.5
                 }
-                calc_critical = (1 + (this.critical / 100)) * (1 + (this.fairyCriticalBuff / 100)) * calc_Px4
+                calc_critical = ((this.critical / 100) * (1 + (this.fairyCriticalBuff / 100)) * calc_Px4) + (this.equipCritical / 100)
                 // console.log(calc_critical)
             } else {
                 calc_critical = 1
