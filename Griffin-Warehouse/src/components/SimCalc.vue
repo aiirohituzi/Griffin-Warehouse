@@ -269,10 +269,6 @@ export default {
     margin-right: auto;
     text-align: center;
     font-size: 10pt;
-
-    -moz-transition: all .5s ease-in-out;
-    -webkit-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
 }
 .table-sim tr{
     border-top: 2px solid #c3b9a2;

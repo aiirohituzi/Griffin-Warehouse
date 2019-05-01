@@ -133,7 +133,7 @@
         <div class="input-damage">
             <input type="text" maxlength="3" v-model="critical" v-on:keyup="checkInputDamage">
         </div>
-        <div class="input-addon-left">치명타 적용 (치명타 배율(%) 입력) <input class="check-damage" type="checkbox" style="width:unset;" v-model="criticalOn"></div>
+        <div class="input-addon-left">치명타 적용 (기본 치명상 배율(%) 입력) <input class="check-damage" type="checkbox" style="width:unset;" v-model="criticalOn"></div>
     </div>
     
     <div class="container-content">

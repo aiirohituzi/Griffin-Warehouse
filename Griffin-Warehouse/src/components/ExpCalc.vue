@@ -38,6 +38,15 @@
             <span>리더</span><input type="checkbox" v-model="leader">
             <span>MVP</span><input type="checkbox" v-model="mvp">
             <span>서약 여부</span><input type="checkbox" v-model="pledge">
+            <span>지휘요정 발동</span><input type="checkbox" v-model="command">
+        </div>
+        
+        <div class="inputGroup-exp" v-if="command">    
+            <div class="input-addon-left">지휘요정 스킬 레벨</div>
+            <div class="input-exp-allAddon">
+                <input type="range" class="slider-exp" min="1" max="10" v-model="commandSkillLv">
+            </div>
+            <div class="input-addon-right">{{ commandSkillLv }}Lv {{ commandSkill[commandSkillLv-1] }}%</div>
         </div>
 
         <div class="inputGroup-exp">    
@@ -179,6 +188,8 @@ export default {
 
             exp_FST: [0,500,1400,2700,4500,6700,9400,12600,16200,20200,24700,29700,35100,40900,47200,54000,61200,68800,77100,86100,95900,106500,118500,132000,147000,163500,181800,201900,223900,247900,274200,302500,333300,366600,402400,441000,482400,526600,574000,624600,678400,735700,796500,861000,929200,1001500,1077900,1158400,1243300,1332700,1426800,1525600,1629400,1738300,1852300,1971800,2096700,2227200,2363500,2505900,2654400,2809000,2970100,3137800,3312300,3493800,3682300,3877800,4080800,4291400,4509600,4735800,4970000,5212500,5463300,5722800,5990800,6267800,6553800,6849300,7154000,7468500,7792500,8127000,8471000,8826000,9191000,9567000,9954000,1035200,10761000,11182000,11614000,1205800,12514000,12983000,13464000,13957000,14463000,15000000],
 
+            commandSkill: [5, 8, 10, 12, 14, 16, 18, 20, 22, 25],
+
             calcMode: 'level',
 
             tdollCurrentLv: 1,
@@ -211,6 +222,9 @@ export default {
             mvpCoefficient: 1,
             leader: false,
             leaderCoefficient: 1,
+            command: false,
+            commandSkillLv: 10,
+            commandCoefficient: 1,
 
             needExp: 0,
             needCount: 0,
@@ -280,7 +294,13 @@ export default {
                     this.leaderCoefficient = 1
                 }
 
-                cumulativeExp += this.getExpFinal(cumulativeExp, penaltyLv) * this.pledgeCoefficient * this.mvpCoefficient * this.leaderCoefficient
+                if(this.command) {
+                    this.commandCoefficient = 1 + this.commandSkill[this.commandSkillLv-1] / 100
+                } else {
+                    this.commandCoefficient = 1
+                }
+
+                cumulativeExp += this.getExpFinal(cumulativeExp, penaltyLv) * this.pledgeCoefficient * this.mvpCoefficient * this.leaderCoefficient * this.commandCoefficient
             }
 
             if(this.getExpFinal(cumulativeExp, penaltyLv) == 10) {
@@ -428,10 +448,6 @@ export default {
     margin-right: auto;
     width: fit-content;
     min-width: 300px;
-    
-    -moz-transition: all .2s ease-in-out;
-    -webkit-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
 }
 
 .tabnav-exp {

@@ -214,10 +214,6 @@ export default {
     margin-left: auto;
     margin-right: auto;
     width: fit-content;
-    
-    -moz-transition: all .2s ease-in-out;
-    -webkit-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
 }
 div#radioGroup {
     margin-top: 1vh;
