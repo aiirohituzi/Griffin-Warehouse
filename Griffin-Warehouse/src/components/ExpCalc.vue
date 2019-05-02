@@ -266,7 +266,11 @@ export default {
             if(!this.pledge){
                 this.tdollNeedReport = Math.ceil(this.needExp / 3000)
             } else {
-                this.tdollNeedReport = Math.ceil((this.exp_pledge[this.tdollTarget-1] - (this.exp_pledge[this.tdollCurrentLv-1] + parseInt(this.tdollCurrentExp))) / 3000)
+                this.tdollNeedReport = Math.ceil((this.exp_pledge[this.tdollTarget-1] - (this.exp_pledge[this.tdollCurrentLv-1] + parseInt(this.tdollCurrentExp) / 2)) / 3000)
+                // console.log("타겟 : " + this.exp_pledge[this.tdollTarget-1])
+                // console.log("현재렙의 누적exp : " + this.exp_pledge[this.tdollCurrentLv-1])
+                // console.log("현재 필요 : " + (this.exp_pledge[this.tdollTarget-1] - this.exp_pledge[this.tdollCurrentLv-1] / 2))
+                // console.log("현재 exp : " + parseInt(this.tdollCurrentExp))
             }
 
             for(needCount = 0; cumulativeExp < tdollTargetExp; needCount++) {
