@@ -13,7 +13,7 @@
             </div>
         </div>
 
-        <div class="inputGroup-exp">    
+        <div class="inputGroup-exp">
             <div class="input-addon-left">현재 경험치</div>
             <div class="input-exp">
                 <input type="text" v-model="tdollCurrentExp" v-on:keyup="checkInputExp">
@@ -39,8 +39,16 @@
             <span>MVP</span><input type="checkbox" v-model="mvp">
             <span>서약 여부</span><input type="checkbox" v-model="pledge">
             <span>지휘요정 발동</span><input type="checkbox" v-model="command">
+            <span>경험치 이벤트</span><input type="checkbox" v-model="event">
         </div>
         
+        <div class="inputGroup-exp" v-if="event">    
+            <div class="input-addon-left">경험치 이벤트 배율 입력</div>
+            <div class="input-exp">
+                <input type="text" v-model="eventCoefficient" v-on:keyup="checkInputExp">
+            </div>
+        </div>
+
         <div class="inputGroup-exp" v-if="command">    
             <div class="input-addon-left">지휘요정 스킬 레벨</div>
             <div class="input-exp-allAddon">
@@ -225,6 +233,8 @@ export default {
             command: false,
             commandSkillLv: 10,
             commandCoefficient: 1,
+            event: false,
+            eventCoefficient: 2,
 
             needExp: 0,
             needCount: 0,
@@ -244,6 +254,8 @@ export default {
             var tdollTargetExp
             var needCount = 0
             var penaltyLv = this.area[this.area_selected].penalty
+
+            var eventCoefficient = 1
 
             if(this.calcMode == 'level') {
                 tdollTargetExp = this.exp[this.tdollTarget-1]
@@ -304,7 +316,11 @@ export default {
                     this.commandCoefficient = 1
                 }
 
-                cumulativeExp += this.getExpFinal(cumulativeExp, penaltyLv) * this.pledgeCoefficient * this.mvpCoefficient * this.leaderCoefficient * this.commandCoefficient
+                if(this.event) {
+                    eventCoefficient = this.eventCoefficient
+                }
+
+                cumulativeExp += this.getExpFinal(cumulativeExp, penaltyLv) * this.pledgeCoefficient * this.mvpCoefficient * this.leaderCoefficient * this.commandCoefficient * eventCoefficient
             }
 
             if(this.getExpFinal(cumulativeExp, penaltyLv) == 10) {
@@ -436,6 +452,10 @@ export default {
                 } else {
                     this.FSTTarget = this.FSTTarget.replace(/\D+/, '')
                 }
+            }
+            
+            if(regnondig.test(this.eventCoefficient)){
+                this.eventCoefficient = this.eventCoefficient.replace(/\D+/, '')
             }
         }
     },
