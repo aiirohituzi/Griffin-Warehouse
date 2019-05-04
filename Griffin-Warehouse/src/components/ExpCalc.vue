@@ -219,6 +219,7 @@ export default {
                 {id:3, name: '11-5', exp: 550*5, penalty: 120},
                 {id:4, name: '5-4e 보스런', exp: 430*5, penalty: 83},   // 보스는 2배 860
                 {id:5, name: '0-4 보스런', exp: 500*4, penalty: 106},    // 보스 2배 1000
+                {id:6, name: '특이점 4드라런', exp: 500*4, penalty: 107},
             ],
             area_selected: 0,
             getExp: 370*4,
