@@ -35,9 +35,9 @@
         </div>
 
         <div class="radioCheckGroup">
-            <span>리더</span><input type="checkbox" v-model="leader">
-            <span>MVP</span><input type="checkbox" v-model="mvp">
-            <span>서약 여부</span><input type="checkbox" v-model="pledge">
+            <span title="1.2배">리더</span><input type="checkbox" title="1.2배" v-model="leader">
+            <span title="1.3배">MVP</span><input type="checkbox" title="1.3배" v-model="mvp">
+            <span title="개조 이후 2배">서약 여부</span><input type="checkbox" title="개조 이후 2배" v-model="pledge">
             <span>지휘요정 발동</span><input type="checkbox" v-model="command">
             <span>경험치 이벤트</span><input type="checkbox" v-model="event">
         </div>
