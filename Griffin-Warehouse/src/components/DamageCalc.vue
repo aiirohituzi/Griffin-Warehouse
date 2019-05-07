@@ -393,8 +393,6 @@ export default {
         },
         checkInputDamage: function () {
             var reg = /\D+/
-            var reg2 = /^([0-9]|10)$/
-            var regdig = /\d+/
 
             if(reg.test(this.tdollAtk)){
                 this.tdollAtk = this.tdollAtk.replace(/\D+/, '')
