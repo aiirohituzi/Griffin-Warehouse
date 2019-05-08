@@ -6,15 +6,22 @@
             <input type="text" maxlength="3" v-model="tdollAgi" v-on:keyup="checkInputAgi">
         </div>
     </div>
+    
+    <div class="inputGroup-agi">    
+        <div class="input-addon-left">인형 사속 스킬 배율 입력(%)</div>
+        <div class="input-agi">
+            <input type="text" maxlength="3" v-model="tdollAgiSkill" v-on:keyup="checkInputAgi">
+        </div>
+    </div>
 
     <div class="inputGroup-agi">    
-        <div class="input-addon-left">필요 진형 버프량</div>
+        <div class="input-addon-left">필요 버프량</div>
         <div class="input-label">{{ needAgiBuff }}%</div>
     </div>
 
     <div class="inputGroup-agi">
-        <div class="input-addon-left">필요 스킬 버프량</div>
-        <div class="input-label">{{ needAgiSkill }}%</div>
+        <div class="input-addon-left">자버프 사용 후 필요 버프량</div>
+        <div class="input-label">{{ needAgiBuffAfterSkill }}%</div>
     </div>
 </div>
 </template>
@@ -25,18 +32,33 @@ export default {
     data () {
         return {
             tdollAgi: '',
+            tdollAgiSkill: '',
             needAgiBuff: 0,
-            needAgiSkill: 0,
+            needAgiBuffAfterSkill: 0,
         }
     },
     methods: {
+        agiCalc: function () {
+            var needAgiBuff = 116 / parseInt(this.tdollAgi)
+            var needAgiBuffAfterSkill = 116 / (parseInt(this.tdollAgi) * (1 + parseInt(this.tdollAgiSkill) / 100))
+        
+            console.log(needAgiBuffAfterSkill)
+            this.needAgiBuff = Math.ceil((needAgiBuff - 1) * 100)
+            this.needAgiBuffAfterSkill = Math.ceil((needAgiBuffAfterSkill - 1) * 100)
+        },
         checkInputAgi: function () {
             var reg = /\D+/
 
             if(reg.test(this.tdollAgi)){
                 this.tdollAgi = this.tdollAgi.replace(/\D+/, '')
             }
+            if(reg.test(this.tdollAgiSkill)){
+                this.tdollAgiSkill = this.tdollAgiSkill.replace(/\D+/, '')
+            }
         }
+    },
+    updated: function () {
+        this.agiCalc()
     }
 }
 </script>
