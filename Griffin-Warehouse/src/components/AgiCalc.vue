@@ -7,11 +7,24 @@
         </div>
     </div>
     
-    <div class="inputGroup-agi">    
+    <div class="radioGroup-agi">
+        <input type="radio" value="0" v-model="calcMode" @click="initial">스킬 사속 직접 입력
+        <input type="radio" value="1" v-model="calcMode" @click="initial">목록에서 선택
+    </div>
+    <div class="inputGroup-agi" v-if="calcMode==0">    
         <div class="input-addon-left">인형 사속 스킬 배율 입력(%)</div>
         <div class="input-agi">
             <input type="text" maxlength="3" v-model="tdollAgiSkill" v-on:keyup="checkInputAgi">
         </div>
+    </div>
+    <div class="inputGroup-agi" v-if="calcMode==1">
+        <div class="input-addon-left">스킬 선택</div>
+        <div class="input-agi-allAddon">
+            <select v-model="tdollAgiSkill">
+                <option v-for="item in skillList" :value="item.percentage">{{ item.name }}</option>
+            </select>
+        </div>
+        <div class="input-addon-right">{{ tdollAgiSkill }}%</div>
     </div>
 
     <div class="inputGroup-agi">    
@@ -31,7 +44,15 @@ export default {
     name: 'AgiCalc',
     data () {
         return {
+            skillList: [
+                {id:0, name: '', percentage: 0},
+                {id:1, name: '테스트1', percentage: 10},
+                {id:2, name: '테스트2', percentage: 20},
+                {id:3, name: '테스트3', percentage: 30},
+            ],
+
             tdollAgi: '',
+            calcMode: 0,
             tdollAgiSkill: '',
             needAgiBuff: 0,
             needAgiBuffAfterSkill: 0,
@@ -55,6 +76,9 @@ export default {
             if(reg.test(this.tdollAgiSkill)){
                 this.tdollAgiSkill = this.tdollAgiSkill.replace(/\D+/, '')
             }
+        },
+        initial: function () {
+            this.tdollAgiSkill = 0
         }
     },
     updated: function () {
@@ -71,6 +95,12 @@ export default {
     margin-right: auto;
     width: fit-content;
 }
+
+.radioGroup-agi {
+    margin-top: 1vh;
+    font-size: 10pt;
+}
+
 .inputGroup-agi {
     height: 30px;
     margin-top: 1vh;
@@ -84,6 +114,17 @@ export default {
     border-bottom-left-radius: 5px;
     border-right: unset;
     background-color: #c3b9a2b6;
+    padding: 3px;
+    font-size: 10pt;
+}
+.inputGroup-agi .input-addon-right {
+    float: left;
+    width: fit-content;
+    border: 2px solid #c3b9a2;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left: unset;
+    background-color: #c3b9a249;
     padding: 3px;
     font-size: 10pt;
 }
@@ -132,5 +173,47 @@ export default {
     background-color: #c3b9a249;
     padding: 3px;
     font-size: 10pt;
+}
+.inputGroup-agi .input-agi-allAddon {
+    float: left;
+    border: 2px solid #c3b9a2;
+    -webkit-appearance: none;
+
+    border-radius: 0;
+    -webkit-border-radius: 0;
+
+    padding: 3px;
+
+    font-size: 10pt;
+    width: 90px;
+}
+.inputGroup-agi .input-agi-allAddon select {
+    -webkit-appearance: none;
+
+    border: unset;
+    -webkit-border: unset;
+    
+    margin: 0;
+    -webkit-margin: 0;
+
+    padding: 0;
+    -webkit-padding: 0;
+    
+    background: url('../assets/select.png') no-repeat center right;
+    background-size: 17px 20px;
+    
+    font-size: 10pt;
+    width: 100%;
+    text-align: right;
+}
+
+
+@media only screen and (max-width: 767px) {
+    .radioGroup-agi {
+        font-size: 8pt;
+    }
+    .inputGroup-agi .input-exp-allAddon select {
+        font-size: 8pt;
+    }
 }
 </style>
