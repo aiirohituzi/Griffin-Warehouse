@@ -1,40 +1,117 @@
 <template>
 <div class="container-agiCalc">
-    <div class="inputGroup-agi">    
-        <div class="input-addon-left">인형 사속 입력</div>
-        <div class="input-agi">
-            <input type="text" maxlength="3" v-model="tdollAgi" v-on:keyup="checkInputAgi">
+    <div class="tabnav-agi">
+        <div id="tabBtn-agiple" class="tabBtn-agi current" @click="selectTab('simple')">단순계산</div>
+        <div id="tabBtn-detail" class="tabBtn-agi" @click="selectTab('detail')">상세계산</div>
+    </div>
+    <div id="simple" class="tab-agi">
+        <div class="inputGroup-agi">    
+            <div class="input-addon-left">인형 사속 입력</div>
+            <div class="input-agi">
+                <input type="text" maxlength="3" v-model="tdollAgi" v-on:keyup="checkInputAgi">
+            </div>
         </div>
-    </div>
-    
-    <div class="radioGroup-agi">
-        <input type="radio" value="0" v-model="calcMode" @click="initial">스킬 사속 직접 입력
-        <input type="radio" value="1" v-model="calcMode" @click="initial">목록에서 선택
-    </div>
-    <div class="inputGroup-agi" v-if="calcMode==0">    
-        <div class="input-addon-left">인형 사속 스킬 배율 입력(%)</div>
-        <div class="input-agi">
-            <input type="text" maxlength="3" v-model="tdollAgiSkill" v-on:keyup="checkInputAgi">
+        
+        <div class="radioGroup-agi">
+            <input type="radio" value="0" v-model="calcMode" @click="initial">스킬 사속 직접 입력
+            <input type="radio" value="1" v-model="calcMode" @click="initial">목록에서 선택
         </div>
-    </div>
-    <div class="inputGroup-agi" v-if="calcMode==1">
-        <div class="input-addon-left">스킬 선택</div>
-        <div class="input-agi-allAddon">
-            <select v-model="tdollAgiSkill">
-                <option v-for="item in skillList" :value="item.percentage">{{ item.name }}</option>
-            </select>
+        <div class="inputGroup-agi" v-if="calcMode==0">    
+            <div class="input-addon-left">인형 사속 스킬 배율 입력(%)</div>
+            <div class="input-agi">
+                <input type="text" maxlength="3" v-model="tdollAgiSkill" v-on:keyup="checkInputAgi">
+            </div>
         </div>
-        <div class="input-addon-right">{{ tdollAgiSkill }}%</div>
-    </div>
+        <div class="inputGroup-agi" v-if="calcMode==1">
+            <div class="input-addon-left">스킬 선택</div>
+            <div class="input-agi-allAddon">
+                <select v-model="tdollAgiSkill">
+                    <option v-for="item in skillList" :value="item.percentage">{{ item.name }}</option>
+                </select>
+            </div>
+            <div class="input-addon-right">{{ tdollAgiSkill }}%</div>
+        </div>
 
-    <div class="inputGroup-agi">    
-        <div class="input-addon-left">필요 버프량</div>
-        <div class="input-label">{{ needAgiBuff }}%</div>
-    </div>
+        <div class="inputGroup-agi">    
+            <div class="input-addon-left">필요 버프량</div>
+            <div class="input-label">{{ needAgiBuff }}%</div>
+        </div>
 
-    <div class="inputGroup-agi">
-        <div class="input-addon-left">자버프 사용 후 필요 버프량</div>
-        <div class="input-label">{{ needAgiBuffAfterSkill }}%</div>
+        <div class="inputGroup-agi">
+            <div class="input-addon-left">자버프 사용 후 필요 버프량</div>
+            <div class="input-label">{{ needAgiBuffAfterSkill }}%</div>
+        </div>
+    </div>
+    <div id="detail" class="tab-agi nonSelect">
+        <div class="inputGroup-agi">    
+            <div class="input-addon-left">인형 사속 입력</div>
+            <div class="input-agi">
+                <input type="text" maxlength="3" v-model="tdollAgi" v-on:keyup="checkInputAgi">
+            </div>
+        </div>
+        
+        <div class="radioGroup-agi">
+            <input type="radio" value="0" v-model="calcMode" @click="initial">스킬 사속 직접 입력
+            <input type="radio" value="1" v-model="calcMode" @click="initial">목록에서 선택
+        </div>
+        <div class="inputGroup-agi" v-if="calcMode==0">    
+            <div class="input-addon-left">인형 사속 스킬 배율 입력(%)</div>
+            <div class="input-agi">
+                <input type="text" maxlength="3" v-model="tdollAgiSkill" v-on:keyup="checkInputAgi">
+            </div>
+        </div>
+        <div class="inputGroup-agi" v-if="calcMode==1">
+            <div class="input-addon-left">스킬 선택</div>
+            <div class="input-agi-allAddon">
+                <select v-model="tdollAgiSkill">
+                    <option v-for="item in skillList" :value="item.percentage">{{ item.name }}</option>
+                </select>
+            </div>
+            <div class="input-addon-right">{{ tdollAgiSkill }}%</div>
+        </div>
+
+        
+        
+        <table class="table-agi table-agi-col-4">
+            <tr>
+                <th colspan="4">사속 버퍼 정보 입력</th>
+            </tr>
+            <tr>
+                <th>진형버프 1</th>
+                <th>진형버프 2</th>
+                <th>진형버프 3</th>
+                <th>진형버프 4</th>
+            </tr>
+            <tr>
+                <td><input type="text" maxlength="2" v-model="agiBuff1" v-on:keyup="checkInputAgi"></td>
+                <td><input type="text" maxlength="2" v-model="agiBuff2" v-on:keyup="checkInputAgi"></td>
+                <td><input type="text" maxlength="2" v-model="agiBuff3" v-on:keyup="checkInputAgi"></td>
+                <td><input type="text" maxlength="2" v-model="agiBuff4" v-on:keyup="checkInputAgi"></td>
+            </tr>
+            <tr>
+                <th>버프스킬 1</th>
+                <th>버프스킬 2</th>
+                <th>버프스킬 3</th>
+                <th>버프스킬 4</th>
+            </tr>
+            <tr>
+                <td><input type="text" maxlength="2" v-model="agiSkill1" v-on:keyup="checkInputAgi"></td>
+                <td><input type="text" maxlength="2" v-model="agiSkill2" v-on:keyup="checkInputAgi"></td>
+                <td><input type="text" maxlength="2" v-model="agiSkill3" v-on:keyup="checkInputAgi"></td>
+                <td><input type="text" maxlength="2" v-model="agiSkill4" v-on:keyup="checkInputAgi"></td>
+            </tr>
+        </table>
+
+
+        <div class="inputGroup-agi">    
+            <div class="input-addon-left">필요 버프량</div>
+            <div class="input-label">{{ needAgiBuff }}%</div>
+        </div>
+
+        <div class="inputGroup-agi">
+            <div class="input-addon-left">자버프 사용 후 필요 버프량</div>
+            <div class="input-label">{{ needAgiBuffAfterSkill }}%</div>
+        </div>
     </div>
 </div>
 </template>
@@ -94,6 +171,16 @@ export default {
             tdollAgiSkill: '',
             needAgiBuff: 0,
             needAgiBuffAfterSkill: 0,
+
+
+            agiBuff1: 0,
+            agiBuff2: 0,
+            agiBuff3: 0,
+            agiBuff4: 0,
+            agiSkill1: 0,
+            agiSkill2: 0,
+            agiSkill3: 0,
+            agiSkill4: 0,
         }
     },
     methods: {
@@ -117,7 +204,16 @@ export default {
         },
         initial: function () {
             this.tdollAgiSkill = 0
-        }
+        },
+        selectTab: function (divId) {
+            $('#simple').addClass('nonSelect')
+            $('#detail').addClass('nonSelect')
+            
+            $('.tabnav-agi').children().removeClass('current')
+
+            $('#' + divId).removeClass('nonSelect')
+            $('#tabBtn-' + divId).addClass('current')
+        },
     },
     updated: function () {
         this.agiCalc()
@@ -245,6 +341,73 @@ export default {
     text-align: right;
 }
 
+.tabnav-agi {
+    width: 100%;
+    height: 30px;
+    list-style: none;
+}
+.tabBtn-agi {
+    width: calc(100% / 2);
+    height: 100%;
+    line-height: 30px;
+    box-sizing: border-box;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    font-size: 10pt;
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 2px solid #c3b9a2;
+    background-color:#c3b9a2b6;
+}
+.tabnav-agi .current {
+    background-color:#c3b9a2;
+}
+.tab-agi {
+    border: 2px solid #c3b9a2;
+    border-top: unset;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    padding: 10px;
+    font-size: 10pt;
+}
+.nonSelect {
+    display: none;
+}
+
+.table-agi {
+    border-collapse: collapse;
+    margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 10pt;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #c3b9a2b6;
+}
+.table-agi tr{
+    border-top: 2px solid #c3b9a2;
+}
+.table-agi th, td{
+    padding: 2px;
+}
+.table-agi-col-4 th, td{
+    width: calc((50vw - 40px) / 4);
+}
+.table-agi input{
+    width: 80%;
+    text-align: right;
+    -webkit-appearance: none;
+    border: 2px solid #c3b9a2;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding: 4.5px;
+    font-size: 10pt;
+}
+
 
 @media only screen and (max-width: 767px) {
     .radioGroup-agi {
@@ -252,6 +415,30 @@ export default {
     }
     .inputGroup-agi .input-exp-allAddon select {
         font-size: 8pt;
+    }
+    .inputGroup-agi .input-addon-left {
+        font-size: 8pt;
+    }
+    .inputGroup-agi .input-addon-right {
+        font-size: 8pt;
+    }
+    .inputGroup-agi .input-agi {
+        font-size: 8pt;
+    }
+    .inputGroup-agi .input-agi input {
+        font-size: 8pt;
+    }
+    .inputGroup-agi .input-agi-allAddon {
+        font-size: 8pt;
+    }
+    .inputGroup-agi .input-label {
+        font-size: 8pt;
+    }
+    .tabBtn-agi {
+        font-size: 8pt;
+    }
+    .tab-agi {
+        font-size: 8pt
     }
 }
 </style>
