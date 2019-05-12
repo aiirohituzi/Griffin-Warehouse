@@ -171,6 +171,7 @@ export default {
             tdollAgiSkill: '',
             needAgiBuff: 0,
             needAgiBuffAfterSkill: 0,
+            
 
 
             agiBuff1: 0,
@@ -185,10 +186,12 @@ export default {
     },
     methods: {
         agiCalc: function () {
-            var needAgiBuff = 116 / parseInt(this.tdollAgi)
-            var needAgiBuffAfterSkill = 116 / (parseInt(this.tdollAgi) * (1 + parseInt(this.tdollAgiSkill) / 100))
-        
-            console.log(needAgiBuffAfterSkill)
+            var sumAgiBuff = parseInt(this.agiBuff1) + parseInt(this.agiBuff2) + parseInt(this.agiBuff3) + parseInt(this.agiBuff4)
+            var mulAgiSkill = (1 + this.agiSkill1 / 100) * (1 + this.agiSkill2 / 100) * (1 + this.agiSkill3 / 100) * (1 + this.agiSkill4 / 100)
+            
+            var needAgiBuff = 116 / (parseInt(this.tdollAgi) * (1 + sumAgiBuff / 100) * mulAgiSkill)
+            var needAgiBuffAfterSkill = 116 / (parseInt(this.tdollAgi) * (1 + sumAgiBuff / 100) * (1 + parseInt(this.tdollAgiSkill) / 100) * mulAgiSkill)
+
             this.needAgiBuff = Math.ceil((needAgiBuff - 1) * 100)
             this.needAgiBuffAfterSkill = Math.ceil((needAgiBuffAfterSkill - 1) * 100)
         },
@@ -198,8 +201,32 @@ export default {
             if(reg.test(this.tdollAgi)){
                 this.tdollAgi = this.tdollAgi.replace(/\D+/, '')
             }
-            if(reg.test(this.tdollAgiSkill)){
+            if(reg.test(this.tdollAgiSkill) && this.calcMode == 0){
                 this.tdollAgiSkill = this.tdollAgiSkill.replace(/\D+/, '')
+            }
+            if(reg.test(this.agiBuff1)){
+                this.agiBuff1 = this.agiBuff1.replace(/\D+/, '')
+            }
+            if(reg.test(this.agiBuff2)){
+                this.agiBuff2 = this.agiBuff2.replace(/\D+/, '')
+            }
+            if(reg.test(this.agiBuff3)){
+                this.agiBuff3 = this.agiBuff3.replace(/\D+/, '')
+            }
+            if(reg.test(this.agiBuff4)){
+                this.agiBuff4 = this.agiBuff4.replace(/\D+/, '')
+            }
+            if(reg.test(this.agiSkill1)){
+                this.agiSkill1 = this.agiSkill1.replace(/\D+/, '')
+            }
+            if(reg.test(this.agiSkill2)){
+                this.agiSkill2 = this.agiSkill2.replace(/\D+/, '')
+            }
+            if(reg.test(this.agiSkill3)){
+                this.agiSkill3 = this.agiSkill3.replace(/\D+/, '')
+            }
+            if(reg.test(this.agiSkill4)){
+                this.agiSkill4 = this.agiSkill4.replace(/\D+/, '')
             }
         },
         initial: function () {
@@ -213,6 +240,16 @@ export default {
 
             $('#' + divId).removeClass('nonSelect')
             $('#tabBtn-' + divId).addClass('current')
+
+            
+            this.agiBuff1 = 0
+            this.agiBuff3 = 0
+            this.agiBuff2 = 0
+            this.agiBuff4 = 0
+            this.agiSkill1 = 0
+            this.agiSkill2 = 0
+            this.agiSkill3 = 0
+            this.agiSkill4 = 0
         },
     },
     updated: function () {
