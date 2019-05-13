@@ -375,7 +375,7 @@ export default {
             this.sumSkill = sum_skill.toFixed(4)
 
 
-            finalStat = this.tdollAtk * (1 + (calc_buff / 100)) * (1 + (calc_skill / 100)) * (1 + (this.tdollSkill / 100)) * (1 + (calc_fairyPassive / 100)) * (1 + (calc_fairySkill / 100))
+            finalStat = Math.ceil(this.tdollAtk * (1 + (calc_buff / 100)) * (1 + (calc_fairyPassive / 100))) * (1 + (calc_skill / 100)) * (1 + (this.tdollSkill / 100)) * (1 + (calc_fairySkill / 100))
 
             finalStatMin = ((finalStat * 0.85) - this.armor) * calc_critical
             finalStatMax = ((finalStat * 1.15) - this.armor) * calc_critical
@@ -489,8 +489,8 @@ export default {
 }
 
 .container-content {
-    margin-top: 2vh;
-    margin-bottom: 2vh;
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
     margin-left: auto;
     margin-right: auto;
     width: 50vw;

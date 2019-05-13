@@ -1,7 +1,7 @@
 <template>
 <div class="container-agiCalc">
     <div class="tabnav-agi">
-        <div id="tabBtn-agiple" class="tabBtn-agi current" @click="selectTab('simple')">단순계산</div>
+        <div id="tabBtn-simple" class="tabBtn-agi current" @click="selectTab('simple')">단순계산</div>
         <div id="tabBtn-detail" class="tabBtn-agi" @click="selectTab('detail')">상세계산</div>
     </div>
     <div id="simple" class="tab-agi">
