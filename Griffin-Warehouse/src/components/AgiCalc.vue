@@ -450,9 +450,6 @@ export default {
     .radioGroup-agi {
         font-size: 8pt;
     }
-    .inputGroup-agi .input-exp-allAddon select {
-        font-size: 8pt;
-    }
     .inputGroup-agi .input-addon-left {
         font-size: 8pt;
     }
@@ -468,6 +465,9 @@ export default {
     .inputGroup-agi .input-agi-allAddon {
         font-size: 8pt;
     }
+    .inputGroup-agi .input-agi-allAddon select {
+        font-size: 8pt;
+    }
     .inputGroup-agi .input-label {
         font-size: 8pt;
     }
@@ -475,7 +475,14 @@ export default {
         font-size: 8pt;
     }
     .tab-agi {
-        font-size: 8pt
+        font-size: 8pt;
+    }
+    .table-agi {
+        font-size: 8pt;
+        width: 80vw;
+    }
+    .table-agi input {
+        font-size: 8pt;
     }
 }
 </style>
