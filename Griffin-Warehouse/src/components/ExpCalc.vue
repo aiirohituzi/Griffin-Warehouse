@@ -181,6 +181,52 @@
             <div class="input-label">{{ FSTNeedReport * 3 }}</div>
         </div>
     </div>
+
+    <div id="div-penalty" class="side-right-exp">
+        <div class="btn-penalty" @click="openPenalty()">경험치 패널티 표</div>
+        <table id="table-penalty">
+            <tr>
+                <th>레벨링 지역</th>
+                <th>패널티 레벨</th>
+                <th>입수 경험치</th>
+            </tr>
+            <tr>
+                <td>4-3e</td>
+                <td>65</td>
+                <td>370*4</td>
+            </tr>
+            <tr>
+                <td>0-2</td>
+                <td>100</td>
+                <td>490*5</td>
+            </tr>
+            <tr>
+                <td>8-1n</td>
+                <td>111</td>
+                <td>500*5</td>
+            </tr>
+            <tr>
+                <td>11-5</td>
+                <td>120</td>
+                <td>550*5</td>
+            </tr>
+            <tr>
+                <td>5-4e 보스런</td>
+                <td>83</td>
+                <td>430*5</td>
+            </tr>
+            <tr>
+                <td>0-4 보스런</td>
+                <td>106</td>
+                <td>500*4</td>
+            </tr>
+            <tr>
+                <td>특이점 4드라런</td>
+                <td>107</td>
+                <td>500*4</td>
+            </tr>
+        </table>
+    </div>
 </div>
 </template>
 
@@ -458,7 +504,11 @@ export default {
             if(regnondig.test(this.eventCoefficient)){
                 this.eventCoefficient = this.eventCoefficient.replace(/\D+/, '')
             }
-        }
+        },
+        
+        openPenalty: function () {
+            $('.side-right-exp').toggleClass('move')
+        },
     },
     updated: function () {
         this.expCalc()
@@ -640,6 +690,68 @@ export default {
     background-color: #c3b9a249;
     padding: 3px;
     font-size: 10pt;
+}
+
+
+
+.side-right-exp {
+    -webkit-transform: translate(0, 0);
+    -webkit-transition: -webkit-transform 500ms;
+
+    transform: translate(0, 0);
+    transition: transform 500ms;
+
+    will-change: transform;
+}
+.side-right-exp.move {
+    -webkit-transform: translate(-335px, 0px);
+    transform: translate(-335px, 0px);
+}
+div#div-penalty {
+    position: fixed;
+    right: -335px;
+    top: 30vh;
+    width: 350px;
+    height: 182px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: #c3b9a2b6;
+    -moz-box-shadow: 1px 3px 6px #999;
+    -webkit-box-shadow: 0px 3px 6px #999;
+    box-shadow: 1px 3px 6px #999;
+
+    text-align: center;
+}
+table#table-penalty{
+    float: right;
+    font-size: 9pt;
+    margin: 10px;
+}
+table#table-penalty th{
+    background: #afa48a;
+}
+table#table-penalty td{
+    width: 100px;
+    padding: 0;
+    background-color: #c3b9a2;
+}
+table#table-penalty tr{
+    height: 18px;
+}
+div#div-penalty .btn-penalty {
+    width: 15px;
+    height: 100%;
+    line-height: 100%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    float: left;
+    background-color: #c3b9a2;
+    font-size: 8pt;
+    writing-mode: vertical-lr;
+}
+div#div-penalty .btn-penalty:hover {
+    background: #9c9175;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 767px) {
