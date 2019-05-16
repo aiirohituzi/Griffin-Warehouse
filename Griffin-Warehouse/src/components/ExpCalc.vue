@@ -226,6 +226,10 @@
                 <td>500*4</td>
             </tr>
         </table>
+        <div class="div-penaltyExplanation">
+            페널티 레벨을 초과할 시, 10레벨 당 획득치 20% 감소<br>
+            50레벨이상 높을 경우, 획득경험치 10으로 고정
+        </div>
     </div>
 </div>
 </template>
@@ -712,7 +716,7 @@ div#div-penalty {
     right: -335px;
     top: 30vh;
     width: 350px;
-    height: 182px;
+    height: 222px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     background-color: #c3b9a2b6;
@@ -752,6 +756,10 @@ div#div-penalty .btn-penalty {
 div#div-penalty .btn-penalty:hover {
     background: #9c9175;
     cursor: pointer;
+}
+div#div-penalty .div-penaltyExplanation {
+    font-size: 8pt;
+    margin: 10px;
 }
 
 @media only screen and (max-width: 767px) {
