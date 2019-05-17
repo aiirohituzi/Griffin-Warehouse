@@ -97,8 +97,8 @@
             <tr>
                 <th>화력 진형버프</th>
                 <th>치명상 진형버프</th>
-                <th>특성 선택 <input type="checkbox" class="input-check" v-model="fairyPassiveOn"></th>
-                <th>스킬 화력 배율 <input type="checkbox" class="input-check" v-model="fairySkillOn"></th>
+                <th>특성 선택<input type="checkbox" class="input-check" v-model="fairyPassiveOn"></th>
+                <th>스킬 화력 배율<input type="checkbox" class="input-check" v-model="fairySkillOn"></th>
             </tr>
             <tr>
                 <!-- 요정 진벞 입력 -->
@@ -614,6 +614,7 @@ export default {
     .table-damage .input-check {
         height: 10px;
         margin: auto;
+        vertical-align: text-bottom;
     }
     .table-damage .slider-value {
         font-size: 8pt;

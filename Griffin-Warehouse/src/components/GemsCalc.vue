@@ -1,8 +1,8 @@
 <template>
 <div class="container-gemsCalc">
     <div class="radioGroup-gems">
-        <input type="radio" value="0" v-model="calcMode">매일 패키지 계산<br>
-        <input type="radio" value="1" v-model="calcMode">목표 보석량으로 계산<br>
+        <input type="radio" value="0" v-model="calcMode"><span>매일 패키지 계산</span><br>
+        <input type="radio" value="1" v-model="calcMode"><span>목표 보석량으로 계산</span><br>
     </div>
 
     <div class="inputGroup-gems">    
@@ -219,6 +219,10 @@ export default {
     margin-top: 1vh;
     margin-bottom: 1vh;
     text-align: right;
+    vertical-align: middle;
+}
+.radioGroup-gems span, input[type=radio] {
+    vertical-align: middle;
 }
 .inputGroup-gems {
     height: 30px;

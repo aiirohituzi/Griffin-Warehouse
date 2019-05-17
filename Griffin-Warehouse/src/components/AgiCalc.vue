@@ -13,8 +13,8 @@
         </div>
         
         <div class="radioGroup-agi">
-            <input type="radio" value="0" v-model="calcMode" @click="initial">스킬 사속 직접 입력
-            <input type="radio" value="1" v-model="calcMode" @click="initial">목록에서 선택
+            <input type="radio" value="0" v-model="calcMode" @click="initial"><span>스킬 사속 직접 입력</span>
+            <input type="radio" value="1" v-model="calcMode" @click="initial"><span>목록에서 선택</span>
         </div>
         <div class="inputGroup-agi" v-if="calcMode==0">    
             <div class="input-addon-left">인형 사속 스킬 배율 입력(%)</div>
@@ -51,8 +51,8 @@
         </div>
         
         <div class="radioGroup-agi">
-            <input type="radio" value="0" v-model="calcMode" @click="initial">스킬 사속 직접 입력
-            <input type="radio" value="1" v-model="calcMode" @click="initial">목록에서 선택
+            <input type="radio" value="0" v-model="calcMode" @click="initial"><span>스킬 사속 직접 입력</span>
+            <input type="radio" value="1" v-model="calcMode" @click="initial"><span>목록에서 선택</span>
         </div>
         <div class="inputGroup-agi" v-if="calcMode==0">    
             <div class="input-addon-left">인형 사속 스킬 배율 입력(%)</div>
@@ -270,6 +270,10 @@ export default {
 .radioGroup-agi {
     margin-top: 1vh;
     font-size: 10pt;
+    vertical-align: middle;
+}
+.radioGroup-agi span, input[type=radio] {
+    vertical-align: middle;
 }
 
 .inputGroup-agi {
