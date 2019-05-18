@@ -20,6 +20,6 @@ export default {
     margin-top: calc(40px + 10vh);
     margin-left: auto;
     margin-right: auto;
-    width: fit-content;
+    width: 80vw;
 }
 </style>

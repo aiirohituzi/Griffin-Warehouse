@@ -1,6 +1,7 @@
 <template>
     <div id="app">
         <ul id="navigation">
+            <router-link tag="li" class="nav-home" to="/">홈</router-link>
             <router-link tag="li" to="/damageCalc">데미지 계산기</router-link>
             <router-link tag="li" to="/agiCalc">최대사속 계산기</router-link>
             <router-link tag="li" to="/gemsCalc">필요 보석량 계산기</router-link>
@@ -8,6 +9,7 @@
             <router-link tag="li" to="/expCalc">경험치 계산기</router-link>
         </ul>
         <div class="nav-tab">
+            <span style="width: 40px;"></span>
             <span id="DamageCalc"></span>
             <span id="AgiCalc"></span>
             <span id="GemsCalc"></span>
@@ -70,7 +72,7 @@ ul#navigation {
 ul#navigation li {
     box-sizing: border-box;
     float: left;
-    width: calc(100% / 5);
+    width: calc((100% - 40px) / 5);
     line-height: 40px;
     height: 100%;
     cursor: pointer;
@@ -81,6 +83,15 @@ ul#navigation li {
 }
 ul#navigation li:hover {
     background-color:#9c9175;
+}
+
+ul#navigation .nav-home {
+    box-sizing: border-box;
+    float: left;
+    width: 40px;
+    line-height: 40px;
+    height: 100%;
+    cursor: pointer;
 }
 
 
@@ -109,7 +120,7 @@ ul#navigation li:hover {
 .nav-tab span{
     box-sizing: border-box;
     float: left;
-    width: calc(100% / 5);
+    width: calc((100% - 40px) / 5);
     height: 100%;
 }
 .nav-tab .current{
