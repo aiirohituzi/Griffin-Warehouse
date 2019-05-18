@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <ul id="navigation">
-            <router-link tag="li" class="nav-home" to="/">홈</router-link>
+            <router-link tag="li" class="nav-home" to="/"></router-link>
             <router-link tag="li" to="/damageCalc">데미지 계산기</router-link>
             <router-link tag="li" to="/agiCalc">최대사속 계산기</router-link>
             <router-link tag="li" to="/gemsCalc">필요 보석량 계산기</router-link>
@@ -92,6 +92,15 @@ ul#navigation .nav-home {
     line-height: 40px;
     height: 100%;
     cursor: pointer;
+
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-image: url(assets/home.png);
+}
+ul#navigation .nav-home:hover {
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-image: url(assets/home_hover.png);
 }
 
 
