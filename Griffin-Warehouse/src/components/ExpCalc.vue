@@ -193,37 +193,37 @@
             <tr>
                 <td>4-3e</td>
                 <td>65</td>
-                <td>370*4</td>
+                <td title="1480">370*4</td>
             </tr>
             <tr>
                 <td>0-2</td>
                 <td>100</td>
-                <td>490*5</td>
+                <td title="2450">490*5</td>
             </tr>
             <tr>
                 <td>8-1n</td>
                 <td>111</td>
-                <td>500*5</td>
+                <td title="2500">500*5</td>
             </tr>
             <tr>
                 <td>11-5</td>
                 <td>120</td>
-                <td>550*5</td>
+                <td title="2750">550*5</td>
             </tr>
             <tr>
                 <td>5-4e 보스런</td>
                 <td>83</td>
-                <td>430*5</td>
+                <td title="2150">430*5</td>
             </tr>
             <tr>
                 <td>0-4 보스런</td>
                 <td>106</td>
-                <td>500*4</td>
+                <td title="2000">500*4</td>
             </tr>
             <tr>
                 <td>특이점 4드라런</td>
                 <td>107</td>
-                <td>500*4</td>
+                <td title="2000">500*4</td>
             </tr>
         </table>
         <div class="div-penaltyExplanation">
