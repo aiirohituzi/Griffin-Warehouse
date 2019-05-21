@@ -368,7 +368,9 @@ export default {
                 }
 
                 if(this.event) {
-                    eventCoefficient = this.eventCoefficient
+                    if(this.eventCoefficient != '' || this.eventCoefficient > 0) {
+                        eventCoefficient = this.eventCoefficient
+                    }
                 }
 
                 cumulativeExp += this.getExpFinal(cumulativeExp, penaltyLv) * this.pledgeCoefficient * this.mvpCoefficient * this.leaderCoefficient * this.commandCoefficient * eventCoefficient
@@ -505,7 +507,7 @@ export default {
                 }
             }
             
-            if(regnondig.test(this.eventCoefficient)){
+            if(regnondig.test(parseInt(this.eventCoefficient))){
                 this.eventCoefficient = this.eventCoefficient.replace(/\D+/, '')
             }
         },
