@@ -113,6 +113,172 @@
             <div class="input-label">{{ needAgiBuffAfterSkill }}%</div>
         </div>
     </div>
+
+    <div id="div-agi" class="side-right-agi">
+        <div class="btn-agi" @click="openAgi()">사속 프레임 표</div>
+        <table id="table-agi">
+            <tr>
+                <th>사속</th>
+                <th>공격당 프레임 수</th>
+                <th>사속</th>
+                <th>공격당 프레임 수</th>
+                <th>사속</th>
+                <th>공격당 프레임 수</th>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>18</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>19</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>20</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>21</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>22</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>23</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>24</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>25</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>26</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>27</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>28</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>29</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>30</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>31</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>32</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
 </div>
 </template>
 
@@ -250,6 +416,10 @@ export default {
             this.agiSkill2 = 0
             this.agiSkill3 = 0
             this.agiSkill4 = 0
+        },
+        
+        openAgi: function () {
+            $('.side-right-agi').toggleClass('move')
         },
     },
     updated: function () {
@@ -448,6 +618,68 @@ export default {
     padding: 4.5px;
     font-size: 10pt;
 }
+
+.side-right-agi {
+    -webkit-transform: translate(0, 0);
+    -webkit-transition: -webkit-transform 500ms;
+
+    transform: translate(0, 0);
+    transition: transform 500ms;
+
+    will-change: transform;
+}
+.side-right-agi.move {
+    -webkit-transform: translate(-385px, 0px);
+    transform: translate(-385px, 0px);
+}
+div#div-agi {
+    position: fixed;
+    right: -385px;
+    top: 20vh;
+    width: 400px;
+    height: 400px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: #c3b9a2b6;
+    -moz-box-shadow: 1px 3px 6px #999;
+    -webkit-box-shadow: 0px 3px 6px #999;
+    box-shadow: 1px 3px 6px #999;
+
+    text-align: center;
+}
+table#table-agi{
+    width: 90%;
+    float: right;
+    font-size: 9pt;
+    margin: 10px;
+}
+table#table-agi th{
+    background: #afa48a;
+}
+table#table-agi td{
+    /* width: 15px; */
+    padding: 0;
+    background-color: #c3b9a2;
+}
+table#table-agi tr{
+    height: 15px;
+}
+div#div-agi .btn-agi {
+    width: 15px;
+    height: 100%;
+    line-height: 100%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    float: left;
+    background-color: #c3b9a2;
+    font-size: 8pt;
+    writing-mode: vertical-lr;
+}
+div#div-agi .btn-agi:hover {
+    background: #9c9175;
+    cursor: pointer;
+}
+
 
 
 @media only screen and (max-width: 767px) {
