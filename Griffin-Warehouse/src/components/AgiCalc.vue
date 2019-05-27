@@ -119,161 +119,161 @@
         <table id="table-agi">
             <tr>
                 <th>사속</th>
-                <th>공격당 프레임 수</th>
+                <th>공격당<br>프레임</th>
                 <th>사속</th>
-                <th>공격당 프레임 수</th>
+                <th>공격당<br>프레임</th>
                 <th>사속</th>
-                <th>공격당 프레임 수</th>
+                <th>공격당<br>프레임</th>
             </tr>
             <tr>
                 <td>14</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>107</td>
+                <td>33</td>
+                <td>45</td>
+                <td>56~57</td>
+                <td>26</td>
             </tr>
             <tr>
                 <td>15</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>99</td>
+                <td>34</td>
+                <td>44</td>
+                <td>58~59</td>
+                <td>25</td>
             </tr>
             <tr>
                 <td>16</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>93</td>
+                <td>35</td>
+                <td>42</td>
+                <td>60~62</td>
+                <td>24</td>
             </tr>
             <tr>
                 <td>17</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>88</td>
+                <td>36</td>
+                <td>41</td>
+                <td>63~65</td>
+                <td>23</td>
             </tr>
             <tr>
                 <td>18</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>83</td>
+                <td>37</td>
+                <td>40</td>
+                <td>66~68</td>
+                <td>22</td>
             </tr>
             <tr>
                 <td>19</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>78</td>
+                <td>38</td>
+                <td>39</td>
+                <td>69~71</td>
+                <td>21</td>
             </tr>
             <tr>
                 <td>20</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>74</td>
+                <td>39</td>
+                <td>38</td>
+                <td>72~74</td>
+                <td>20</td>
             </tr>
             <tr>
                 <td>21</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>71</td>
+                <td>40</td>
+                <td>37</td>
+                <td>75~78</td>
+                <td>19</td>
             </tr>
             <tr>
                 <td>22</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>68</td>
+                <td>41</td>
+                <td>36</td>
+                <td>79~83</td>
+                <td>18</td>
             </tr>
             <tr>
                 <td>23</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>65</td>
+                <td>42</td>
+                <td>35</td>
+                <td>84~88</td>
+                <td>17</td>
             </tr>
             <tr>
                 <td>24</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>62</td>
+                <td>43</td>
+                <td>34</td>
+                <td>89~93</td>
+                <td>16</td>
             </tr>
             <tr>
                 <td>25</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>59</td>
+                <td>44</td>
+                <td>34</td>
+                <td>94~99</td>
+                <td>15</td>
             </tr>
             <tr>
                 <td>26</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>57</td>
+                <td>45</td>
+                <td>33</td>
+                <td>100~107</td>
+                <td>14</td>
             </tr>
             <tr>
                 <td>27</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>55</td>
+                <td>46</td>
+                <td>32</td>
+                <td>108~115</td>
+                <td>13</td>
             </tr>
             <tr>
                 <td>28</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>53</td>
+                <td>47~48</td>
+                <td>31</td>
+                <td>116~120</td>
+                <td>12</td>
             </tr>
             <tr>
                 <td>29</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>51</td>
+                <td>49</td>
+                <td>30</td>
+                <td>사중MG, PKP</td>
+                <td>11</td>
             </tr>
             <tr>
                 <td>30</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>49</td>
+                <td>50~51</td>
+                <td>29</td>
+                <td>MG, AUG스킬</td>
+                <td>10</td>
             </tr>
             <tr>
                 <td>31</td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>48</td>
+                <td>52~53</td>
+                <td>28</td>
                 <td></td>
                 <td></td>
             </tr>
             <tr>
                 <td>32</td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>46</td>
+                <td>54~55</td>
+                <td>27</td>
                 <td></td>
                 <td></td>
             </tr>
@@ -619,6 +619,8 @@ export default {
     font-size: 10pt;
 }
 
+
+
 .side-right-agi {
     -webkit-transform: translate(0, 0);
     -webkit-transition: -webkit-transform 500ms;
@@ -629,14 +631,14 @@ export default {
     will-change: transform;
 }
 .side-right-agi.move {
-    -webkit-transform: translate(-385px, 0px);
-    transform: translate(-385px, 0px);
+    -webkit-transform: translate(-435px, 0px);
+    transform: translate(-435px, 0px);
 }
 div#div-agi {
     position: fixed;
-    right: -385px;
+    right: -435px;
     top: 20vh;
-    width: 400px;
+    width: 450px;
     height: 400px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
