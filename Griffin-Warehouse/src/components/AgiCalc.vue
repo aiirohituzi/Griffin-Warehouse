@@ -722,5 +722,19 @@ div#div-agi .btn-agi:hover {
     .table-agi input {
         font-size: 8pt;
     }
+
+    
+    .side-right-agi.move {
+        -webkit-transform: translate(-335px, 0px);
+        transform: translate(-335px, 0px);
+    }
+    div#div-agi {
+        right: -335px;
+        width: 350px;
+    }
+    table#table-agi{
+        font-size: 7pt;
+        height: calc(100% - 20px);
+    }
 }
 </style>
