@@ -438,7 +438,7 @@ export default {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     border-right: unset;
-    background-color: #c3b9a2b6;
+    background-color: #d4cdbd;
     padding: 3px;
     font-size: 10pt;
 }
@@ -457,7 +457,7 @@ export default {
     -webkit-border-top-right-radius: 5px;
     -webkit-border-bottom-right-radius: 5px;
     
-    padding: 3px;
+    padding: 4.5px;
 
     font-size: 10pt;
     width: 50px;
@@ -492,7 +492,7 @@ export default {
     
     border: 2px solid #c3b9a2;
     border-radius: 5px;
-    background-color: #c3b9a2b6;
+    background-color: #d4cdbd;
 }
 .container-content #fairy {
     margin: 10px;
@@ -543,7 +543,7 @@ export default {
     font-size: 10pt;    
 }
 .table-damage select{
-    width: 80%;
+    width: 90%;
     text-align: right;
     border: 2px solid #c3b9a2;
     border-radius: 5px;
@@ -558,7 +558,7 @@ export default {
     border: 2px solid #c3b9a2;
     border-radius: 5px;
     background-color: #EEEBE4;
-    padding: 3px;
+    padding: 4.5px;
     font-size: 10pt;
 }
 
