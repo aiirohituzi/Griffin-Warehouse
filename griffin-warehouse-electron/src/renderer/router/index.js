@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
 import DamageCalc from '@/components/DamageCalc'
+import AgiCalc from '@/components/AgiCalc'
 
 Vue.use(Router)
 
@@ -25,6 +26,11 @@ export default new Router({
       path: '/damageCalc',
       name: 'DamageCalc',
       component: DamageCalc
+    },
+    {
+      path: '/agiCalc',
+      name: 'AgiCalc',
+      component: AgiCalc
     }
   ]
 })
