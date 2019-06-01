@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import DamageCalc from '@/components/DamageCalc'
 import AgiCalc from '@/components/AgiCalc'
+import GemsCalc from '@/components/GemsCalc'
 
 Vue.use(Router)
 
@@ -31,6 +32,11 @@ export default new Router({
       path: '/agiCalc',
       name: 'AgiCalc',
       component: AgiCalc
+    },
+    {
+      path: '/gemsCalc',
+      name: 'GemsCalc',
+      component: GemsCalc
     }
   ]
 })
