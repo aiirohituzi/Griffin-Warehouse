@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import DamageCalc from '@/components/DamageCalc'
 import AgiCalc from '@/components/AgiCalc'
 import GemsCalc from '@/components/GemsCalc'
+import SimCalc from '@/components/SimCalc'
 
 Vue.use(Router)
 
@@ -37,6 +38,11 @@ export default new Router({
       path: '/gemsCalc',
       name: 'GemsCalc',
       component: GemsCalc
+    },
+    {
+      path: '/simCalc',
+      name: 'SimCalc',
+      component: SimCalc
     }
   ]
 })
