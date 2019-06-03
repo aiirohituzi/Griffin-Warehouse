@@ -368,7 +368,7 @@ export default {
                 }
 
                 if(this.event) {
-                    if(this.eventCoefficient != '' || this.eventCoefficient > 0) {
+                    if(this.eventCoefficient != '' && this.eventCoefficient > 0) {
                         eventCoefficient = this.eventCoefficient
                     }
                 }
