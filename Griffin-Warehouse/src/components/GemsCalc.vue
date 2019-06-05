@@ -359,7 +359,6 @@ table#table-gems .radio {
     width: 10%;
 } */
 
-
 @media only screen and (max-width: 767px) {
     .radioGroup-gems {
         font-size: 9pt;
@@ -372,12 +371,14 @@ table#table-gems .radio {
     }
     .inputGroup-gems .input-gems {
         font-size: 8pt;
+        padding: 2.5px;
     }
     .inputGroup-gems .input-gems input {
         font-size: 8pt;
     }
     .inputGroup-gems .input-gems-allAddon {
         font-size: 8pt;
+        padding: 2.5px;
     }
     .inputGroup-gems .input-gems-allAddon input {
         font-size: 8pt;
@@ -392,5 +393,13 @@ table#table-gems .radio {
     table#table-gems td{
         width: calc(60vw / 2);
     } */
+}
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .inputGroup-gems .input-gems {
+        padding: 2.5px;
+    }
+    .inputGroup-gems .input-gems-allAddon {
+        padding: 2.5px;
+    }
 }
 </style>
