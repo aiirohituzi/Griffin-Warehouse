@@ -51,7 +51,7 @@
 
         <div class="inputGroup-exp" v-if="command">    
             <div class="input-addon-left">지휘요정 스킬 레벨</div>
-            <div class="input-exp-allAddon">
+            <div class="input-exp-allAddonSlider">
                 <input type="range" class="slider-exp" min="1" max="10" v-model="commandSkillLv">
             </div>
             <div class="input-addon-right">{{ commandSkillLv }}Lv {{ commandSkill[commandSkillLv-1] }}%</div>
@@ -59,7 +59,7 @@
 
         <div class="inputGroup-exp">    
             <div class="input-addon-left">최대 링크수 제한</div>
-            <div class="input-exp-allAddon">
+            <div class="input-exp-allAddonSlider">
                 <input type="range" class="slider-exp" min="1" max="5" v-model="dummy">
             </div>
             <div class="input-addon-right">{{ dummy }}링크</div>
@@ -640,7 +640,7 @@ export default {
     width: 50px;
     text-align: right;
 }
-.inputGroup-exp .input-exp-allAddon {
+.inputGroup-exp .input-exp-allAddonSlider {
     float: left;
     border: 2px solid #c3b9a2;
     -webkit-appearance: none;
@@ -653,7 +653,7 @@ export default {
     font-size: 10pt;
     width: 90px;
 }
-.inputGroup-exp .input-exp-allAddon .slider-exp {
+.inputGroup-exp .input-exp-allAddonSlider .slider-exp {
     vertical-align: middle;
     width: 100%;
     
@@ -667,6 +667,19 @@ export default {
     -webkit-margin-bottom: -5px;
     padding: 0;
     -webkit-padding: 0;
+}
+.inputGroup-exp .input-exp-allAddon {
+    float: left;
+    border: 2px solid #c3b9a2;
+    -webkit-appearance: none;
+
+    border-radius: 0;
+    -webkit-border-radius: 0;
+
+    padding: 3px;
+
+    font-size: 10pt;
+    width: 90px;
 }
 .inputGroup-exp .input-exp-allAddon select {
     -webkit-appearance: none;
@@ -807,6 +820,14 @@ div#div-penalty .div-penaltyExplanation {
 
     .tab-exp {
         font-size: 8pt
+    }
+}
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .inputGroup-exp .input-exp {
+        padding: 2.5px;
+    }
+    .inputGroup-exp .input-exp-allAddon {
+        padding: 2.5px;
     }
 }
 </style>

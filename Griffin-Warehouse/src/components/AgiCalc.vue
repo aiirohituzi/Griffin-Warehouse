@@ -737,4 +737,12 @@ div#div-agi .btn-agi:hover {
         height: calc(100% - 20px);
     }
 }
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .inputGroup-agi .input-agi {
+        padding: 2.5px;
+    }
+    .inputGroup-agi .input-agi-allAddon {
+        padding: 2.5px;
+    }
+}
 </style>
