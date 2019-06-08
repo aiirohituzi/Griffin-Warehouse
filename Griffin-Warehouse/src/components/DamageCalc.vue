@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <td>
-                    <select class="" v-model="tdoll_selected.first">
+                    <select v-model="tdoll_selected.first">
                         <option v-for="item in tdoll" :value="item.id">{{ item.name }}</option>
                     </select>
                 </td>
@@ -44,7 +44,7 @@
             <!-- 하나 선택할때마다 다음 입력창이 추가되는 방식으로 -->
             <tr v-if="tdoll_selected.first > 0">
                 <td>
-                    <select class="" v-model="tdoll_selected.second">
+                    <select v-model="tdoll_selected.second">
                         <option v-for="item in tdoll" :value="item.id">{{ item.name }}</option>
                     </select>
                 </td>
@@ -58,7 +58,7 @@
 
             <tr v-if="tdoll_selected.second > 0">
                 <td>
-                    <select class="" v-model="tdoll_selected.third">
+                    <select v-model="tdoll_selected.third">
                         <option v-for="item in tdoll" :value="item.id">{{ item.name }}</option>
                     </select>
                 </td>
@@ -72,7 +72,7 @@
 
             <tr v-if="tdoll_selected.third > 0">
                 <td>
-                    <select class="" v-model="tdoll_selected.fourth">
+                    <select v-model="tdoll_selected.fourth">
                         <option v-for="item in tdoll" :value="item.id">{{ item.name }}</option>
                     </select>
                 </td>

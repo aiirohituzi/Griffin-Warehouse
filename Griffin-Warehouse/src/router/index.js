@@ -6,6 +6,7 @@ import GemsCalc from '@/components/GemsCalc'
 import SimCalc from '@/components/SimCalc'
 import ExpCalc from '@/components/ExpCalc'
 import AgiCalc from '@/components/AgiCalc'
+import OECalc from '@/components/OperationalEffectivenessCalc'
 
 Vue.use(Router)
 
@@ -41,5 +42,10 @@ export default new Router({
       name: 'AgiCalc',
       component: AgiCalc
     },
+    {
+      path: '/oeCalc',
+      name: 'OECalc',
+      component: OECalc
+    }
   ]
 })
