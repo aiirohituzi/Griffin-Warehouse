@@ -2,11 +2,12 @@
     <div id="app">
         <ul id="navigation">
             <router-link tag="li" class="nav-home" to="/"></router-link>
-            <router-link tag="li" to="/damageCalc">데미지 계산기</router-link>
-            <router-link tag="li" to="/agiCalc">최대사속 계산기</router-link>
-            <router-link tag="li" to="/gemsCalc">필요 보석량 계산기</router-link>
-            <router-link tag="li" to="/simCalc">필요 모의작전점수 계산기</router-link>
-            <router-link tag="li" to="/expCalc">경험치 계산기</router-link>
+            <router-link tag="li" to="/damageCalc">데미지<br>계산기</router-link>
+            <router-link tag="li" to="/agiCalc">최대사속<br>계산기</router-link>
+            <router-link tag="li" to="/gemsCalc">필요 보석량<br>계산기</router-link>
+            <router-link tag="li" to="/simCalc">필요 모의작전점수<br>계산기</router-link>
+            <router-link tag="li" to="/expCalc">경험치<br>계산기</router-link>
+            <router-link tag="li" to="/oeCalc">작전능력<br>계산기</router-link>
         </ul>
         <div class="nav-tab">
             <span style="width: 40px;"></span>
@@ -15,6 +16,7 @@
             <span id="GemsCalc"></span>
             <span id="SimCalc"></span>
             <span id="ExpCalc"></span>
+            <span id="OECalc"></span>
         </div>
         <div class="container-router-view">
             <router-view/>
@@ -72,8 +74,8 @@ ul#navigation {
 ul#navigation li {
     box-sizing: border-box;
     float: left;
-    width: calc((100% - 40px) / 5);
-    line-height: 40px;
+    width: calc((100% - 40px) / 6);
+    line-height: 20px;
     height: 100%;
     cursor: pointer;
     
@@ -129,7 +131,7 @@ ul#navigation .nav-home:hover {
 .nav-tab span{
     box-sizing: border-box;
     float: left;
-    width: calc((100% - 40px) / 5);
+    width: calc((100% - 40px) / 6);
     height: 100%;
 }
 .nav-tab .current{
