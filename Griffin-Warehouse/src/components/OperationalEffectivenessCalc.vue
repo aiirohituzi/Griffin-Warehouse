@@ -238,24 +238,24 @@ export default {
     return {
       tdollType: ['MG', 'SG', 'SMG, AR, RF, HG'],
       firstTdoll: {
-        type: 0,
-        link: 0,
+        type: '',
+        link: 5,
         bullet: 0,
-        str: 0,
+        str: 161,
         armor: 0,
-        armorPenetration: 0,
-        criticalRate: 0,
-        criticalDamageRate: 0,
-        agi: 0,
-        dex: 0,
-        hp: 0,
-        agl: 0,
-        rating: 0,
-        skillLv: 0,
+        armorPenetration: 195,
+        criticalRate: 88,
+        criticalDamageRate: 175,
+        agi: 34,
+        dex: 99,
+        hp: 365,
+        agl: 49,
+        rating: 5,
+        skillLv: 10,
         operationalEffectiveness: 0,
       },
       secondTdoll: {
-        type: 0,
+        type: '',
         link: 0,
         bullet: 0,
         str: 0,
@@ -272,7 +272,7 @@ export default {
         operationalEffectiveness: 0,
       },
       thirdTdoll: {
-        type: 0,
+        type: '',
         link: 0,
         bullet: 0,
         str: 0,
@@ -289,7 +289,7 @@ export default {
         operationalEffectiveness: 0,
       },
       fourthTdoll: {
-        type: 0,
+        type: '',
         link: 0,
         bullet: 0,
         str: 0,
@@ -306,7 +306,7 @@ export default {
         operationalEffectiveness: 0,
       },
       fifthTdoll: {
-        type: 0,
+        type: '',
         link: 0,
         bullet: 0,
         str: 0,
@@ -325,9 +325,26 @@ export default {
     }
   },
   methods: {
+    OperationalEffectivenessCalc: function () {
+      var armorCoefficient = 1
+      if(this.firstTdoll.armor < 75){
+        armorCoefficient = 75 - this.firstTdoll.armor
+      }
+      var attack = 5 * this.firstTdoll.link * ((this.firstTdoll.str + this.firstTdoll.armorPenetration / 3) * ((this.firstTdoll.criticalRate / 100) * ((this.firstTdoll.criticalDamageRate - 100) / 100) + 1) * this.firstTdoll.agi / 50 * this.firstTdoll.dex / (this.firstTdoll.dex + 23) + 8)
+      var defense = (this.firstTdoll.hp / this.firstTdoll.link) * this.firstTdoll.link * (35 + this.firstTdoll.agl) / 35 * (2.6 * 75 / armorCoefficient - 1.6)
+      var skill = this.firstTdoll.link * (0.8 + this.firstTdoll.rating / 10) * (35 + (5 * (this.firstTdoll.skillLv - 1)))
+      this.firstTdoll.operationalEffectiveness = Math.ceil(attack) + Math.ceil(defense) + Math.ceil(skill)
+    },
     checkInputOE: function () {
       var reg = /\D+/
+
+      // if(reg.test(this.)){
+      //   this. = this..replace(/\D+/, '')
+      // }
     }
+  },
+  updated: function () {
+      this.OperationalEffectivenessCalc()
   }
 }
 </script>
