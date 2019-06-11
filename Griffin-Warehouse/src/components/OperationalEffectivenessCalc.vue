@@ -12,27 +12,27 @@
             </tr>
             <tr>
                 <td>
-                    <select v-model="firstTdoll.type">
+                    <select v-model="tdollStat[0].type">
                         <option v-for="item in tdollType" :value="item">{{ item }}</option>
                     </select>
                 </td>
                 <td>
-                    <select v-model="secondTdoll.type">
+                    <select v-model="tdollStat[1].type">
                         <option v-for="item in tdollType" :value="item">{{ item }}</option>
                     </select>
                 </td>
                 <td>
-                    <select v-model="thirdTdoll.type">
+                    <select v-model="tdollStat[2].type">
                         <option v-for="item in tdollType" :value="item">{{ item }}</option>
                     </select>
                 </td>
                 <td>
-                    <select v-model="fourthTdoll.type">
+                    <select v-model="tdollStat[3].type">
                         <option v-for="item in tdollType" :value="item">{{ item }}</option>
                     </select>
                 </td>
                 <td>
-                    <select v-model="fifthTdoll.type">
+                    <select v-model="tdollStat[4].type">
                         <option v-for="item in tdollType" :value="item">{{ item }}</option>
                     </select>
                 </td>
@@ -55,107 +55,107 @@
             </tr>
             <tr>
                 <th>편제 수</th>
-                <td><input type="text" class="input-text" v-model="firstTdoll.link" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="secondTdoll.link" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="thirdTdoll.link" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fourthTdoll.link" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fifthTdoll.link" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].link" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].link" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].link" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].link" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].link" v-on:keyup="checkInputOE"></td>
             </tr>
             <tr>
                 <th>장탄 수</th>
-                <td><input type="text" class="input-text" v-model="firstTdoll.bullet" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="secondTdoll.bullet" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="thirdTdoll.bullet" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fourthTdoll.bullet" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fifthTdoll.bullet" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].bullet" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].bullet" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].bullet" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].bullet" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].bullet" v-on:keyup="checkInputOE"></td>
             </tr>
             <tr>
                 <th>화력</th>
-                <td><input type="text" class="input-text" v-model="firstTdoll.str" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="secondTdoll.str" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="thirdTdoll.str" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fourthTdoll.str" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fifthTdoll.str" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].str" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].str" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].str" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].str" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].str" v-on:keyup="checkInputOE"></td>
             </tr>
             <tr>
                 <th>관통</th>
-                <td><input type="text" class="input-text" v-model="firstTdoll.armorPenetration" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="secondTdoll.armorPenetration" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="thirdTdoll.armorPenetration" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fourthTdoll.armorPenetration" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fifthTdoll.armorPenetration" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].armorPenetration" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].armorPenetration" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].armorPenetration" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].armorPenetration" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].armorPenetration" v-on:keyup="checkInputOE"></td>
             </tr>
             <tr>
                 <th>장갑</th>
-                <td><input type="text" class="input-text" v-model="firstTdoll.armor" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="secondTdoll.armor" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="thirdTdoll.armor" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fourthTdoll.armor" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fifthTdoll.armor" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].armor" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].armor" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].armor" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].armor" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].armor" v-on:keyup="checkInputOE"></td>
             </tr>
             <tr>
                 <th>치명률</th>
-                <td><input type="text" class="input-text" v-model="firstTdoll.criticalRate" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="secondTdoll.criticalRate" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="thirdTdoll.criticalRate" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fourthTdoll.criticalRate" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fifthTdoll.criticalRate" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].criticalRate" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].criticalRate" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].criticalRate" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].criticalRate" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].criticalRate" v-on:keyup="checkInputOE"></td>
             </tr>
             <tr>
                 <th>치명상</th>
-                <td><input type="text" class="input-text" v-model="firstTdoll.criticalDamageRate" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="secondTdoll.criticalDamageRate" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="thirdTdoll.criticalDamageRate" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fourthTdoll.criticalDamageRate" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fifthTdoll.criticalDamageRate" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].criticalDamageRate" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].criticalDamageRate" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].criticalDamageRate" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].criticalDamageRate" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].criticalDamageRate" v-on:keyup="checkInputOE"></td>
             </tr>
             <tr>
                 <th>사속</th>
-                <td><input type="text" class="input-text" v-model="firstTdoll.agi" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="secondTdoll.agi" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="thirdTdoll.agi" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fourthTdoll.agi" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fifthTdoll.agi" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].agi" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].agi" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].agi" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].agi" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].agi" v-on:keyup="checkInputOE"></td>
             </tr>
             <tr>
                 <th>명중</th>
-                <td><input type="text" class="input-text" v-model="firstTdoll.dex" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="secondTdoll.dex" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="thirdTdoll.dex" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fourthTdoll.dex" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fifthTdoll.dex" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].dex" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].dex" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].dex" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].dex" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].dex" v-on:keyup="checkInputOE"></td>
             </tr>
             <tr>
                 <th>체력</th>
-                <td><input type="text" class="input-text" v-model="firstTdoll.hp" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="secondTdoll.hp" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="thirdTdoll.hp" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fourthTdoll.hp" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fifthTdoll.hp" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].hp" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].hp" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].hp" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].hp" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].hp" v-on:keyup="checkInputOE"></td>
             </tr>
             <tr>
                 <th>회피</th>
-                <td><input type="text" class="input-text" v-model="firstTdoll.agl" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="secondTdoll.agl" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="thirdTdoll.agl" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fourthTdoll.agl" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fifthTdoll.agl" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].agl" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].agl" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].agl" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].agl" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].agl" v-on:keyup="checkInputOE"></td>
             </tr>
             <tr>
                 <th>등급(별 수)</th>
-                <td><input type="text" class="input-text" v-model="firstTdoll.rating" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="secondTdoll.rating" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="thirdTdoll.rating" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fourthTdoll.rating" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fifthTdoll.rating" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].rating" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].rating" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].rating" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].rating" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].rating" v-on:keyup="checkInputOE"></td>
             </tr>
             <tr>
                 <th>스킬레벨</th>
-                <td><input type="text" class="input-text" v-model="firstTdoll.skillLv" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="secondTdoll.skillLv" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="thirdTdoll.skillLv" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fourthTdoll.skillLv" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text" v-model="fifthTdoll.skillLv" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].skillLv" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].skillLv" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].skillLv" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].skillLv" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].skillLv" v-on:keyup="checkInputOE"></td>
             </tr>
         </table>
     </div>
@@ -172,19 +172,19 @@
                 <th>제대작전능력</th>
             </tr>
             <tr>
-                <td><div class="label">{{ firstTdoll.operationalEffectiveness }}</div></td>
-                <td><div class="label">{{ secondTdoll.operationalEffectiveness }}</div></td>
-                <td><div class="label">{{ thirdTdoll.operationalEffectiveness }}</div></td>
-                <td><div class="label">{{ fourthTdoll.operationalEffectiveness }}</div></td>
-                <td><div class="label">{{ fifthTdoll.operationalEffectiveness }}</div></td>
+                <td><div class="label">{{ tdollStat[0].operationalEffectiveness }}</div></td>
+                <td><div class="label">{{ tdollStat[1].operationalEffectiveness }}</div></td>
+                <td><div class="label">{{ tdollStat[2].operationalEffectiveness }}</div></td>
+                <td><div class="label">{{ tdollStat[3].operationalEffectiveness }}</div></td>
+                <td><div class="label">{{ tdollStat[4].operationalEffectiveness }}</div></td>
                 <td>
                   <div class="label">
                   {{
-                    firstTdoll.operationalEffectiveness + 
-                    secondTdoll.operationalEffectiveness + 
-                    thirdTdoll.operationalEffectiveness + 
-                    fourthTdoll.operationalEffectiveness + 
-                    fifthTdoll.operationalEffectiveness
+                    tdollStat[0].operationalEffectiveness + 
+                    tdollStat[1].operationalEffectiveness + 
+                    tdollStat[2].operationalEffectiveness + 
+                    tdollStat[3].operationalEffectiveness + 
+                    tdollStat[4].operationalEffectiveness
                   }}
                   </div>
                 </td>
@@ -236,104 +236,118 @@ export default {
   name: 'OperationalEffectivenessCalc',
   data () {
     return {
-      tdollType: ['MG', 'SG', 'SMG, AR, RF, HG'],
-      firstTdoll: {
-        type: '',
-        link: 5,
-        bullet: 0,
-        str: 161,
-        armor: 0,
-        armorPenetration: 195,
-        criticalRate: 88,
-        criticalDamageRate: 175,
-        agi: 34,
-        dex: 99,
-        hp: 365,
-        agl: 49,
-        rating: 5,
-        skillLv: 10,
-        operationalEffectiveness: 0,
-      },
-      secondTdoll: {
-        type: '',
-        link: 0,
-        bullet: 0,
-        str: 0,
-        armor: 0,
-        armorPenetration: 0,
-        criticalRate: 0,
-        criticalDamageRate: 0,
-        agi: 0,
-        dex: 0,
-        hp: 0,
-        agl: 0,
-        rating: 0,
-        skillLv: 0,
-        operationalEffectiveness: 0,
-      },
-      thirdTdoll: {
-        type: '',
-        link: 0,
-        bullet: 0,
-        str: 0,
-        armor: 0,
-        armorPenetration: 0,
-        criticalRate: 0,
-        criticalDamageRate: 0,
-        agi: 0,
-        dex: 0,
-        hp: 0,
-        agl: 0,
-        rating: 0,
-        skillLv: 0,
-        operationalEffectiveness: 0,
-      },
-      fourthTdoll: {
-        type: '',
-        link: 0,
-        bullet: 0,
-        str: 0,
-        armor: 0,
-        armorPenetration: 0,
-        criticalRate: 0,
-        criticalDamageRate: 0,
-        agi: 0,
-        dex: 0,
-        hp: 0,
-        agl: 0,
-        rating: 0,
-        skillLv: 0,
-        operationalEffectiveness: 0,
-      },
-      fifthTdoll: {
-        type: '',
-        link: 0,
-        bullet: 0,
-        str: 0,
-        armor: 0,
-        armorPenetration: 0,
-        criticalRate: 0,
-        criticalDamageRate: 0,
-        agi: 0,
-        dex: 0,
-        hp: 0,
-        agl: 0,
-        rating: 0,
-        skillLv: 0,
-        operationalEffectiveness: 0,
-      },
+      tdollType: ['', 'MG', 'SG', 'SMG, AR, RF, HG'],
+      tdollStat: [
+        {
+          type: '',
+          link: 5,
+          bullet: 0,
+          str: 161,
+          armor: 0,
+          armorPenetration: 195,
+          criticalRate: 88,
+          criticalDamageRate: 175,
+          agi: 34,
+          dex: 99,
+          hp: 365,
+          agl: 49,
+          rating: 5,
+          skillLv: 10,
+          operationalEffectiveness: 0,
+        },
+        {
+          type: '',
+          link: 0,
+          bullet: 0,
+          str: 0,
+          armor: 0,
+          armorPenetration: 0,
+          criticalRate: 0,
+          criticalDamageRate: 0,
+          agi: 0,
+          dex: 0,
+          hp: 0,
+          agl: 0,
+          rating: 0,
+          skillLv: 0,
+          operationalEffectiveness: 0,
+        },
+        {
+          type: '',
+          link: 0,
+          bullet: 0,
+          str: 0,
+          armor: 0,
+          armorPenetration: 0,
+          criticalRate: 0,
+          criticalDamageRate: 0,
+          agi: 0,
+          dex: 0,
+          hp: 0,
+          agl: 0,
+          rating: 0,
+          skillLv: 0,
+          operationalEffectiveness: 0,
+        },
+        {
+          type: '',
+          link: 0,
+          bullet: 0,
+          str: 0,
+          armor: 0,
+          armorPenetration: 0,
+          criticalRate: 0,
+          criticalDamageRate: 0,
+          agi: 0,
+          dex: 0,
+          hp: 0,
+          agl: 0,
+          rating: 0,
+          skillLv: 0,
+          operationalEffectiveness: 0,
+        },
+        {
+          type: '',
+          link: 0,
+          bullet: 0,
+          str: 0,
+          armor: 0,
+          armorPenetration: 0,
+          criticalRate: 0,
+          criticalDamageRate: 0,
+          agi: 0,
+          dex: 0,
+          hp: 0,
+          agl: 0,
+          rating: 0,
+          skillLv: 0,
+          operationalEffectiveness: 0,
+        }
+      ]
     }
   },
   methods: {
     OperationalEffectivenessCalc: function () {
-      var armorCoefficient = 1
-      if(this.firstTdoll.armor < 75){
-        armorCoefficient = 75 - this.firstTdoll.armor
+      var inputClassList = ['.firstTdoll', '.secondTdoll', '.thirdTdoll', '.fourthTdoll', '.fifthTdoll']
+
+      for(var i=0; i<5; i++) {
+        if(this.tdollStat[i].type != ''){
+          $(inputClassList[i]).attr('disabled', false)
+        } else {
+          $(inputClassList[i]).attr('disabled', true)
+        }
       }
-      var attack = 5 * this.firstTdoll.link * ((this.firstTdoll.str + this.firstTdoll.armorPenetration / 3) * ((this.firstTdoll.criticalRate / 100) * ((this.firstTdoll.criticalDamageRate - 100) / 100) + 1) * this.firstTdoll.agi / 50 * this.firstTdoll.dex / (this.firstTdoll.dex + 23) + 8)
-      var defense = (this.firstTdoll.hp / this.firstTdoll.link) * this.firstTdoll.link * (35 + this.firstTdoll.agl) / 35 * (2.6 * 75 / armorCoefficient - 1.6)
-      var skill = this.firstTdoll.link * (0.8 + this.firstTdoll.rating / 10) * (35 + (5 * (this.firstTdoll.skillLv - 1)))
-      this.firstTdoll.operationalEffectiveness = Math.ceil(attack) + Math.ceil(defense) + Math.ceil(skill)
+
+      var armorCoefficient = 1
+      if(this.tdollStat[0].armor < 75){
+        armorCoefficient = 75 - this.tdollStat[0].armor
+      }
+
+      var attack = 5 * this.tdollStat[0].link * ((this.tdollStat[0].str + this.tdollStat[0].armorPenetration / 3) * ((this.tdollStat[0].criticalRate / 100) * ((this.tdollStat[0].criticalDamageRate - 100) / 100) + 1) * this.tdollStat[0].agi / 50 * this.tdollStat[0].dex / (this.tdollStat[0].dex + 23) + 8)
+      var defense = (this.tdollStat[0].hp / this.tdollStat[0].link) * this.tdollStat[0].link * (35 + this.tdollStat[0].agl) / 35 * (2.6 * 75 / armorCoefficient - 1.6)
+      var skill = this.tdollStat[0].link * (0.8 + this.tdollStat[0].rating / 10) * (35 + (5 * (this.tdollStat[0].skillLv - 1)))
+      
+      this.tdollStat[0].operationalEffectiveness = Math.ceil(attack) + Math.ceil(defense) + Math.ceil(skill)
     },
     checkInputOE: function () {
       var reg = /\D+/
@@ -344,7 +358,10 @@ export default {
     }
   },
   updated: function () {
-      this.OperationalEffectivenessCalc()
+    this.OperationalEffectivenessCalc()
+  },
+  mounted: function () {
+    $('.input-text').attr('disabled', true)
   }
 }
 </script>
