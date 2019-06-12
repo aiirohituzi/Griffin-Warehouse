@@ -240,19 +240,19 @@ export default {
       tdollStat: [
         {
           type: '',
-          link: 5,
+          link: 0,
           bullet: 0,
-          str: 161,
+          str: 0,
           armor: 0,
-          armorPenetration: 195,
-          criticalRate: 88,
-          criticalDamageRate: 175,
-          agi: 34,
-          dex: 99,
-          hp: 365,
-          agl: 49,
-          rating: 5,
-          skillLv: 10,
+          armorPenetration: 0,
+          criticalRate: 0,
+          criticalDamageRate: 0,
+          agi: 0,
+          dex: 0,
+          hp: 0,
+          agl: 0,
+          rating: 0,
+          skillLv: 0,
           operationalEffectiveness: 0,
         },
         {
@@ -331,23 +331,33 @@ export default {
       var inputClassList = ['.firstTdoll', '.secondTdoll', '.thirdTdoll', '.fourthTdoll', '.fifthTdoll']
 
       for(var i=0; i<5; i++) {
-        if(this.tdollStat[i].type != ''){
+        if(this.tdollStat[i].type !== ''){
           $(inputClassList[i]).attr('disabled', false)
         } else {
           $(inputClassList[i]).attr('disabled', true)
         }
       }
 
-      var armorCoefficient = 1
-      if(this.tdollStat[0].armor < 75){
-        armorCoefficient = 75 - this.tdollStat[0].armor
-      }
+      for(var i=0; i<5; i++) {
+        if(this.tdollStat[i].type === '') {
+          continue
+        }
+        var armorCoefficient = 1
+        if(this.tdollStat[i].armor < 75){
+          armorCoefficient = 75 - this.tdollStat[i].armor
+        }
 
-      var attack = 5 * this.tdollStat[0].link * ((this.tdollStat[0].str + this.tdollStat[0].armorPenetration / 3) * ((this.tdollStat[0].criticalRate / 100) * ((this.tdollStat[0].criticalDamageRate - 100) / 100) + 1) * this.tdollStat[0].agi / 50 * this.tdollStat[0].dex / (this.tdollStat[0].dex + 23) + 8)
-      var defense = (this.tdollStat[0].hp / this.tdollStat[0].link) * this.tdollStat[0].link * (35 + this.tdollStat[0].agl) / 35 * (2.6 * 75 / armorCoefficient - 1.6)
-      var skill = this.tdollStat[0].link * (0.8 + this.tdollStat[0].rating / 10) * (35 + (5 * (this.tdollStat[0].skillLv - 1)))
-      
-      this.tdollStat[0].operationalEffectiveness = Math.ceil(attack) + Math.ceil(defense) + Math.ceil(skill)
+        var attack = 5 * this.tdollStat[i].link * ((this.tdollStat[i].str + this.tdollStat[i].armorPenetration / 3) * ((this.tdollStat[i].criticalRate / 100) * ((this.tdollStat[i].criticalDamageRate - 100) / 100) + 1) * this.tdollStat[i].agi / 50 * this.tdollStat[i].dex / (this.tdollStat[i].dex + 23) + 8)
+        var defense = (this.tdollStat[i].hp / this.tdollStat[i].link) * this.tdollStat[i].link * (35 + this.tdollStat[i].agl) / 35 * (2.6 * 75 / armorCoefficient - 1.6)
+        var skill = this.tdollStat[i].link * (0.8 + this.tdollStat[i].rating / 10) * (35 + (5 * (this.tdollStat[i].skillLv - 1)))
+
+        var operationalEffectiveness = Math.ceil(attack) + Math.ceil(defense) + Math.ceil(skill)
+
+        if(isNaN(operationalEffectiveness)){
+          operationalEffectiveness = 0
+        }
+        this.tdollStat[i].operationalEffectiveness = operationalEffectiveness
+      }
     },
     checkInputOE: function () {
       var reg = /\D+/
