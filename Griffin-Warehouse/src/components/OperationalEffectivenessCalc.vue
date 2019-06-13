@@ -353,7 +353,7 @@ export default {
 
         var operationalEffectiveness = Math.ceil(attack) + Math.ceil(defense) + Math.ceil(skill)
 
-        if(isNaN(operationalEffectiveness)){
+        if(isNaN(operationalEffectiveness)) {
           operationalEffectiveness = 0
         }
         this.tdollStat[i].operationalEffectiveness = operationalEffectiveness
@@ -362,9 +362,47 @@ export default {
     checkInputOE: function () {
       var reg = /\D+/
 
-      // if(reg.test(this.)){
-      //   this. = this..replace(/\D+/, '')
-      // }
+      for(var i=0; i<5; i++) {
+        if(reg.test(this.tdollStat[i].link)) {
+          this.tdollStat[i].link = this.tdollStat[i].link.replace(/\D+/, '')
+        }
+        if(reg.test(this.tdollStat[i].bullet)) {
+          this.tdollStat[i].bullet = this.tdollStat[i].bullet.replace(/\D+/, '')
+        }
+        if(reg.test(this.tdollStat[i].str)) {
+          this.tdollStat[i].str = this.tdollStat[i].str.replace(/\D+/, '')
+        }
+        if(reg.test(this.tdollStat[i].armor)) {
+          this.tdollStat[i].armor = this.tdollStat[i].armor.replace(/\D+/, '')
+        }
+        if(reg.test(this.tdollStat[i].armorPenetration)) {
+          this.tdollStat[i].armorPenetration = this.tdollStat[i].armorPenetration.replace(/\D+/, '')
+        }
+        if(reg.test(this.tdollStat[i].criticalRate)) {
+          this.tdollStat[i].criticalRate = this.tdollStat[i].criticalRate.replace(/\D+/, '')
+        }
+        if(reg.test(this.tdollStat[i].criticalDamageRate)) {
+          this.tdollStat[i].criticalDamageRate = this.tdollStat[i].criticalDamageRate.replace(/\D+/, '')
+        }
+        if(reg.test(this.tdollStat[i].agi)) {
+          this.tdollStat[i].agi = this.tdollStat[i].agi.replace(/\D+/, '')
+        }
+        if(reg.test(this.tdollStat[i].dex)) {
+          this.tdollStat[i].dex = this.tdollStat[i].dex.replace(/\D+/, '')
+        }
+        if(reg.test(this.tdollStat[i].hp)) {
+          this.tdollStat[i].hp = this.tdollStat[i].hp.replace(/\D+/, '')
+        }
+        if(reg.test(this.tdollStat[i].agl)) {
+          this.tdollStat[i].agl = this.tdollStat[i].agl.replace(/\D+/, '')
+        }
+        if(reg.test(this.tdollStat[i].rating)) {
+          this.tdollStat[i].rating = this.tdollStat[i].rating.replace(/\D+/, '')
+        }
+        if(reg.test(this.tdollStat[i].skillLv)) {
+          this.tdollStat[i].skillLv = this.tdollStat[i].skillLv.replace(/\D+/, '')
+        }
+      }
     }
   },
   updated: function () {
