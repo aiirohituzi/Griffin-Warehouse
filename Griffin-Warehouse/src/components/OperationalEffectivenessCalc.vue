@@ -463,16 +463,6 @@ export default {
 .table-OE .input-check {
     height: 12px;
 }
-.table-OE .slider-damage {
-    display: inline-block;
-    vertical-align: middle;
-    width: 60%;
-}
-.table-OE .slider-value {
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 10pt;    
-}
 .table-OE select{
     width: 80%;
     text-align: right;
@@ -491,5 +481,29 @@ export default {
     background-color: #EEEBE4;
     padding: 3px;
     font-size: 10pt;
+}
+
+@media only screen and (max-width: 767px) {
+    .container-content {
+        width: 80vw;
+    }
+    .table-OE {
+        font-size: 8pt;
+    }
+    .table-OE-col-5 th, td{
+        width: calc((80vw - 40px) / 5);
+    }
+    .table-OE-col-6 th, td{
+        width: calc((80vw - 40px) / 6);
+    }
+    .table-OE .input-text {
+        font-size: 8pt;
+    }
+    .table-OE select{
+        font-size: 8pt;
+    }
+    .table-OE .label{
+        font-size: 8pt;
+    }
 }
 </style>
