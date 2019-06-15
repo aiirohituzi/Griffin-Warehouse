@@ -7,6 +7,7 @@
       <router-link tag="li" to="/gemsCalc">필요 보석량 계산기</router-link>
       <router-link tag="li" to="/simCalc">필요 모의작전점수 계산기</router-link>
       <router-link tag="li" to="/expCalc">경험치 계산기</router-link>
+      <router-link tag="li" to="/oeCalc">작전능력계산기</router-link>
     </ul>
     <div class="nav-tab">
       <span style="width: 40px;"></span>
@@ -15,6 +16,7 @@
       <span id="GemsCalc"></span>
       <span id="SimCalc"></span>
       <span id="ExpCalc"></span>
+      <span id="OECalc"></span>
     </div>
     <div class="container-router-view">
       <router-view/>
@@ -72,13 +74,13 @@ ul#navigation {
 ul#navigation li {
     box-sizing: border-box;
     float: left;
-    width: calc((100% - 40px) / 5);
+    width: calc((100% - 40px) / 6);
     line-height: 40px;
     height: 100%;
     cursor: pointer;
     
     text-align: center;
-    font-size: 2vmin;
+    font-size: 1.8vmin;
     font-family: 'Do Hyeon', sans-serif;
 }
 ul#navigation li:hover {
@@ -129,7 +131,7 @@ ul#navigation .nav-home:hover {
 .nav-tab span{
     box-sizing: border-box;
     float: left;
-    width: calc((100% - 40px) / 5);
+    width: calc((100% - 40px) / 6);
     height: 100%;
 }
 .nav-tab .current{

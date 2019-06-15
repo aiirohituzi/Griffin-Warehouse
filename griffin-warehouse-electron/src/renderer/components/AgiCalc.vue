@@ -634,7 +634,7 @@ div#div-agi {
     right: -435px;
     top: 20vh;
     width: 450px;
-    height: 400px;
+    height: 380px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     background-color: #d4cdbd;
@@ -645,9 +645,9 @@ div#div-agi {
     text-align: center;
 }
 table#table-agi{
-    width: 90%;
+    width: 92%;
     float: right;
-    font-size: 9pt;
+    font-size: 8pt;
     margin: 10px;
 }
 table#table-agi th{
