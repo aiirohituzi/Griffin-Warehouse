@@ -138,6 +138,8 @@ export default {
             var todayLabel = new Date().getDay();   // 오늘의 요일 반환
             var weeklyCount = Math.floor((todayLabel + parseInt(this.remainingDays)) / 7)   // 일요일 기준으로 몇주 경과했는지 계산
             var afterDayLabel = (todayLabel + parseInt(this.remainingDays)) % 7     // D-day의 요일을 계산
+            var monthly = 0
+            var mockGems = 0
 
             if(this.calcMode == 0){
                 targetGems = this.inputGems * this.remainingDays
@@ -145,12 +147,22 @@ export default {
                 targetGems = this.inputGems
             }
 
-            this.monthly = this.remainingDays * 30
+            monthly = this.remainingDays * 30
+            if(isNaN(monthly)) {
+              this.monthly = 0
+            } else {
+              this.monthly = monthly
+            }
 
             for(var i=0; i<this.mockPurchaseCount; i++){
                 mockSum += (i + 1) * 20
             }
-            this.mockGems = mockSum * this.remainingDays
+            mockGems = mockSum * this.remainingDays
+            if(isNaN(mockGems)) {
+              this.mockGems = 0
+            } else {
+              this.mockGems = mockGems
+            }
 
             // console.log("todayLabel : " + todayLabel)
             // console.log("weeklyCount : " + weeklyCount)
