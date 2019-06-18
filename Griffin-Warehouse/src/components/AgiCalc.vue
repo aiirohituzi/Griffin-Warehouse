@@ -358,8 +358,16 @@ export default {
             var needAgiBuff = 116 / (parseInt(this.tdollAgi) * (1 + sumAgiBuff / 100) * mulAgiSkill)
             var needAgiBuffAfterSkill = 116 / (parseInt(this.tdollAgi) * (1 + sumAgiBuff / 100) * (1 + parseInt(this.tdollAgiSkill) / 100) * mulAgiSkill)
 
-            this.needAgiBuff = Math.ceil((needAgiBuff - 1) * 100)
-            this.needAgiBuffAfterSkill = Math.ceil((needAgiBuffAfterSkill - 1) * 100)
+            if(isNaN(needAgiBuff)) {
+              this.needAgiBuff = 0
+            } else {
+              this.needAgiBuff = Math.ceil((needAgiBuff - 1) * 100)
+            }
+            if(isNaN(needAgiBuffAfterSkill)) {
+              this.needAgiBuffAfterSkill = 0
+            } else {
+              this.needAgiBuffAfterSkill = Math.ceil((needAgiBuffAfterSkill - 1) * 100)
+            }
         },
         checkInputAgi: function () {
             var reg = /\D+/
