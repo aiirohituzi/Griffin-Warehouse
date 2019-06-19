@@ -10,7 +10,7 @@
         <div class="input-gems-allAddon">
             <input type="text" maxlength="6" v-model="inputGems" v-on:keyup="checkInputGems">
         </div>
-        <div v-if="calcMode == 0" class="input-addon-right">{{ inputGems }}개 * {{ remainingDays }}일 = {{ inputGems * remainingDays }}개</div>
+        <div v-if="calcMode == 0" class="input-addon-right">{{ inputGems }}개 * {{ remainingDays }}일 = {{ GemXDay }}개</div>
         <div v-if="calcMode == 1" class="input-addon-right">{{ inputGems }}개</div>
     </div>
 
@@ -123,6 +123,7 @@ export default {
       calcMode: 0,
       inputGems: 0,
       remainingDays: 0,
+      GemXDay: 0,
       currentGems: 0,
       monthly: 0,
       mockPurchaseCount: 0,
@@ -142,6 +143,8 @@ export default {
       var weeklyCount = Math.floor((todayLabel + parseInt(this.remainingDays)) / 7)
       // D-day의 요일을 계산
       var afterDayLabel = (todayLabel + parseInt(this.remainingDays)) % 7
+      var monthly = 0
+      var mockGems = 0
 
       if (this.calcMode === '0') {
         targetGems = this.inputGems * this.remainingDays
@@ -149,12 +152,28 @@ export default {
         targetGems = this.inputGems
       }
 
-      this.monthly = this.remainingDays * 30
+      monthly = this.remainingDays * 30
+      if (isNaN(monthly)) {
+        this.monthly = 0
+      } else {
+        this.monthly = monthly
+      }
 
       for (var i = 0; i < this.mockPurchaseCount; i++) {
         mockSum += (i + 1) * 20
       }
-      this.mockGems = mockSum * this.remainingDays
+      mockGems = mockSum * this.remainingDays
+      if (isNaN(mockGems)) {
+        this.mockGems = 0
+      } else {
+        this.mockGems = mockGems
+      }
+
+      if (isNaN(this.inputGems * this.remainingDays)) {
+        this.GemXDay = 0
+      } else {
+        this.GemXDay = this.inputGems * this.remainingDays
+      }
 
       // console.log("todayLabel : " + todayLabel)
       // console.log("weeklyCount : " + weeklyCount)

@@ -303,30 +303,54 @@ export default {
       // 1~9, 10~29, 30~69, 70~89, 90~120 구간별로 편제별 경험치 차별적용
       var cumulativeExp = this.exp[this.tdollCurrentLv - 1] + parseInt(this.tdollCurrentExp)
       var tdollTargetExp
+      var needExp
       var needCount = 0
       var penaltyLv = this.area[this.area_selected].penalty
-
       var eventCoefficient = 1
+      var tdollNeedReport
 
       if (this.calcMode === 'level') {
         tdollTargetExp = this.exp[this.tdollTarget - 1]
-        this.needExp = this.exp[this.tdollTarget - 1] - (this.exp[this.tdollCurrentLv - 1] + parseInt(this.tdollCurrentExp))
+        needExp = this.exp[this.tdollTarget - 1] - (this.exp[this.tdollCurrentLv - 1] + parseInt(this.tdollCurrentExp))
+        if (isNaN(needExp)) {
+          this.needExp = 0
+        } else {
+          this.needExp = needExp
+        }
       } else if (this.calcMode === 'exp') {
         tdollTargetExp = parseInt(this.tdollTarget)
-        this.needExp = tdollTargetExp - (this.exp[this.tdollCurrentLv - 1] + parseInt(this.tdollCurrentExp))
+        needExp = tdollTargetExp - (this.exp[this.tdollCurrentLv - 1] + parseInt(this.tdollCurrentExp))
+        if (isNaN(needExp)) {
+          this.needExp = 0
+        } else {
+          this.needExp = needExp
+        }
       }
 
       var fairyNeedExp = this.exp_fairy[this.fairyTarget - 1] - (this.exp_fairy[this.fairyCurrentLv - 1] + parseInt(this.fairyCurrentExp))
-      this.fairyNeedReport = Math.ceil(fairyNeedExp / 3000)
+      if (isNaN(fairyNeedExp)) {
+        this.fairyNeedExp = 0
+      } else {
+        this.fairyNeedReport = Math.ceil(fairyNeedExp / 3000)
+      }
 
       var FSTNeedExp = this.exp_FST[this.FSTTarget - 1] - (this.exp_FST[this.FSTCurrentLv - 1] + parseInt(this.FSTCurrentExp))
-      this.FSTNeedReport = Math.ceil(FSTNeedExp / 3000)
-      this.FSTTime = Math.ceil(this.FSTNeedReport / 15)
+      if (isNaN(FSTNeedExp)) {
+        this.FSTNeedExp = 0
+      } else {
+        this.FSTNeedReport = Math.ceil(FSTNeedExp / 3000)
+        this.FSTTime = Math.ceil(this.FSTNeedReport / 15)
+      }
 
       if (!this.pledge) {
         this.tdollNeedReport = Math.ceil(this.needExp / 3000)
       } else {
-        this.tdollNeedReport = Math.ceil((this.exp_pledge[this.tdollTarget - 1] - (this.exp_pledge[this.tdollCurrentLv - 1] + parseInt(this.tdollCurrentExp) / 2)) / 3000)
+        tdollNeedReport = Math.ceil((this.exp_pledge[this.tdollTarget - 1] - (this.exp_pledge[this.tdollCurrentLv - 1] + parseInt(this.tdollCurrentExp) / 2)) / 3000)
+        if (isNaN(tdollNeedReport)) {
+          this.tdollNeedReport = 0
+        } else {
+          this.tdollNeedReport = tdollNeedReport
+        }
         // console.log("타겟 : " + this.exp_pledge[this.tdollTarget - 1])
         // console.log("현재렙의 누적exp : " + this.exp_pledge[this.tdollCurrentLv - 1])
         // console.log("현재 필요 : " + (this.exp_pledge[this.tdollTarget - 1] - this.exp_pledge[this.tdollCurrentLv - 1] / 2))
