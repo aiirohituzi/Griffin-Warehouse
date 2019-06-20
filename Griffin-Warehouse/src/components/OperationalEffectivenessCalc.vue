@@ -46,6 +46,9 @@
     <div class="container-content">
         <table class="table-OE table-OE-col-6">
             <tr>
+                <th colspan="6">편성창에서 장비표시를 눌렀을 때 보이는 스탯(장비나 요정으로 인해 변동된 수치)을 입력</th>
+            </tr>
+            <tr>
                 <th></th>
                 <th>인형1</th>
                 <th>인형2</th>
@@ -158,6 +161,67 @@
                 <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].skillLv" v-on:keyup="checkInputOE"></td>
             </tr>
         </table>
+        <table class="table-OE table-OE-col-6">
+            <tr>
+                <th colspan="6">해당인형이 받는 진형버프의 수치를 입력</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th>인형1 진형버프</th>
+                <th>인형2 진형버프</th>
+                <th>인형3 진형버프</th>
+                <th>인형4 진형버프</th>
+                <th>인형5 진형버프</th>
+            </tr>
+            <tr>
+                <th>화력</th>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].strBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].strBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].strBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].strBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].strBuff" v-on:keyup="checkInputOE"></td>
+            </tr>
+            <tr>
+                <th>장갑</th>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].armorBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].armorBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].armorBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].armorBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].armorBuff" v-on:keyup="checkInputOE"></td>
+            </tr>
+            <tr>
+                <th>치명률</th>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].criticalRateBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].criticalRateBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].criticalRateBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].criticalRateBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].criticalRateBuff" v-on:keyup="checkInputOE"></td>
+            </tr>
+            <tr>
+                <th>사속</th>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].agiBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].agiBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].agiBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].agiBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].agiBuff" v-on:keyup="checkInputOE"></td>
+            </tr>
+            <tr>
+                <th>명중</th>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].dexBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].dexBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].dexBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].dexBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].dexBuff" v-on:keyup="checkInputOE"></td>
+            </tr>
+            <tr>
+                <th>회피</th>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].aglBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].aglBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].aglBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].aglBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].aglBuff" v-on:keyup="checkInputOE"></td>
+            </tr>
+        </table>
     </div>
 
     <!-- 최종 작능 표시 (내부적으로 공격부, 방어부, 스킬부 나눠서 계산) -->
@@ -254,6 +318,13 @@ export default {
           rating: 0,
           skillLv: 0,
           operationalEffectiveness: 0,
+
+          strBuff: 0,
+          armorBuff: 0,
+          criticalRateBuff: 0,
+          agiBuff: 0,
+          dexBuff: 0,
+          aglBuff: 0,
         },
         {
           type: '',
@@ -271,6 +342,13 @@ export default {
           rating: 0,
           skillLv: 0,
           operationalEffectiveness: 0,
+
+          strBuff: 0,
+          armorBuff: 0,
+          criticalRateBuff: 0,
+          agiBuff: 0,
+          dexBuff: 0,
+          aglBuff: 0,
         },
         {
           type: '',
@@ -288,6 +366,13 @@ export default {
           rating: 0,
           skillLv: 0,
           operationalEffectiveness: 0,
+
+          strBuff: 0,
+          armorBuff: 0,
+          criticalRateBuff: 0,
+          agiBuff: 0,
+          dexBuff: 0,
+          aglBuff: 0,
         },
         {
           type: '',
@@ -305,6 +390,13 @@ export default {
           rating: 0,
           skillLv: 0,
           operationalEffectiveness: 0,
+
+          strBuff: 0,
+          armorBuff: 0,
+          criticalRateBuff: 0,
+          agiBuff: 0,
+          dexBuff: 0,
+          aglBuff: 0,
         },
         {
           type: '',
@@ -322,6 +414,13 @@ export default {
           rating: 0,
           skillLv: 0,
           operationalEffectiveness: 0,
+
+          strBuff: 0,
+          armorBuff: 0,
+          criticalRateBuff: 0,
+          agiBuff: 0,
+          dexBuff: 0,
+          aglBuff: 0,
         }
       ]
     }
@@ -347,10 +446,28 @@ export default {
           armorCoefficient = 75 - this.tdollStat[i].armor
         }
 
-        var attack = 5 * this.tdollStat[i].link * ((this.tdollStat[i].str + this.tdollStat[i].armorPenetration / 3) * ((this.tdollStat[i].criticalRate / 100) * ((this.tdollStat[i].criticalDamageRate - 100) / 100) + 1) * this.tdollStat[i].agi / 50 * this.tdollStat[i].dex / (this.tdollStat[i].dex + 23) + 8)
-        var defense = (this.tdollStat[i].hp / this.tdollStat[i].link) * this.tdollStat[i].link * (35 + this.tdollStat[i].agl) / 35 * (2.6 * 75 / armorCoefficient - 1.6)
+        var str = Math.ceil(this.tdollStat[i].str * (1 + this.tdollStat[i].strBuff / 100))
+        var armor = Math.ceil(this.tdollStat[i].armor * (1 + this.tdollStat[i].armorBuff / 100))
+        var criticalRate = Math.ceil(this.tdollStat[i].criticalRate * (1 + this.tdollStat[i].criticalRateBuff / 100))
+        var agi = Math.ceil(this.tdollStat[i].agi * (1 + this.tdollStat[i].agiBuff / 100))
+        var dex = Math.ceil(this.tdollStat[i].dex * (1 + this.tdollStat[i].dexBuff / 100))
+        var agl = Math.ceil(this.tdollStat[i].agl * (1 + this.tdollStat[i].aglBuff / 100))
+
+        // console.log('-------------')
+        // console.log(str)
+        // console.log(armor)
+        // console.log(criticalRate)
+        // console.log(agi)
+        // console.log(dex)
+        // console.log(agl)
+
+        var attack = 5 * this.tdollStat[i].link * ((str + this.tdollStat[i].armorPenetration / 3) * ((criticalRate / 100) * ((this.tdollStat[i].criticalDamageRate - 100) / 100) + 1) * agi / 50 * dex / (dex + 23) + 8)
+        var defense = (this.tdollStat[i].hp / this.tdollStat[i].link) * this.tdollStat[i].link * (35 + agl) / 35 * (2.6 * 75 / armorCoefficient - 1.6)
         var skill = this.tdollStat[i].link * (0.8 + this.tdollStat[i].rating / 10) * (35 + (5 * (this.tdollStat[i].skillLv - 1)))
 
+        // console.log(attack)
+        // console.log(defense)
+        // console.log(skill)
         var operationalEffectiveness = Math.ceil(attack) + Math.ceil(defense) + Math.ceil(skill)
 
         if(isNaN(operationalEffectiveness)) {
