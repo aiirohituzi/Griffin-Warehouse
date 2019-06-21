@@ -153,12 +153,20 @@
                 <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].rating" v-on:keyup="checkInputOE"></td>
             </tr>
             <tr>
-                <th>스킬레벨</th>
-                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].skillLv" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].skillLv" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].skillLv" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].skillLv" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].skillLv" v-on:keyup="checkInputOE"></td>
+                <th>스킬1 레벨</th>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].skill1Lv" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].skill1Lv" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].skill1Lv" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].skill1Lv" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].skill1Lv" v-on:keyup="checkInputOE"></td>
+            </tr>
+            <tr>
+                <th>스킬2 레벨</th>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].skill2Lv" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].skill2Lv" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].skill2Lv" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].skill2Lv" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].skill2Lv" v-on:keyup="checkInputOE"></td>
             </tr>
         </table>
         <table class="table-OE table-OE-col-6">
@@ -304,19 +312,20 @@ export default {
       tdollStat: [
         {
           type: '',
-          link: 0,
+          link: 5,
           bullet: 0,
-          str: 0,
+          str: 92,
           armor: 0,
-          armorPenetration: 0,
-          criticalRate: 0,
-          criticalDamageRate: 0,
-          agi: 0,
-          dex: 0,
-          hp: 0,
-          agl: 0,
-          rating: 0,
-          skillLv: 0,
+          armorPenetration: 15,
+          criticalRate: 78,
+          criticalDamageRate: 150,
+          agi: 77,
+          dex: 67,
+          hp: 565,
+          agl: 53,
+          rating: 5,
+          skill1Lv: 10,
+          skill2Lv: 0,
           operationalEffectiveness: 0,
 
           strBuff: 0,
@@ -340,7 +349,8 @@ export default {
           hp: 0,
           agl: 0,
           rating: 0,
-          skillLv: 0,
+          skill1Lv: 0,
+          skill2Lv: 0,
           operationalEffectiveness: 0,
 
           strBuff: 0,
@@ -364,7 +374,8 @@ export default {
           hp: 0,
           agl: 0,
           rating: 0,
-          skillLv: 0,
+          skill1Lv: 0,
+          skill2Lv: 0,
           operationalEffectiveness: 0,
 
           strBuff: 0,
@@ -388,7 +399,8 @@ export default {
           hp: 0,
           agl: 0,
           rating: 0,
-          skillLv: 0,
+          skill1Lv: 0,
+          skill2Lv: 0,
           operationalEffectiveness: 0,
 
           strBuff: 0,
@@ -412,7 +424,8 @@ export default {
           hp: 0,
           agl: 0,
           rating: 0,
-          skillLv: 0,
+          skill1Lv: 0,
+          skill2Lv: 0,
           operationalEffectiveness: 0,
 
           strBuff: 0,
@@ -428,6 +441,9 @@ export default {
   methods: {
     OperationalEffectivenessCalc: function () {
       var inputClassList = ['.firstTdoll', '.secondTdoll', '.thirdTdoll', '.fourthTdoll', '.fifthTdoll']
+      var attack = 0
+      var defense = 0
+      var skill = 0
 
       for(var i=0; i<5; i++) {
         if(this.tdollStat[i].type !== ''){
@@ -461,9 +477,14 @@ export default {
         // console.log(dex)
         // console.log(agl)
 
-        var attack = 5 * this.tdollStat[i].link * ((str + this.tdollStat[i].armorPenetration / 3) * ((criticalRate / 100) * ((this.tdollStat[i].criticalDamageRate - 100) / 100) + 1) * agi / 50 * dex / (dex + 23) + 8)
-        var defense = (this.tdollStat[i].hp / this.tdollStat[i].link) * this.tdollStat[i].link * (35 + agl) / 35 * (2.6 * 75 / armorCoefficient - 1.6)
-        var skill = this.tdollStat[i].link * (0.8 + this.tdollStat[i].rating / 10) * (35 + (5 * (this.tdollStat[i].skillLv - 1)))
+        attack = 5 * this.tdollStat[i].link * ((str + this.tdollStat[i].armorPenetration / 3) * ((criticalRate / 100) * ((this.tdollStat[i].criticalDamageRate - 100) / 100) + 1) * agi / 50 * dex / (dex + 23) + 8)
+        defense = (this.tdollStat[i].hp / this.tdollStat[i].link) * this.tdollStat[i].link * (35 + agl) / 35 * (2.6 * 75 / armorCoefficient - 1.6)
+
+        if(this.tdollStat[i].skill2Lv > 0){
+          skill = this.tdollStat[i].link * (0.8 + this.tdollStat[i].rating / 10) * (35 + (5 * (this.tdollStat[i].skill1Lv - 1)) + ((3 + 2/3) * (this.tdollStat[i].skill2Lv - 1)))
+        } else {
+          skill = this.tdollStat[i].link * (0.8 + this.tdollStat[i].rating / 10) * (35 + (5 * (this.tdollStat[i].skill1Lv - 1)))
+        }
 
         // console.log(attack)
         // console.log(defense)
@@ -516,8 +537,11 @@ export default {
         if(reg.test(this.tdollStat[i].rating)) {
           this.tdollStat[i].rating = this.tdollStat[i].rating.replace(/\D+/, '')
         }
-        if(reg.test(this.tdollStat[i].skillLv)) {
-          this.tdollStat[i].skillLv = this.tdollStat[i].skillLv.replace(/\D+/, '')
+        if(reg.test(this.tdollStat[i].skill1Lv)) {
+          this.tdollStat[i].skill1Lv = this.tdollStat[i].skill1Lv.replace(/\D+/, '')
+        }
+        if(reg.test(this.tdollStat[i].skill2Lv)) {
+          this.tdollStat[i].skill2Lv = this.tdollStat[i].skill2Lv.replace(/\D+/, '')
         }
       }
     }
