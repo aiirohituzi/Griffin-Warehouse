@@ -312,19 +312,19 @@ export default {
       tdollStat: [
         {
           type: '',
-          link: 5,
+          link: 0,
           bullet: 0,
-          str: 92,
+          str: 0,
           armor: 0,
-          armorPenetration: 15,
-          criticalRate: 78,
-          criticalDamageRate: 150,
-          agi: 77,
-          dex: 67,
-          hp: 565,
-          agl: 53,
-          rating: 5,
-          skill1Lv: 10,
+          armorPenetration: 0,
+          criticalRate: 0,
+          criticalDamageRate: 0,
+          agi: 0,
+          dex: 0,
+          hp: 0,
+          agl: 0,
+          rating: 0,
+          skill1Lv: 0,
           skill2Lv: 0,
           operationalEffectiveness: 0,
 
@@ -457,13 +457,14 @@ export default {
         if(this.tdollStat[i].type === '') {
           continue
         }
+
+        var armor = Math.ceil(this.tdollStat[i].armor * (1 + this.tdollStat[i].armorBuff / 100))
         var armorCoefficient = 1
-        if(this.tdollStat[i].armor < 75){
-          armorCoefficient = 75 - this.tdollStat[i].armor
+        if(armor < 75){
+          armorCoefficient = 75 - armor
         }
 
         var str = Math.ceil(this.tdollStat[i].str * (1 + this.tdollStat[i].strBuff / 100))
-        var armor = Math.ceil(this.tdollStat[i].armor * (1 + this.tdollStat[i].armorBuff / 100))
         var criticalRate = Math.ceil(this.tdollStat[i].criticalRate * (1 + this.tdollStat[i].criticalRateBuff / 100))
         var agi = Math.ceil(this.tdollStat[i].agi * (1 + this.tdollStat[i].agiBuff / 100))
         var dex = Math.ceil(this.tdollStat[i].dex * (1 + this.tdollStat[i].dexBuff / 100))

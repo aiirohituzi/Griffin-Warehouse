@@ -1,7 +1,7 @@
 <template>
 <div class="container-OECalc">
     <!-- 인형병종 선택 (5 분리시켜서 따로 선택&계산) -->
-    <div class="container-content">
+    <div class="container-content-OECalc">
         <table class="table-OE table-OE-col-5">
             <tr>
                 <th>인형1 병종</th>
@@ -43,7 +43,7 @@
     <!-- 입력받아야 할 값
     링크수, 장탄수(MG, SG 한정), 화력, 철갑, 치명률, 치명상, 사속, 명중
     체력, 회피, 별 수, 스킬렙 -->
-    <div class="container-content">
+    <div class="container-content-OECalc">
         <table class="table-OE table-OE-col-6">
             <tr>
                 <th></th>
@@ -150,18 +150,87 @@
                 <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].rating" v-on:keyup="checkInputOE"></td>
             </tr>
             <tr>
-                <th>스킬레벨</th>
-                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].skillLv" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].skillLv" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].skillLv" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].skillLv" v-on:keyup="checkInputOE"></td>
-                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].skillLv" v-on:keyup="checkInputOE"></td>
+                <th>스킬1 레벨</th>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].skill1Lv" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].skill1Lv" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].skill1Lv" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].skill1Lv" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].skill1Lv" v-on:keyup="checkInputOE"></td>
+            </tr>
+            <tr>
+                <th>스킬2 레벨</th>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].skill2Lv" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].skill2Lv" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].skill2Lv" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].skill2Lv" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].skill2Lv" v-on:keyup="checkInputOE"></td>
+            </tr>
+        </table>
+        <table class="table-OE table-OE-col-6">
+            <tr>
+                <th colspan="6">해당인형이 받는 진형버프의 수치를 입력</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th>인형1 진형버프</th>
+                <th>인형2 진형버프</th>
+                <th>인형3 진형버프</th>
+                <th>인형4 진형버프</th>
+                <th>인형5 진형버프</th>
+            </tr>
+            <tr>
+                <th>화력</th>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].strBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].strBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].strBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].strBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].strBuff" v-on:keyup="checkInputOE"></td>
+            </tr>
+            <tr>
+                <th>장갑</th>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].armorBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].armorBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].armorBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].armorBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].armorBuff" v-on:keyup="checkInputOE"></td>
+            </tr>
+            <tr>
+                <th>치명률</th>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].criticalRateBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].criticalRateBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].criticalRateBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].criticalRateBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].criticalRateBuff" v-on:keyup="checkInputOE"></td>
+            </tr>
+            <tr>
+                <th>사속</th>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].agiBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].agiBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].agiBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].agiBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].agiBuff" v-on:keyup="checkInputOE"></td>
+            </tr>
+            <tr>
+                <th>명중</th>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].dexBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].dexBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].dexBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].dexBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].dexBuff" v-on:keyup="checkInputOE"></td>
+            </tr>
+            <tr>
+                <th>회피</th>
+                <td><input type="text" class="input-text firstTdoll" v-model="tdollStat[0].aglBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text secondTdoll" v-model="tdollStat[1].aglBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text thirdTdoll" v-model="tdollStat[2].aglBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fourthTdoll" v-model="tdollStat[3].aglBuff" v-on:keyup="checkInputOE"></td>
+                <td><input type="text" class="input-text fifthTdoll" v-model="tdollStat[4].aglBuff" v-on:keyup="checkInputOE"></td>
             </tr>
         </table>
     </div>
 
     <!-- 최종 작능 표시 (내부적으로 공격부, 방어부, 스킬부 나눠서 계산) -->
-    <div class="container-content">
+    <div class="container-content-OECalc">
         <table class="table-OE table-OE-col-6">
             <tr>
                 <th>인형1 작전능력</th>
@@ -252,8 +321,16 @@ export default {
           hp: 0,
           agl: 0,
           rating: 0,
-          skillLv: 0,
-          operationalEffectiveness: 0
+          skill1Lv: 0,
+          skill2Lv: 0,
+          operationalEffectiveness: 0,
+
+          strBuff: 0,
+          armorBuff: 0,
+          criticalRateBuff: 0,
+          agiBuff: 0,
+          dexBuff: 0,
+          aglBuff: 0
         },
         {
           type: '',
@@ -269,8 +346,16 @@ export default {
           hp: 0,
           agl: 0,
           rating: 0,
-          skillLv: 0,
-          operationalEffectiveness: 0
+          skill1Lv: 0,
+          skill2Lv: 0,
+          operationalEffectiveness: 0,
+
+          strBuff: 0,
+          armorBuff: 0,
+          criticalRateBuff: 0,
+          agiBuff: 0,
+          dexBuff: 0,
+          aglBuff: 0
         },
         {
           type: '',
@@ -286,8 +371,16 @@ export default {
           hp: 0,
           agl: 0,
           rating: 0,
-          skillLv: 0,
-          operationalEffectiveness: 0
+          skill1Lv: 0,
+          skill2Lv: 0,
+          operationalEffectiveness: 0,
+
+          strBuff: 0,
+          armorBuff: 0,
+          criticalRateBuff: 0,
+          agiBuff: 0,
+          dexBuff: 0,
+          aglBuff: 0
         },
         {
           type: '',
@@ -303,8 +396,16 @@ export default {
           hp: 0,
           agl: 0,
           rating: 0,
-          skillLv: 0,
-          operationalEffectiveness: 0
+          skill1Lv: 0,
+          skill2Lv: 0,
+          operationalEffectiveness: 0,
+
+          strBuff: 0,
+          armorBuff: 0,
+          criticalRateBuff: 0,
+          agiBuff: 0,
+          dexBuff: 0,
+          aglBuff: 0
         },
         {
           type: '',
@@ -320,8 +421,16 @@ export default {
           hp: 0,
           agl: 0,
           rating: 0,
-          skillLv: 0,
-          operationalEffectiveness: 0
+          skill1Lv: 0,
+          skill2Lv: 0,
+          operationalEffectiveness: 0,
+
+          strBuff: 0,
+          armorBuff: 0,
+          criticalRateBuff: 0,
+          agiBuff: 0,
+          dexBuff: 0,
+          aglBuff: 0
         }
       ]
     }
@@ -329,6 +438,9 @@ export default {
   methods: {
     OperationalEffectivenessCalc: function () {
       var inputClassList = ['.firstTdoll', '.secondTdoll', '.thirdTdoll', '.fourthTdoll', '.fifthTdoll']
+      var attack = 0
+      var defense = 0
+      var skill = 0
 
       for (var i = 0; i < 5; i++) {
         if (this.tdollStat[i].type !== '') {
@@ -342,14 +454,27 @@ export default {
         if (this.tdollStat[i].type === '') {
           continue
         }
+
+        var armor = Math.ceil(this.tdollStat[i].armor * (1 + this.tdollStat[i].armorBuff / 100))
         var armorCoefficient = 1
-        if (this.tdollStat[i].armor < 75) {
-          armorCoefficient = 75 - this.tdollStat[i].armor
+        if (armor < 75) {
+          armorCoefficient = 75 - armor
         }
 
-        var attack = 5 * this.tdollStat[i].link * ((this.tdollStat[i].str + this.tdollStat[i].armorPenetration / 3) * ((this.tdollStat[i].criticalRate / 100) * ((this.tdollStat[i].criticalDamageRate - 100) / 100) + 1) * this.tdollStat[i].agi / 50 * this.tdollStat[i].dex / (this.tdollStat[i].dex + 23) + 8)
-        var defense = (this.tdollStat[i].hp / this.tdollStat[i].link) * this.tdollStat[i].link * (35 + this.tdollStat[i].agl) / 35 * (2.6 * 75 / armorCoefficient - 1.6)
-        var skill = this.tdollStat[i].link * (0.8 + this.tdollStat[i].rating / 10) * (35 + (5 * (this.tdollStat[i].skillLv - 1)))
+        var str = Math.ceil(this.tdollStat[i].str * (1 + this.tdollStat[i].strBuff / 100))
+        var criticalRate = Math.ceil(this.tdollStat[i].criticalRate * (1 + this.tdollStat[i].criticalRateBuff / 100))
+        var agi = Math.ceil(this.tdollStat[i].agi * (1 + this.tdollStat[i].agiBuff / 100))
+        var dex = Math.ceil(this.tdollStat[i].dex * (1 + this.tdollStat[i].dexBuff / 100))
+        var agl = Math.ceil(this.tdollStat[i].agl * (1 + this.tdollStat[i].aglBuff / 100))
+
+        attack = 5 * this.tdollStat[i].link * ((str + this.tdollStat[i].armorPenetration / 3) * ((criticalRate / 100) * ((this.tdollStat[i].criticalDamageRate - 100) / 100) + 1) * agi / 50 * dex / (dex + 23) + 8)
+        defense = (this.tdollStat[i].hp / this.tdollStat[i].link) * this.tdollStat[i].link * (35 + agl) / 35 * (2.6 * 75 / armorCoefficient - 1.6)
+
+        if (this.tdollStat[i].skill2Lv > 0) {
+          skill = this.tdollStat[i].link * (0.8 + this.tdollStat[i].rating / 10) * (35 + (5 * (this.tdollStat[i].skill1Lv - 1)) + ((3 + 2 / 3) * (this.tdollStat[i].skill2Lv - 1)))
+        } else {
+          skill = this.tdollStat[i].link * (0.8 + this.tdollStat[i].rating / 10) * (35 + (5 * (this.tdollStat[i].skill1Lv - 1)))
+        }
 
         var operationalEffectiveness = Math.ceil(attack) + Math.ceil(defense) + Math.ceil(skill)
 
@@ -399,8 +524,11 @@ export default {
         if (reg.test(this.tdollStat[i].rating)) {
           this.tdollStat[i].rating = this.tdollStat[i].rating.replace(/\D+/, '')
         }
-        if (reg.test(this.tdollStat[i].skillLv)) {
-          this.tdollStat[i].skillLv = this.tdollStat[i].skillLv.replace(/\D+/, '')
+        if (reg.test(this.tdollStat[i].skill1Lv)) {
+          this.tdollStat[i].skill1Lv = this.tdollStat[i].skill1Lv.replace(/\D+/, '')
+        }
+        if (reg.test(this.tdollStat[i].skill2Lv)) {
+          this.tdollStat[i].skill2Lv = this.tdollStat[i].skill2Lv.replace(/\D+/, '')
         }
       }
     }
@@ -419,16 +547,16 @@ export default {
     margin-top: calc(5vh + 30px);
 }
 
-.container-content {
+.container-content-OECalc {
     margin-top: 1.5vh;
     margin-bottom: 1.5vh;
     margin-left: auto;
     margin-right: auto;
-    width: 50vw;
+    width: 80vw;
     
     border: 2px solid #c3b9a2;
     border-radius: 5px;
-    background-color: #c3b9a2b6;
+    background-color: #d4cdbd;
 }
 .table-OE {
     border-collapse: collapse;
@@ -445,10 +573,10 @@ export default {
     padding: 2px;
 }
 .table-OE-col-5 th, td{
-    width: calc((50vw - 40px) / 5);
+    width: calc((80vw - 40px) / 5);
 }
 .table-OE-col-6 th, td{
-    width: calc((50vw - 40px) / 6);
+    width: calc((80vw - 40px) / 6);
 }
 .table-OE .input-text {
     width: 80%;
@@ -484,7 +612,7 @@ export default {
 }
 
 @media only screen and (max-width: 767px) {
-    .container-content {
+    .container-content-OECalc {
         width: 80vw;
     }
     .table-OE {
