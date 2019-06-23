@@ -478,7 +478,14 @@ export default {
         // console.log(dex)
         // console.log(agl)
 
-        attack = 5 * this.tdollStat[i].link * ((str + this.tdollStat[i].armorPenetration / 3) * ((criticalRate / 100) * ((this.tdollStat[i].criticalDamageRate - 100) / 100) + 1) * agi / 50 * dex / (dex + 23) + 8)
+        if (this.tdollStat[i].type === this.tdollType[1]) { //MG
+          attack = 7 * this.tdollStat[i].link * (this.tdollStat[i].bullet * (str + this.tdollStat[i].armorPenetration / 3) * ((criticalRate / 100) * ((this.tdollStat[i].criticalDamageRate - 100) / 100) + 1) / (this.tdollStat[i].bullet / 3 + 4 + 200 / agi) * dex / (dex + 23) + 8)
+        } else if (this.tdollStat[i].type === this.tdollType[2]) {  //SG
+          attack = 6 * this.tdollStat[i].link * (3 * this.tdollStat[i].bullet * (str + this.tdollStat[i].armorPenetration / 3) * ((criticalRate / 100) * ((this.tdollStat[i].criticalDamageRate - 100) / 100) + 1) / (1.5 + this.tdollStat[i].bullet * 50 / agi + 0.5 * this.tdollStat[i].bullet) * dex / (dex + 23) + 8)
+        } else if (this.tdollStat[i].type === this.tdollType[3]) {  //AR, SMG, RF, HG
+          attack = 5 * this.tdollStat[i].link * ((str + this.tdollStat[i].armorPenetration / 3) * ((criticalRate / 100) * ((this.tdollStat[i].criticalDamageRate - 100) / 100) + 1) * agi / 50 * dex / (dex + 23) + 8)
+        }
+
         defense = (this.tdollStat[i].hp / this.tdollStat[i].link) * this.tdollStat[i].link * (35 + agl) / 35 * (2.6 * 75 / armorCoefficient - 1.6)
 
         if(this.tdollStat[i].skill2Lv > 0){
