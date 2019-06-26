@@ -2,12 +2,17 @@
     <div id="app">
         <ul id="navigation">
             <router-link tag="li" class="nav-home" to="/"></router-link>
-            <router-link tag="li" to="/damageCalc">데미지<br>계산기</router-link>
-            <router-link tag="li" to="/agiCalc">최대사속<br>계산기</router-link>
-            <router-link tag="li" to="/gemsCalc">필요 보석량<br>계산기</router-link>
-            <router-link tag="li" to="/simCalc">필요 모의작전점수<br>계산기</router-link>
-            <router-link tag="li" to="/expCalc">경험치<br>계산기</router-link>
-            <router-link tag="li" to="/oeCalc">작전능력<br>계산기</router-link>
+            <div id="navGroup1">
+                <router-link tag="li" to="/damageCalc">데미지 계산기</router-link>
+                <router-link tag="li" to="/agiCalc">최대사속 계산기</router-link>
+                <router-link tag="li" to="/gemsCalc">필요 보석량 계산기</router-link>
+            </div>
+            <div id="navGroup2">
+                <router-link tag="li" to="/simCalc">필요 모의작전점수<br>계산기</router-link>
+                <router-link tag="li" to="/expCalc">경험치<br>계산기</router-link>
+                <router-link tag="li" to="/oeCalc">작전능력<br>계산기</router-link>
+            </div>
+            <li class="nav-right">></li>
         </ul>
         <div class="nav-tab">
             <span style="width: 40px;"></span>
@@ -59,6 +64,7 @@ ul#navigation {
     height: 40px;
     list-style: none;
     z-index:5;
+    overflow: hidden;
     
     background-color:#c3b9a2;
     /* -moz-box-shadow: 0px 2px 5px #555;
@@ -74,17 +80,23 @@ ul#navigation {
 ul#navigation li {
     box-sizing: border-box;
     float: left;
-    width: calc((100% - 40px) / 6);
-    line-height: 20px;
+    width: calc((100% - 80px) / 3);
+    line-height: 40px;
     height: 100%;
     cursor: pointer;
     
     text-align: center;
-    font-size: 2vmin;
+    font-size: 2.5vmin;
     font-family: 'Do Hyeon', sans-serif;
 }
 ul#navigation li:hover {
     background-color:#9c9175;
+}
+
+ul#navigation #navGroup1 {
+}
+ul#navigation #navGroup2 {
+    display: none;
 }
 
 ul#navigation .nav-home {
@@ -104,7 +116,17 @@ ul#navigation .nav-home:hover {
     background-position:center center;
     background-image: url(assets/home_hover.png);
 }
-
+ul#navigation .nav-right {
+    box-sizing: border-box;
+    float: right;
+    width: 40px;
+    line-height: 40px;
+    height: 100%;
+    cursor: pointer;
+}
+ul#navigation .nav-right:hover {
+    background-color:#9c9175;
+}
 
 .nav-tab {
     position: fixed;
@@ -131,7 +153,7 @@ ul#navigation .nav-home:hover {
 .nav-tab span{
     box-sizing: border-box;
     float: left;
-    width: calc((100% - 40px) / 6);
+    width: calc((100% - 80px) / 3);
     height: 100%;
 }
 .nav-tab .current{
