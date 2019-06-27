@@ -12,10 +12,10 @@
                 <router-link tag="li" to="/expCalc">경험치<br>계산기</router-link>
                 <router-link tag="li" to="/oeCalc">작전능력<br>계산기</router-link>
             </div>
-            <li class="nav-right">></li>
+            <li class="nav-right" @click="tabRight()">></li>
         </ul>
         <div class="nav-tab">
-            <span style="width: 40px;"></span>
+            <span style="width: 80px;"></span>
             <span id="DamageCalc"></span>
             <span id="AgiCalc"></span>
             <span id="GemsCalc"></span>
@@ -37,6 +37,10 @@ export default {
             // console.log(this.$route.name)
             $('.nav-tab').children().removeClass()
             $('#'+this.$route.name).addClass('current')
+        },
+        tabRight: function () {
+            console.log('aaa')
+            $('#navGroup1').toggleClass('move')
         }
     },
     mounted: function () {
@@ -80,7 +84,7 @@ ul#navigation {
 ul#navigation li {
     box-sizing: border-box;
     float: left;
-    width: calc((100% - 80px) / 3);
+    width: calc((100% - 120px) / 3);
     line-height: 40px;
     height: 100%;
     cursor: pointer;
@@ -93,7 +97,16 @@ ul#navigation li:hover {
     background-color:#9c9175;
 }
 
+
 ul#navigation #navGroup1 {
+    -webkit-transition: -webkit-transform 500ms;
+    transition: transform 500ms;
+
+    will-change: transform;
+}
+ul#navigation #navGroup1.move {
+    -webkit-transform: translate(calc(-100% + 120px), 0px);
+    transform: translate(calc(-100% + 120px), 0px);
 }
 ul#navigation #navGroup2 {
     display: none;
@@ -115,6 +128,14 @@ ul#navigation .nav-home:hover {
     background-repeat:no-repeat;
     background-position:center center;
     background-image: url(assets/home_hover.png);
+}
+ul#navigation .nav-left {
+    box-sizing: border-box;
+    float: left;
+    width: 40px;
+    line-height: 40px;
+    height: 100%;
+    cursor: pointer;
 }
 ul#navigation .nav-right {
     box-sizing: border-box;
@@ -153,7 +174,7 @@ ul#navigation .nav-right:hover {
 .nav-tab span{
     box-sizing: border-box;
     float: left;
-    width: calc((100% - 80px) / 3);
+    width: calc((100% - 120px) / 3);
     height: 100%;
 }
 .nav-tab .current{
