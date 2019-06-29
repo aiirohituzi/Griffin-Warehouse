@@ -14,16 +14,25 @@
                     <router-link tag="li" to="/oeCalc">작전능력 계산기</router-link>
                 </div>
             </div>
-            <li class="nav-right" @click="tabRight()">></li>
+            <li class="nav-right" @click="navMove()">
+              <span v-if="!moveState">▶</span>
+              <span v-else>◀</span>
+            </li>
         </ul>
         <div class="nav-tab">
-            <span style="width: 40px;"></span>
-            <span id="DamageCalc"></span>
-            <span id="AgiCalc"></span>
-            <span id="GemsCalc"></span>
-            <span id="SimCalc"></span>
-            <span id="ExpCalc"></span>
-            <span id="OECalc"></span>
+            <!-- <span style="width: 40px;"></span> -->
+            <div class="tabGroup">
+                <div id="tabGroup1">
+                    <span id="DamageCalc"></span>
+                    <span id="AgiCalc"></span>
+                    <span id="GemsCalc"></span>
+                </div>
+                <div id="tabGroup2">
+                    <span id="SimCalc"></span>
+                    <span id="ExpCalc"></span>
+                    <span id="OECalc"></span>
+                </div>
+            </div>
         </div>
         <div class="container-router-view">
             <router-view/>
@@ -34,16 +43,24 @@
 <script>
 export default {
     name: 'App',
+    data () {
+        return {
+            moveState: false
+        }
+    },
     methods: {
         tabMove: function () {
             // console.log(this.$route.name)
-            $('.nav-tab').children().removeClass()
+            $('#tabGroup1').children().removeClass()
+            $('#tabGroup2').children().removeClass()
             $('#'+this.$route.name).addClass('current')
         },
-        tabRight: function () {
-            console.log('aaa')
+        navMove: function () {
+            this.moveState = !this.moveState
             $('#navGroup1').toggleClass('move')
             $('#navGroup2').toggleClass('move')
+            $('#tabGroup1').toggleClass('move')
+            $('#tabGroup2').toggleClass('move')
         }
     },
     mounted: function () {
@@ -108,7 +125,6 @@ ul#navigation .navGroup {
 }
 ul#navigation .navGroup #navGroup1 {
     height: 40px;
-	  white-space: nowrap;
     
     -webkit-transition: -webkit-transform 500ms;
     transition: transform 500ms;
@@ -193,13 +209,47 @@ ul#navigation .nav-right:hover {
     -webkit-user-select: none;
     user-select: none;
 }
-.nav-tab span{
+.nav-tab .tabGroup {
+    position: fixed;
+    left: 40px;
+    width: 100%;
+    height: 3px;
+    overflow: hidden;
+}
+.nav-tab .tabGroup #tabGroup1 {
+    height: 100%;
+    
+    -webkit-transition: -webkit-transform 500ms;
+    transition: transform 500ms;
+
+    will-change: transform;
+}
+.nav-tab .tabGroup #tabGroup1.move {
+    -webkit-transform: translate(-100%, 0px);
+    transform: translate(-100%, 0px);
+}
+.nav-tab .tabGroup #tabGroup2 {
+    height: 100%;
+    
+    -webkit-transform: translate(100%, -100%);
+    -webkit-transition: -webkit-transform 500ms;
+
+    transform: translate(100%, -100%);
+    transition: transform 500ms;
+
+    will-change: transform;
+}
+.nav-tab .tabGroup #tabGroup2.move {
+    -webkit-transform: translate(0, -100%);
+    transform: translate(0, -100%);
+}
+.nav-tab .tabGroup span{
     box-sizing: border-box;
     float: left;
     width: calc((100% - 80px) / 3);
     height: 100%;
 }
-.nav-tab .current{
+.nav-tab .tabGroup .current{
     background-color: #9c9175;
 }
 </style>
