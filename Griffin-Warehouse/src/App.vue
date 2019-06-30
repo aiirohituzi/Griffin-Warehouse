@@ -212,7 +212,7 @@ ul#navigation .nav-right:hover {
 .nav-tab .tabGroup {
     position: fixed;
     left: 40px;
-    width: 100%;
+    width: calc(100% - 80px);
     height: 3px;
     overflow: hidden;
 }
@@ -246,7 +246,7 @@ ul#navigation .nav-right:hover {
 .nav-tab .tabGroup span{
     box-sizing: border-box;
     float: left;
-    width: calc((100% - 80px) / 3);
+    width: calc(100% / 3);
     height: 100%;
 }
 .nav-tab .tabGroup .current{
