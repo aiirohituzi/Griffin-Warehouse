@@ -19,7 +19,7 @@
         <div class="input-addon-left">장비 치명상 입력</div>
     </div>
 
-    <div class="container-content">
+    <div class="container-content-damage">
         <table class="table-damage table-damage-col-3">
             <tr>
                 <th>버프 인형 선택</th>
@@ -91,7 +91,7 @@
         </table>
     </div>
 
-    <div class="container-content">
+    <div class="container-content-damage">
         <div id="fairy"><b>요정 정보 입력</b></div>
         <table class="table-damage table-damage-col-4">
             <tr>
@@ -136,7 +136,7 @@
         <div class="input-addon-left">치명타 적용 (기본 치명상 배율(%) 입력) <input class="check-damage" type="checkbox" style="width:unset;" v-model="criticalOn"></div>
     </div>
     
-    <div class="container-content">
+    <div class="container-content-damage">
         <table class="table-damage table-damage-col-3">
             <tr>
                 <td></td>
@@ -429,7 +429,7 @@ export default {
     margin-bottom: 1vh;
     margin-left: auto;
     margin-right: auto;
-    width: 50vw;
+    width: 60vw;
 }
 .inputGroup-damage .input-addon-left {
     float: right;
@@ -483,18 +483,18 @@ export default {
     margin: auto;
 }
 
-.container-content {
+.container-content-damage {
     margin-top: 1.5vh;
     margin-bottom: 1.5vh;
     margin-left: auto;
     margin-right: auto;
-    width: 50vw;
+    width: 60vw;
     
     border: 2px solid #c3b9a2;
     border-radius: 5px;
     background-color: #d4cdbd;
 }
-.container-content #fairy {
+.container-content-damage #fairy {
     margin: 10px;
     margin-left: 15px;
     font-size: 10pt;
@@ -514,10 +514,10 @@ export default {
     padding: 2px;
 }
 .table-damage-col-3 th, td{
-    width: calc((50vw - 40px) / 3);
+    width: calc((60vw - 40px) / 3);
 }
 .table-damage-col-4 th, td{
-    width: calc((50vw - 40px) / 4);
+    width: calc((60vw - 40px) / 4);
 }
 .table-damage .input-text {
     width: 80%;
@@ -588,10 +588,10 @@ export default {
         font-size: 8pt;
     }
 
-    .container-content {
+    .container-content-damage {
         width: 80vw;
     }
-    .container-content #fairy {
+    .container-content-damage #fairy {
         font-size: 8pt;
     }
     .table-damage {
