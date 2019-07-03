@@ -507,10 +507,17 @@ export default {
     },
     checkInputOE: function () {
       var reg = /\D+/
+      var regDig = /\d+/
+      var regFive = /^([0-5])$/
+      var regTen = /^([0-9]|10)$/
 
       for(var i=0; i<5; i++) {
-        if(reg.test(this.tdollStat[i].link)) {
-          this.tdollStat[i].link = this.tdollStat[i].link.replace(/\D+/, '')
+        if(!regFive.test(this.tdollStat[i].link)) {
+          if(regDig.test(event.key)){
+            this.tdollStat[i].link = this.tdollStat[i].link.toString().replace(event.key, '')
+          } else {
+            this.tdollStat[i].link = this.tdollStat[i].link.toString().replace(/\D+/, '')
+          }
         }
         if(reg.test(this.tdollStat[i].bullet)) {
           this.tdollStat[i].bullet = this.tdollStat[i].bullet.replace(/\D+/, '')
@@ -542,14 +549,26 @@ export default {
         if(reg.test(this.tdollStat[i].agl)) {
           this.tdollStat[i].agl = this.tdollStat[i].agl.replace(/\D+/, '')
         }
-        if(reg.test(this.tdollStat[i].rating)) {
-          this.tdollStat[i].rating = this.tdollStat[i].rating.replace(/\D+/, '')
+        if(!regFive.test(this.tdollStat[i].rating)) {
+          if(regDig.test(event.key)){
+            this.tdollStat[i].rating = this.tdollStat[i].rating.toString().replace(event.key, '')
+          } else {
+            this.tdollStat[i].rating = this.tdollStat[i].rating.toString().replace(/\D+/, '')
+          }
         }
-        if(reg.test(this.tdollStat[i].skill1Lv)) {
-          this.tdollStat[i].skill1Lv = this.tdollStat[i].skill1Lv.replace(/\D+/, '')
+        if(!regTen.test(this.tdollStat[i].skill1Lv)) {
+          if(regDig.test(event.key)){
+            this.tdollStat[i].skill1Lv = this.tdollStat[i].skill1Lv.toString().replace(event.key, '')
+          } else {
+            this.tdollStat[i].skill1Lv = this.tdollStat[i].skill1Lv.toString().replace(/\D+/, '')
+          }
         }
-        if(reg.test(this.tdollStat[i].skill2Lv)) {
-          this.tdollStat[i].skill2Lv = this.tdollStat[i].skill2Lv.replace(/\D+/, '')
+        if(!regTen.test(this.tdollStat[i].skill2Lv)) {
+          if(regDig.test(event.key)){
+            this.tdollStat[i].skill2Lv = this.tdollStat[i].skill2Lv.toString().replace(event.key, '')
+          } else {
+            this.tdollStat[i].skill2Lv = this.tdollStat[i].skill2Lv.toString().replace(/\D+/, '')
+          }
         }
       }
     }
