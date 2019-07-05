@@ -391,14 +391,14 @@ table#table-gems .radio {
     }
     .inputGroup-gems .input-gems {
         font-size: 8pt;
-        padding: 2.5px;
+        padding: 3px;
     }
     .inputGroup-gems .input-gems input {
         font-size: 8pt;
     }
     .inputGroup-gems .input-gems-allAddon {
         font-size: 8pt;
-        padding: 2.5px;
+        padding: 3px;
     }
     .inputGroup-gems .input-gems-allAddon input {
         font-size: 8pt;

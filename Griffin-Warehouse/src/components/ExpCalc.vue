@@ -821,20 +821,23 @@ div#div-penalty .div-penaltyExplanation {
     .inputGroup-exp .input-exp input {
         font-size: 8pt;
     }
-    .inputGroup-exp .input-exp-allAddon {
+    .inputGroup-exp .input-exp-allAddonSlider {
         font-size: 8pt;
     }
-    .inputGroup-exp .input-exp-allAddon .slider-exp {
+    .inputGroup-exp .input-exp-allAddonSlider .slider-exp {
         font-size: 8pt;
 
-        margin-top: -7px;
-        -webkit-margin-top: -7px;
+        margin-top: -9px;
+        -webkit-margin-top: -9px;
         margin-left: auto;
         -webkit-margin-left: auto;
         margin-right: auto;
         -webkit-margin-right: auto;
         margin-bottom: -5px;
         -webkit-margin-bottom: -5px;
+    }
+    .inputGroup-exp .input-exp-allAddon {
+        font-size: 8pt;
     }
     .inputGroup-exp .input-exp-allAddon select {
         font-size: 8pt;
