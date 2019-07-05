@@ -422,4 +422,12 @@ table#table-gems .radio {
         padding: 2.5px;
     }
 }
+@media only screen and (max-device-width : 768px) {
+    .inputGroup-gems .input-gems {
+        padding: 2.5px;
+    }
+    .inputGroup-gems .input-gems-allAddon {
+        padding: 2.5px;
+    }
+}
 </style>

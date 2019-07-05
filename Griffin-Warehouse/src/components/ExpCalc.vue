@@ -858,4 +858,12 @@ div#div-penalty .div-penaltyExplanation {
         padding: 2.5px;
     }
 }
+@media only screen and (max-device-width : 768px) {
+    .inputGroup-exp .input-exp {
+        padding: 2.5px;
+    }
+    .inputGroup-exp .input-exp-allAddon {
+        padding: 2.5px;
+    }
+}
 </style>

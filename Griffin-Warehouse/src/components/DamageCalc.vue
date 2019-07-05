@@ -631,4 +631,9 @@ export default {
         padding: 2.5px;
     }
 }
+@media only screen and (max-device-width : 768px) {
+    .inputGroup-damage .input-damage {
+        padding: 2.5px;
+    }
+}
 </style>
