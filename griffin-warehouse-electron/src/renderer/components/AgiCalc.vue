@@ -655,14 +655,14 @@ div#div-agi {
 table#table-agi{
     width: 92%;
     float: right;
-    font-size: 8pt;
+    font-size: 9pt;
     margin: 10px;
 }
 table#table-agi th{
     background: #afa48a;
 }
 table#table-agi td{
-    /* width: 15px; */
+    width: fit-content;
     padding: 0;
     background-color: #c3b9a2;
 }

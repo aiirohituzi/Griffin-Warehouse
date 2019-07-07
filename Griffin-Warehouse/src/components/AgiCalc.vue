@@ -667,7 +667,7 @@ table#table-agi th{
     background: #afa48a;
 }
 table#table-agi td{
-    /* width: 15px; */
+    width: fit-content;
     padding: 0;
     background-color: #c3b9a2;
 }
