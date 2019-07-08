@@ -209,6 +209,11 @@ export default {
                 {id:30, name: 'Gsh-18', buff: 24, skill: 0},
                 {id:31, name: 'MP-448(스키프)', buff: 12, skill: 0},
                 {id:32, name: 'Px4 스톰', buff: 24, skill: '치명타 50'},
+                {id:33, name: '질 스팅레이(FBK큰 맥주)', buff: 40, skill: 20},
+                {id:33, name: '질 스팅레이(AAD브랜티니)', buff: 40, skill: 25},
+                {id:33, name: '질 스팅레이(ABK피아노 우먼)', buff: 40, skill: 20},
+                {id:33, name: '질 스팅레이(KKK프린지 위버)', buff: 40, skill: 35},
+                {id:33, name: '질 스팅레이(슈가 러쉬)', buff: 40, skill: 18},
             ],
             tdoll_selected: {
                 first: 0,
