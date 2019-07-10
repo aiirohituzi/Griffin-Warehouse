@@ -301,7 +301,10 @@ export default {
 
             // ---------------- 선택한 버프 인형 데이터 연산 --------------------
             if(this.tdoll_selected.first > 0){
-                if(this.tdoll[this.tdoll_selected.first].name == "컨텐더"){
+                if(this.tdoll[this.tdoll_selected.first].id == 1) {
+                    sum_buff += parseInt(this.tdoll_custom[0].buff)
+                    sum_skill += parseInt(this.tdoll_custom[0].skill)
+                } else if(this.tdoll[this.tdoll_selected.first].name == "컨텐더"){
                     sum_buff += this.tdoll[this.tdoll_selected.first].buff
                 } else if(this.tdoll[this.tdoll_selected.first].name == "Px4 스톰"){
                     sum_buff += this.tdoll[this.tdoll_selected.first].buff
@@ -316,7 +319,10 @@ export default {
                 this.tdoll_selected.fourth = 0
             }
             if(this.tdoll_selected.second > 0){
-                if(this.tdoll[this.tdoll_selected.second].name == "컨텐더"){
+                if(this.tdoll[this.tdoll_selected.second].id == 1) {
+                    sum_buff += parseInt(this.tdoll_custom[1].buff)
+                    sum_skill = ((1 + (sum_skill / 100)) * (1 + (this.tdoll_custom[1].skill / 100)) - 1) * 100
+                } else if(this.tdoll[this.tdoll_selected.second].name == "컨텐더"){
                     sum_buff += this.tdoll[this.tdoll_selected.second].buff
                 } else if(this.tdoll[this.tdoll_selected.second].name == "Px4 스톰"){
                     sum_buff += this.tdoll[this.tdoll_selected.second].buff
@@ -330,7 +336,10 @@ export default {
                 this.tdoll_selected.fourth = 0
             }
             if(this.tdoll_selected.third > 0){
-                if(this.tdoll[this.tdoll_selected.third].name == "컨텐더"){
+                if(this.tdoll[this.tdoll_selected.third].id == 1) {
+                    sum_buff += parseInt(this.tdoll_custom[2].buff)
+                    sum_skill = ((1 + (sum_skill / 100)) * (1 + (this.tdoll_custom[2].skill / 100)) - 1) * 100
+                } else if(this.tdoll[this.tdoll_selected.third].name == "컨텐더"){
                     sum_buff += this.tdoll[this.tdoll_selected.third].buff
                 } else if(this.tdoll[this.tdoll_selected.third].name == "Px4 스톰"){
                     sum_buff += this.tdoll[this.tdoll_selected.third].buff
@@ -343,7 +352,10 @@ export default {
                 this.tdoll_selected.fourth = 0
             }
             if(this.tdoll_selected.fourth > 0){
-                if(this.tdoll[this.tdoll_selected.fourth].name == "컨텐더"){
+                if(this.tdoll[this.tdoll_selected.fourth].id == 1) {
+                    sum_buff += parseInt(this.tdoll_custom[3].buff)
+                    sum_skill = ((1 + (sum_skill / 100)) * (1 + (this.tdoll_custom[3].skill / 100)) - 1) * 100
+                } else if(this.tdoll[this.tdoll_selected.fourth].name == "컨텐더"){
                     sum_buff += this.tdoll[this.tdoll_selected.fourth].buff
                 } else if(this.tdoll[this.tdoll_selected.fourth].name == "Px4 스톰"){
                     sum_buff += this.tdoll[this.tdoll_selected.fourth].buff
