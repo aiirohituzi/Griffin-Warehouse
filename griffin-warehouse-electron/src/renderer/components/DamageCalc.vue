@@ -34,10 +34,12 @@
                 </td>
             <!-- 선택한 버퍼의 버프스킬 배율 표시 -->
                 <td>
-                    <div class="label" v-if="tdoll_selected.first > 0">{{ tdoll[tdoll_selected.first].buff }}%</div>
+                    <div class="label" v-if="tdoll_selected.first > 1">{{ tdoll[tdoll_selected.first].buff }}%</div>
+                    <input v-if="tdoll_selected.first == 1" type="text" class="input-text" v-model="tdoll_custom[0].buff" v-on:keyup="checkInputDamage">
                 </td>
                 <td>
-                    <div class="label" v-if="tdoll_selected.first > 0">{{ tdoll[tdoll_selected.first].skill }}%</div>
+                    <div class="label" v-if="tdoll_selected.first > 1">{{ tdoll[tdoll_selected.first].skill }}%</div>
+                    <input v-if="tdoll_selected.first == 1" type="text" class="input-text" v-model="tdoll_custom[0].skill" v-on:keyup="checkInputDamage">
                 </td>
             </tr>
 
@@ -49,10 +51,12 @@
                     </select>
                 </td>
                 <td>
-                    <div class="label" v-if="tdoll_selected.second > 0">{{ tdoll[tdoll_selected.second].buff }}%</div>
+                    <div class="label" v-if="tdoll_selected.second > 1">{{ tdoll[tdoll_selected.second].buff }}%</div>
+                    <input v-if="tdoll_selected.second == 1" type="text" class="input-text" v-model="tdoll_custom[1].buff" v-on:keyup="checkInputDamage">
                 </td>
                 <td>
-                    <div class="label" v-if="tdoll_selected.second > 0">{{ tdoll[tdoll_selected.second].skill }}%</div>
+                    <div class="label" v-if="tdoll_selected.second > 1">{{ tdoll[tdoll_selected.second].skill }}%</div>
+                    <input v-if="tdoll_selected.second == 1" type="text" class="input-text" v-model="tdoll_custom[1].skill" v-on:keyup="checkInputDamage">
                 </td>
             </tr>
 
@@ -63,10 +67,12 @@
                     </select>
                 </td>
                 <td>
-                    <div class="label" v-if="tdoll_selected.third > 0">{{ tdoll[tdoll_selected.third].buff }}%</div>
+                    <div class="label" v-if="tdoll_selected.third > 1">{{ tdoll[tdoll_selected.third].buff }}%</div>
+                    <input v-if="tdoll_selected.third == 1" type="text" class="input-text" v-model="tdoll_custom[2].buff" v-on:keyup="checkInputDamage">
                 </td>
                 <td>
-                    <div class="label" v-if="tdoll_selected.third > 0">{{ tdoll[tdoll_selected.third].skill }}%</div>
+                    <div class="label" v-if="tdoll_selected.third > 1">{{ tdoll[tdoll_selected.third].skill }}%</div>
+                    <input v-if="tdoll_selected.third == 1" type="text" class="input-text" v-model="tdoll_custom[2].skill" v-on:keyup="checkInputDamage">
                 </td>
             </tr>
 
@@ -77,10 +83,12 @@
                     </select>
                 </td>
                 <td>
-                    <div class="label" v-if="tdoll_selected.fourth > 0">{{ tdoll[tdoll_selected.fourth].buff }}%</div>
+                    <div class="label" v-if="tdoll_selected.fourth > 1">{{ tdoll[tdoll_selected.fourth].buff }}%</div>
+                    <input v-if="tdoll_selected.fourth == 1" type="text" class="input-text" v-model="tdoll_custom[3].buff" v-on:keyup="checkInputDamage">
                 </td>
                 <td>
-                    <div class="label" v-if="tdoll_selected.fourth > 0">{{ tdoll[tdoll_selected.fourth].skill }}%</div>
+                    <div class="label" v-if="tdoll_selected.fourth > 1">{{ tdoll[tdoll_selected.fourth].skill }}%</div>
+                    <input v-if="tdoll_selected.fourth == 1" type="text" class="input-text" v-model="tdoll_custom[3].skill" v-on:keyup="checkInputDamage">
                 </td>
             </tr>
             <tr>
@@ -177,38 +185,44 @@ export default {
       tdollAtk: 0,
       tdoll: [
         {id: 0, name: '', buff: 0, skill: 0},
-        {id: 1, name: 'Mk23', buff: 36, skill: 20, skillN: 35},
-        {id: 2, name: 'P22', buff: 30, skill: 25},
-        {id: 3, name: '그리즐리', buff: 30, skill: 25},
-        {id: 4, name: 'K5', buff: 30, skill: 22},
-        {id: 5, name: '컨텐더', buff: 30, skill: '마탄 40'},
-        {id: 6, name: '나강 리볼버 MOD3', buff: 36, skill: 10},
-        {id: 7, name: '콜트 리볼버 MOD3', buff: 24, skill: 25},
-        {id: 8, name: '콜트 리볼버', buff: 24, skill: 22},
-        {id: 9, name: 'HK45', buff: 32, skill: 15},
-        {id: 10, name: 'PPK', buff: 0, skill: 10},
-        {id: 11, name: '세르듀코프', buff: 24, skill: 20},
-        {id: 12, name: 'Bren Ten', buff: 16, skill: 18},
-        {id: 13, name: 'CZ52', buff: 20, skill: 20},
-        {id: 14, name: '제리코', buff: 24, skill: 15},
-        {id: 15, name: '스테츠킨', buff: 12, skill: 0},
-        {id: 16, name: 'M9', buff: 20, skill: 0},
-        {id: 17, name: '마카로프', buff: 20, skill: 0},
-        {id: 18, name: '92식', buff: 0, skill: 10},
-        {id: 19, name: 'MP-446 MOD3(바이킹)', buff: 36, skill: 0},
-        {id: 20, name: 'MP-446(바이킹)', buff: 28, skill: 0},
-        {id: 21, name: 'SPP-1', buff: 12, skill: 0},
-        {id: 22, name: '웰로드', buff: 20, skill: 0},
-        {id: 23, name: 'NZ75', buff: 20, skill: 0},
-        {id: 24, name: '59식', buff: 20, skill: 0},
-        {id: 25, name: 'CZ75', buff: 16, skill: 0},
-        {id: 26, name: 'Spitfire', buff: 30, skill: 0},
-        {id: 27, name: 'P226', buff: 20, skill: 0},
-        {id: 28, name: '썬더', buff: 36, skill: 0},
-        {id: 29, name: 'MP-443(그라치)', buff: 20, skill: 0},
-        {id: 30, name: 'Gsh-18', buff: 24, skill: 0},
-        {id: 31, name: 'MP-448(스키프)', buff: 12, skill: 0},
-        {id: 32, name: 'Px4 스톰', buff: 24, skill: '치명타 50'}
+        {id: 1, name: '직접입력', buff: 0, skill: 0},
+        {id: 2, name: 'Mk23', buff: 36, skill: 20, skillN: 35},
+        {id: 3, name: 'P22', buff: 30, skill: 25},
+        {id: 4, name: '그리즐리', buff: 30, skill: 25},
+        {id: 5, name: 'K5', buff: 30, skill: 22},
+        {id: 6, name: '컨텐더', buff: 30, skill: '마탄 40'},
+        {id: 7, name: '나강 리볼버 MOD3', buff: 36, skill: 10},
+        {id: 8, name: '콜트 리볼버 MOD3', buff: 24, skill: 25},
+        {id: 9, name: '콜트 리볼버', buff: 24, skill: 22},
+        {id: 10, name: 'HK45', buff: 32, skill: 15},
+        {id: 11, name: 'PPK', buff: 0, skill: 10},
+        {id: 12, name: '세르듀코프', buff: 24, skill: 20},
+        {id: 13, name: 'Bren Ten', buff: 16, skill: 18},
+        {id: 14, name: 'CZ52', buff: 20, skill: 20},
+        {id: 15, name: '제리코', buff: 24, skill: 15},
+        {id: 16, name: '스테츠킨', buff: 12, skill: 0},
+        {id: 17, name: 'M9', buff: 20, skill: 0},
+        {id: 18, name: '마카로프', buff: 20, skill: 0},
+        {id: 19, name: '92식', buff: 0, skill: 10},
+        {id: 20, name: 'MP-446 MOD3(바이킹)', buff: 36, skill: 0},
+        {id: 21, name: 'MP-446(바이킹)', buff: 28, skill: 0},
+        {id: 22, name: 'SPP-1', buff: 12, skill: 0},
+        {id: 23, name: '웰로드', buff: 20, skill: 0},
+        {id: 24, name: 'NZ75', buff: 20, skill: 0},
+        {id: 25, name: '59식', buff: 20, skill: 0},
+        {id: 26, name: 'CZ75', buff: 16, skill: 0},
+        {id: 27, name: 'Spitfire', buff: 30, skill: 0},
+        {id: 28, name: 'P226', buff: 20, skill: 0},
+        {id: 29, name: '썬더', buff: 36, skill: 0},
+        {id: 30, name: 'MP-443(그라치)', buff: 20, skill: 0},
+        {id: 31, name: 'Gsh-18', buff: 24, skill: 0},
+        {id: 32, name: 'MP-448(스키프)', buff: 12, skill: 0},
+        {id: 33, name: 'Px4 스톰', buff: 24, skill: '치명타 50'},
+        {id: 34, name: '질 스팅레이(FBK큰 맥주)', buff: 40, skill: 20},
+        {id: 35, name: '질 스팅레이(AAD브랜티니)', buff: 40, skill: 25},
+        {id: 36, name: '질 스팅레이(ABK피아노 우먼)', buff: 40, skill: 20},
+        {id: 37, name: '질 스팅레이(KKK프린지 위버)', buff: 40, skill: 35},
+        {id: 38, name: '질 스팅레이(슈가 러쉬)', buff: 40, skill: 18}
       ],
       tdoll_selected: {
         first: 0,
@@ -217,6 +231,12 @@ export default {
         fourth: 0
       },
       tdollSkill: 0,
+      tdoll_custom: [
+        {buff: 0, skill: 0},
+        {buff: 0, skill: 0},
+        {buff: 0, skill: 0},
+        {buff: 0, skill: 0}
+      ],
       equipCritical: 0,
       selectContender: false,
       selectPx4: false,
