@@ -442,6 +442,14 @@ export default {
       if (reg.test(this.critical)) {
         this.critical = this.critical.replace(/\D+/, '')
       }
+      for (var i = 0; i < 4; i++) {
+        if (reg.test(this.tdoll_custom[i].buff)) {
+          this.tdoll_custom[i].buff = this.tdoll_custom[i].buff.replace(/\D+/, '')
+        }
+        if (reg.test(this.tdoll_custom[i].skill)) {
+          this.tdoll_custom[i].skill = this.tdoll_custom[i].skill.replace(/\D+/, '')
+        }
+      }
     }
   },
   updated: function () {
