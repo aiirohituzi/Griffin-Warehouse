@@ -362,6 +362,12 @@ export default {
           // console.log(sumSkill)
         }
       }
+      if (isNaN(sumBuff)) {
+        sumBuff = 0
+      }
+      if (isNaN(sumSkill)) {
+        sumSkill = 0
+      }
 
       calcBuff = sumBuff + parseInt(this.fairyStrBuff)
 
