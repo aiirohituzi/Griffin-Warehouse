@@ -308,7 +308,6 @@ export default {
         } else {
           sumBuff += this.tdoll[this.tdoll_selected.first].buff
           sumSkill += this.tdoll[this.tdoll_selected.first].skill
-          // console.log(sumSkill)
         }
       } else {
         this.tdoll_selected.second = 0
@@ -326,7 +325,6 @@ export default {
         } else {
           sumBuff += this.tdoll[this.tdoll_selected.second].buff
           sumSkill = ((1 + (sumSkill / 100)) * (1 + (this.tdoll[this.tdoll_selected.second].skill / 100)) - 1) * 100
-          // console.log(sumSkill)
         }
       } else {
         this.tdoll_selected.third = 0
@@ -343,7 +341,6 @@ export default {
         } else {
           sumBuff += this.tdoll[this.tdoll_selected.third].buff
           sumSkill = ((1 + (sumSkill / 100)) * (1 + (this.tdoll[this.tdoll_selected.third].skill / 100)) - 1) * 100
-          // console.log(sumSkill)
         }
       } else {
         this.tdoll_selected.fourth = 0
@@ -359,7 +356,6 @@ export default {
         } else {
           sumBuff += this.tdoll[this.tdoll_selected.fourth].buff
           sumSkill = ((1 + (sumSkill / 100)) * (1 + (this.tdoll[this.tdoll_selected.fourth].skill / 100)) - 1) * 100
-          // console.log(sumSkill)
         }
       }
       if (isNaN(sumBuff)) {
@@ -382,7 +378,6 @@ export default {
           for (var i = 0; i < this.gyeokyangStack - 1; i++) {
             calcFairyPassive = (((1 + (calcFairyPassive / 100)) * (1 + (this.fairyPassive[this.fairy_selected].buff / 100)) - 1) * 100).toFixed(1)
           }
-          // console.log(calcFairyPassive)
         } else {
           calcFairyPassive = this.fairyPassive[this.fairy_selected].buff
         }
@@ -400,7 +395,6 @@ export default {
           calcPx4 = 1.5
         }
         calcCritical = ((this.critical / 100) * (1 + (this.fairyCriticalBuff / 100)) * calcPx4) + (this.equipCritical / 100)
-        // console.log(calcCritical)
       } else {
         calcCritical = 1
       }
