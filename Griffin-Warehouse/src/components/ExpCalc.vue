@@ -75,6 +75,20 @@
             <div class="input-addon-right">1회당 입수 경험치 {{ getExp }}</div>
         </div>
 
+        <div style="font-size: 8pt;" v-if="area_selected == 7">※직접 입력 기능 사용 시 경우에 따라 계산이 매우 오래 걸릴 수 있음</div>
+        <div class="inputGroup-exp" v-if="area_selected == 7">
+            <div class="input-addon-left">1전역당 경험치</div>
+            <div class="input-exp">
+                <input type="text" v-model="area[7].exp" v-on:keyup="checkInputExp">
+            </div>
+        </div>
+        <div class="inputGroup-exp" v-if="area_selected == 7">
+            <div class="input-addon-left">전역 패널티 레벨</div>
+            <div class="input-exp">
+                <input type="text" v-model="area[7].penalty" v-on:keyup="checkInputExp">
+            </div>
+        </div>
+
         <div class="inputGroup-exp">    
             <div class="input-addon-left">남은 경험치</div>
             <div class="input-label">{{ needExp }}</div>
@@ -270,6 +284,7 @@ export default {
                 {id:4, name: '5-4e 보스런', exp: 430*5, penalty: 83},   // 보스는 2배 860
                 {id:5, name: '0-4 보스런', exp: 500*4, penalty: 106},    // 보스 2배 1000
                 {id:6, name: '특이점 4드라런', exp: 500*4, penalty: 106},
+                {id:7, name: '직접입력', exp: 0, penalty: 0},
             ],
             area_selected: 0,
             getExp: 370*4,
@@ -308,6 +323,10 @@ export default {
             var penaltyLv = this.area[this.area_selected].penalty
             var eventCoefficient = 1
             var tdollNeedReport
+
+            if(this.area_selected == 7 && this.area[this.area_selected].exp == 0) {
+                return
+            }
 
             if(this.calcMode == 'level') {
                 tdollTargetExp = this.exp[this.tdollTarget-1]
