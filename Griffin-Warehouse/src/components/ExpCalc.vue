@@ -75,7 +75,7 @@
             <div class="input-addon-right">1회당 입수 경험치 {{ getExp }}</div>
         </div>
 
-        <div style="font-size: 8pt;" v-if="area_selected == 7">※직접 입력 기능 사용 시 경우에 따라 계산이 매우 오래 걸릴 수 있음</div>
+        <div style="font-size: 8pt;" v-if="area_selected == 7">※계산 효율을 위해 입수경험치 100 미만의 경우에는 계산하지 않습니다.</div>
         <div class="inputGroup-exp" v-if="area_selected == 7">
             <div class="input-addon-left">1전역당 경험치</div>
             <div class="input-exp">
@@ -320,12 +320,15 @@ export default {
             var tdollTargetExp
             var needExp
             var needCount = 0
-            var penaltyLv = this.area[this.area_selected].penalty
+            var penaltyLv = parseInt(this.area[this.area_selected].penalty)
             var eventCoefficient = 1
             var tdollNeedReport
+            var regnondig = /\D+/
 
-            if(this.area_selected == 7 && this.area[this.area_selected].exp == 0) {
-                return
+            if(this.area_selected == 7) {
+                if(regnondig.test(this.area[this.area_selected].exp) || regnondig.test(this.area[this.area_selected].penalty) || this.area[this.area_selected].exp < 100){
+                    return
+                }
             }
 
             if(this.calcMode == 'level') {
