@@ -75,6 +75,20 @@
             <div class="input-addon-right">1회당 입수 경험치 {{ getExp }}</div>
         </div>
 
+        <div style="font-size: 8pt;" v-if="area_selected == 7">※계산 효율을 위해 입수경험치 100 미만의 경우에는 계산하지 않습니다.</div>
+        <div class="inputGroup-exp" v-if="area_selected == 7">
+            <div class="input-addon-left">1전역당 경험치</div>
+            <div class="input-exp">
+                <input type="text" v-model="area[7].exp" v-on:keyup="checkInputExp">
+            </div>
+        </div>
+        <div class="inputGroup-exp" v-if="area_selected == 7">
+            <div class="input-addon-left">전역 패널티 레벨</div>
+            <div class="input-exp">
+                <input type="text" v-model="area[7].penalty" v-on:keyup="checkInputExp">
+            </div>
+        </div>
+
         <div class="inputGroup-exp">    
             <div class="input-addon-left">남은 경험치</div>
             <div class="input-label">{{ needExp }}</div>
@@ -269,7 +283,8 @@ export default {
         {id: 3, name: '11-5 거지런', exp: 550 * 5, penalty: 120},
         {id: 4, name: '5-4e 보스런', exp: 430 * 5, penalty: 83},
         {id: 5, name: '0-4 보스런', exp: 500 * 4, penalty: 106},
-        {id: 6, name: '특이점 4드라런', exp: 500 * 4, penalty: 106}
+        {id: 6, name: '특이점 4드라런', exp: 500 * 4, penalty: 106},
+        {id: 7, name: '직접입력', exp: 0, penalty: 0}
       ],
       area_selected: 0,
       getExp: 370 * 4,
@@ -305,9 +320,16 @@ export default {
       var tdollTargetExp
       var needExp
       var needCount = 0
-      var penaltyLv = this.area[this.area_selected].penalty
+      var penaltyLv = parseInt(this.area[this.area_selected].penalty)
       var eventCoefficient = 1
       var tdollNeedReport
+      var regnondig = /\D+/
+
+      if (this.area_selected === 7) {
+        if (regnondig.test(this.area[this.area_selected].exp) || regnondig.test(this.area[this.area_selected].penalty) || this.area[this.area_selected].exp < 100) {
+          return
+        }
+      }
 
       if (this.calcMode === 'level') {
         tdollTargetExp = this.exp[this.tdollTarget - 1]
