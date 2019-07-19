@@ -557,6 +557,13 @@ export default {
             if(regnondig.test(parseInt(this.eventCoefficient))){
                 this.eventCoefficient = this.eventCoefficient.replace(/\D+/, '')
             }
+
+            if(regnondig.test(this.area[7].exp)) {
+                this.area[7].exp = this.area[7].exp.replace(/\D+/, '')
+            }
+            if(regnondig.test(this.area[7].penalty)) {
+                this.area[7].penalty = this.area[7].penalty.replace(/\D+/, '')
+            }
         },
         
         openPenalty: function () {
