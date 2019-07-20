@@ -743,6 +743,7 @@ export default {
     border-bottom-right-radius: 5px;
     background-color: #eeebe4;
     padding: 4.5px;
+    line-height: 16px;
     font-size: 10pt;
 }
 
