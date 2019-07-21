@@ -396,8 +396,8 @@ export default {
             }
             if(!this.armorOn){
                 this.armor = 0
-            } else if(this.armor == 0) {
-                this.armor = -2
+            // } else if(this.armor == 0) {
+            //     this.armor = -2
             }
             if(this.criticalOn){
                 if(this.buffSkillOn && this.selectPx4){
@@ -447,9 +447,9 @@ export default {
             if(reg.test(this.fairySkill)){
                 this.fairySkill = this.fairySkill.replace(/\D+/, '')
             }
-            if(reg.test(this.armor)){
-                this.armor = this.armor.replace(/\D+/, '')
-            }
+            // if(reg.test(this.armor)){
+            //     this.armor = this.armor.replace(/\D+/, '')
+            // }
             if(reg.test(this.critical)){
                 this.critical = this.critical.replace(/\D+/, '')
             }
