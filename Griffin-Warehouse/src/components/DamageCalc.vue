@@ -133,9 +133,9 @@
 
     <div class="inputGroup-damage">
         <div class="input-damage">
-            <input type="text" maxlength="3" v-model="armor" v-on:keyup="checkInputDamage">
+            <input type="number" min="-2" max="300" v-model="armor" v-on:keyup="checkInputDamage">
         </div>
-        <div class="input-addon-left">장갑 적용 (0입력 시 과관통 자동 적용) <input class="check-damage" type="checkbox" style="width:unset;" v-model="armorOn"></div>
+        <div class="input-addon-left">장갑 적용 <input class="check-damage" type="checkbox" style="width:unset;" v-model="armorOn"></div>
     </div>
     <div class="inputGroup-damage">
         <div class="input-damage">
