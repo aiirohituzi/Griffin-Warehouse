@@ -133,9 +133,9 @@
 
     <div class="inputGroup-damage">
         <div class="input-damage">
-            <input type="text" maxlength="3" v-model="armor" v-on:keyup="checkInputDamage">
+            <input type="number" min="-2" max="300" v-model="armor" v-on:keyup="checkInputDamage">
         </div>
-        <div class="input-addon-left">장갑 적용 (0입력 시 과관통 자동 적용) <input class="check-damage" type="checkbox" style="width:unset;" v-model="armorOn"></div>
+        <div class="input-addon-left">장갑 적용 <input class="check-damage" type="checkbox" style="width:unset;" v-model="armorOn"></div>
     </div>
     <div class="inputGroup-damage">
         <div class="input-damage">
@@ -387,9 +387,10 @@ export default {
       }
       if (!this.armorOn) {
         this.armor = 0
-      } else if (this.armor === 0) {
-        this.armor = -2
       }
+      // else if (this.armor === 0) {
+      //   this.armor = -2
+      // }
       if (this.criticalOn) {
         if (this.buffSkillOn && this.selectPx4) {
           calcPx4 = 1.5
@@ -436,9 +437,9 @@ export default {
       if (reg.test(this.fairySkill)) {
         this.fairySkill = this.fairySkill.replace(/\D+/, '')
       }
-      if (reg.test(this.armor)) {
-        this.armor = this.armor.replace(/\D+/, '')
-      }
+      // if (reg.test(this.armor)) {
+      //   this.armor = this.armor.replace(/\D+/, '')
+      // }
       if (reg.test(this.critical)) {
         this.critical = this.critical.replace(/\D+/, '')
       }
