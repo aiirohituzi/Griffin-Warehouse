@@ -222,7 +222,9 @@ export default {
         {id: 35, name: '질 스팅레이(AAD브랜티니)', buff: 40, skill: 25},
         {id: 36, name: '질 스팅레이(ABK피아노 우먼)', buff: 40, skill: 20},
         {id: 37, name: '질 스팅레이(KKK프린지 위버)', buff: 40, skill: 35},
-        {id: 38, name: '질 스팅레이(슈가 러쉬)', buff: 40, skill: 18}
+        {id: 38, name: '질 스팅레이(슈가 러쉬)', buff: 40, skill: 18},
+        {id: 39, name: '세이 아사기리', buff: 30, skill: 0},
+        {id: 40, name: 'P30', buff: 18, skill: 0}
       ],
       tdoll_selected: {
         first: 0,
