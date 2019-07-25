@@ -288,48 +288,48 @@ export default {
     data () {
         return {
             skillList: [
-                {id:0, name: '', percentage: 0},
+                {id: 0, name: '', percentage: 0},
 
-                {id:1, name: '-------------------- AR --------------------', percentage: 0},
-                {id:2, name: '고속사격T (ST AR-15 MOD, 97식)', percentage: 50},
-                {id:3, name: '고속사격T (OTs-12)', percentage: 60},
+                {id: 1, name: '-------------------- AR --------------------', percentage: 0},
+                {id: 2, name: '고속사격T (ST AR-15 MOD, 97식)', percentage: 50},
+                {id: 3, name: '고속사격T (OTs-12)', percentage: 60},
                 
-                {id:4, name: '강행돌파 (ART556, TAR-21)', percentage: 25},
-                {id:5, name: '강행돌파 (마갈)', percentage: 20},
-                {id:6, name: '강행돌파 (L85A1)', percentage: 15},
+                {id: 4, name: '강행돌파 (ART556, TAR-21)', percentage: 25},
+                {id: 5, name: '강행돌파 (마갈)', percentage: 20},
+                {id: 6, name: '강행돌파 (L85A1)', percentage: 15},
                 
-                {id:7, name: '민접사격 (Model L)', percentage: 40},
+                {id: 7, name: '민접사격 (Model L)', percentage: 40},
                 
-                {id:8, name: '백랑의 눈 (AK-12)', percentage: 35},
-                {id:9, name: '여명의 기염 (CZ2000)', percentage: 50},
-                {id:10, name: '미래 예지 (64식 소총)', percentage: 80},
+                {id: 8, name: '백랑의 눈 (AK-12)', percentage: 35},
+                {id: 9, name: '여명의 기염 (CZ2000)', percentage: 50},
+                {id: 10, name: '미래 예지 (64식 소총)', percentage: 80},
                 
-                {id:11, name: '설한의 쐐기 (M4A1 MOD2)', percentage: -70},
-                {id:12, name: '아크 기어스 (G36 MOD2)', percentage: 20},
+                {id: 11, name: '설한의 쐐기 (M4A1 MOD2)', percentage: -70},
+                {id: 12, name: '아크 기어스 (G36 MOD2)', percentage: 20},
 
 
-                {id:13, name: '-------------------- RF --------------------', percentage: 0},
-                {id:14, name: '고속사격 (WA2000)', percentage: 75},
-                {id:15, name: '고속사격 (SVD)', percentage: 65},
-                {id:16, name: '비상사격 (K31)', percentage: 80},
-                {id:17, name: '고속사격 (wz.29)', percentage: 60},
-                {id:18, name: '고속사격 (시모노프, BM59)', percentage: 55},
-                {id:19, name: '고속사격T (SM-1)', percentage: 40},
-                {id:20, name: '고속사격N (XM3)', percentage: 100},
-                {id:21, name: '고속사격N (81식 카빈)', percentage: 90},
-                {id:22, name: '고속사격N (G43)', percentage: 85},
+                {id: 13, name: '-------------------- RF --------------------', percentage: 0},
+                {id: 14, name: '고속사격 (WA2000)', percentage: 75},
+                {id: 15, name: '고속사격 (SVD)', percentage: 65},
+                {id: 16, name: '비상사격 (K31)', percentage: 80},
+                {id: 17, name: '고속사격 (wz.29)', percentage: 60},
+                {id: 18, name: '고속사격 (시모노프, BM59)', percentage: 55},
+                {id: 19, name: '고속사격T (SM-1)', percentage: 40},
+                {id: 20, name: '고속사격N (XM3)', percentage: 100},
+                {id: 21, name: '고속사격N (81식 카빈)', percentage: 90},
+                {id: 22, name: '고속사격N (G43)', percentage: 85},
 
-                {id:23, name: '민첩사격 (T-5000)', percentage: 50},
-                {id:24, name: '민첩사격 (OBR)', percentage: 45},
+                {id: 23, name: '민첩사격 (T-5000)', percentage: 50},
+                {id: 24, name: '민첩사격 (OBR)', percentage: 45},
 
-                {id:25, name: '육참골단 (IWS 2000)', percentage: -35},
-                {id:26, name: '분노의 발상 (Mk 12)', percentage: 30},
-                {id:27, name: '싸늘한 투지 (FN-49 MOD2)', percentage: 15},
+                {id: 25, name: '육참골단 (IWS 2000)', percentage: -35},
+                {id: 26, name: '분노의 발상 (Mk 12)', percentage: 30},
+                {id: 27, name: '싸늘한 투지 (FN-49 MOD2)', percentage: 15},
 
 
-                {id:28, name: '-------------------- SG --------------------', percentage: 0},
-                {id:29, name: '광란의 파티 (USAS-12)', percentage: 60},
-                {id:30, name: '금당현상 (AA-12)', percentage: 80},
+                {id: 28, name: '-------------------- SG --------------------', percentage: 0},
+                {id: 29, name: '광란의 파티 (USAS-12)', percentage: 60},
+                {id: 30, name: '금당현상 (AA-12)', percentage: 80},
             ],
 
             tdollAgi: '',

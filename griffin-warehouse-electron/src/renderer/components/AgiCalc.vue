@@ -324,10 +324,11 @@ export default {
         {id: 25, name: '육참골단 (IWS 2000)', percentage: -35},
         {id: 26, name: '분노의 발상 (Mk 12)', percentage: 30},
         {id: 27, name: '싸늘한 투지 (FN-49 MOD2)', percentage: 15},
+        {id: 28, name: '데드라인 (4식)', percentage: 55},
 
-        {id: 28, name: '---------------- SG 샷건 ----------------', percentage: 0},
-        {id: 29, name: '광란의 파티 (USAS-12)', percentage: 60},
-        {id: 30, name: '금당현상 (AA-12)', percentage: 80}
+        {id: 29, name: '---------------- SG 샷건 ----------------', percentage: 0},
+        {id: 30, name: '광란의 파티 (USAS-12)', percentage: 60},
+        {id: 31, name: '금당현상 (AA-12)', percentage: 80}
       ],
 
       tdollAgi: '',
