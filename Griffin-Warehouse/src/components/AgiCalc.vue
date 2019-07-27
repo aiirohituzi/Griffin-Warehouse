@@ -24,6 +24,11 @@
         </div>
         <div class="inputGroup-agi" v-if="calcMode==1">
             <div class="input-addon-left">스킬 선택</div>
+            <div class="input-agi-allAddon-ex">
+                <select v-model="selectType">
+                    <option v-for="item in tdolltype" :value="item">{{ item }}</option>
+                </select>
+            </div>
             <div class="input-agi-allAddon">
                 <select v-model="tdollAgiSkill">
                     <option v-for="item in skillList" :value="item.percentage">{{ item.name }}</option>
@@ -287,6 +292,8 @@ export default {
     name: 'AgiCalc',
     data () {
         return {
+            tdolltype: ['AR', 'RF', 'SG'],
+            selectType: 'AR',
             skillList: [
                 {id: 0, name: '', percentage: 0},
 
@@ -542,7 +549,40 @@ export default {
     font-size: 10pt;
     width: 223px;
 }
+.inputGroup-agi .input-agi-allAddon-ex {
+    float: left;
+    border: 2px solid #c3b9a2;
+    border-right: none;
+    -webkit-appearance: none;
+
+    border-radius: 0;
+    -webkit-border-radius: 0;
+
+    padding: 3px;
+
+    font-size: 10pt;
+    width: 40px;
+}
 .inputGroup-agi .input-agi-allAddon select {
+    -webkit-appearance: none;
+
+    border: unset;
+    -webkit-border: unset;
+    
+    margin: 0;
+    -webkit-margin: 0;
+
+    padding: 0;
+    -webkit-padding: 0;
+    
+    background: url('../assets/select.png') no-repeat center right;
+    background-size: 17px 20px;
+    
+    font-size: 10pt;
+    width: 100%;
+    text-align: right;
+}
+.inputGroup-agi .input-agi-allAddon-ex select {
     -webkit-appearance: none;
 
     border: unset;
