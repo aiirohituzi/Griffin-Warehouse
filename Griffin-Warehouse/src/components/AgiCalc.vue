@@ -25,7 +25,7 @@
         <div class="inputGroup-agi" v-if="calcMode==1">
             <div class="input-addon-left">스킬 선택</div>
             <div class="input-agi-allAddon-ex">
-                <select v-model="selectType">
+                <select v-model="selectType" v-on:change="changeType">
                     <option v-for="item in tdollType" :value="item">{{ item }}</option>
                 </select>
             </div>
@@ -67,6 +67,11 @@
         </div>
         <div class="inputGroup-agi" v-if="calcMode==1">
             <div class="input-addon-left">스킬 선택</div>
+            <div class="input-agi-allAddon-ex">
+                <select v-model="selectType" v-on:change="changeType">
+                    <option v-for="item in tdollType" :value="item">{{ item }}</option>
+                </select>
+            </div>
             <div class="input-agi-allAddon">
                 <select v-model="tdollAgiSkill">
                     <option v-for="item in skillList" :value="item.percentage">{{ item.name }}</option>
@@ -363,7 +368,7 @@ export default {
                 default:
                     return
             }
-            // 현재 30fps 기준, 후에 테스트 서버의 60fps 기능이 도입되면 변경될 한계사속으로 수정 필요
+
             var sumAgiBuff = parseInt(this.agiBuff1) + parseInt(this.agiBuff2) + parseInt(this.agiBuff3) + parseInt(this.agiBuff4)
             var mulAgiSkill = (1 + this.agiSkill1 / 100) * (1 + this.agiSkill2 / 100) * (1 + this.agiSkill3 / 100) * (1 + this.agiSkill4 / 100)
             
@@ -441,6 +446,10 @@ export default {
         openAgi: function () {
             $('.side-right-agi').toggleClass('move')
         },
+
+        changeType: function () {
+            this.tdollAgiSkill = ''
+        }
     },
     updated: function () {
         this.agiCalc()
