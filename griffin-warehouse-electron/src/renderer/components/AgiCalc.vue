@@ -24,6 +24,11 @@
         </div>
         <div class="inputGroup-agi" v-if="calcMode==1">
             <div class="input-addon-left">스킬 선택</div>
+            <div class="input-agi-allAddon-ex">
+                <select v-model="selectType" v-on:change="changeType">
+                    <option v-for="item in tdollType" :value="item">{{ item }}</option>
+                </select>
+            </div>
             <div class="input-agi-allAddon">
                 <select v-model="tdollAgiSkill">
                     <option v-for="item in skillList" :value="item.percentage">{{ item.name }}</option>
@@ -62,6 +67,11 @@
         </div>
         <div class="inputGroup-agi" v-if="calcMode==1">
             <div class="input-addon-left">스킬 선택</div>
+            <div class="input-agi-allAddon-ex">
+                <select v-model="selectType" v-on:change="changeType">
+                    <option v-for="item in tdollType" :value="item">{{ item }}</option>
+                </select>
+            </div>
             <div class="input-agi-allAddon">
                 <select v-model="tdollAgiSkill">
                     <option v-for="item in skillList" :value="item.percentage">{{ item.name }}</option>
@@ -287,48 +297,42 @@ export default {
   name: 'AgiCalc',
   data () {
     return {
-      skillList: [
-        {id: 0, name: '스킬선택', percentage: 0},
-
-        {id: 1, name: '------------- AR 돌격소총 -------------', percentage: 0},
-        {id: 2, name: '고속사격T (ST AR-15 MOD, 97식)', percentage: 50},
-        {id: 3, name: '고속사격T (OTs-12)', percentage: 60},
-
-        {id: 4, name: '강행돌파 (ART556, TAR-21)', percentage: 25},
-        {id: 5, name: '강행돌파 (마갈)', percentage: 20},
-        {id: 6, name: '강행돌파 (L85A1)', percentage: 15},
-
-        {id: 7, name: '민접사격 (Model L)', percentage: 40},
-
-        {id: 8, name: '백랑의 눈 (AK-12)', percentage: 35},
-        {id: 9, name: '여명의 기염 (CZ2000)', percentage: 50},
-        {id: 10, name: '미래 예지 (64식 소총)', percentage: 80},
-
-        {id: 11, name: '설한의 쐐기 (M4A1 MOD2)', percentage: -70},
-        {id: 12, name: '아크 기어스 (G36 MOD2)', percentage: 20},
-
-        {id: 13, name: '---------------- RF 소총 ----------------', percentage: 0},
-        {id: 14, name: '고속사격 (WA2000)', percentage: 75},
-        {id: 15, name: '고속사격 (SVD)', percentage: 65},
-        {id: 16, name: '비상사격 (K31)', percentage: 80},
-        {id: 17, name: '고속사격 (wz.29)', percentage: 60},
-        {id: 18, name: '고속사격 (시모노프, BM59)', percentage: 55},
-        {id: 19, name: '고속사격T (SM-1)', percentage: 40},
-        {id: 20, name: '고속사격N (XM3)', percentage: 100},
-        {id: 21, name: '고속사격N (81식 카빈)', percentage: 90},
-        {id: 22, name: '고속사격N (G43)', percentage: 85},
-
-        {id: 23, name: '민첩사격 (T-5000)', percentage: 50},
-        {id: 24, name: '민첩사격 (OBR)', percentage: 45},
-
-        {id: 25, name: '육참골단 (IWS 2000)', percentage: -35},
-        {id: 26, name: '분노의 발상 (Mk 12)', percentage: 30},
-        {id: 27, name: '싸늘한 투지 (FN-49 MOD2)', percentage: 15},
-        {id: 28, name: '데드라인 (4식)', percentage: 55},
-
-        {id: 29, name: '---------------- SG 샷건 ----------------', percentage: 0},
-        {id: 30, name: '광란의 파티 (USAS-12)', percentage: 60},
-        {id: 31, name: '금당현상 (AA-12)', percentage: 80}
+      tdollType: ['AR', 'RF', 'SG'],
+      selectType: 'AR',
+      skillList: [],
+      skillListAR: [
+        {id: 1, name: '고속사격T (ST AR-15 MOD, 97식)', percentage: 50},
+        {id: 2, name: '고속사격T (OTs-12)', percentage: 60},
+        {id: 3, name: '강행돌파 (ART556, TAR-21)', percentage: 25},
+        {id: 4, name: '강행돌파 (마갈)', percentage: 20},
+        {id: 5, name: '강행돌파 (L85A1)', percentage: 15},
+        {id: 6, name: '민접사격 (Model L)', percentage: 40},
+        {id: 7, name: '백랑의 눈 (AK-12)', percentage: 35},
+        {id: 8, name: '여명의 기염 (CZ2000)', percentage: 50},
+        {id: 9, name: '미래 예지 (64식 소총)', percentage: 80},
+        {id: 10, name: '설한의 쐐기 (M4A1 MOD2)', percentage: -70},
+        {id: 11, name: '아크 기어스 (G36 MOD2)', percentage: 20}
+      ],
+      skillListRF: [
+        {id: 1, name: '고속사격 (WA2000)', percentage: 75},
+        {id: 2, name: '고속사격 (SVD)', percentage: 65},
+        {id: 3, name: '비상사격 (K31)', percentage: 80},
+        {id: 4, name: '고속사격 (wz.29)', percentage: 60},
+        {id: 5, name: '고속사격 (시모노프, BM59)', percentage: 55},
+        {id: 6, name: '고속사격T (SM-1)', percentage: 40},
+        {id: 7, name: '고속사격N (XM3)', percentage: 100},
+        {id: 8, name: '고속사격N (81식 카빈)', percentage: 90},
+        {id: 9, name: '고속사격N (G43)', percentage: 85},
+        {id: 10, name: '민첩사격 (T-5000)', percentage: 50},
+        {id: 11, name: '민첩사격 (OBR)', percentage: 45},
+        {id: 12, name: '육참골단 (IWS 2000)', percentage: -35},
+        {id: 13, name: '분노의 발상 (Mk 12)', percentage: 30},
+        {id: 14, name: '싸늘한 투지 (FN-49 MOD2)', percentage: 15},
+        {id: 15, name: '데드라인 (4식)', percentage: 55}
+      ],
+      skillListSG: [
+        {id: 1, name: '광란의 파티 (USAS-12)', percentage: 60},
+        {id: 2, name: '금당현상 (AA-12)', percentage: 80}
       ],
 
       tdollAgi: '',
@@ -349,6 +353,20 @@ export default {
   },
   methods: {
     agiCalc: function () {
+      switch (this.selectType) {
+        case 'AR':
+          this.skillList = this.skillListAR
+          break
+        case 'RF':
+          this.skillList = this.skillListRF
+          break
+        case 'SG':
+          this.skillList = this.skillListSG
+          break
+        default:
+          return
+      }
+
       var sumAgiBuff = parseInt(this.agiBuff1) + parseInt(this.agiBuff2) + parseInt(this.agiBuff3) + parseInt(this.agiBuff4)
       var mulAgiSkill = (1 + this.agiSkill1 / 100) * (1 + this.agiSkill2 / 100) * (1 + this.agiSkill3 / 100) * (1 + this.agiSkill4 / 100)
 
@@ -424,6 +442,10 @@ export default {
 
     openAgi: function () {
       $('.side-right-agi').toggleClass('move')
+    },
+
+    changeType: function () {
+      this.tdollAgiSkill = ''
     }
   },
   updated: function () {
@@ -536,7 +558,40 @@ export default {
     font-size: 10pt;
     width: 223px;
 }
+.inputGroup-agi .input-agi-allAddon-ex {
+    float: left;
+    border: 2px solid #c3b9a2;
+    border-right: none;
+    -webkit-appearance: none;
+
+    border-radius: 0;
+    -webkit-border-radius: 0;
+
+    padding: 3px;
+
+    font-size: 10pt;
+    width: 40px;
+}
 .inputGroup-agi .input-agi-allAddon select {
+    -webkit-appearance: none;
+
+    border: unset;
+    -webkit-border: unset;
+    
+    margin: 0;
+    -webkit-margin: 0;
+
+    padding: 0;
+    -webkit-padding: 0;
+    
+    background: url('../assets/select.png') no-repeat center right;
+    background-size: 17px 20px;
+    
+    font-size: 10pt;
+    width: 100%;
+    text-align: right;
+}
+.inputGroup-agi .input-agi-allAddon-ex select {
     -webkit-appearance: none;
 
     border: unset;
