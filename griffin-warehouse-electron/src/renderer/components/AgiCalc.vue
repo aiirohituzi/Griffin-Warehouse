@@ -587,6 +587,7 @@ export default {
     background: url('../assets/select.png') no-repeat center right;
     background-size: 17px 20px;
     
+    line-height: 19px;
     font-size: 10pt;
     width: 100%;
     text-align: right;
@@ -606,6 +607,7 @@ export default {
     background: url('../assets/select.png') no-repeat center right;
     background-size: 17px 20px;
     
+    line-height: 19px;
     font-size: 10pt;
     width: 100%;
     text-align: right;
