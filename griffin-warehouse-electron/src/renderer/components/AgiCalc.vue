@@ -768,6 +768,12 @@ div#div-agi .btn-agi:hover {
     .inputGroup-agi .input-agi-allAddon select {
         font-size: 8pt;
     }
+    .inputGroup-agi .input-agi-allAddon-ex {
+        font-size: 8pt;
+    }
+    .inputGroup-agi .input-agi-allAddon-ex select {
+        font-size: 8pt;
+    }
     .inputGroup-agi .input-label {
         font-size: 8pt;
         padding: 5px;
