@@ -812,12 +812,18 @@ div#div-agi .btn-agi:hover {
     .inputGroup-agi .input-agi-allAddon {
         padding: 2.5px;
     }
+    .inputGroup-agi .input-agi-allAddon-ex {
+        padding: 2.5px;
+    }
 }
 @media only screen and (max-device-width : 768px) {
     .inputGroup-agi .input-agi {
         padding: 2.5px;
     }
     .inputGroup-agi .input-agi-allAddon {
+        padding: 2.5px;
+    }
+    .inputGroup-agi .input-agi-allAddon-ex {
         padding: 2.5px;
     }
 }
