@@ -96,17 +96,17 @@
         
         <div class="inputGroup-exp">    
             <div class="input-addon-left">남은 횟수</div>
-            <div class="input-label">{{ needCount }}</div>
+            <div class="input-label">{{ needCount }}회</div>
         </div>
         
         <div class="inputGroup-exp">    
             <div class="input-addon-left">필요 작전보고서</div>
-            <div class="input-label">{{ tdollNeedReport }}</div>
+            <div class="input-label">{{ tdollNeedReport }}개</div>
         </div>
         
         <div class="inputGroup-exp">
             <div class="input-addon-left">작보 제작에 필요한 전지</div>
-            <div class="input-label">{{ tdollNeedReport * 3 }}</div>
+            <div class="input-label">{{ tdollNeedReport * 3 }}개</div>
         </div>
     </div>
 
@@ -139,12 +139,12 @@
 
         <div class="inputGroup-exp">    
             <div class="input-addon-left">필요 작전보고서</div>
-            <div class="input-label">{{ fairyNeedReport }}</div>
+            <div class="input-label">{{ fairyNeedReport }}개</div>
         </div>
         
         <div class="inputGroup-exp">
             <div class="input-addon-left">작보 제작에 필요한 전지</div>
-            <div class="input-label">{{ fairyNeedReport * 3 }}</div>
+            <div class="input-label">{{ fairyNeedReport * 3 }}개</div>
         </div>
     </div>
 
@@ -177,22 +177,22 @@
 
         <div class="inputGroup-exp">
             <div class="input-addon-left">필요 특수작전보고서</div>
-            <div class="input-label">{{ FSTNeedReport }}</div>
+            <div class="input-label">{{ FSTNeedReport }}개</div>
         </div>
 
         <div class="inputGroup-exp">
             <div class="input-addon-left">소요 시간</div>
-            <div class="input-label">{{ FSTTime }}</div>
+            <div class="input-label">{{ FSTTime }}시간</div>
         </div>
 
         <div class="inputGroup-exp">
             <div class="input-addon-left">소모 전지</div>
-            <div class="input-label">{{ FSTTime * 5 }}</div>
+            <div class="input-label">{{ FSTTime * 5 }}개</div>
         </div>
         
         <div class="inputGroup-exp">
             <div class="input-addon-left">특작보 제작에 필요한 전지</div>
-            <div class="input-label">{{ FSTNeedReport * 3 }}</div>
+            <div class="input-label">{{ FSTNeedReport * 3 }}개</div>
         </div>
     </div>
 

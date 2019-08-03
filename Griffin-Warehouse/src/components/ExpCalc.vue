@@ -106,7 +106,7 @@
         
         <div class="inputGroup-exp">
             <div class="input-addon-left">작보 제작에 필요한 전지</div>
-            <div class="input-label">{{ tdollNeedReport * 3 }}</div>
+            <div class="input-label">{{ tdollNeedReport * 3 }}개</div>
         </div>
     </div>
 
@@ -144,7 +144,7 @@
         
         <div class="inputGroup-exp">
             <div class="input-addon-left">작보 제작에 필요한 전지</div>
-            <div class="input-label">{{ fairyNeedReport * 3 }}</div>
+            <div class="input-label">{{ fairyNeedReport * 3 }}개</div>
         </div>
     </div>
 
@@ -182,17 +182,17 @@
 
         <div class="inputGroup-exp">
             <div class="input-addon-left">소요 시간</div>
-            <div class="input-label">{{ FSTTime }}</div>
+            <div class="input-label">{{ FSTTime }}시간</div>
         </div>
 
         <div class="inputGroup-exp">
             <div class="input-addon-left">소모 전지</div>
-            <div class="input-label">{{ FSTTime * 5 }}</div>
+            <div class="input-label">{{ FSTTime * 5 }}개</div>
         </div>
         
         <div class="inputGroup-exp">
             <div class="input-addon-left">특작보 제작에 필요한 전지</div>
-            <div class="input-label">{{ FSTNeedReport * 3 }}</div>
+            <div class="input-label">{{ FSTNeedReport * 3 }}개</div>
         </div>
     </div>
 
