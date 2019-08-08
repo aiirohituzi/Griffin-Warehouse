@@ -424,7 +424,7 @@ export default {
     updated: function () {
         this.agiCalc()
     },
-    mounted: function() {
+    mounted: function () {
         this.skillListAR = skillListAR
         this.skillListRF = skillListRF
         this.skillListSG = skillListSG

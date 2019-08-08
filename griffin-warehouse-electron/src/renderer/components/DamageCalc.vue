@@ -178,6 +178,7 @@
 </template>
 
 <script>
+import { tdollAtkBuffer } from './data.js'
 export default {
   name: 'DamageCalc',
   data () {
@@ -457,6 +458,9 @@ export default {
   },
   updated: function () {
     this.sumTdoll()
+  },
+  mounted: function () {
+    this.tdoll = tdollAtkBuffer
   }
 }
 </script>
