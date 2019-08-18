@@ -4,16 +4,21 @@
 
     <p>소녀전선을 플레이하는데에 도움을 줄 수 있는 여러 툴을 사용해보실 수 있습니다.</p>
 
-
-
     <div class="inputGroup-timetable">
+        <div class="notice-timetable">※ 인형제조시간을 20분이면 0020, 7시간 12분이면 0712 같은 형식으로 입력해주세요.</div>
         <div class="input-addon-left">인형제조시간 검색</div>
         <div class="input-timetable-allAddon">
             <input type="text" maxlength="4" v-model="inputTime">
         </div>
         <div class="input-addon-right" @click="timeSearch()">검색</div>
     </div>
-    <div class="result-timetable">{{ result }}</div>
+    <div class="result-timetable" v-if="result != ''">
+        <div class="resultItem" v-for="item in result">
+            도감번호 : {{ item.id }}<br>
+            타입 : {{ item.type }}<br>
+            이름 : {{ item.name }}
+        </div>
+    </div>
 </div>
 </template>
 
@@ -58,8 +63,12 @@ export default {
     height: 30px;
     margin-top: 10vh;
     margin-bottom: 1vh;
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+.inputGroup-timetable .notice-timetable {
+    margin-bottom: 5px;
+    font-size: 9pt;
 }
 .inputGroup-timetable .input-addon-left {
     float: left;
@@ -126,8 +135,22 @@ export default {
 }
 
 .result-timetable {
-    width: 40vw;
-    margin-left: auto;
-    margin-right: auto;
+    border: 2px solid #c3b9a2;
+    border-radius: 5px;
+    width: fit-content;
+    padding: 5px;
+    /* margin-left: auto;
+    margin-right: auto; */
+    display: flex;
+    font-size: 10pt;
+}
+.result-timetable .resultItem {
+    border: 2px solid #c3b9a2;
+    background-color: #d4cdbd;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    width: fit-content;
+    height: fit-content;
 }
 </style>
