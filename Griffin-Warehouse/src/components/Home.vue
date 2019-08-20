@@ -153,4 +153,15 @@ export default {
     width: fit-content;
     height: fit-content;
 }
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    .inputGroup-timetable .input-timetable-allAddon {
+        padding: 2.5px;
+    }
+}
+@media only screen and (max-device-width : 768px) {
+    .inputGroup-timetable .input-timetable-allAddon {
+        padding: 2.5px;
+    }
+}
 </style>
