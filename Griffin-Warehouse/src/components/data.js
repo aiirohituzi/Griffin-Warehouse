@@ -60,7 +60,7 @@ export var skillListAR = [
   {id: 9, name: '미래 예지 (64식 소총)', percentage: 80},
   {id: 10, name: '설한의 쐐기 (M4A1 MOD2)', percentage: -70},
   {id: 11, name: '아크 기어스 (G36 MOD2)', percentage: 20},
-  {id: 11, name: '그림자 교살곡 (ACR)', percentage: 50},
+  {id: 12, name: '그림자 교살곡 (ACR)', percentage: 50},
 ]
 
 export var skillListRF = [

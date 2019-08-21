@@ -39,12 +39,8 @@ export var tdollAtkBuffer = [
   {id: 37, name: '질 스팅레이(KKK프린지 위버)', buff: 40, skill: 35},
   {id: 38, name: '질 스팅레이(슈가 러쉬)', buff: 40, skill: 18},
   {id: 39, name: '세이 아사기리', buff: 30, skill: 0},
-  {id: 40, name: 'P30', buff: 18, skill: 0}
-  // {id: 41, name: '', buff: 0, skill: 0},
-  // {id: 42, name: '', buff: 0, skill: 0},
-  // {id: 43, name: '', buff: 0, skill: 0},
-  // {id: 44, name: '', buff: 0, skill: 0},
-  // {id: 45, name: '', buff: 0, skill: 0},
+  {id: 40, name: 'P30', buff: 18, skill: 0},
+  {id: 41, name: '데저트 이글', buff: 30, skill: 0}
 ]
 
 export var skillListAR = [
@@ -58,7 +54,8 @@ export var skillListAR = [
   {id: 8, name: '여명의 기염 (CZ2000)', percentage: 50},
   {id: 9, name: '미래 예지 (64식 소총)', percentage: 80},
   {id: 10, name: '설한의 쐐기 (M4A1 MOD2)', percentage: -70},
-  {id: 11, name: '아크 기어스 (G36 MOD2)', percentage: 20}
+  {id: 11, name: '아크 기어스 (G36 MOD2)', percentage: 20},
+  {id: 12, name: '그림자 교살곡 (ACR)', percentage: 50}
 ]
 
 export var skillListRF = [
