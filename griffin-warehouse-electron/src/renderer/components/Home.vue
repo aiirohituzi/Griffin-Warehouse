@@ -8,7 +8,7 @@
         <div class="notice-timetable">※ 인형제조시간을 20분이면 0020, 7시간 14분이면 0714 같은 형식으로 입력해주세요.</div>
         <div class="input-addon-left">인형제조시간 검색</div>
         <div class="input-timetable-allAddon">
-            <input type="text" maxlength="4" v-model="inputTime">
+            <input type="text" maxlength="4" v-model="inputTime" v-on:keyup.enter="timeSearch()">
         </div>
         <div class="input-addon-right" @click="timeSearch()">검색</div>
     </div><br>
