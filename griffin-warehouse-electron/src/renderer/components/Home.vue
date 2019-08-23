@@ -5,10 +5,10 @@
     <p>소녀전선을 플레이하는데에 도움을 줄 수 있는 여러 툴을 사용해보실 수 있습니다.</p>
     
     <div class="inputGroup-timetable">
-        <div class="notice-timetable">※ 인형제조시간을 20분이면 0020, 7시간 14분이면 0714 같은 형식으로 입력해주세요.</div>
+        <div class="notice-timetable">※ 인형제조시간을 20분이면 0020, 7시간 14분이면 0714 같은 형식으로 입력해주세요. (이름 검색 가능)</div>
         <div class="input-addon-left">인형제조시간 검색</div>
         <div class="input-timetable-allAddon">
-            <input type="text" maxlength="4" v-model="inputTime" v-on:keyup.enter="timeSearch()">
+            <input type="text" v-model="inputTime" v-on:keyup.enter="timeSearch()">
         </div>
         <div class="input-addon-right" @click="timeSearch()">검색</div>
     </div><br>
@@ -40,6 +40,8 @@ export default {
 
       for (var i = 0; i < this.timetable.length; i++) {
         if (this.timetable[i].time === this.inputTime) {
+          this.result.push(this.timetable[i])
+        } else if (this.timetable[i].name.indexOf(this.inputTime) !== -1) {
           this.result.push(this.timetable[i])
         }
       }
@@ -91,7 +93,7 @@ export default {
     padding: 4.5px;
 
     font-size: 10pt;
-    width: 50px;
+    width: 100px;
 }
 .inputGroup-timetable .input-timetable-allAddon input{
     -webkit-appearance: none;
@@ -106,7 +108,7 @@ export default {
     -webkit-padding: 0;
 
     font-size: 10pt;
-    width: 50px;
+    width: 100px;
     text-align: right;
 }
 .inputGroup-timetable .input-addon-right {
