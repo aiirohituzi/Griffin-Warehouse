@@ -138,13 +138,13 @@ export default {
 }
 
 .result-timetable {
+    display: flex;
+    flex-wrap: wrap;
     border: 2px solid #c3b9a2;
     border-radius: 5px;
     width: fit-content;
+    max-width: 80vw;
     padding: 5px;
-    /* margin-left: auto;
-    margin-right: auto; */
-    display: flex;
     font-size: 10pt;
 }
 .result-timetable .resultItem {
