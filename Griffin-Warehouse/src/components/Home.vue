@@ -11,7 +11,17 @@
             <input type="text" v-model="inputTime" v-on:keyup.enter="timeSearch()">
         </div>
         <div class="input-addon-right" @click="timeSearch()">검색</div>
-    </div><br>
+    </div>
+    <button @click="test()">test</button>
+    
+    <div class="modal-timetable">
+        <div class="background"></div>
+        <div class="content">
+            <button @click="test()">test</button>
+        </div>
+    </div>
+
+    <br>
 
     <div class="result-timetable" v-if="result != ''">
         <div class="resultItem" v-for="item in result">
@@ -46,6 +56,9 @@ export default {
                 }
             }
             // console.log(this.result)
+        },
+        test: function () {
+            $('.modal-timetable').toggleClass('toggle')
         }
     },
     mounted: function () {
@@ -135,6 +148,31 @@ export default {
 .inputGroup-timetable .input-addon-right:hover {
     background-color: #9c9175;
     background: linear-gradient(to bottom, #d4cdbd 40%, #9c9175 100%);
+}
+
+.modal-timetable {
+    display: none;
+}
+.modal-timetable.toggle{
+    display: unset;
+}
+.modal-timetable .background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0.2;
+    width: 100%;
+    height: 100%;
+    background: #000;
+}
+.modal-timetable .content {
+    position: fixed;
+    top: 10vh;
+    left: 20vw;
+    width: 60vw;
+    height: 80vh;
+    background: #fff;
+    border-radius: 5px;
 }
 
 .result-timetable {
