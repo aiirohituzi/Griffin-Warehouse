@@ -18,6 +18,26 @@
         <div class="background"></div>
         <div class="content">
             <button @click="test()">test</button>
+            <table class="table-timetable" border="1">
+                <tr>
+                    <th class="col1">도감번호</th>
+                    <th class="col2">타입</th>
+                    <th class="col3">이름</th>
+                    <th class="col4">제조시간</th>
+                </tr>
+                <tr>
+                    <th class="col1">도감번호</th>
+                    <th class="col2">타입</th>
+                    <th class="col3">이름</th>
+                    <th class="col4">제조시간</th>
+                </tr>
+                <tr v-for="item in timetable">
+                    <td class="col1">{{ item.id }}</td>
+                    <td class="col2">{{ item.type }}</td>
+                    <td class="col3">{{ item.name }}</td>
+                    <td class="col4">{{ item.time }}</td>
+                </tr>
+            </table>
         </div>
     </div>
 
@@ -150,11 +170,20 @@ export default {
     background: linear-gradient(to bottom, #d4cdbd 40%, #9c9175 100%);
 }
 
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 .modal-timetable {
     display: none;
 }
 .modal-timetable.toggle{
     display: unset;
+    animation: fade 300ms;
 }
 .modal-timetable .background {
     position: fixed;
@@ -173,6 +202,28 @@ export default {
     height: 80vh;
     background: #fff;
     border-radius: 5px;
+    overflow-y: scroll;
+}
+.table-timetable {
+    margin: auto;
+    width: 58vw;
+    font-size: 8pt;
+}
+.table-timetable tr {
+    float: left;
+    width: calc(29vw - 4px);
+}
+.table-timetable .col1 {
+    width: 4vw;
+}
+.table-timetable .col2 {
+    width: 3vw;
+}
+.table-timetable .col3 {
+    width: 16vw;
+}
+.table-timetable .col4 {
+    width: 4vw;
 }
 
 .result-timetable {
