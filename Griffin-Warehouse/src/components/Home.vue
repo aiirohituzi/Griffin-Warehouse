@@ -11,14 +11,14 @@
             <input type="text" v-model="inputTime" v-on:keyup.enter="timeSearch()">
         </div>
         <div class="input-addon-right" @click="timeSearch()">검색</div>
+        <button class="button-timetable" @click="test()">제조시간표</button>
     </div>
-    <button @click="test()">test</button>
     
     <div class="modal-timetable">
-        <div class="background"></div>
+        <div class="background" @click="test()"></div>
         <div class="content">
-            <button @click="test()">test</button>
-            <table class="table-timetable" border="1">
+            <button class="button-timetable" @click="test()">닫기</button>
+            <table class="table-timetable">
                 <tr>
                     <th class="col1">도감번호</th>
                     <th class="col2">타입</th>
@@ -170,6 +170,27 @@ export default {
     background: linear-gradient(to bottom, #d4cdbd 40%, #9c9175 100%);
 }
 
+.button-timetable {
+    width: fit-content;
+    border: 2px solid #c3b9a2;
+    border-radius: 5px;
+    background-color: #d4cdbd;
+    background: linear-gradient(to bottom, #f3f0e9 40%, #d4cdbd 100%);
+    padding: 3px;
+    margin-left: 10px;
+    font-size: 10pt;
+    
+    cursor: pointer;
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+.button-timetable:hover {
+    background-color: #9c9175;
+    background: linear-gradient(to bottom, #d4cdbd 40%, #9c9175 100%);
+}
 @keyframes fade {
     0% {
         opacity: 0;
@@ -200,9 +221,15 @@ export default {
     left: 20vw;
     width: 60vw;
     height: 80vh;
-    background: #fff;
-    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #d4cdbd;
+    /* border-radius: 5px; */
     overflow-y: scroll;
+    
+    -moz-box-shadow: 2px 2px 5px #555;
+    -webkit-box-shadow: 2px 2px 5px #555;
+    box-shadow: 2px 2px 5px #555;
 }
 .table-timetable {
     margin: auto;
@@ -212,6 +239,13 @@ export default {
 .table-timetable tr {
     float: left;
     width: calc(29vw - 4px);
+}
+.table-timetable th {
+    padding: 2px;
+    background-color: #afa48a;
+}
+.table-timetable td {
+    background-color: #c3b9a2;
 }
 .table-timetable .col1 {
     width: 4vw;
