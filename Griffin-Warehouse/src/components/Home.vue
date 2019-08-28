@@ -11,13 +11,13 @@
             <input type="text" v-model="inputTime" v-on:keyup.enter="timeSearch()">
         </div>
         <div class="input-addon-right" @click="timeSearch()">검색</div>
-        <button class="button-timetable" @click="test()">제조시간표</button>
+        <div class="button-timetable" @click="toggleTimetable()">제조시간표</div>
     </div>
     
     <div class="modal-timetable">
-        <div class="background" @click="test()"></div>
+        <div class="background" @click="toggleTimetable()"></div>
         <div class="content">
-            <button class="button-timetable" @click="test()">닫기</button>
+            <button class="button-timetable" @click="toggleTimetable()">닫기</button>
             <table class="table-timetable">
                 <tr>
                     <th class="col1">도감번호</th>
@@ -77,7 +77,7 @@ export default {
             }
             // console.log(this.result)
         },
-        test: function () {
+        toggleTimetable: function () {
             $('.modal-timetable').toggleClass('toggle')
         }
     },
@@ -171,6 +171,7 @@ export default {
 }
 
 .button-timetable {
+    float: left;
     width: fit-content;
     border: 2px solid #c3b9a2;
     border-radius: 5px;
@@ -220,7 +221,7 @@ export default {
     top: 10vh;
     left: 20vw;
     width: 60vw;
-    height: 80vh;
+    height: 70vh;
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: #d4cdbd;
@@ -241,7 +242,7 @@ export default {
     width: calc(29vw - 4px);
 }
 .table-timetable th {
-    padding: 2px;
+    padding: 1px;
     background-color: #afa48a;
 }
 .table-timetable td {
@@ -280,6 +281,35 @@ export default {
     height: fit-content;
 }
 
+@media only screen and (max-width: 767px) {
+    .modal-timetable .content {
+        top: 43px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 63px);
+    }
+    .table-timetable {
+        width: 90vw;
+    }
+    .table-timetable tr {
+        width: calc(45vw - 4px);
+    }
+    .table-timetable th {
+        padding: 1px;
+    }
+    .table-timetable .col1 {
+        width: 10vw;
+    }
+    .table-timetable .col2 {
+        width: 5vw;
+    }
+    .table-timetable .col3 {
+        width: 17vw;
+    }
+    .table-timetable .col4 {
+        width: 10vw;
+    }
+}
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
     .inputGroup-timetable .input-timetable-allAddon {
         padding: 2.5px;
