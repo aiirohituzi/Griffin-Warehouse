@@ -35,7 +35,7 @@
                     <td class="col1">{{ item.id }}</td>
                     <td class="col2">{{ item.type }}</td>
                     <td class="col3">{{ item.name }}</td>
-                    <td class="col4">{{ item.time }}</td>
+                    <td class="col4">{{ item.time.substr(0,2) }}:{{ item.time.substr(2,2) }}</td>
                 </tr>
             </table>
         </div>
