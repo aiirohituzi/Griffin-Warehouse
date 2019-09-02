@@ -17,7 +17,7 @@
     <div class="modal-timetable">
         <div class="background" @click="toggleTimetable()"></div>
         <div class="content">
-            <button class="button-timetable" @click="toggleTimetable()">닫기</button>
+            <div class="button-close" @click="toggleTimetable()"></div>
             <table class="table-timetable">
                 <tr>
                     <th class="col1">도감번호</th>
@@ -192,6 +192,19 @@ export default {
     background-color: #9c9175;
     background: linear-gradient(to bottom, #d4cdbd 40%, #9c9175 100%);
 }
+.button-close {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-image: url(../assets/close.png);
+}
+.button-close:hover {
+    background-image: url(../assets/close_hover.png);
+}
+
 @keyframes fade {
     0% {
         opacity: 0;
@@ -233,7 +246,8 @@ export default {
     box-shadow: 2px 2px 5px #555;
 }
 .table-timetable {
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
     width: 58vw;
     font-size: 8pt;
 }
