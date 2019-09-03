@@ -17,7 +17,7 @@
     <div class="modal-timetable">
         <div class="background" @click="toggleTimetable()"></div>
         <div class="content">
-            <button class="button-timetable" @click="toggleTimetable()">닫기</button>
+            <div class="button-close" @click="toggleTimetable()"></div>
             <table class="table-timetable">
                 <tr>
                     <th class="col1">도감번호</th>
@@ -190,6 +190,19 @@ export default {
     background-color: #9c9175;
     background: linear-gradient(to bottom, #d4cdbd 40%, #9c9175 100%);
 }
+.button-close {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-image: url(../assets/close.png);
+}
+.button-close:hover {
+    background-image: url(../assets/close_hover.png);
+}
+
 @keyframes fade {
     0% {
         opacity: 0;
@@ -216,10 +229,10 @@ export default {
 }
 .modal-timetable .content {
     position: fixed;
-    top: 10vh;
+    /* top: 10vh;
     left: 20vw;
     width: 60vw;
-    height: 70vh;
+    height: 70vh; */
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: #d4cdbd;
@@ -229,34 +242,46 @@ export default {
     -moz-box-shadow: 2px 2px 5px #555;
     -webkit-box-shadow: 2px 2px 5px #555;
     box-shadow: 2px 2px 5px #555;
+    
+    top: 43px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 63px);
 }
 .table-timetable {
     margin: auto;
-    width: 58vw;
+    /* width: 58vw; */
+    width: 90vw;
     font-size: 8pt;
 }
 .table-timetable tr {
     float: left;
-    width: calc(29vw - 4px);
+    /* width: calc(29vw - 4px); */
+    width: calc(45vw - 4px);
 }
 .table-timetable th {
-    padding: 1px;
+    padding: 2px;
     background-color: #afa48a;
 }
 .table-timetable td {
     background-color: #c3b9a2;
+    height: 15px;
 }
 .table-timetable .col1 {
-    width: 4vw;
+    /* width: 4vw; */
+    width: 10vw;
 }
 .table-timetable .col2 {
-    width: 3vw;
+    /* width: 3vw; */
+    width: 5vw;
 }
 .table-timetable .col3 {
-    width: 16vw;
+    /* width: 16vw; */
+    width: 17vw;
 }
 .table-timetable .col4 {
-    width: 4vw;
+    /* width: 4vw; */
+    width: 10vw;
 }
 
 .result-timetable {
@@ -279,35 +304,6 @@ export default {
     height: fit-content;
 }
 
-@media only screen and (max-width: 767px) {
-    .modal-timetable .content {
-        top: 43px;
-        left: 0;
-        width: 100%;
-        height: calc(100vh - 63px);
-    }
-    .table-timetable {
-        width: 90vw;
-    }
-    .table-timetable tr {
-        width: calc(45vw - 4px);
-    }
-    .table-timetable th {
-        padding: 1px;
-    }
-    .table-timetable .col1 {
-        width: 10vw;
-    }
-    .table-timetable .col2 {
-        width: 5vw;
-    }
-    .table-timetable .col3 {
-        width: 17vw;
-    }
-    .table-timetable .col4 {
-        width: 10vw;
-    }
-}
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
     .inputGroup-timetable .input-timetable-allAddon {
         padding: 2.5px;
