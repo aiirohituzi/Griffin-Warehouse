@@ -320,7 +320,7 @@ div#div-getData {
     left: -95px;
     top: 40vh;
     width: 110px;
-    height: 150px;
+    height: 155px;
 
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -354,7 +354,7 @@ div#div-getData .inputGroup-getData .row-getData input {
 }
 div#div-getData .btn-getData {
     width: 15px;
-    height: 150px;
+    height: 100%;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     float: right;
@@ -388,7 +388,7 @@ div#div-needData {
     right: -235px;
     top: 30vh;
     width: 250px;
-    height: 220px;
+    height: 215px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     background-color: #d4cdbd;

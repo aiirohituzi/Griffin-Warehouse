@@ -675,7 +675,7 @@ div#div-agi {
     right: -435px;
     top: 20vh;
     width: 450px;
-    height: 380px;
+    height: 385px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     background-color: #d4cdbd;
