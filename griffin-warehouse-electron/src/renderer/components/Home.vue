@@ -300,7 +300,7 @@ export default {
     border-radius: 5px;
     padding: 5px;
     margin: 5px;
-    width: fit-content;
+    width: calc(20vw - 28px);
     height: fit-content;
 }
 

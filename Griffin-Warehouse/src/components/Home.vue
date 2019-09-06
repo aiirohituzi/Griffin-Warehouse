@@ -323,6 +323,12 @@ export default {
     .table-timetable .col4 {
         width: 10vw;
     }
+    .result-timetable {
+        margin-top: 3vh;
+    }
+    .result-timetable .resultItem {
+        width: calc(40vw - 31px);
+    }
 }
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
     .inputGroup-timetable .input-timetable-allAddon {
