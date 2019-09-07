@@ -71,7 +71,7 @@ export default {
             for (var i=0; i<this.timetable.length; i++) {
                 if (this.timetable[i].time == this.inputTime) {
                       this.result.push(this.timetable[i])
-                } else if (this.timetable[i].name.indexOf(this.inputTime) != -1) {
+                } else if (this.timetable[i].name.indexOf(this.inputTime) != -1 && this.inputTime != '') {
                       this.result.push(this.timetable[i])
                 }
             }
