@@ -241,7 +241,7 @@ export default {
     /* border-radius: 5px; */
     overflow-y: scroll;
     
-    -moz-box-shadow: 2px 2px 5px #555;
+    -moz-box-shadow: 2px 2px 5px rgb(102, 102, 102)102, 102, 102);
     -webkit-box-shadow: 2px 2px 5px #555;
     box-shadow: 2px 2px 5px #555;
 }
@@ -304,6 +304,7 @@ export default {
     }
     .table-timetable {
         width: 90vw;
+        font-size: 7pt;
     }
     .table-timetable tr {
         width: calc(45vw - 4px);
@@ -338,6 +339,9 @@ export default {
 @media only screen and (max-device-width : 768px) {
     .inputGroup-timetable .input-timetable-allAddon {
         padding: 2.5px;
+    }
+    .table-timetable {
+        font-size: 7pt;
     }
 }
 </style>
