@@ -149,14 +149,14 @@ export default {
     name: 'SimCalc',
     data () {
         return {
-            basicData: 0,
-            intermediateData: 0,
-            advancedData: 0,
-            currentSimEnergy: 0,
+            basicData: '',
+            intermediateData: '',
+            advancedData: '',
+            currentSimEnergy: '',
 
-            needBasicData: 0,
-            needIntermediateData: 0,
-            needAdvancedData: 0,
+            needBasicData: '',
+            needIntermediateData: '',
+            needAdvancedData: '',
 
             needSimEnergy_basic: 0,
             needSimEnergy_intermediate: 0,

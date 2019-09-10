@@ -183,7 +183,7 @@ export default {
     name: 'DamageCalc',
     data () {
         return {
-            tdollAtk: 0,
+            tdollAtk: '',
             tdoll: [],
             tdoll_selected: {
                 first: 0,
@@ -191,19 +191,19 @@ export default {
                 third: 0,
                 fourth: 0,
             },
-            tdollSkill: 0,
+            tdollSkill: '',
             tdoll_custom: [
                 {buff: 0, skill: 0},
                 {buff: 0, skill: 0},
                 {buff: 0, skill: 0},
                 {buff: 0, skill: 0},
             ],
-            equipCritical: 0,
+            equipCritical: '',
             selectContender: false,
             selectPx4: false,
 
-            fairyStrBuff: 0,
-            fairyCriticalBuff: 0,
+            fairyStrBuff: '',
+            fairyCriticalBuff: '',
             fairyPassive: [
                 {id: 0, name: '', buff: 0},
                 {id: 1, name: '살상계1', buff: 12},
@@ -212,7 +212,7 @@ export default {
                 {id: 4, name: '돌격계', buff: 0},
             ],
             gyeokyangStack: 1,
-            fairySkill: 0,
+            fairySkill: '',
             fairy_selected: 0,
 
             sumBuff: 0,

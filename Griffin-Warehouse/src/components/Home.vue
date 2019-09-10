@@ -241,7 +241,7 @@ export default {
     /* border-radius: 5px; */
     overflow-y: scroll;
     
-    -moz-box-shadow: 2px 2px 5px rgb(102, 102, 102)102, 102, 102);
+    -moz-box-shadow: 2px 2px 5px rgb(102, 102, 102);
     -webkit-box-shadow: 2px 2px 5px #555;
     box-shadow: 2px 2px 5px #555;
 }

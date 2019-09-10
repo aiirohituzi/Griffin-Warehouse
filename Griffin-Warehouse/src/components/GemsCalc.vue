@@ -121,12 +121,12 @@ export default {
     data () {
         return {
             calcMode: 0,
-            inputGems: 0,
-            remainingDays: 0,
+            inputGems: '',
+            remainingDays: '',
             GemXDay: 0,
-            currentGems: 0,
+            currentGems: '',
             monthly: 0,
-            mockPurchaseCount: 0,
+            mockPurchaseCount: '',
             mockGems: 0,
             shareGems: 0,
             needGems: 0,
