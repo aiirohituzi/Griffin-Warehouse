@@ -38,8 +38,9 @@
                     <input v-if="tdoll_selected.first == 1" type="text" class="input-text" v-model="tdoll_custom[0].buff" v-on:keyup="checkInputDamage">
                 </td>
                 <td>
-                    <div class="label" v-if="tdoll_selected.first > 1">{{ tdoll[tdoll_selected.first].skill }}%</div>
+                    <div class="label" v-if="tdoll_selected.first > 1 && tdoll_selected.first != 42">{{ tdoll[tdoll_selected.first].skill }}%</div>
                     <input v-if="tdoll_selected.first == 1" type="text" class="input-text" v-model="tdoll_custom[0].skill" v-on:keyup="checkInputDamage">
+                    <input v-if="tdoll_selected.first == 42" type="range" class="slider-damage" min="1" max="6" v-model="pythonStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.first == 42" class="slider-value">{{ pythonStack }}스택</span>
                 </td>
             </tr>
 
@@ -201,6 +202,7 @@ export default {
             equipCritical: '',
             selectContender: false,
             selectPx4: false,
+            pythonStack: 1,
 
             fairyStrBuff: '',
             fairyCriticalBuff: '',
@@ -333,8 +335,7 @@ export default {
                 sum_skill = 0
             }
 
-            calc_buff = sum_buff + parseInt(this.fairyStrBuff)
-
+            calc_buff = sum_buff + parseInt(0 + this.fairyStrBuff)
 
 
             // --------------- 각종 체크박스와 관련된 기능 ---------------
@@ -422,6 +423,16 @@ export default {
                     this.tdoll_custom[i].skill = this.tdoll_custom[i].skill.replace(/\D+/, '')
                 }
             }
+        },
+        pythonStackCalc: function () {
+            var skill = 6
+            for(var i=0; i<this.pythonStack-1; i++) {
+                skill = skill * (1 + (this.tdoll[42].skill_base / 100))
+            }
+            this.tdoll[42].skill = skill
+            this.$nextTick( function() {
+                this.sumTdoll()
+            })
         }
     },
     updated: function () {

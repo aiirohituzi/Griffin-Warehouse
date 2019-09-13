@@ -41,7 +41,7 @@ export var tdollAtkBuffer = [
   {id: 39, name: '세이 아사기리', buff: 30, skill: 0},
   {id: 40, name: 'P30', buff: 18, skill: 0},
   {id: 41, name: '데저트 이글', buff: 30, skill: 0},
-  // {id: 42, name: '', buff: 0, skill: 0},
+  {id: 42, name: '콜트 파이슨', buff: 30, skill: 6, skill_base: 6},
   // {id: 43, name: '', buff: 0, skill: 0},
   // {id: 44, name: '', buff: 0, skill: 0},
   // {id: 45, name: '', buff: 0, skill: 0},
