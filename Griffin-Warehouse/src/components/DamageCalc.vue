@@ -41,6 +41,7 @@
                     <div class="label" v-if="tdoll_selected.first > 1 && tdoll_selected.first != 42">{{ tdoll[tdoll_selected.first].skill }}%</div>
                     <input v-if="tdoll_selected.first == 1" type="text" class="input-text" v-model="tdoll_custom[0].skill" v-on:keyup="checkInputDamage">
                     <input v-if="tdoll_selected.first == 42" type="range" class="slider-damage" min="1" max="6" v-model="pythonStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.first == 42" class="slider-value">{{ pythonStack }}스택</span>
+                    <input v-if="tdoll_selected.first == 42" type="range" class="slider-damage" min="0" max="3" v-model="pythonReflectStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.first == 42" class="slider-value">{{ pythonReflectStack }}반사</span>
                 </td>
             </tr>
 
@@ -206,6 +207,7 @@ export default {
             selectContender: false,
             selectPx4: false,
             pythonStack: 1,
+            pythonReflectStack: 0,
 
             fairyStrBuff: '',
             fairyCriticalBuff: '',
@@ -429,8 +431,8 @@ export default {
         },
         pythonStackCalc: function () {
             var skill = 6
-            for(var i=0; i<this.pythonStack-1; i++) {
-                skill = skill * (1 + (this.tdoll[42].skill_base / 100))
+            for(var i = 0; i < parseInt(this.pythonStack) + parseInt(this.pythonReflectStack) - 1; i++) {
+                skill = ((1 + (skill / 100)) * (1 + (this.tdoll[42].skill_base / 100)) - 1) * 100
             }
             this.tdoll[42].skill = skill
             this.$nextTick( function() {
