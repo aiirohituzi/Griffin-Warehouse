@@ -40,7 +40,8 @@ export var tdollAtkBuffer = [
   {id: 38, name: '질 스팅레이(슈가 러쉬)', buff: 40, skill: 18},
   {id: 39, name: '세이 아사기리', buff: 30, skill: 0},
   {id: 40, name: 'P30', buff: 18, skill: 0},
-  {id: 41, name: '데저트 이글', buff: 30, skill: 0}
+  {id: 41, name: '데저트 이글', buff: 30, skill: 0},
+  {id: 42, name: '콜트 파이슨', buff: 30, skill: 6, skill_base: 6}
 ]
 
 export var skillListAR = [

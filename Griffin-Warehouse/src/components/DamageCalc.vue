@@ -60,6 +60,7 @@
                     <div class="label" v-if="tdoll_selected.second > 1 && tdoll_selected.second != 42">{{ tdoll[tdoll_selected.second].skill }}%</div>
                     <input v-if="tdoll_selected.second == 1" type="text" class="input-text" v-model="tdoll_custom[1].skill" v-on:keyup="checkInputDamage">
                     <input v-if="tdoll_selected.second == 42" type="range" class="slider-damage" min="1" max="6" v-model="pythonStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.second == 42" class="slider-value">{{ pythonStack }}스택</span>
+                    <input v-if="tdoll_selected.second == 42" type="range" class="slider-damage" min="0" max="3" v-model="pythonReflectStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.second == 42" class="slider-value">{{ pythonReflectStack }}반사</span>
                 </td>
             </tr>
 
@@ -77,6 +78,7 @@
                     <div class="label" v-if="tdoll_selected.third > 1 && tdoll_selected.third != 42">{{ tdoll[tdoll_selected.third].skill }}%</div>
                     <input v-if="tdoll_selected.third == 1" type="text" class="input-text" v-model="tdoll_custom[2].skill" v-on:keyup="checkInputDamage">
                     <input v-if="tdoll_selected.third == 42" type="range" class="slider-damage" min="1" max="6" v-model="pythonStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.third == 42" class="slider-value">{{ pythonStack }}스택</span>
+                    <input v-if="tdoll_selected.third == 42" type="range" class="slider-damage" min="0" max="3" v-model="pythonReflectStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.third == 42" class="slider-value">{{ pythonReflectStack }}반사</span>
                 </td>
             </tr>
 
@@ -94,6 +96,7 @@
                     <div class="label" v-if="tdoll_selected.fourth > 1 && tdoll_selected.fourth != 42">{{ tdoll[tdoll_selected.fourth].skill }}%</div>
                     <input v-if="tdoll_selected.fourth == 1" type="text" class="input-text" v-model="tdoll_custom[3].skill" v-on:keyup="checkInputDamage">
                     <input v-if="tdoll_selected.fourth == 42" type="range" class="slider-damage" min="1" max="6" v-model="pythonStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.fourth == 42" class="slider-value">{{ pythonStack }}스택</span>
+                    <input v-if="tdoll_selected.fourth == 42" type="range" class="slider-damage" min="0" max="3" v-model="pythonReflectStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.fourth == 42" class="slider-value">{{ pythonReflectStack }}반사</span>
                 </td>
             </tr>
             <tr>
