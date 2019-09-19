@@ -49,7 +49,7 @@
             <tr v-if="tdoll_selected.first > 0">
                 <td>
                     <select class="" v-model="tdoll_selected.second">
-                        <option v-for="item in tdoll" :value="item.id">{{ item.name }}</option>
+                        <option v-for="item in tdoll" :value="item.id" v-if="item.id != tdoll_selected.first || item.id < 2">{{ item.name }}</option>
                     </select>
                 </td>
                 <td>
@@ -67,7 +67,7 @@
             <tr v-if="tdoll_selected.second > 0">
                 <td>
                     <select class="" v-model="tdoll_selected.third">
-                        <option v-for="item in tdoll" :value="item.id">{{ item.name }}</option>
+                        <option v-for="item in tdoll" :value="item.id" v-if="item.id != tdoll_selected.first && item.id != tdoll_selected.second || item.id < 2">{{ item.name }}</option>
                     </select>
                 </td>
                 <td>
@@ -85,7 +85,7 @@
             <tr v-if="tdoll_selected.third > 0">
                 <td>
                     <select class="" v-model="tdoll_selected.fourth">
-                        <option v-for="item in tdoll" :value="item.id">{{ item.name }}</option>
+                        <option v-for="item in tdoll" :value="item.id" v-if="item.id != tdoll_selected.first && item.id != tdoll_selected.second && item.id != tdoll_selected.third || item.id < 2">{{ item.name }}</option>
                     </select>
                 </td>
                 <td>
