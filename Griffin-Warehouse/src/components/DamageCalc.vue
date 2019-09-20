@@ -38,10 +38,10 @@
                     <input v-if="tdoll_selected.first == 1" type="text" class="input-text" v-model="tdoll_custom[0].buff" v-on:keyup="checkInputDamage">
                 </td>
                 <td>
-                    <div class="label" v-if="tdoll_selected.first > 1 && tdoll_selected.first != 42">{{ tdoll[tdoll_selected.first].skill }}%</div>
+                    <div class="label" v-if="tdoll_selected.first > 1 && tdoll_selected.first != specialBuffer.ColtPython">{{ tdoll[tdoll_selected.first].skill }}%</div>
                     <input v-if="tdoll_selected.first == 1" type="text" class="input-text" v-model="tdoll_custom[0].skill" v-on:keyup="checkInputDamage">
-                    <input v-if="tdoll_selected.first == 42" type="range" class="slider-damage" min="1" max="6" v-model="pythonStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.first == 42" class="slider-value">{{ pythonStack }}스택</span>
-                    <input v-if="tdoll_selected.first == 42" type="range" class="slider-damage" min="0" max="3" v-model="pythonReflectStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.first == 42" class="slider-value">{{ pythonReflectStack }}반사</span>
+                    <input v-if="tdoll_selected.first == specialBuffer.ColtPython" type="range" class="slider-damage" min="1" max="6" v-model="pythonStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.first == specialBuffer.ColtPython" class="slider-value">{{ pythonStack }}스택</span>
+                    <input v-if="tdoll_selected.first == specialBuffer.ColtPython" type="range" class="slider-damage" min="0" max="5" v-model="pythonReflectStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.first == specialBuffer.ColtPython" class="slider-value">{{ pythonReflectStack }}반사</span>
                 </td>
             </tr>
 
@@ -57,10 +57,10 @@
                     <input v-if="tdoll_selected.second == 1" type="text" class="input-text" v-model="tdoll_custom[1].buff" v-on:keyup="checkInputDamage">
                 </td>
                 <td>
-                    <div class="label" v-if="tdoll_selected.second > 1 && tdoll_selected.second != 42">{{ tdoll[tdoll_selected.second].skill }}%</div>
+                    <div class="label" v-if="tdoll_selected.second > 1 && tdoll_selected.second != specialBuffer.ColtPython">{{ tdoll[tdoll_selected.second].skill }}%</div>
                     <input v-if="tdoll_selected.second == 1" type="text" class="input-text" v-model="tdoll_custom[1].skill" v-on:keyup="checkInputDamage">
-                    <input v-if="tdoll_selected.second == 42" type="range" class="slider-damage" min="1" max="6" v-model="pythonStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.second == 42" class="slider-value">{{ pythonStack }}스택</span>
-                    <input v-if="tdoll_selected.second == 42" type="range" class="slider-damage" min="0" max="3" v-model="pythonReflectStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.second == 42" class="slider-value">{{ pythonReflectStack }}반사</span>
+                    <input v-if="tdoll_selected.second == specialBuffer.ColtPython" type="range" class="slider-damage" min="1" max="6" v-model="pythonStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.second == specialBuffer.ColtPython" class="slider-value">{{ pythonStack }}스택</span>
+                    <input v-if="tdoll_selected.second == specialBuffer.ColtPython" type="range" class="slider-damage" min="0" max="5" v-model="pythonReflectStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.second == specialBuffer.ColtPython" class="slider-value">{{ pythonReflectStack }}반사</span>
                 </td>
             </tr>
 
@@ -75,10 +75,10 @@
                     <input v-if="tdoll_selected.third == 1" type="text" class="input-text" v-model="tdoll_custom[2].buff" v-on:keyup="checkInputDamage">
                 </td>
                 <td>
-                    <div class="label" v-if="tdoll_selected.third > 1 && tdoll_selected.third != 42">{{ tdoll[tdoll_selected.third].skill }}%</div>
+                    <div class="label" v-if="tdoll_selected.third > 1 && tdoll_selected.third != specialBuffer.ColtPython">{{ tdoll[tdoll_selected.third].skill }}%</div>
                     <input v-if="tdoll_selected.third == 1" type="text" class="input-text" v-model="tdoll_custom[2].skill" v-on:keyup="checkInputDamage">
-                    <input v-if="tdoll_selected.third == 42" type="range" class="slider-damage" min="1" max="6" v-model="pythonStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.third == 42" class="slider-value">{{ pythonStack }}스택</span>
-                    <input v-if="tdoll_selected.third == 42" type="range" class="slider-damage" min="0" max="3" v-model="pythonReflectStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.third == 42" class="slider-value">{{ pythonReflectStack }}반사</span>
+                    <input v-if="tdoll_selected.third == specialBuffer.ColtPython" type="range" class="slider-damage" min="1" max="6" v-model="pythonStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.third == specialBuffer.ColtPython" class="slider-value">{{ pythonStack }}스택</span>
+                    <input v-if="tdoll_selected.third == specialBuffer.ColtPython" type="range" class="slider-damage" min="0" max="5" v-model="pythonReflectStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.third == specialBuffer.ColtPython" class="slider-value">{{ pythonReflectStack }}반사</span>
                 </td>
             </tr>
 
@@ -93,10 +93,10 @@
                     <input v-if="tdoll_selected.fourth == 1" type="text" class="input-text" v-model="tdoll_custom[3].buff" v-on:keyup="checkInputDamage">
                 </td>
                 <td>
-                    <div class="label" v-if="tdoll_selected.fourth > 1 && tdoll_selected.fourth != 42">{{ tdoll[tdoll_selected.fourth].skill }}%</div>
+                    <div class="label" v-if="tdoll_selected.fourth > 1 && tdoll_selected.fourth != specialBuffer.ColtPython">{{ tdoll[tdoll_selected.fourth].skill }}%</div>
                     <input v-if="tdoll_selected.fourth == 1" type="text" class="input-text" v-model="tdoll_custom[3].skill" v-on:keyup="checkInputDamage">
-                    <input v-if="tdoll_selected.fourth == 42" type="range" class="slider-damage" min="1" max="6" v-model="pythonStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.fourth == 42" class="slider-value">{{ pythonStack }}스택</span>
-                    <input v-if="tdoll_selected.fourth == 42" type="range" class="slider-damage" min="0" max="3" v-model="pythonReflectStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.fourth == 42" class="slider-value">{{ pythonReflectStack }}반사</span>
+                    <input v-if="tdoll_selected.fourth == specialBuffer.ColtPython" type="range" class="slider-damage" min="1" max="6" v-model="pythonStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.fourth == specialBuffer.ColtPython" class="slider-value">{{ pythonStack }}스택</span>
+                    <input v-if="tdoll_selected.fourth == specialBuffer.ColtPython" type="range" class="slider-damage" min="0" max="5" v-model="pythonReflectStack" v-on:change="pythonStackCalc"> <span v-if="tdoll_selected.fourth == specialBuffer.ColtPython" class="slider-value">{{ pythonReflectStack }}반사</span>
                 </td>
             </tr>
             <tr>
@@ -186,7 +186,7 @@
 </template>
 
 <script>
-import { tdollAtkBuffer } from './data.js'
+import { tdollAtkBuffer, specialBuffer } from './data.js'
 export default {
     name: 'DamageCalc',
     data () {
@@ -211,6 +211,7 @@ export default {
             selectPx4: false,
             pythonStack: 1,
             pythonReflectStack: 0,
+            specialBuffer: {},
 
             fairyStrBuff: '',
             fairyCriticalBuff: '',
@@ -257,13 +258,13 @@ export default {
 
 
             
-            if(this.tdoll[this.tdoll_selected.first].name == "컨텐더" || this.tdoll[this.tdoll_selected.second].name == "컨텐더" || this.tdoll[this.tdoll_selected.third].name == "컨텐더" || this.tdoll[this.tdoll_selected.fourth].name == "컨텐더"){
+            if(this.tdoll[this.tdoll_selected.first].id == specialBuffer.Contender || this.tdoll[this.tdoll_selected.second].id == specialBuffer.Contender || this.tdoll[this.tdoll_selected.third].id == specialBuffer.Contender || this.tdoll[this.tdoll_selected.fourth].id == specialBuffer.Contender){
                 this.selectContender = true
             } else {
                 this.selectContender = false
             }
             
-            if(this.tdoll[this.tdoll_selected.first].name == "Px4 스톰" || this.tdoll[this.tdoll_selected.second].name == "Px4 스톰" || this.tdoll[this.tdoll_selected.third].name == "Px4 스톰" || this.tdoll[this.tdoll_selected.fourth].name == "Px4 스톰"){
+            if(this.tdoll[this.tdoll_selected.first].id == specialBuffer.Px4Storm || this.tdoll[this.tdoll_selected.second].id == specialBuffer.Px4Storm || this.tdoll[this.tdoll_selected.third].id == specialBuffer.Px4Storm || this.tdoll[this.tdoll_selected.fourth].id == specialBuffer.Px4Storm){
                 this.selectPx4 = true
             } else {
                 this.selectPx4 = false
@@ -275,9 +276,9 @@ export default {
                 if(this.tdoll[this.tdoll_selected.first].id == 1) {
                     sum_buff += parseInt(this.tdoll_custom[0].buff)
                     sum_skill += parseInt(this.tdoll_custom[0].skill)
-                } else if(this.tdoll[this.tdoll_selected.first].name == "컨텐더"){
+                } else if(this.tdoll[this.tdoll_selected.first].id == specialBuffer.Contender){
                     sum_buff += this.tdoll[this.tdoll_selected.first].buff
-                } else if(this.tdoll[this.tdoll_selected.first].name == "Px4 스톰"){
+                } else if(this.tdoll[this.tdoll_selected.first].id == specialBuffer.Px4Storm){
                     sum_buff += this.tdoll[this.tdoll_selected.first].buff
                 } else {
                     sum_buff += this.tdoll[this.tdoll_selected.first].buff
@@ -293,9 +294,9 @@ export default {
                 if(this.tdoll[this.tdoll_selected.second].id == 1) {
                     sum_buff += parseInt(this.tdoll_custom[1].buff)
                     sum_skill = ((1 + (sum_skill / 100)) * (1 + (this.tdoll_custom[1].skill / 100)) - 1) * 100
-                } else if(this.tdoll[this.tdoll_selected.second].name == "컨텐더"){
+                } else if(this.tdoll[this.tdoll_selected.second].id == specialBuffer.Contender){
                     sum_buff += this.tdoll[this.tdoll_selected.second].buff
-                } else if(this.tdoll[this.tdoll_selected.second].name == "Px4 스톰"){
+                } else if(this.tdoll[this.tdoll_selected.second].id == specialBuffer.Px4Storm){
                     sum_buff += this.tdoll[this.tdoll_selected.second].buff
                 } else {
                     sum_buff += this.tdoll[this.tdoll_selected.second].buff
@@ -310,9 +311,9 @@ export default {
                 if(this.tdoll[this.tdoll_selected.third].id == 1) {
                     sum_buff += parseInt(this.tdoll_custom[2].buff)
                     sum_skill = ((1 + (sum_skill / 100)) * (1 + (this.tdoll_custom[2].skill / 100)) - 1) * 100
-                } else if(this.tdoll[this.tdoll_selected.third].name == "컨텐더"){
+                } else if(this.tdoll[this.tdoll_selected.third].id == specialBuffer.Contender){
                     sum_buff += this.tdoll[this.tdoll_selected.third].buff
-                } else if(this.tdoll[this.tdoll_selected.third].name == "Px4 스톰"){
+                } else if(this.tdoll[this.tdoll_selected.third].id == specialBuffer.Px4Storm){
                     sum_buff += this.tdoll[this.tdoll_selected.third].buff
                 } else {
                     sum_buff += this.tdoll[this.tdoll_selected.third].buff
@@ -326,9 +327,9 @@ export default {
                 if(this.tdoll[this.tdoll_selected.fourth].id == 1) {
                     sum_buff += parseInt(this.tdoll_custom[3].buff)
                     sum_skill = ((1 + (sum_skill / 100)) * (1 + (this.tdoll_custom[3].skill / 100)) - 1) * 100
-                } else if(this.tdoll[this.tdoll_selected.fourth].name == "컨텐더"){
+                } else if(this.tdoll[this.tdoll_selected.fourth].id == specialBuffer.Contender){
                     sum_buff += this.tdoll[this.tdoll_selected.fourth].buff
-                } else if(this.tdoll[this.tdoll_selected.fourth].name == "Px4 스톰"){
+                } else if(this.tdoll[this.tdoll_selected.fourth].id == specialBuffer.Px4Storm){
                     sum_buff += this.tdoll[this.tdoll_selected.fourth].buff
                 } else {
                     sum_buff += this.tdoll[this.tdoll_selected.fourth].buff
@@ -477,6 +478,7 @@ export default {
     },
     mounted: function () {
         this.tdoll = tdollAtkBuffer
+        this.specialBuffer = specialBuffer
     }
 }
 </script>
