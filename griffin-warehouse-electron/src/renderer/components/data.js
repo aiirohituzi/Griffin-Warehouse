@@ -44,6 +44,12 @@ export var tdollAtkBuffer = [
   {id: 42, name: '콜트 파이슨', buff: 30, skill: 6, skill_base: 6}
 ]
 
+export var specialBuffer = {
+  Contender: 6,
+  Px4Storm: 33,
+  ColtPython: 42
+}
+
 export var skillListAR = [
   {id: 1, name: '고속사격T (ST AR-15 MOD, 97식)', percentage: 50},
   {id: 2, name: '고속사격T (OTs-12)', percentage: 60},
