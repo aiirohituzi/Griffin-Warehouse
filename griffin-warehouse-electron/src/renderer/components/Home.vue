@@ -47,7 +47,8 @@
         <div class="resultItem" v-for="item in result">
             도감번호 : {{ item.id }}<br>
             타입 : {{ item.type }}<br>
-            이름 : {{ item.name }}
+            이름 : {{ item.name }}<br>
+            제조시간 : {{ item.time.substr(0,2) }}:{{ item.time.substr(2,2) }}
         </div>
     </div>
 </div>
