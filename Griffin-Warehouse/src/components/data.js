@@ -1,3 +1,6 @@
+// M200 (No.257) 부터 제조시간표'만' 업뎃되어있음
+// CR-21 (No.288) 까지 제조시간표 갱신
+
 export var tdollAtkBuffer = [
   { id: 0, name: "", buff: 0, skill: 0 },
   { id: 1, name: "직접입력", buff: 0, skill: 0 },
@@ -41,8 +44,8 @@ export var tdollAtkBuffer = [
   { id: 39, name: "세이 아사기리", buff: 30, skill: 0 },
   { id: 40, name: "P30", buff: 18, skill: 0 },
   { id: 41, name: "데저트 이글", buff: 30, skill: 0 },
-  { id: 42, name: "콜트 파이슨", buff: 30, skill: 6, skill_base: 6 }
-  // {id: 43, name: '', buff: 0, skill: 0},
+  { id: 42, name: "콜트 파이슨", buff: 30, skill: 6, skill_base: 6 },
+  { id: 43, name: "C-93", buff: 24, skill: 18 }
   // {id: 44, name: '', buff: 0, skill: 0},
   // {id: 45, name: '', buff: 0, skill: 0},
 ];
@@ -72,7 +75,7 @@ export var skillListRF = [
   { id: 1, name: "고속사격 (WA2000)", percentage: 75 },
   { id: 2, name: "고속사격 (SVD)", percentage: 65 },
   { id: 3, name: "비상사격 (K31)", percentage: 80 },
-  { id: 4, name: "고속사격 (wz.29)", percentage: 60 },
+  { id: 4, name: "고속사격 (wz.29, Zas M76)", percentage: 60 },
   { id: 5, name: "고속사격 (시모노프, BM59)", percentage: 55 },
   { id: 6, name: "고속사격T (SM-1)", percentage: 40 },
   { id: 7, name: "고속사격T (HK33)", percentage: 60 },
