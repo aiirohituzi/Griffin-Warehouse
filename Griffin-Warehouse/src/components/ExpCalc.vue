@@ -99,13 +99,13 @@
       <div class="inputGroup-exp" v-if="area_selected == DIRECT_INPUT">
         <div class="input-addon-left">1전역당 경험치</div>
         <div class="input-exp">
-          <input type="text" v-model="area[7].exp" v-on:keyup="checkInputExp" />
+          <input type="text" v-model="area[DIRECT_INPUT].exp" v-on:keyup="checkInputExp" />
         </div>
       </div>
       <div class="inputGroup-exp" v-if="area_selected == DIRECT_INPUT">
         <div class="input-addon-left">전역 패널티 레벨</div>
         <div class="input-exp">
-          <input type="text" v-model="area[7].penalty" v-on:keyup="checkInputExp" />
+          <input type="text" v-model="area[DIRECT_INPUT].penalty" v-on:keyup="checkInputExp" />
         </div>
       </div>
 
@@ -792,7 +792,7 @@ export default {
       var tdollNeedReport;
       var regnondig = /\D+/;
 
-      if (this.area_selected == DIRECT_INPUT) {
+      if (this.area_selected == this.DIRECT_INPUT) {
         if (
           regnondig.test(this.area[this.area_selected].exp) ||
           regnondig.test(this.area[this.area_selected].penalty) ||
