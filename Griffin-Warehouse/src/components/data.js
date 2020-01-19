@@ -214,6 +214,7 @@ export var timetable = [
   { id: 184, type: "RF", name: "T-5000", time: "0410" },
   { id: 236, type: "AR", name: "K11", time: "0411" },
   { id: 206, type: "AR", name: "AK-12", time: "0412" },
+  { id: 293, type: "AR", name: "AK-15", time: "0415" },
 
   { id: 43, type: "RF", name: "SVD", time: "0415" },
   { id: 235, type: "RF", name: "SPR A3G", time: "0415" },
@@ -244,6 +245,7 @@ export var timetable = [
   { id: 77, type: "MG", name: "M2HB", time: "0610" },
   { id: 78, type: "MG", name: "M60", time: "0610" },
   { id: 199, type: "MG", name: "80식", time: "0615" },
+  { id: 292, type: "MG", name: "RPK-16", time: "0616" },
   { id: 121, type: "MG", name: "Mk48", time: "0620" },
   { id: 149, type: "MG", name: "AEK-999", time: "0620" },
   { id: 75, type: "MG", name: "M1918", time: "0625" },
