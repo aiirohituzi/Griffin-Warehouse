@@ -1,166 +1,190 @@
 <template>
   <div class="container-simCalc">
-    <div class="container-content">
-      <table class="table-sim table-sim-col-4">
-        <tr>
-          <th colspan="4">스킬칩 및 모의점수 보유량 입력</th>
-        </tr>
-        <tr>
-          <th>초급</th>
-          <th>중급</th>
-          <th>고급</th>
-          <th>모의점수</th>
-        </tr>
-        <tr>
-          <td>
-            <input type="text" maxlength="5" v-model="basicData" v-on:keyup="checkInputSim" />
-          </td>
-          <td>
-            <input type="text" maxlength="5" v-model="intermediateData" v-on:keyup="checkInputSim" />
-          </td>
-          <td>
-            <input type="text" maxlength="5" v-model="advancedData" v-on:keyup="checkInputSim" />
-          </td>
-          <td>
-            <input type="text" maxlength="5" v-model="currentSimEnergy" v-on:keyup="checkInputSim" />
-          </td>
-        </tr>
-      </table>
+    <div class="tabnav-sim">
+      <div id="tabBtn-tdoll" class="tabBtn-sim current" @click="selectTab('tdoll')">전술인형</div>
+      <div id="tabBtn-sf" class="tabBtn-sim" @click="selectTab('sf')">혼합세력</div>
     </div>
 
-    <div class="container-content">
-      <table class="table-sim table-sim-col-3">
-        <tr>
-          <th colspan="3">필요 사용량 입력</th>
-        </tr>
-        <tr>
-          <th>초급</th>
-          <th>중급</th>
-          <th>고급</th>
-        </tr>
-        <tr>
-          <td>
-            <input type="text" v-model="needBasicData" v-on:keyup="checkInputSim" />
-          </td>
-          <td>
-            <input type="text" v-model="needIntermediateData" v-on:keyup="checkInputSim" />
-          </td>
-          <td>
-            <input type="text" v-model="needAdvancedData" v-on:keyup="checkInputSim" />
-          </td>
-        </tr>
-      </table>
-    </div>
+    <div id="tdoll" class="tab-sim">
+      <div class="container-content">
+        <table class="table-sim table-sim-col-4">
+          <tr>
+            <th colspan="4">스킬칩 및 모의점수 보유량 입력</th>
+          </tr>
+          <tr>
+            <th>초급</th>
+            <th>중급</th>
+            <th>고급</th>
+            <th>모의점수</th>
+          </tr>
+          <tr>
+            <td>
+              <input type="text" maxlength="5" v-model="basicData" v-on:keyup="checkInputSim" />
+            </td>
+            <td>
+              <input
+                type="text"
+                maxlength="5"
+                v-model="intermediateData"
+                v-on:keyup="checkInputSim"
+              />
+            </td>
+            <td>
+              <input type="text" maxlength="5" v-model="advancedData" v-on:keyup="checkInputSim" />
+            </td>
+            <td>
+              <input
+                type="text"
+                maxlength="5"
+                v-model="currentSimEnergy"
+                v-on:keyup="checkInputSim"
+              />
+            </td>
+          </tr>
+        </table>
+      </div>
 
-    <div class="container-content">
-      <table class="table-sim table-sim-col-3">
-        <tr>
-          <th colspan="3">필요 모의점수</th>
-        </tr>
-        <tr>
-          <th>초급</th>
-          <th>중급</th>
-          <th>고급</th>
-        </tr>
-        <tr>
-          <td>
-            <div class="label">{{ needSimEnergy_basic }}</div>
-          </td>
-          <td>
-            <div class="label">{{ needSimEnergy_intermediate }}</div>
-          </td>
-          <td>
-            <div class="label">{{ needSimEnergy_advanced }}</div>
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <th>합계</th>
-          <th>필요구매횟수</th>
-        </tr>
-        <tr>
-          <td></td>
-          <td>
-            <div class="label">{{ needSimEnergy_sum }}</div>
-          </td>
-          <td>
-            <div class="label">{{ Math.ceil(needSimPurchase) }}</div>
-          </td>
-        </tr>
-      </table>
+      <div class="container-content">
+        <table class="table-sim table-sim-col-3">
+          <tr>
+            <th colspan="3">필요 사용량 입력</th>
+          </tr>
+          <tr>
+            <th>초급</th>
+            <th>중급</th>
+            <th>고급</th>
+          </tr>
+          <tr>
+            <td>
+              <input type="text" v-model="needBasicData" v-on:keyup="checkInputSim" />
+            </td>
+            <td>
+              <input type="text" v-model="needIntermediateData" v-on:keyup="checkInputSim" />
+            </td>
+            <td>
+              <input type="text" v-model="needAdvancedData" v-on:keyup="checkInputSim" />
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="container-content">
+        <table class="table-sim table-sim-col-3">
+          <tr>
+            <th colspan="3">필요 모의점수</th>
+          </tr>
+          <tr>
+            <th>초급</th>
+            <th>중급</th>
+            <th>고급</th>
+          </tr>
+          <tr>
+            <td>
+              <div class="label">{{ needSimEnergy_basic }}</div>
+            </td>
+            <td>
+              <div class="label">{{ needSimEnergy_intermediate }}</div>
+            </td>
+            <td>
+              <div class="label">{{ needSimEnergy_advanced }}</div>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <th>합계</th>
+            <th>필요구매횟수</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <div class="label">{{ needSimEnergy_sum }}</div>
+            </td>
+            <td>
+              <div class="label">{{ Math.ceil(needSimPurchase) }}</div>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
 
     <!-- ////////////////////////////////////////////////////////////// -->
-    <div class="container-content">
-      <table class="table-sim table-sim-col-3">
-        <tr>
-          <th colspan="3">훈련코드 및 혼합점수 보유량 입력</th>
-        </tr>
-        <tr>
-          <th>초급</th>
-          <th>고급</th>
-          <th>혼합점수</th>
-        </tr>
-        <tr>
-          <td>
-            <input type="text" maxlength="5" v-model="basicData" v-on:keyup="checkInputSim" />
-          </td>
-          <td>
-            <input type="text" maxlength="5" v-model="advancedData" v-on:keyup="checkInputSim" />
-          </td>
-          <td>
-            <input type="text" maxlength="5" v-model="currentSimEnergy" v-on:keyup="checkInputSim" />
-          </td>
-        </tr>
-      </table>
-    </div>
+    <div id="sf" class="tab-sim nonSelect">
+      <div class="container-content">
+        <table class="table-sim table-sim-col-3">
+          <tr>
+            <th colspan="3">훈련코드 및 혼합점수 보유량 입력</th>
+          </tr>
+          <tr>
+            <th>초급</th>
+            <th>고급</th>
+            <th>혼합점수</th>
+          </tr>
+          <tr>
+            <td>
+              <input type="text" maxlength="5" v-model="basicData" v-on:keyup="checkInputSim" />
+            </td>
+            <td>
+              <input type="text" maxlength="5" v-model="advancedData" v-on:keyup="checkInputSim" />
+            </td>
+            <td>
+              <input
+                type="text"
+                maxlength="5"
+                v-model="currentSimEnergy"
+                v-on:keyup="checkInputSim"
+              />
+            </td>
+          </tr>
+        </table>
+      </div>
 
-    <div class="container-content">
-      <table class="table-sim table-sim-col-2">
-        <tr>
-          <th colspan="2">필요 사용량 입력</th>
-        </tr>
-        <tr>
-          <th>초급</th>
-          <th>고급</th>
-        </tr>
-        <tr>
-          <td>
-            <input type="text" v-model="needBasicData" v-on:keyup="checkInputSim" />
-          </td>
-          <td>
-            <input type="text" v-model="needAdvancedData" v-on:keyup="checkInputSim" />
-          </td>
-        </tr>
-      </table>
-    </div>
+      <div class="container-content">
+        <table class="table-sim table-sim-col-2">
+          <tr>
+            <th colspan="2">필요 사용량 입력</th>
+          </tr>
+          <tr>
+            <th>초급</th>
+            <th>고급</th>
+          </tr>
+          <tr>
+            <td>
+              <input type="text" v-model="needBasicData" v-on:keyup="checkInputSim" />
+            </td>
+            <td>
+              <input type="text" v-model="needAdvancedData" v-on:keyup="checkInputSim" />
+            </td>
+          </tr>
+        </table>
+      </div>
 
-    <div class="container-content">
-      <table class="table-sim table-sim-col-4">
-        <tr>
-          <th colspan="4">필요 혼합점수</th>
-        </tr>
-        <tr>
-          <th>초급</th>
-          <th>고급</th>
-          <th>합계</th>
-          <th>필요구매횟수</th>
-        </tr>
-        <tr>
-          <td>
-            <div class="label">{{ needSimEnergy_basic }}</div>
-          </td>
-          <td>
-            <div class="label">{{ needSimEnergy_advanced }}</div>
-          </td>
-          <td>
-            <div class="label">{{ needSimEnergy_sum }}</div>
-          </td>
-          <td>
-            <div class="label">{{ Math.ceil(needSimPurchase) }}</div>
-          </td>
-        </tr>
-      </table>
+      <div class="container-content">
+        <table class="table-sim table-sim-col-4">
+          <tr>
+            <th colspan="4">필요 혼합점수</th>
+          </tr>
+          <tr>
+            <th>초급</th>
+            <th>고급</th>
+            <th>합계</th>
+            <th>필요구매횟수</th>
+          </tr>
+          <tr>
+            <td>
+              <div class="label">{{ needSimEnergy_basic }}</div>
+            </td>
+            <td>
+              <div class="label">{{ needSimEnergy_advanced }}</div>
+            </td>
+            <td>
+              <div class="label">{{ needSimEnergy_sum }}</div>
+            </td>
+            <td>
+              <div class="label">{{ Math.ceil(needSimPurchase) }}</div>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
     <!-- ////////////////////////////////////////////////////////////// -->
 
@@ -355,6 +379,25 @@ export default {
     openNeedData: function() {
       $(".side-right").toggleClass("move");
     },
+    selectTab: function(divId) {
+      $("#tdoll").addClass("nonSelect");
+      $("#sf").addClass("nonSelect");
+
+      $(".tabnav-sim")
+        .children()
+        .removeClass("current");
+
+      $("#" + divId).removeClass("nonSelect");
+      $("#tabBtn-" + divId).addClass("current");
+
+      this.basicData = 0;
+      this.intermediateData = 0;
+      this.advancedData = 0;
+      this.currentSimEnergy = 0;
+      this.needBasicData = 0;
+      this.needIntermediateData = 0;
+      this.needAdvancedData = 0;
+    },
     checkInputSim: function() {
       var reg = /\D+/;
 
@@ -403,7 +446,46 @@ export default {
 
 <style>
 .container-simCalc {
-  margin-top: calc(5vh + 30px);
+  margin-top: calc(10vh + 40px);
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}
+
+.tabnav-sim {
+  width: 100%;
+  height: 30px;
+  list-style: none;
+}
+.tabBtn-sim {
+  width: calc(100% / 2);
+  height: 100%;
+  line-height: 30px;
+  box-sizing: border-box;
+  float: left;
+  text-align: center;
+  cursor: pointer;
+  font-size: 10pt;
+
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border: 2px solid #c3b9a2;
+  background-color: #c3b9a2b6;
+}
+.tabnav-sim .current {
+  background-color: #c3b9a2;
+}
+.tab-sim {
+  border: 2px solid #c3b9a2;
+  border-top: unset;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+  padding: 10px;
+  font-size: 10pt;
+}
+.nonSelect {
+  display: none;
 }
 
 .container-content {
