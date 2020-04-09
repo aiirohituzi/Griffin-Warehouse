@@ -121,18 +121,13 @@
           </tr>
           <tr>
             <td>
-              <input type="text" maxlength="5" v-model="basicData" v-on:keyup="checkInputSim" />
+              <input type="text" maxlength="5" v-model="basicCode" v-on:keyup="checkInputSim" />
             </td>
             <td>
-              <input type="text" maxlength="5" v-model="advancedData" v-on:keyup="checkInputSim" />
+              <input type="text" maxlength="5" v-model="advancedCode" v-on:keyup="checkInputSim" />
             </td>
             <td>
-              <input
-                type="text"
-                maxlength="5"
-                v-model="currentSimEnergy"
-                v-on:keyup="checkInputSim"
-              />
+              <input type="text" maxlength="5" v-model="currentSCPoint" v-on:keyup="checkInputSim" />
             </td>
           </tr>
         </table>
@@ -149,10 +144,10 @@
           </tr>
           <tr>
             <td>
-              <input type="text" v-model="needBasicData" v-on:keyup="checkInputSim" />
+              <input type="text" v-model="needBasicCode" v-on:keyup="checkInputSim" />
             </td>
             <td>
-              <input type="text" v-model="needAdvancedData" v-on:keyup="checkInputSim" />
+              <input type="text" v-model="needAdvancedCode" v-on:keyup="checkInputSim" />
             </td>
           </tr>
         </table>
@@ -171,16 +166,16 @@
           </tr>
           <tr>
             <td>
-              <div class="label">{{ needSimEnergy_basic }}</div>
+              <div class="label">{{ needSCPoint_basic }}</div>
             </td>
             <td>
-              <div class="label">{{ needSimEnergy_advanced }}</div>
+              <div class="label">{{ needSCPoint_advanced }}</div>
             </td>
             <td>
-              <div class="label">{{ needSimEnergy_sum }}</div>
+              <div class="label">{{ needSCPoint_sum }}</div>
             </td>
             <td>
-              <div class="label">{{ Math.ceil(needSimPurchase) }}</div>
+              <div class="label">{{ Math.ceil(needSCPointPurchase) }}</div>
             </td>
           </tr>
         </table>
@@ -285,6 +280,7 @@ export default {
   name: "SimCalc",
   data() {
     return {
+      // 모의작전
       basicData: "",
       intermediateData: "",
       advancedData: "",
@@ -302,7 +298,23 @@ export default {
 
       getBasicData: 218,
       getIntermediateData: 98,
-      getAdvancedData: 53
+      getAdvancedData: 53,
+
+      // 혼합훈련
+      basicCode: "",
+      advancedCode: "",
+      currentSCPoint: "",
+
+      needBasicCode: "",
+      needAdvancedCode: "",
+
+      needSCPoint_basic: 0,
+      needSCPoint_advanced: 0,
+      needSCPoint_sum: 0,
+      needSCPointPurchase: 0,
+
+      getBasicData: 70,
+      getAdvancedData: 70
     };
   },
   methods: {
@@ -432,6 +444,44 @@ export default {
       }
       if (reg.test(this.getIntermediateData)) {
         this.getIntermediateData = this.getIntermediateData.replace(/\D+/, "");
+      }
+      if (reg.test(this.getAdvancedData)) {
+        this.getAdvancedData = this.getAdvancedData.replace(/\D+/, "");
+      }
+
+      // 혼합 훈련
+      if (reg.test(this.basicCode)) {
+        this.basicCode = this.basicCode.replace(/\D+/, "");
+      }
+      if (reg.test(this.advancedCode)) {
+        this.advancedCode = this.advancedCode.replace(/\D+/, "");
+      }
+      if (reg.test(this.currentSCPoint)) {
+        this.currentSCPoint = this.currentSCPoint.replace(/\D+/, "");
+      }
+      if (reg.test(this.needBasicCode)) {
+        this.needBasicCode = this.needBasicCode.replace(/\D+/, "");
+      }
+      if (reg.test(this.needAdvancedCode)) {
+        this.needAdvancedCode = this.needAdvancedCode.replace(/\D+/, "");
+      }
+      if (reg.test(this.needSCPoint_basic)) {
+        this.needSCPoint_basic = this.needSCPoint_basic.replace(/\D+/, "");
+      }
+      if (reg.test(this.needSCPoint_advanced)) {
+        this.needSCPoint_advanced = this.needSCPoint_advanced.replace(
+          /\D+/,
+          ""
+        );
+      }
+      if (reg.test(this.needSCPoint_sum)) {
+        this.needSCPoint_sum = this.needSCPoint_sum.replace(/\D+/, "");
+      }
+      if (reg.test(this.needSCPointPurchase)) {
+        this.needSCPointPurchase = this.needSCPointPurchase.replace(/\D+/, "");
+      }
+      if (reg.test(this.getBasicData)) {
+        this.getBasicData = this.getBasicData.replace(/\D+/, "");
       }
       if (reg.test(this.getAdvancedData)) {
         this.getAdvancedData = this.getAdvancedData.replace(/\D+/, "");
