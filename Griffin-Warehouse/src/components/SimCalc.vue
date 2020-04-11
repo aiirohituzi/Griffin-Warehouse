@@ -313,8 +313,8 @@ export default {
       needSCPoint_sum: 0,
       needSCPointPurchase: 0,
 
-      getBasicData: 70,
-      getAdvancedData: 70
+      getBasicCode: 70,
+      getAdvancedCode: 70
     };
   },
   methods: {
@@ -384,6 +384,53 @@ export default {
       }
 
       this.needSimPurchase = this.needSimEnergy_sum / 3;
+    },
+    SCPointCalc: function() {
+      if (
+        (this.needBasicCode - this.basicCode) / this.getBasicCode < 0 ||
+        isNaN((this.needBasicCode - this.basicCode) / this.getBasicCode)
+      ) {
+        this.needSCPoint_basic = 0;
+      } else {
+        this.needSCPoint_basic = Math.ceil(
+          (this.needBasicCode - this.basicCode) / this.getBasicCode
+        );
+      }
+      if (
+        (this.needAdvancedCode - this.advancedCode) / this.getAdvancedCode <
+          0 ||
+        isNaN(
+          (this.needAdvancedCode - this.advancedCode) / this.getAdvancedCode
+        )
+      ) {
+        this.needSCPoint_advanced = 0;
+      } else {
+        this.needSCPoint_advanced =
+          Math.ceil(
+            (this.needAdvancedCode - this.advancedCode) / this.getAdvancedCode
+          ) * 3;
+      }
+
+      if (
+        this.needSCPoint_basic +
+          this.needSCPoint_advanced -
+          this.currentSCPoint <
+          0 ||
+        isNaN(
+          this.needSCPoint_basic +
+            this.needSCPoint_advanced -
+            this.currentSCPoint
+        )
+      ) {
+        this.needSCPoint_sum = 0;
+      } else {
+        this.needSCPoint_sum =
+          this.needSCPoint_basic +
+          this.needSCPoint_advanced -
+          this.currentSCPoint;
+      }
+
+      this.needSCPointPurchase = this.needSCPoint_sum / 3;
     },
     openGetData: function() {
       $(".side-left").toggleClass("move");
@@ -464,21 +511,6 @@ export default {
       }
       if (reg.test(this.needAdvancedCode)) {
         this.needAdvancedCode = this.needAdvancedCode.replace(/\D+/, "");
-      }
-      if (reg.test(this.needSCPoint_basic)) {
-        this.needSCPoint_basic = this.needSCPoint_basic.replace(/\D+/, "");
-      }
-      if (reg.test(this.needSCPoint_advanced)) {
-        this.needSCPoint_advanced = this.needSCPoint_advanced.replace(
-          /\D+/,
-          ""
-        );
-      }
-      if (reg.test(this.needSCPoint_sum)) {
-        this.needSCPoint_sum = this.needSCPoint_sum.replace(/\D+/, "");
-      }
-      if (reg.test(this.needSCPointPurchase)) {
-        this.needSCPointPurchase = this.needSCPointPurchase.replace(/\D+/, "");
       }
       if (reg.test(this.getBasicData)) {
         this.getBasicData = this.getBasicData.replace(/\D+/, "");
