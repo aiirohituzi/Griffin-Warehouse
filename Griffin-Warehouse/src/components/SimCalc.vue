@@ -184,27 +184,43 @@
     <!-- ////////////////////////////////////////////////////////////// -->
 
     <div id="div-getData" class="side-left">
-      <div class="inputGroup-getData">
-        <div class="row-getData">모의작전 1회당</div>
-        <div class="row-getData">
-          초급
-          <input type="text" maxlength="3" v-model="getBasicData" v-on:keyup="checkInputSim" />
+      <div v-if="isTdoll">
+        <div class="inputGroup-getData">
+          <div class="row-getData">모의작전 1회당</div>
+          <div class="row-getData">
+            초급
+            <input type="text" maxlength="3" v-model="getBasicData" v-on:keyup="checkInputSim" />
+          </div>
+          <div class="row-getData">
+            중급
+            <input
+              type="text"
+              maxlength="3"
+              v-model="getIntermediateData"
+              v-on:keyup="checkInputSim"
+            />
+          </div>
+          <div class="row-getData">
+            고급
+            <input type="text" maxlength="3" v-model="getAdvancedData" v-on:keyup="checkInputSim" />
+          </div>
         </div>
-        <div class="row-getData">
-          중급
-          <input
-            type="text"
-            maxlength="3"
-            v-model="getIntermediateData"
-            v-on:keyup="checkInputSim"
-          />
-        </div>
-        <div class="row-getData">
-          고급
-          <input type="text" maxlength="3" v-model="getAdvancedData" v-on:keyup="checkInputSim" />
-        </div>
+        <div class="btn-getData" @click="openGetData()">스킬칩 수급량 입력</div>
       </div>
-      <div class="btn-getData" @click="openGetData()">스킬칩 수급량 입력</div>
+      <div v-else>
+        <div class="inputGroup-getData">
+          <div class="row-getData">혼합훈련 1회당</div>
+          <div class="row-getData">
+            초급
+            <input type="text" maxlength="3" v-model="getBasicCode" v-on:keyup="checkInputSim" />
+          </div>
+          <div class="row-getData">
+            고급
+            <input type="text" maxlength="3" v-model="getAdvancedCode" v-on:keyup="checkInputSim" />
+          </div>
+        </div>
+        <div class="btn-getData" @click="openGetData()">훈련코드 수급량 입력</div>
+      </div>
     </div>
 
     <div id="div-needData" class="side-right">
@@ -280,6 +296,8 @@ export default {
   name: "SimCalc",
   data() {
     return {
+      isTdoll: true,
+
       // 모의작전
       basicData: "",
       intermediateData: "",
@@ -439,6 +457,11 @@ export default {
       $(".side-right").toggleClass("move");
     },
     selectTab: function(divId) {
+      if (divId == "tdoll") {
+        this.isTdoll = true;
+      } else {
+        this.isTdoll = false;
+      }
       $("#tdoll").addClass("nonSelect");
       $("#sf").addClass("nonSelect");
 
