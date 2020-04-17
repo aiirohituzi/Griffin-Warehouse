@@ -207,6 +207,7 @@
         </div>
         <div class="btn-getData" @click="openGetData()">스킬칩 수급량 입력</div>
       </div>
+
       <div v-else>
         <div class="inputGroup-getData">
           <div class="row-getData">혼합훈련 1회당</div>
@@ -224,69 +225,136 @@
     </div>
 
     <div id="div-needData" class="side-right">
-      <div class="btn-needData" @click="openNeedData()">각 레벨별 스킬칩 요구량</div>
-      <table id="table-needData">
-        <tr>
-          <th>연구 레벨</th>
-          <th>인형</th>
-          <th>전략요정</th>
-          <th>전투요정</th>
-        </tr>
-        <tr>
-          <th>1 → 2</th>
-          <td class="bgcolor-basic">100</td>
-          <td class="bgcolor-basic">200</td>
-          <td class="bgcolor-basic">200</td>
-        </tr>
-        <tr>
-          <th>2 → 3</th>
-          <td class="bgcolor-basic">200</td>
-          <td class="bgcolor-basic">400</td>
-          <td class="bgcolor-basic">400</td>
-        </tr>
-        <tr>
-          <th>3 → 4</th>
-          <td class="bgcolor-basic">300</td>
-          <td class="bgcolor-basic">600</td>
-          <td class="bgcolor-basic">600</td>
-        </tr>
-        <tr>
-          <th>4 → 5</th>
-          <td class="bgcolor-intermediate">120</td>
-          <td class="bgcolor-intermediate">240</td>
-          <td class="bgcolor-intermediate">200</td>
-        </tr>
-        <tr>
-          <th>5 → 6</th>
-          <td class="bgcolor-intermediate">200</td>
-          <td class="bgcolor-intermediate">400</td>
-          <td class="bgcolor-intermediate">400</td>
-        </tr>
-        <tr>
-          <th>6 → 7</th>
-          <td class="bgcolor-intermediate">300</td>
-          <td class="bgcolor-intermediate">600</td>
-          <td class="bgcolor-intermediate">600</td>
-        </tr>
-        <tr>
-          <th>7 → 8</th>
-          <td class="bgcolor-intermediate">400</td>
-          <td class="bgcolor-intermediate">800</td>
-          <td class="bgcolor-advanced">200</td>
-        </tr>
-        <tr>
-          <th>8 → 9</th>
-          <td class="bgcolor-advanced">200</td>
-          <td class="bgcolor-advanced">400</td>
-          <td class="bgcolor-advanced">400</td>
-        </tr>
-        <tr>
-          <th>9 → 10</th>
-          <td class="bgcolor-advanced">300</td>
-          <td class="bgcolor-advanced">600</td>
-          <td class="bgcolor-advanced">600</td>
-        </tr>
-      </table>
+      <div class="btn-needData" @click="openNeedData()">각 레벨별 {{isTdoll ? "스킬칩" : "훈련코드"}} 요구량</div>
+      <div v-if="isTdoll">
+        <table id="table-needData">
+          <tr>
+            <th>연구 레벨</th>
+            <th>인형</th>
+            <th>전략요정</th>
+            <th>전투요정</th>
+          </tr>
+          <tr>
+            <th>1 → 2</th>
+            <td class="bgcolor-basic">100</td>
+            <td class="bgcolor-basic">200</td>
+            <td class="bgcolor-basic">200</td>
+          </tr>
+          <tr>
+            <th>2 → 3</th>
+            <td class="bgcolor-basic">200</td>
+            <td class="bgcolor-basic">400</td>
+            <td class="bgcolor-basic">400</td>
+          </tr>
+          <tr>
+            <th>3 → 4</th>
+            <td class="bgcolor-basic">300</td>
+            <td class="bgcolor-basic">600</td>
+            <td class="bgcolor-basic">600</td>
+          </tr>
+          <tr>
+            <th>4 → 5</th>
+            <td class="bgcolor-intermediate">120</td>
+            <td class="bgcolor-intermediate">240</td>
+            <td class="bgcolor-intermediate">200</td>
+          </tr>
+          <tr>
+            <th>5 → 6</th>
+            <td class="bgcolor-intermediate">200</td>
+            <td class="bgcolor-intermediate">400</td>
+            <td class="bgcolor-intermediate">400</td>
+          </tr>
+          <tr>
+            <th>6 → 7</th>
+            <td class="bgcolor-intermediate">300</td>
+            <td class="bgcolor-intermediate">600</td>
+            <td class="bgcolor-intermediate">600</td>
+          </tr>
+          <tr>
+            <th>7 → 8</th>
+            <td class="bgcolor-intermediate">400</td>
+            <td class="bgcolor-intermediate">800</td>
+            <td class="bgcolor-advanced">200</td>
+          </tr>
+          <tr>
+            <th>8 → 9</th>
+            <td class="bgcolor-advanced">200</td>
+            <td class="bgcolor-advanced">400</td>
+            <td class="bgcolor-advanced">400</td>
+          </tr>
+          <tr>
+            <th>9 → 10</th>
+            <td class="bgcolor-advanced">300</td>
+            <td class="bgcolor-advanced">600</td>
+            <td class="bgcolor-advanced">600</td>
+          </tr>
+        </table>
+      </div>
+
+      <div v-else>
+        <table id="table-needData">
+          <tr>
+            <th>연구 레벨</th>
+            <th>액티브</th>
+            <th>패시브</th>
+            <th></th>
+          </tr>
+          <tr>
+            <th>1 → 2</th>
+            <td class="bgcolor-basicCode">200</td>
+            <td class="bgcolor-basicCode">200</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>2 → 3</th>
+            <td class="bgcolor-basicCode">400</td>
+            <td class="bgcolor-basicCode">400</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>3 → 4</th>
+            <td class="bgcolor-basicCode">600</td>
+            <td class="bgcolor-advancedCode">600</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>4 → 5</th>
+            <td class="bgcolor-basicCode">240</td>
+            <td class="bgcolor-advancedCode">200</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>5 → 6</th>
+            <td class="bgcolor-basicCode">400</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>6 → 7</th>
+            <td class="bgcolor-advancedCode">600</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>7 → 8</th>
+            <td class="bgcolor-advancedCode">800</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>8 → 9</th>
+            <td class="bgcolor-advancedCode">400</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>9 → 10</th>
+            <td class="bgcolor-advancedCode">600</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </template>
@@ -781,6 +849,12 @@ div#div-needData .btn-needData:hover {
 }
 .bgcolor-advanced {
   background-color: #c8da4bb2;
+}
+.bgcolor-basicCode {
+  background-color: #ec704eb2;
+}
+.bgcolor-advancedCode {
+  background-color: #8e1f32b2;
 }
 
 @media only screen and (max-width: 767px) {
