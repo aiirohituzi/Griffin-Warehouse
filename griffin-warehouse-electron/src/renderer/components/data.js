@@ -6,8 +6,8 @@ export var tdollAtkBuffer = [
   {id: 4, name: '그리즐리', buff: 30, skill: 25},
   {id: 5, name: 'K5', buff: 30, skill: 22},
   {id: 6, name: '컨텐더', buff: 30, skill: '마탄 40'},
-  {id: 7, name: '나강 리볼버 MOD3', buff: 36, skill: 10},
-  {id: 8, name: '콜트 리볼버 MOD3', buff: 24, skill: 25},
+  {id: 7, name: '나강 리볼버 MOD', buff: 36, skill: 10},
+  {id: 8, name: '콜트 리볼버 MOD', buff: 24, skill: 25},
   {id: 9, name: '콜트 리볼버', buff: 24, skill: 22},
   {id: 10, name: 'HK45', buff: 32, skill: 15},
   {id: 11, name: 'PPK', buff: 0, skill: 10},
@@ -19,7 +19,7 @@ export var tdollAtkBuffer = [
   {id: 17, name: 'M9', buff: 20, skill: 0},
   {id: 18, name: '마카로프', buff: 20, skill: 0},
   {id: 19, name: '92식', buff: 0, skill: 10},
-  {id: 20, name: 'MP-446 MOD3(바이킹)', buff: 36, skill: 0},
+  {id: 20, name: 'MP-446 MOD(바이킹)', buff: 36, skill: 0},
   {id: 21, name: 'MP-446(바이킹)', buff: 28, skill: 0},
   {id: 22, name: 'SPP-1', buff: 12, skill: 0},
   {id: 23, name: '웰로드', buff: 20, skill: 0},
@@ -44,7 +44,8 @@ export var tdollAtkBuffer = [
   {id: 42, name: '콜트 파이슨', buff: 30, skill: 6, skill_base: 6},
   {id: 43, name: 'C-93', buff: 24, skill: 18},
   {id: 44, name: '웨블리 리볼버(리더)', buff: 16, skill: 25},
-  {id: 45, name: '웨블리 리볼버', buff: 16, skill: 22}
+  {id: 45, name: '웨블리 리볼버', buff: 16, skill: 22},
+  {id: 46, name: "Gsh-18 MOD", buff: 30, skill: 0}
 ]
 
 export var specialBuffer = {
