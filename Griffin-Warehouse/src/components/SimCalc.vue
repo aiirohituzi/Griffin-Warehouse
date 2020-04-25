@@ -212,15 +212,19 @@
         <div class="inputGroup-getData">
           <div class="row-getData">혼합훈련 1회당</div>
           <div class="row-getData">
-            초급
-            <input type="text" maxlength="3" v-model="getBasicCode" v-on:keyup="checkInputSim" />
+            성장
+            <input type="text" maxlength="3" v-model="getEXPDisk" v-on:keyup="checkInputSim" />
           </div>
           <div class="row-getData">
-            고급
-            <input type="text" maxlength="3" v-model="getAdvancedCode" v-on:keyup="checkInputSim" />
+            개발
+            <input type="text" maxlength="3" v-model="getDevDisk" v-on:keyup="checkInputSim" />
+          </div>
+          <div class="row-getData">
+            코드
+            <input type="text" maxlength="3" v-model="getCode" v-on:keyup="checkInputSim" />
           </div>
         </div>
-        <div class="btn-getData" @click="openGetData()">훈련코드 수급량 입력</div>
+        <div class="btn-getData" @click="openGetData()">혼합훈련 수급량 입력</div>
       </div>
     </div>
 
@@ -387,20 +391,35 @@ export default {
       getAdvancedData: 53,
 
       // 혼합훈련
+      //- 방어구사특훈
+      EXPDisk: "",
+
+      needEXPDisk: "",
+
+      getEXPDisk: 36,
+      //- 개발교정훈련
+      devDisk: "",
+
+      needDevDisk: "",
+
+      getDevDisk: 22,
+      //- 해석연산연습
       basicCode: "",
       advancedCode: "",
-      currentSCPoint: "",
 
       needBasicCode: "",
       needAdvancedCode: "",
 
+      getCode: 252,
+      //- 혼합점수
+      currentSCPoint: "",
+
+      needSCPoint_EXP: 0,
+      needSCPoint_dev: 0,
       needSCPoint_basic: 0,
       needSCPoint_advanced: 0,
       needSCPoint_sum: 0,
-      needSCPointPurchase: 0,
-
-      getBasicCode: 70,
-      getAdvancedCode: 70
+      needSCPointPurchase: 0
     };
   },
   methods: {
@@ -473,27 +492,24 @@ export default {
     },
     SCPointCalc: function() {
       if (
-        (this.needBasicCode - this.basicCode) / this.getBasicCode < 0 ||
-        isNaN((this.needBasicCode - this.basicCode) / this.getBasicCode)
+        (this.needBasicCode - this.basicCode) / this.getCode < 0 ||
+        isNaN((this.needBasicCode - this.basicCode) / this.getCode)
       ) {
         this.needSCPoint_basic = 0;
       } else {
         this.needSCPoint_basic = Math.ceil(
-          (this.needBasicCode - this.basicCode) / this.getBasicCode
+          (this.needBasicCode - this.basicCode) / this.getCode
         );
       }
       if (
-        (this.needAdvancedCode - this.advancedCode) / this.getAdvancedCode <
-          0 ||
-        isNaN(
-          (this.needAdvancedCode - this.advancedCode) / this.getAdvancedCode
-        )
+        (this.needAdvancedCode - this.advancedCode) / this.getCode < 0 ||
+        isNaN((this.needAdvancedCode - this.advancedCode) / this.getCode)
       ) {
         this.needSCPoint_advanced = 0;
       } else {
         this.needSCPoint_advanced =
           Math.ceil(
-            (this.needAdvancedCode - this.advancedCode) / this.getAdvancedCode
+            (this.needAdvancedCode - this.advancedCode) / this.getCode
           ) * 3;
       }
 
@@ -613,6 +629,7 @@ export default {
   },
   updated: function() {
     this.simCalc();
+    this.SCPointCalc();
   }
 };
 </script>
