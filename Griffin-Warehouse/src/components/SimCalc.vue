@@ -110,13 +110,15 @@
     <!-- ////////////////////////////////////////////////////////////// -->
     <div id="sf" class="tab-sim nonSelect">
       <div class="container-content">
-        <table class="table-sim table-sim-col-3">
+        <table class="table-sim table-sim-col-5">
           <tr>
-            <th colspan="3">훈련코드 및 혼합점수 보유량 입력</th>
+            <th colspan="5">혼합훈련 재화 보유량 입력</th>
           </tr>
           <tr>
-            <th>초급</th>
-            <th>고급</th>
+            <th>초급훈련코드</th>
+            <th>고급훈련코드</th>
+            <th>급속성장디스크</th>
+            <th>개발디스크</th>
             <th>혼합점수</th>
           </tr>
           <tr>
@@ -127,6 +129,12 @@
               <input type="text" maxlength="5" v-model="advancedCode" v-on:keyup="checkInputSim" />
             </td>
             <td>
+              <input type="text" maxlength="5" v-model="EXPDisk" v-on:keyup="checkInputSim" />
+            </td>
+            <td>
+              <input type="text" maxlength="5" v-model="devDisk" v-on:keyup="checkInputSim" />
+            </td>
+            <td>
               <input type="text" maxlength="5" v-model="currentSCPoint" v-on:keyup="checkInputSim" />
             </td>
           </tr>
@@ -134,13 +142,15 @@
       </div>
 
       <div class="container-content">
-        <table class="table-sim table-sim-col-2">
+        <table class="table-sim table-sim-col-4">
           <tr>
-            <th colspan="2">필요 사용량 입력</th>
+            <th colspan="4">필요 사용량 입력</th>
           </tr>
           <tr>
-            <th>초급</th>
-            <th>고급</th>
+            <th>초급훈련코드</th>
+            <th>고급훈련코드</th>
+            <th>급속성장디스크</th>
+            <th>개발디스크</th>
           </tr>
           <tr>
             <td>
@@ -148,6 +158,12 @@
             </td>
             <td>
               <input type="text" v-model="needAdvancedCode" v-on:keyup="checkInputSim" />
+            </td>
+            <td>
+              <input type="text" v-model="needEXPDisk" v-on:keyup="checkInputSim" />
+            </td>
+            <td>
+              <input type="text" v-model="needDevDisk" v-on:keyup="checkInputSim" />
             </td>
           </tr>
         </table>
@@ -159,10 +175,10 @@
             <th colspan="4">필요 혼합점수</th>
           </tr>
           <tr>
-            <th>초급</th>
-            <th>고급</th>
-            <th>합계</th>
-            <th>필요구매횟수</th>
+            <th>초급훈련코드</th>
+            <th>고급훈련코드</th>
+            <th>급속성장디스크</th>
+            <th>개발디스크</th>
           </tr>
           <tr>
             <td>
@@ -171,6 +187,20 @@
             <td>
               <div class="label">{{ needSCPoint_advanced }}</div>
             </td>
+            <td>
+              <div class="label">{{ needSCPoint_EXP }}</div>
+            </td>
+            <td>
+              <div class="label">{{ needSCPoint_dev }}</div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <th>합계</th>
+            <th>필요구매횟수</th>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
             <td>
               <div class="label">{{ needSCPoint_sum }}</div>
             </td>
@@ -716,6 +746,10 @@ td {
 td {
   width: calc((50vw - 40px) / 4);
 }
+.table-sim-col-5 th,
+td {
+  width: calc((50vw - 40px) / 5);
+}
 .table-sim input {
   width: 80%;
   text-align: right;
@@ -888,6 +922,10 @@ div#div-needData .btn-needData:hover {
   .table-sim-col-4 th,
   td {
     width: calc((80vw - 40px) / 4);
+  }
+  .table-sim-col-5 th,
+  td {
+    width: calc((80vw - 40px) / 5);
   }
   .table-sim input {
     font-size: 8pt;
