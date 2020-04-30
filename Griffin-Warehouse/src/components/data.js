@@ -284,4 +284,9 @@ export var timetable = [
   { id: 281, type: "SG", name: "CAWS", time: "0815" }
 
   // {id: , type:'', name: '', time: ''},
+  // {id: , type:'RF', name: '타부크', time: '0425'},
+  // {id: , type:'SMG', name: 'SAF', time: '0210'},
+  // {id: , type:'AR', name: 'AK-Alfa', time: '0356'},
+  // {id: , type:'HG', name: 'HP-35', time: '0135'},
+  // {id: , type:'MG', name: 'ZB-26', time: '0626'},
 ];
