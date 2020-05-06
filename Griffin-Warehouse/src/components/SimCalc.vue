@@ -527,9 +527,8 @@ export default {
       ) {
         this.needSCPoint_basic = 0;
       } else {
-        this.needSCPoint_basic = Math.ceil(
-          (this.needBasicCode - this.basicCode) / this.getCode
-        );
+        this.needSCPoint_basic =
+          Math.ceil((this.needBasicCode - this.basicCode) / this.getCode) * 3;
       }
       if (
         (this.needAdvancedCode - this.advancedCode) / this.getCode < 0 ||
@@ -541,6 +540,16 @@ export default {
           Math.ceil(
             (this.needAdvancedCode - this.advancedCode) / this.getCode
           ) * 3;
+      }
+
+      if (
+        (this.needEXPDisk - this.EXPDisk) / this.getEXPDisk < 0 ||
+        isNaN((this.needEXPDisk - this.EXPDisk) / this.getEXPDisk)
+      ) {
+        this.needSCPoint_EXP = 0;
+      } else {
+        this.needSCPoint_EXP =
+          Math.ceil((this.needEXPDisk - this.EXPDisk) / this.getEXPDisk) * 3;
       }
 
       if (
