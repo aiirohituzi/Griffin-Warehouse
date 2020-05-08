@@ -521,6 +521,7 @@ export default {
       this.needSimPurchase = this.needSimEnergy_sum / 3;
     },
     SCPointCalc: function() {
+      // 훈련코드 계산
       if (
         (this.needBasicCode - this.basicCode) / this.getCode < 0 ||
         isNaN((this.needBasicCode - this.basicCode) / this.getCode)
@@ -542,6 +543,7 @@ export default {
           ) * 3;
       }
 
+      // 급속 성장 디스크 계산
       if (
         (this.needEXPDisk - this.EXPDisk) / this.getEXPDisk < 0 ||
         isNaN((this.needEXPDisk - this.EXPDisk) / this.getEXPDisk)
@@ -552,6 +554,18 @@ export default {
           Math.ceil((this.needEXPDisk - this.EXPDisk) / this.getEXPDisk) * 3;
       }
 
+      // 개발 디스크 계산
+      if (
+        (this.needDevDisk - this.devDisk) / this.getDevDisk < 0 ||
+        isNaN((this.needDevDisk - this.devDisk) / this.getDevDisk)
+      ) {
+        this.needSCPoint_dev = 0;
+      } else {
+        this.needSCPoint_dev =
+          Math.ceil((this.needDevDisk - this.devDisk) / this.getDevDisk) * 3;
+      }
+
+      // 각 계산결과 합산
       if (
         this.needSCPoint_basic +
           this.needSCPoint_advanced -
