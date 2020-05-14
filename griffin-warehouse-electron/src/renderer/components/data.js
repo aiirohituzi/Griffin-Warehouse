@@ -46,6 +46,7 @@ export var tdollAtkBuffer = [
   { id: 44, name: "웨블리 리볼버(리더)", buff: 16, skill: 25 },
   { id: 45, name: "웨블리 리볼버", buff: 16, skill: 22 },
   { id: 46, name: "Gsh-18 MOD", buff: 30, skill: 0 },
+  { id: 47, name: "HP-35", buff: 30, skill: 18, passive: 8 },
 ];
 
 export var specialBuffer = {
