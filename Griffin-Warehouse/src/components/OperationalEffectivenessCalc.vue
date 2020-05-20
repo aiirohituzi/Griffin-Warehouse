@@ -1179,8 +1179,8 @@ export default {
           this.tdollStat[i].armor * (1 + this.tdollStat[i].armorBuff / 100)
         );
         var armorCoefficient = 1;
-        if (armor < 75) {
-          armorCoefficient = 75 - armor;
+        if (armor < 100) {
+          armorCoefficient = 100 - armor;
         }
 
         var str = Math.ceil(
@@ -1260,7 +1260,7 @@ export default {
             this.tdollStat[i].link *
             (35 + agl)) /
             35) *
-          ((2.6 * 75) / armorCoefficient - 1.6);
+          ((4.2 * 100) / armorCoefficient - 3.2);
 
         if (this.tdollStat[i].skill2Lv > 0) {
           skill =
