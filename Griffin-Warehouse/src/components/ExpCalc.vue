@@ -8,7 +8,9 @@
         class="tabBtn-exp"
         @click="selectTab('fireSupportUnit')"
       >화력지원소대</div>
+      <div id="tabBtn-SF" class="tabBtn-exp" @click="selectTab('SF')">혼합세력</div>
     </div>
+
     <div id="tdoll" class="tab-exp">
       <div class="inputGroup-exp">
         <div class="input-addon-left">현재 레벨</div>
@@ -210,6 +212,8 @@
         <div class="input-label">{{ FSTNeedReport * 3 }}개</div>
       </div>
     </div>
+
+    <div id="SF" class="tab-exp nonSelect"></div>
 
     <div id="div-penalty" class="side-right-exp">
       <div class="btn-penalty" @click="openPenalty()">경험치 패널티 표</div>
@@ -1080,6 +1084,7 @@ export default {
       $("#tdoll").addClass("nonSelect");
       $("#fairy").addClass("nonSelect");
       $("#fireSupportUnit").addClass("nonSelect");
+      $("#SF").addClass("nonSelect");
 
       $(".tabnav-exp")
         .children()
@@ -1187,7 +1192,7 @@ export default {
   list-style: none;
 }
 .tabBtn-exp {
-  width: calc(100% / 3);
+  width: calc(100% / 4);
   height: 100%;
   line-height: 30px;
   box-sizing: border-box;
