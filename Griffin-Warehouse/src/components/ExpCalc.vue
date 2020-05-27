@@ -133,9 +133,6 @@
     </div>
 
     <div id="fairy" class="tab-exp nonSelect">
-      <!-- 입력받을 값: 현재레벨 현재경험치 목표레벨
-      거지런계산은 힘듦 작보계산기만 일단 추가할것-->
-
       <div class="inputGroup-exp">
         <div class="input-addon-left">현재 레벨</div>
         <div class="input-exp">
@@ -213,7 +210,38 @@
       </div>
     </div>
 
-    <div id="SF" class="tab-exp nonSelect"></div>
+    <div id="SF" class="tab-exp nonSelect">
+      <div class="inputGroup-exp">
+        <div class="input-addon-left">현재 레벨</div>
+        <div class="input-exp">
+          <input type="text" maxlength="3" v-model="SFCurrentLv" v-on:keyup="checkInputExp" />
+        </div>
+      </div>
+
+      <div class="inputGroup-exp">
+        <div class="input-addon-left">현재 경험치</div>
+        <div class="input-exp">
+          <input type="text" v-model="SFCurrentExp" v-on:keyup="checkInputExp" />
+        </div>
+      </div>
+
+      <div class="inputGroup-exp">
+        <div class="input-addon-left">목표 레벨</div>
+        <div class="input-exp">
+          <input type="text" maxlength="3" v-model="SFTarget" v-on:keyup="checkInputExp" />
+        </div>
+      </div>
+
+      <div class="inputGroup-exp">
+        <div class="input-addon-left">필요 급속성장디스크</div>
+        <div class="input-label">{{ SFNeedDisk }}개</div>
+      </div>
+
+      <div class="inputGroup-exp">
+        <div class="input-addon-left">디스크 수급에 필요한 모의점수</div>
+        <div class="input-label">{{ SFNeedDisk }}개</div>
+      </div>
+    </div>
 
     <div id="div-penalty" class="side-right-exp">
       <div class="btn-penalty" @click="openPenalty()">경험치 패널티 표</div>
@@ -846,6 +874,10 @@ export default {
       FSTCurrentExp: 0,
       FSTTarget: "",
 
+      SFCurrentLv: 1,
+      SFCurrentExp: 0,
+      SFTarget: "",
+
       area: [
         { id: 0, name: "4-3e", exp: 370 * 4, penalty: 65 },
         { id: 1, name: "0-2", exp: 490 * 5, penalty: 100 },
@@ -879,6 +911,7 @@ export default {
       tdollNeedReport: 0,
       fairyNeedReport: 0,
       FSTNeedReport: 0,
+      SFNeedDisk: 0,
 
       FSTTime: 0
     };
@@ -1215,6 +1248,8 @@ export default {
   border-top: unset;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+
+  min-width: 350px;
 
   padding: 10px;
   font-size: 10pt;
