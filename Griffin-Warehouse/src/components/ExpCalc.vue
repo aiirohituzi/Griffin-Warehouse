@@ -239,7 +239,7 @@
 
       <div class="inputGroup-exp">
         <div class="input-addon-left">디스크 수급에 필요한 모의점수</div>
-        <div class="input-label">{{ SFNeedDisk }}개</div>
+        <div class="input-label">{{ Math.ceil(SFNeedDisk / 36 * 3) }}개</div>
       </div>
     </div>
 
@@ -757,6 +757,7 @@ export default {
       ],
 
       expSF: [
+        0,
         100,
         200,
         400,
@@ -982,6 +983,16 @@ export default {
       } else {
         this.FSTNeedReport = Math.ceil(FSTNeedExp / 3000);
         this.FSTTime = Math.ceil(this.FSTNeedReport / 15);
+      }
+
+      var SFNeedExp =
+        this.expSF[this.SFTarget - 1] -
+        (this.expSF[this.SFCurrentLv - 1] + parseInt(this.SFCurrentExp));
+      console.log(SFNeedExp);
+      if (isNaN(SFNeedExp)) {
+        this.SFNeedExp = 0;
+      } else {
+        this.SFNeedDisk = Math.ceil(SFNeedExp / 3000);
       }
 
       if (!this.pledge) {
