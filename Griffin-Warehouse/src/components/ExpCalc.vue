@@ -241,6 +241,12 @@
         <div class="input-addon-left">디스크 수급에 필요한 모의점수</div>
         <div class="input-label">{{ Math.ceil(SFNeedDisk / 36 * 3) }}개</div>
       </div>
+
+      <span>
+        디스크 수급량
+        <b>'월, 목, 일 X3', '-20%'</b> 기준
+        <b>(36개)</b>
+      </span>
     </div>
 
     <div id="div-penalty" class="side-right-exp">
