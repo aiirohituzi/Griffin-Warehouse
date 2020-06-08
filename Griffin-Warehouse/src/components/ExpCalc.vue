@@ -283,6 +283,11 @@
           <td title="2150">600*4</td>
         </tr>
         <tr>
+          <td>13-4</td>
+          <td>120</td>
+          <td title="2150">600*5</td>
+        </tr>
+        <tr>
           <td>특이점 4드라런</td>
           <td>106</td>
           <td title="2000">500*4</td>
@@ -891,13 +896,14 @@ export default {
         { id: 2, name: "8-1n", exp: 500 * 5, penalty: 111 },
         { id: 3, name: "11-5", exp: 550 * 5, penalty: 120 },
         { id: 4, name: "12-4e", exp: 600 * 4, penalty: 120 },
-        { id: 5, name: "특이점 4드라런", exp: 500 * 4, penalty: 106 },
-        { id: 6, name: "5-4e 보스런", exp: 430 * 5, penalty: 83 }, // 보스는 2배 860
-        { id: 7, name: "0-4 보스런", exp: 500 * 4, penalty: 106 }, // 보스 2배 1000
-        { id: 8, name: "직접입력", exp: 0, penalty: 0 }
+        { id: 5, name: "13-4", exp: 600 * 5, penalty: 120 },
+        { id: 6, name: "특이점 4드라런", exp: 500 * 4, penalty: 106 },
+        { id: 7, name: "5-4e 보스런", exp: 430 * 5, penalty: 83 }, // 보스는 2배 860
+        { id: 8, name: "0-4 보스런", exp: 500 * 4, penalty: 106 }, // 보스 2배 1000
+        { id: 9, name: "직접입력", exp: 0, penalty: 0 }
       ],
       area_selected: 0,
-      DIRECT_INPUT: 8,
+      DIRECT_INPUT: 9,
       getExp: 370 * 4,
 
       dummy: 5,
@@ -1438,7 +1444,7 @@ div#div-penalty {
   right: -335px;
   top: 30vh;
   width: 350px;
-  height: 242px;
+  height: 257px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   background-color: #c3b9a2b6;
