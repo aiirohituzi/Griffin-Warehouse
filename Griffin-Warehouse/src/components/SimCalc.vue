@@ -335,43 +335,43 @@
           </tr>
           <tr>
             <th>1 → 2</th>
-            <td class="bgcolor-basicCode">200</td>
-            <td class="bgcolor-basicCode">200</td>
+            <td class="bgcolor-basicCode">300</td>
+            <td class="bgcolor-basicCode">400</td>
             <td></td>
           </tr>
           <tr>
             <th>2 → 3</th>
             <td class="bgcolor-basicCode">400</td>
-            <td class="bgcolor-basicCode">400</td>
+            <td class="bgcolor-basicCode">600</td>
             <td></td>
           </tr>
           <tr>
             <th>3 → 4</th>
-            <td class="bgcolor-basicCode">600</td>
-            <td class="bgcolor-advancedCode">600</td>
-            <td></td>
-          </tr>
-          <tr>
-            <th>4 → 5</th>
-            <td class="bgcolor-basicCode">240</td>
+            <td class="bgcolor-basicCode">500</td>
             <td class="bgcolor-advancedCode">200</td>
             <td></td>
           </tr>
           <tr>
+            <th>4 → 5</th>
+            <td class="bgcolor-basicCode">600</td>
+            <td class="bgcolor-advancedCode">400</td>
+            <td></td>
+          </tr>
+          <tr>
             <th>5 → 6</th>
-            <td class="bgcolor-basicCode">400</td>
+            <td class="bgcolor-basicCode">800</td>
             <td></td>
             <td></td>
           </tr>
           <tr>
             <th>6 → 7</th>
-            <td class="bgcolor-advancedCode">600</td>
+            <td class="bgcolor-advancedCode">200</td>
             <td></td>
             <td></td>
           </tr>
           <tr>
             <th>7 → 8</th>
-            <td class="bgcolor-advancedCode">800</td>
+            <td class="bgcolor-advancedCode">300</td>
             <td></td>
             <td></td>
           </tr>
