@@ -389,6 +389,20 @@
         />
       </div>
     </div>
+    <div class="inputGroup-damage">
+      <div class="input-damage">
+        <input type="number" min="0" max="100" v-model="forceShield" v-on:keyup="checkInputDamage" />
+      </div>
+      <div class="input-addon-left">
+        왜곡방벽 적용
+        <input
+          class="check-damage"
+          type="checkbox"
+          style="width:unset;"
+          v-model="forceShieldOn"
+        />
+      </div>
+    </div>
 
     <div class="container-content-damage">
       <table class="table-damage table-damage-col-3">
@@ -519,7 +533,9 @@ export default {
       armorOn: false,
       armor: 0,
       criticalOn: false,
-      critical: 150
+      critical: 150,
+      forceShieldOn: false,
+      forceShield: 0
     };
   },
   methods: {
@@ -533,6 +549,7 @@ export default {
       var calc_fairySkill = 0;
       var calc_critical = 0;
       var calc_Px4 = 1;
+      var calc_forceShield = 1;
 
       var finalStat = 0;
       var finalStatMin = 0;
@@ -741,6 +758,11 @@ export default {
       } else {
         calc_critical = 1;
       }
+      if (this.forceShieldOn) {
+        calc_forceShield = 1 - this.forceShield / 100;
+      } else {
+        calc_forceShield = 1;
+      }
 
       this.sumBuff = sum_buff;
       this.sumSkill = sum_skill.toFixed(4);
@@ -753,8 +775,10 @@ export default {
         (1 + this.tdollSkill / 100) *
         (1 + calc_fairySkill / 100);
 
-      finalStatMin = (finalStat * 0.85 - this.armor) * calc_critical;
-      finalStatMax = (finalStat * 1.15 - this.armor) * calc_critical;
+      finalStatMin =
+        (finalStat * 0.85 * calc_forceShield - this.armor) * calc_critical;
+      finalStatMax =
+        (finalStat * 1.15 * calc_forceShield - this.armor) * calc_critical;
 
       if (finalStatMin > 0) {
         this.finalStatMin = finalStatMin;
